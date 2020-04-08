@@ -1,0 +1,96 @@
+h1
+{
+    padding-top: 1rem;
+}
+
+h2
+{
+    margin-top: 3rem;
+}
+
+#sidebar
+{
+    max-height: calc(100vh - 55px);
+    position: fixed;
+    bottom: 0;
+    top: 55px;
+    left: 0;
+    z-index: 1000;
+    padding: 20px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f7fbfb;
+    border-right: 1px solid #f7f7fa;
+}
+
+#sidebar .nav-link
+{
+    color: #399;
+}
+
+#sidebar .nav-item.active .nav-link
+{
+    font-weight: bold;
+}
+
+#sidebar .nav-item.active
+{
+    background-color: rgba(153, 204, 204, 0.2);
+}
+
+#aside
+{
+    max-height: calc(100vh - 120px);
+    position: fixed;
+    bottom: 0;
+    top: 55px;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+    border-right: 1px solid #eee;
+}
+
+#aside .navbar-nav
+{
+    padding-left: 20px;
+    border-left: 1px solid #eee;
+}
+
+#aside .nav-link
+{
+    color: #99979c;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#aside .nav-link:hover
+{
+    color: #399;
+}
+
+#aside .nav-link.active
+{
+    font-weight: bold;
+}
+
+#aside .sub-item
+{
+    padding-left: 10px;
+}
+
+#aside .navbar-nav.sub-nav
+{
+    padding-left: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#aside .sub-nav .nav-link
+{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 0.96ren;
+}
+

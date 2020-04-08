@@ -1,0 +1,69 @@
+.code-panel
+{
+    background-color: #f7f7fa;
+    padding-left: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.lang-html i
+{
+    font-style:normal ;
+}
+
+.tag,
+.class,
+.code
+{
+    color: #f44336;
+}
+
+.lang-html .attr
+{
+    color: #0277bd;
+}
+
+.lang-html .value
+{
+    color: #388E3C;
+}
+
+.lang-html pre
+{
+    color: #343a40 !important;
+    font-size: 1.1em;
+}
+
+.doctype
+{
+    color: #92b5e6;
+}
+
+.comment
+{
+    color: #b9bbbe;
+}
+
+
+.teste::after
+{
+    content: "?";
+}
+
+#teste
+{
+    cursor: text;
+}
+
+.mr-test
+{
+    border: 3px solid #f7f7fa;
+    padding: 15px;
+}
+
+pre
+{
+    margin-bottom: 0;
+}
+
+

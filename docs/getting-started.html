@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Getting started My Rules. My Rules's Documentation - The javascript form validation">
+    <meta name="Keywords" content="My Rules, My Rules Validation, My Rules Validation Form, My Rules Documentation, Documentation, Form Validation, Javascript form validation, myrules.js, Getting started, Quick start, Validate on data input, My Rules customized colors, Multiple validation, Basic example">
+    <meta name="author" content="Alberto Jordane Adolfo">
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/docs-style.css">
+    <link rel="stylesheet" href="assets/css/codepanel.css">
+
+    <title>Getting Stated - My Rules</title>
+</head>
+<body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+<div id="nav"></div>
+<!--INCLUDE HEADER-->
+<div id="include-header" navactive="nav-documentation"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!--INCLUDE SIDEBAR-->
+        <div id="include-sidebar" navactive="getting-started"></div>
+
+        <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
+            <div class="container-fluid">
+
+                <section id="quickstart">
+                    <h1>Quick start</h1>
+                    <p>Copy-paste the following script into your web page. If you need, you can download the source file <a href="">here.</a></p>
+
+                    <div class="code-panel mt-3 pt-0 pb-0">
+                        <code class="lang-html">
+                            <pre><i class="tag">&lt;script</i> <i class="attr">src=</i><i class="value">"http://exemplo.cdn/myrules.min.js"</i><i class="tag">&gt;</i><i class="tag">&lt;script/&gt;</i></pre>
+                        </code>
+                    </div>
+
+                    <article id="basic-example">
+                        <h2>Basic example</h2>
+                        <p>To validate a form element with My Rules, add a class <samp class="code">.mr</samp> into the element's class and add the class or attribute of validation (eg.  class <samp class="code">.mr-required</samp> or attribute <samp class="code">required</samp>). You will see more classes and attributes used by My Rules to validate an element in this documentation.</p>
+                        <p>Is needed an an <samp class="code">.mr-feedback</samp> for each <samp class="code">.mr</samp> element to display the validation feedback. For each <samp class="code">.mr</samp> element has the correspondent feedback's class.</p>
+                        <p> Eg. the feedback class of <samp class="code">.mr-required</samp> is <samp class="code">.mr-required-fb</samp>. To display the feedback of a required element you add the class <samp class="code">.mr-feedback</samp> and <samp class="code">mr-required-fb</samp> into the feedback element's class.</p>
+
+
+                        <div class="mr-test">
+                            <div class="panel-info">
+                                <p>Try to submit the form without fill out the text fields.</p>
+                            </div>
+                            <form>
+                                <input type="text" placeholder="First name" class="mr" required> <br>
+                                <p class= "mr-feedback mr-required-fb">Please fill out this field</p>
+
+                                <input type="text" placeholder="Last name" class="mr mr-required"> <br>
+                                <p class= "mr-feedback mr-required-fb">Please fill out this field</p>
+
+                                <input type="submit" value="submit">
+                            </form>
+                        </div>
+
+                        <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="doctype">&lt;!doctype html&gt;</i>
+<i class="tag">&lt;html</i> <i class="attr">lang=</i><i class="value">"en"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;head&gt;</i>
+        <i class="tag">&lt;title&gt;</i>Hello, world!<i class="tag">&lt;/title&gt;</i>
+        <i class="tag">&lt;meta</i><i class="attr"> charset=</i><i class="value">"utf-8"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;/head&gt;</i>
+    <i class="tag">&lt;body&gt;</i>
+        <i class="tag">&lt;form</i><i class="tag">&gt;</i>
+            <i class="comment">&lt;!--Required text field--&gt;</i>
+            <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"text"</i> <i class="attr">placeholder=</i><i class="value">"First name"</i> <i class="attr">class=</i><i class="value">"mr"</i> <i class="attr">required</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+            <i class="comment">&lt;!--Validation feedback--&gt;</i>
+            <i class="tag">&lt;p</i> <i class="attr">class=</i> <i class="value">"mr-feedback mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field<i class="tag">&lt;/p&gt;</i>
+
+            <i class="comment">&lt;!--Required text field--&gt;</i>
+            <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"text"</i> <i class="attr">placeholder=</i><i class="value">"Last name"</i> <i class="attr">class=</i><i class="value">"mr mr-required"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+            <i class="comment">&lt;!--Validation feedback--&gt;</i>
+            <i class="tag">&lt;p</i> <i class="attr">class=</i> <i class="value">"mr-feedback mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field<i class="tag">&lt;/p&gt;</i>
+
+            <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;/form&gt;</i>
+
+        <i class="comment">&lt;!--MY RULES--&gt;</i>
+        <i class="tag">&lt;script</i> <i class="attr">src=</i><i class="value">"http://exemplo.cdn/myrules.min.js"</i><i class="tag">&gt;</i><i class="tag">&lt;/script&gt;</i>
+    <i class="tag">&lt;/body&gt;</i>
+<i class="tag">&lt;/html&gt;</i>
+</pre>
+                            </code>
+                        </div>
+                    </article>
+                </section>
+
+                <section id="validate-oninput">
+                    <h1>Validate element on data input</h1>
+                    <p>By default the form element will be validated only on element value change and on form submit, also to validate the form element when user input data, add a class <samp class="code">.mr-oninput</samp> to your <samp class="code">&lt;form&gt;</samp>.</p>
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <p>Try to input an invalid integer number.</p>
+                            <p><i class="fas fa-asterisk w3-text-red"></i> Note: some browsers can ignore illegal characters from the input type number.</p>
+                        </div>
+                        <form class="mr-oninput">
+                            <input type="number" class="mr mr-number-int"> <br>
+                            <p class="mr-feedback mr-number-int-fb">Please input a valid integer number</p>
+                            <input type="submit" value="submit">
+                        </form>
+                    </div>
+
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i> <i class="class">class=</i><i class="value">"mr-oninput"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"number"</i> <i class="attr">class=</i><i class="value">"mr mr-number-int"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-feedback mr-number-int-fb"</i><i class="tag">&gt;</i>Please input a valid integer number<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                </section>
+
+                <section id="mr-colors">
+                    <h1>My Rules customized colors</h1>
+                    <p>To use My Rules customized colors on valid and invalid form elements, you must add a class <samp class="code">.mr-colors</samp> on your <samp class="code">&lt;form&gt;</samp>.</p>
+
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <p>Try to input invalid alpha and space (not between [A-Za-z ]) in the first text field and invalid alpha (not between [A-Za-z]) in the second text field.</p>
+                        </div>
+                        <form class="mr-colors">
+                            <input type="text" placeholder="First name"  class="mr mr-alpha-space"> <br>
+                            <p class="mr-feedback mr-alpha-space-fb">Please input a valid first name</p>
+
+                            <input type="text" placeholder="Last name" class="mr mr-alpha"> <br>
+                            <p class="mr-feedback mr-alpha-fb">Please input a valid Last name</p>
+
+                            <input type="submit" value="submit">
+                            <input type="reset" value="reset">
+                        </form>
+                    </div>
+
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i> <i class="class">class=</i><i class="value">"mr-colors"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"text"</i> <i class="attr">placeholder=</i><i class="value">"First name"</i>  <i class="attr">class=</i><i class="value">"mr mr-alpha-space"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-feedback mr-alpha-space-fb"</i><i class="tag">&gt;</i>Please input a valid first name<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"text"</i> <i class="attr">placeholder=</i><i class="value">"Last name"</i> <i class="attr">class=</i><i class="value">"mr mr-alpha"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-feedback mr-alpha-fb"</i><i class="tag">&gt;</i>Please input a valid Last name<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"reset"</i> <i class="attr">value=</i><i class="value">"reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                    If you want, you can customize the form element when it's valid or invalid yourself  by using the CSS class selector of each validation status, <samp class="code">.mr-valid</samp>  when the element is valid and <samp class="code">.mr-invalid</samp> when it's invalid. Also you can custom the feedback elements by using its classes.
+                </section>
+
+                <section id="multiple-validation">
+                    <h1>Multiple validation</h1>
+                    <p>You can have more than one validation in the some form element. To display validation feedback of an element with multiple type of validation you must create one <samp class="code">&lt;div&gt;</samp> with <samp class="code">.mr-feedback</samp> and add elements with feedback's class inside them.</p>
+                    
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <ul>
+                                <li>The valid username characters are uppercase, lowercase, number, underscore, dot and at least two characters.</li>
+                                <li>The strong password must have an uppercase, a lowercase, a number and/or a special char and at least 6 characters.</li>
+                                <li>The Both text fields are required.</li>
+                            </ul>
+                            <p>Try to input invalid username and strong password.</p>
+                        </div>
+
+                        <form class="mr-oninput mr-colors">
+                            <input type="text" placeholder="Username" class="mr mr-username" required> <br>
+                            <div class="mr-feedback">
+                                <p class="mr-required-fb">Please fill out this field</p>
+                                <p class="mr-username-fb">Please input a valid username</p>
+                            </div>
+
+                            <input type="password" placeholder="Password" class="mr mr-password-strong" password-minlength="6" required> <br>
+                            <div class="mr-feedback">
+                                <p class="mr-required-fb">Please fill out this field</p>
+                                <p class="mr-password-strong-fb">The password must have an uppercase, a lowercase, a number and/or a special char and at least 6 characters</p>
+                                <p class="mr-valid-fb">Strong password</p>
+                            </div>
+
+                            <input type="submit" value="submit">
+                        </form>
+                    </div>
+
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i> <i class="attr">class=</i><i class="value">"mr-oninput mr-colors"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"text"</i> <i class="attr">placeholder=</i><i class="value">"Username"</i> <i class="attr">class=</i><i class="value">"mr mr-username"</i> <i class="attr">required</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class=</i><i class="value">"mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-username-fb"</i><i class="tag">&gt;</i>Please input a valid username<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"password"</i> <i class="attr">placeholder=</i><i class="value">"Password"</i> <i class="attr">class=</i><i class="value">"mr mr-password-strong"</i> <i class="attr">password-minlength=</i><i class="value">"6"</i> <i class="attr">required</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class=</i><i class="value">"mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-password-strong-fb"</i><i class="tag">&gt;</i>The password must have an uppercase, a lowercase, a number and/or a special char and at least 6 characters<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-valid-fb"</i><i class="tag">&gt;</i>Strong password<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#quickstart">Quick start</a>
+                    <ul class="navbar-nav sub-nav">
+                        <li class="nav-item">
+                            <a href="#basic-example" class="nav-link">Basic example</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#validate-oninput">Validate on data input</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#mr-colors">My Rules customized colors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#multiple-validation">Multiple validation</a>
+                </li>
+            </ul>
+        </aside>
+    </div>
+</div>
+
+<!--INCLUDE FOOTER-->
+<div id="include-footer"></div>
+
+<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="assets/vendor/popper/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../dist/myrules.js"></script>
+
+<!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+<script src="assets/js/docs-includes.js"></script>
+
+</body>
+</html>

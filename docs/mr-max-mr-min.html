@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Max and Min value. My Rules's Documentation - The javascript form validation">
+    <meta name="Keywords" content="My Rules, My Rules Validation, My Rules Validation Form, My Rules Documentation, Documentation, Form Validation, Javascript form validation, myrules.js, min value, ,max value, max, min, mr-min, mr-max, mr-min-fb, mr-max, mr-max-fb">
+    <meta name="author" content="Alberto Jordane Adolfo">
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/docs-style.css">
+    <link rel="stylesheet" href="assets/css/codepanel.css">
+
+    <title>Max and Min value - My Rules</title>
+</head>
+<body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+<div id="nav"></div>
+<!--INCLUDE HEADER-->
+<div id="include-header" navactive="nav-documentation"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!--INCLUDE SIDEBAR-->
+        <div id="include-sidebar" navactive="mr-max-mr-min"></div>
+
+        <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
+            <div class="container-fluid">
+
+                <section id="mr-max-mr-min">
+                    <h1>Required element</h1>
+                    <p>To Specify that the element must be filled out before submitting the form you add a <samp class="class">.mr</samp> into the element's class then, add to the class <samp class="code">.mr-required</samp> or attribute <samp class="code">required</samp>.</p>
+
+                    <article id="mr-required-fb">
+                        <h2>Required feedback</h2>
+                        <p>To display the feedback validation fo a required element you must create a html element with the feedback text content and add the classes <samp class="code">.mr-feedback</samp> and <samp class="code">.mr-required-fb</samp></p>
+                    </article>
+
+                    <article id="mr-required-example">
+                        <h2>Example</h2>
+                        <div class="mr-test">
+                            <div class="panel-info">
+                                <p>Try to submit the form without fill out the text fields.</p>
+                            </div>
+                            <form class="mr-colors">
+                                <input type="text" placeholder="First name" class="mr" required> <br>
+                                <p class= "mr-feedback mr-required-fb">Please fill out this field</p>
+
+                                <input type="text" placeholder="Last name" class="mr mr-required"> <br>
+                                <p class= "mr-feedback mr-required-fb">Please fill out this field</p>
+
+                                <input type="submit" value="submit">
+                            </form>
+                        </div>
+
+                        <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i> <i class="class">class=</i><i class="value">"mr-colors"</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Required text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"text"</i> <i class="attr">placeholder=</i><i class="value">"First name"</i> <i class="attr">class=</i><i class="value">"mr"</i> <i class="attr">required</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class=</i> <i class="value">"mr-feedback mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field<i class="tag">&lt;/p&gt;</i>
+
+    <i class="comment">&lt;!--Required text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"text"</i> <i class="attr">placeholder=</i><i class="value">"Last name"</i> <i class="attr">class=</i><i class="value">"mr mr-required"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class=</i> <i class="value">"mr-feedback mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                            </code>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </main>
+
+        <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#required-element">Required element</a>
+                    <ul class="navbar-nav sub-nav">
+                        <li class="nav-item">
+                            <a href="#mr-required-fb" class="nav-link">Required feedback</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#mr-required-example" class="nav-link">Example</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+    </div>
+</div>
+
+<!--INCLUDE FOOTER-->
+<div id="include-footer"></div>
+
+<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="assets/vendor/popper/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../dist/myrules.js"></script>
+
+<!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+<script src="assets/js/docs-includes.js"></script>
+
+</body>
+</html>
