@@ -1,6 +1,7 @@
 /*
- * Created by Alberto on 31/08/2018.
- * MY RULES VALIDATION V2 UPDATED JULY/2019
+ * Created by Alberto on JULLY/2018 as validacao.js.
+ * Created by Alberto on AUGUST/2018 as MY RULES VALIDATION.
+ * Updated on JULY/2019 as MY RULES VALIDATION V2 and named My Rules
  */
 /*
  ATENÇÃO: Informação dos diretos autorais!!
@@ -9,7 +10,6 @@
  * Para contribuir no projecto, em breve o código-fonte estará no repositório GIT HUB (https://github.com/albertoadolfo27).
  * 15/JULY/2019
  */
-
 
 if (window.addEventListener)
 {
@@ -21,30 +21,45 @@ if (window.addEventListener)
 
 function mrWindowLoad()
 {
-    mrResetForm();  //HIDE THE FEEDBACKS
+    mrResetForm(null);  //HIDE THE FEEDBACKS
     var mrForms = document.forms;   //GET THE FORMS ELEMENTS
 
-    for(mrForm of mrForms)
+    for(var i = 0; i < mrForms.length; i++)
     {
+        var mrForm = mrForms[i];
         //GET ALL ELEMENTS AND FEEDBACKS
         var mrElements = mrForm.querySelectorAll(".mr");
         var mrFeedbacks = mrForm.querySelectorAll(".mr-feedback");
 
-        mrForm.setAttribute("novalidate","");
-
-        if(mrElements.length == mrFeedbacks.length)
+        //DISPLAY FEEBACK IN BLOCK IF IS AN DIV TAG
+        for(var j = 0; j < mrFeedbacks.length; j++)
         {
-            //EVENT HANDLER  TO VALIDATE
-            for(mrElement of mrElements)
+            var mrFeedback = mrFeedbacks[j];
+            if(mrFeedback.tagName==='DIV')
             {
-                mrElement.onchange = function()
+                mrFeedback.style.display = "block";
+            }
+        }
+
+        if((mrElements.length == mrFeedbacks.length) && (mrElements.length > 0))
+        {
+            mrForm.setAttribute("novalidate","");
+
+            //EVENT HANDLER  TO VALIDATE
+            for(var j = 0; j < mrElements.length; j++)
+            {
+                mrFeedbacks[j].classList.remove("mr-feedback");
+                mrFeedbacks[j].classList.add("mr-feedback-element");
+
+                var mrElement = mrElements[j];
+                mrElement.onchange = function(e)
                 {
                     mrValidateElement(this);
                 }
 
-                if(mrForm.classList.contains("mr-oninput"))
+                if(mrForm.classList.contains("mr-validate-oninput"))
                 {
-                    mrElement.oninput = function()
+                    mrElement.oninput = function(e)
                     {
                         mrValidateElement(this);
                     }
@@ -63,107 +78,156 @@ function mrWindowLoad()
             {
                 mrResetForm(this);
             }
-        }   else
+        }   else if(!(mrElements.length == 0 && mrFeedbacks.length == 0))
         {
             console.error("MY RULES ERROR:\n" + "- The number of class .mr and number of class .mr-feedback is not iqual in form: ");
             console.error(mrForm);
         }
     }
 
-    function mrResetForm(form = null)
+    function mrResetForm(form)
     {
+        // ALL FEEDBACKS CLASSES
+        var mrFeedbackClasses = 
+        [
+            ".mr-feedback",
+            ".mr-feedback-element",
+            ".mr-required-fb",
+            ".mr-min-fb",
+            ".mr-max-fb",
+            ".mr-minlength-fb",
+            ".mr-maxlength-fb",
+            ".mr-pattern-fb",
+            ".mr-step-fb",
+            ".mr-match-fb",
+            ".mr-email-fb",
+            ".mr-url-fb",
+            ".mr-password-good-fb",
+            ".mr-password-strong-fb",
+            ".mr-password-very-strong-fb",
+            ".mr-username-fb",
+            ".mr-alpha-fb",
+            ".mr-alpha-space-fb",
+            ".mr-alpha-numeric-fb",
+            ".mr-alpha-numeric-space-fb",
+            ".mr-latin-fb",
+            ".mr-latin-space-fb",
+            ".mr-latin-numeric-fb",
+            ".mr-latin-numeric-space-fb",
+            ".mr-number-int-fb",
+            ".mr-number-fb",
+            ".mr-ip-address-fb",
+            ".mr-minselect-fb",
+            ".mr-maxselect-fb",
+            ".mr-mincheck-fb",
+            ".mr-maxcheck-fb",
+            ".mr-date-fb",
+            ".mr-accept-fb",
+            ".mr-minsize-fb",
+            ".mr-maxsize-fb",
+            ".mr-width-fb",
+            ".mr-height-fb",
+            ".mr-minwidth-fb",
+            ".mr-maxwidth-fb",
+            ".mr-minheight-fb",
+            ".mr-maxheight-fb",
+            ".mr-resolution-fb",
+            ".mr-ratio-fb",
+            ".mr-valid-fb",
+            ".mr-invalid-fb"
+        ];
+        
         var mrArrayFeedbacks = [];
         if (form == null)
         {
             //GET ALL FEEDBACKS COLLECTIONS OF DOCUMENT AND ADD IN AN ARRAY OF FEEDBACKS
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-feedback"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-required-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-max-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-min-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-maxlength-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-pattern-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-minlength-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-step-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-match-subject-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-password-good-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-password-strong-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-password-very-strong-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-username-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-alpha-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-alpha-space-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-alpha-numeric-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-alpha-numeric-space-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-latin-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-latin-space-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-latin-numeric-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-latin-numeric-space-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-number-int-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-numeric-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-maxselect-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-minselect-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-maxcheck-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-mincheck-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-valid-fb"));
-            mrArrayFeedbacks.push(document.querySelectorAll(".mr-invalid-fb"));
+            for (mrFeedbackClass of mrFeedbackClasses)
+            {
+                mrArrayFeedbacks.push(document.querySelectorAll(mrFeedbackClass));
+            }
+            var mrElements = document.querySelectorAll(".mr");
+
+            // RESET THHE INPUT FILE WITH VALIDATION ATTRIBUTES OF IMAGES RESOLUTIONS WHEN PAGE LOAD/RELOAD
+            for(mrElement of mrElements)
+            {
+                if
+                (
+                    mrElement.getAttribute("data-width") != null
+                    || mrElement.getAttribute("data-height") != null
+                    || mrElement.getAttribute("data-minwidth") != null
+                    || mrElement.getAttribute("data-maxwidth") != null
+                    || mrElement.getAttribute("data-minheight") != null
+                    || mrElement.getAttribute("data-maxheight") != null
+                    || mrElement.getAttribute("data-resolution") != null
+                    || mrElement.getAttribute("data-ratio") != null
+                    || mrElement.getAttribute("width") != null
+                    || mrElement.getAttribute("height") != null
+                    || mrElement.getAttribute("minwidth") != null
+                    || mrElement.getAttribute("maxwidth") != null
+                    || mrElement.getAttribute("minheight") != null
+                    || mrElement.getAttribute("maxheight") != null
+                    || mrElement.getAttribute("resolution") != null
+                    || mrElement.getAttribute("ratio") != null
+                )
+                {
+                    mrElement.value = "";
+
+                    var id = "mr-image-element-test-id";
+                    var newImageElementTest = document.getElementById(id);
+                    var appendImageElementTest = false;
+                    
+                    if(newImageElementTest == null)
+                    {
+                        newImageElementTest = document.createElement("IMG");
+                        appendImageElementTest =  true;
+                    }
+
+                    newImageElementTest.setAttribute("hidden","");
+                    newImageElementTest.setAttribute("id", id);
+
+                    if(appendImageElementTest == true)
+                    {
+                        document.body.appendChild(newImageElementTest);
+                    }
+                }
+            }
         }   else
         {
             //GET ALL FEEDBACKS COLLECTIONS OF FORM AND ADD IN AN ARRAY OF FEEDBACKS
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-feedback"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-required-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-max-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-min-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-maxlength-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-pattern-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-minlength-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-step-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-match-subject-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-password-good-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-password-strong-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-password-very-strong-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-username-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-alpha-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-alpha-space-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-alpha-numeric-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-alpha-numeric-space-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-latin-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-latin-space-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-latin-numeric-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-latin-numeric-space-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-number-int-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-numeric-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-maxselect-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-minselect-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-maxcheck-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-mincheck-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-valid-fb"));
-            mrArrayFeedbacks.push(form.querySelectorAll(".mr-invalid-fb"));
+            for (mrFeedbackClass of mrFeedbackClasses)
+            {
+                mrArrayFeedbacks.push(form.querySelectorAll(mrFeedbackClass));
+            }
 
             var mrArrayElements = [];
 
             //GET ALL FORM ELEMENTS AND ADD IN ARRAY OF ELEMENTS
             mrElements = form.querySelectorAll(".mr");
-            for(mrElement of mrElements)
+            for(var i = 0; i < mrElements.length; i++)
             {
+                var mrElement = mrElements[i];
                 if(mrElement.classList.contains("mr-checkbox") || mrElement.classList.contains("mr-radio"))
                 {
-                    var mrCheckBoxs = [];
+                    var mrCheckboxs = [];
                     var mrRadios = [];
 
                     if(mrElement.classList.contains("mr-checkbox"))
                     {
-                        mrCheckBoxs = mrElement.querySelectorAll("input[type=checkbox]");
+                        mrCheckboxs = mrElement.querySelectorAll("input[type=checkbox]");
                     }   else
                     {
                         mrRadios = mrElement.querySelectorAll("input[type=radio]");
                     }
 
-                    for (mrCheckBox of mrCheckBoxs)
+                    for(var j = 0; j < mrCheckboxs.length; j++)
                     {
-                        mrArrayElements.push(mrCheckBox);
+                        var mrCheckbox = mrCheckboxs[j];
+                        mrArrayElements.push(mrCheckbox);
                     }
 
-                    for(mrRadio of mrRadios)
+                    for(var j = 0; j < mrRadios.length; j++)
                     {
+                        var mrRadio = mrRadios[j];
                         mrArrayElements.push(mrRadio);
                     }
                 }   else
@@ -173,8 +237,9 @@ function mrWindowLoad()
             }
 
             //RESET THE CSS STYLE OF FORM ELEMENTS
-            for(mrElement of mrArrayElements)
+            for(var i = 0; i < mrArrayElements.length; i++)
             {
+                var mrElement = mrArrayElements[i];
                 mrElement.style.borderColor = "";
                 mrElement.style.boxShadow = "";
                 mrElement.style.backgroundColor = "";
@@ -182,10 +247,12 @@ function mrWindowLoad()
         }
 
         //NON DISPLAY THE FEEDBACKS
-        for(arrayFeedback of mrArrayFeedbacks)
+        for(var i = 0; i < mrArrayFeedbacks.length; i++)
         {
-            for(feedback of arrayFeedback)
+            var arrayFeedback = mrArrayFeedbacks[i];
+            for(var j = 0; j < arrayFeedback.length; j++)
             {
+                var feedback = arrayFeedback[j];
                 feedback.style.display = "none";
             }
         }
@@ -195,16 +262,20 @@ function mrWindowLoad()
 //FUNCTION TO VALIDATE THE FORM
 function mrValidateForm(mrForm)
 {
-    var mrElements = mrForm.querySelectorAll(".mr");
     var mrIsValidForm = true;
-
-    for(mrElement of mrElements)
+    var mrElements = mrForm.querySelectorAll(".mr");
+    
+    for(var i = 0; i < mrElements.length; i++)
     {
-        if(!mrValidateElement(mrElement))
+        var mrElement = mrElements[i];
+
+        if(!mrValidateElement(mrElement) || mrElement.classList.contains("mr-invalid"))
         {
             mrIsValidForm = false;
         }
     }
+    
+                         
     return mrIsValidForm;
 }
 
@@ -226,12 +297,13 @@ function mrValidateElement(mrElement)
     var mrElements = mrForm.querySelectorAll(".mr");
     var mrArrayElements = [];
 
-    for(element of mrElements)
+    for(var i = 0; i < mrElements.length; i++)
     {
+        var element = mrElements[i];
         mrArrayElements.push(element);
     }
     var mrIndexOfElement = mrArrayElements.indexOf(mrElement);
-    var mrFeedback = mrForm.querySelectorAll(".mr-feedback")[mrIndexOfElement];
+    var mrFeedback = mrForm.querySelectorAll(".mr-feedback-element")[mrIndexOfElement];
     //END OF GET mr-feedback OF ELEMENT
 
     //GET FEEDBACK MESSAGE .mr-valid-fb OF ELEMENT
@@ -256,8 +328,8 @@ function mrValidateElement(mrElement)
     }
     //END OF GET FEEDBACK MESSAGE .mr-invalid-fb OF ELEMENT
 
-    //CUSTOM .mr-valid-fb AND .mr-invalid-fb IF THE FORM CONTAIN .mr-colors CLASS
-    if(mrForm.classList.contains("mr-colors"))
+    //CUSTOM .mr-valid-fb AND .mr-invalid-fb IF THE FORM CONTAIN .mr-colors-style CLASS
+    if(mrForm.classList.contains("mr-colors-style"))
     {
         if(mrValid != null)
         {
@@ -271,410 +343,765 @@ function mrValidateElement(mrElement)
 
     //START ELEMENT VALIDATION
 
-    //VALIDATE IF THE ELEMENT HAS NO VALUE
-    if(mrHasClass(mrElement,"mr-required") || mrHasAttribute(mrElement,"required"))
+    //VALIDATE IF THE ELEMENT HAS VALUE
+    mrRequired(mrElement);
+    function mrRequired(mrElement)
     {
-
-        var mrElementValueIsEmpty = false;
-        var mrIsValueMissing = false;
-
-        if(mrElement.tagName == "SELECT")
+        if(mrHasClass(mrElement,"mr-required") || mrHasAttribute(mrElement,"required"))
         {
-            if(mrElement.selectedOptions.length < 1)
-            {
-                mrElementValueIsEmpty = true;
-            }
-        }   else if(mrElement.classList.contains("mr-checkbox") || mrElement.classList.contains("mr-radio"))
-        {
-            var mrElementValueIsEmpty = true;
-            var mrCheckElements;
 
-            if(mrElement.classList.contains("mr-checkbox"))
-            {
-                mrCheckElements = mrElement.querySelectorAll("input[type=checkbox]");
-            }   else
-            {
-                mrCheckElements = mrElement.querySelectorAll("input[type=radio]");
-            }
+            var mrElementValueIsEmpty = false;
+            var mrIsValueMissing = false;
 
-            for (mrCheckElement of mrCheckElements)
+            if(mrElement.tagName == "SELECT")
             {
-                if(mrCheckElement.checked)
+                if(!mrHasAttribute(mrElement,"required"))
                 {
-                    mrElementValueIsEmpty = false;
-                }
-            }
-        }   else
-        {
-            mrElementValueIsEmpty = mrIsEmptyElementValue(mrElement);
-            mrIsValueMissing = mrElement.validity.valueMissing;
-        }
-
-        if(mrElementValueIsEmpty || mrIsValueMissing)
-        {
-            mrInvalidElement("mr-required-fb");
-        }   else
-        {
-            mrValidElement("mr-required-fb");
-        }
-    }
-
-    //VALIDATE IF THE ELEMENT'S VALUE IS GREATER THAN ITS MAX ATTRIBUTE
-    if(mrHasAttribute(mrElement,"max"))
-    {
-        if(!mrIsEmptyElementValue(mrElement))
-        {
-            if (mrHasInputType(mrElement, "date"))  //IF THE INPUT TYPE IS DATE
-            {
-                var mrMaxDate = mrElement.getAttribute("max");
-                if(mrElement.getAttribute("max") == "today")
-                {
-                    mrMaxDate = mrGetDateString();
+                    mrElement.setAttribute("required","");
                 }
 
-                if(mrIsValidFullDate(mrMaxDate))
+                if(mrElement.selectedOptions.length < 1 || mrIsEmptyElementValue(mrElement) || mrElement.validity.valueMissing)
                 {
-                    if(mrIsValidFullDate(mrElement.value))
+                    mrElementValueIsEmpty = true;
+                    mrIsValueMissing = false;
+                }
+            }   else if(mrElement.classList.contains("mr-checkbox") || mrElement.classList.contains("mr-radio"))
+            {
+                var mrElementValueIsEmpty = true;
+                var mrCheckElements;
+
+                if(mrElement.classList.contains("mr-checkbox"))
+                {
+                    mrCheckElements = mrElement.querySelectorAll("input[type=checkbox]");
+                }   else
+                {
+                    mrCheckElements = mrElement.querySelectorAll("input[type=radio]");
+                }
+
+                for(var i = 0; i < mrCheckElements.length; i++)
+                {
+                    var mrCheckElement = mrCheckElements[i];
+                    if(mrCheckElement.checked && (!mrIsEmptyElementValue(mrCheckElement)))
                     {
-                        if(mrCompareDates(mrElement.value,mrMaxDate,1))
-                        {
-                            mrInvalidElement("mr-max-fb");
-                        }   else
-                        {
-                            mrValidElement("mr-max-fb");
-                        }
-                    }   else
-                    {
-                        mrInvalidElement("mr-max-fb");
+                        mrElementValueIsEmpty = false;
+                        mrIsValueMissing = false;
                     }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- The max attributte of element:");
-                    console.error(mrElement);
-                    console.error("is not a valid full date");
-                    mrInvalidElement("mr-max-fb");
-                }
-            }
-            else if(!isNaN(mrElement.getAttribute("max")))
-            {
-                if((mrCompareElemValueAttrValue(mrElement,"max",1) || mrElement.validity.rangeUnderflow))
-                {
-                    mrInvalidElement("mr-max-fb");
-                }   else
-                {
-                    mrValidElement("mr-max-fb");
                 }
             }   else
             {
-                console.error("MY RULES ERROR:\n" + "- The max attributte of element:");
-                console.error(mrElement);
-                console.error("is not a valid number");
-                mrInvalidElement("mr-min-fb");
+                if(!mrHasAttribute(mrElement,"required"))
+                {
+                    mrElement.setAttribute("required","");
+                }
+                mrElementValueIsEmpty = mrIsEmptyElementValue(mrElement);
+                mrIsValueMissing = mrElement.validity.valueMissing;
             }
-        }   else
-        {
-            mrValidElement("mr-max-fb");
+
+            if(mrElementValueIsEmpty || mrIsValueMissing)
+            {
+                mrInvalidElement("mr-required-fb");
+            }   else
+            {
+                mrValidElement("mr-required-fb");
+            }
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS LESS THAN ITS MIN ATTRIBUTE
-    if(mrHasAttribute(mrElement,"min")) {
-        if(!mrIsEmptyElementValue(mrElement))
+    mrMin(mrElement);
+    function mrMin(mrElement)
+    {
+        if(mrHasAttribute(mrElement,"min") && mrElement.getAttribute("min") != "")
         {
-            if (mrHasInputType(mrElement, "date"))  //IF INPUT TYPE IS DATE
+            if(!mrIsEmptyElementValue(mrElement))
             {
-                var mrMinDate = mrElement.getAttribute("min");
-                if(mrElement.getAttribute("min") == "today")
+                if (mrHasInputType(mrElement, "date") || mrHasClass(mrElement, "mr-date"))  //IF INPUT TYPE IS DATE
                 {
-                    mrMinDate = mrGetDateString();
-                }
-
-                if(mrIsValidFullDate(mrMinDate))
-                {
-                    if(mrIsValidFullDate(mrElement.value))
+    
+                    var mrDateFormat = "YYYY-MM-DD";
+                    if(!mrHasInputType(mrElement, "date"))
                     {
-                        if(mrCompareDates(mrElement.value,mrMinDate,2))
+                        mrDateFormat = mrElement.getAttribute("data-dateformat");
+                        if(mrDateFormat == null)
                         {
-                            mrInvalidElement("mr-min-fb");
+                            mrDateFormat = mrElement.getAttribute("dateformat");
+                        }
+                    }
+
+                    var mrMinDate = mrElement.getAttribute("min");
+                    if(mrElement.getAttribute("max") == "today")
+                    {
+                        mrMaxDate = mrGetfullDate(mrDateFormat);
+                    }
+
+                    if(mrIsValidFullDate(mrMinDate, mrDateFormat))
+                    {
+                        if(mrIsValidFullDate(mrElement.value, mrDateFormat))
+                        {
+                            if(mrCompareDates(mrElement.value, mrMinDate, "<", mrDateFormat))
+                            {
+                                mrInvalidElement("mr-min-fb");
+                            }   else
+                            {
+                                mrValidElement("mr-min-fb");
+                            }
                         }   else
                         {
-                            mrValidElement("mr-min-fb");
+                            mrInvalidElement("mr-min-fb");
                         }
                     }   else
                     {
+                        console.error("MY RULES ERROR:\n" + "- The min attributte of element:");
+                        console.error(mrElement);
+                        console.error("is not a valid full date");
                         mrInvalidElement("mr-min-fb");
+                    }
+                }
+                else if(!isNaN(mrElement.getAttribute("min")))
+                {
+                    if((mrCompareValue(mrElement, "min", "<") || mrElement.validity.rangeUnderflow))
+                    {
+                        mrInvalidElement("mr-min-fb");
+                    }   else
+                    {
+                        mrValidElement("mr-min-fb");
                     }
                 }   else
                 {
                     console.error("MY RULES ERROR:\n" + "- The min attributte of element:");
                     console.error(mrElement);
-                    console.error("is not a valid full date");
+                    console.error("is not a valid number");
                     mrInvalidElement("mr-min-fb");
-                }
-            }
-            else if(!isNaN(mrElement.getAttribute("min")))
-            {
-                if((mrCompareElemValueAttrValue(mrElement,"min",2) || mrElement.validity.rangeUnderflow))
-                {
-                    mrInvalidElement("mr-min-fb");
-                }   else
-                {
-                    mrValidElement("mr-min-fb");
                 }
             }   else
             {
-                console.error("MY RULES ERROR:\n" + "- The min attributte of element:");
-                console.error(mrElement);
-                console.error("is not a valid number");
-                mrInvalidElement("mr-min-fb");
+                mrValidElement("mr-min-fb");
             }
-        }   else
-        {
-            mrValidElement("mr-min-fb");
         }
     }
+    
+
+    //VALIDATE IF THE ELEMENT'S VALUE IS GREATER THAN ITS MAX ATTRIBUTE
+    mrMax(mrElement);
+    function mrMax(mrElement)
+    {
+        if(mrHasAttribute(mrElement,"max"))
+        {
+            if(!mrIsEmptyElementValue(mrElement) && mrElement.getAttribute("max") != "")
+            {
+                if (mrHasInputType(mrElement, "date") || mrHasClass(mrElement, "mr-date"))  //IF THE INPUT TYPE IS DATE
+                {
+
+                    var mrDateFormat = "YYYY-MM-DD";
+                    if(!mrHasInputType(mrElement, "date"))
+                    {
+                        mrDateFormat = mrElement.getAttribute("data-dateformat");
+                        if(mrDateFormat == null)
+                        {
+                            mrDateFormat = mrElement.getAttribute("dateformat");
+                        }
+                    }
+
+                    var mrMaxDate = mrElement.getAttribute("max");
+                    if(mrElement.getAttribute("max") == "today")
+                    {
+                        mrMaxDate = mrGetfullDate(mrDateFormat);
+                    }
+                    
+                    if(mrIsValidFullDate(mrMaxDate, mrDateFormat))
+                    {
+                        if(mrIsValidFullDate(mrElement.value, mrDateFormat))
+                        {
+                            if(mrCompareDates(mrElement.value, mrMaxDate, ">", mrDateFormat))
+                            {
+                                mrInvalidElement("mr-max-fb");
+                            }   else
+                            {
+                                mrValidElement("mr-max-fb");
+                            }
+                        }   else
+                        {
+                            mrInvalidElement("mr-max-fb");
+                        }
+                    }   else
+                    {
+                        console.error("MY RULES ERROR:\n" + "- The max attributte of element:");
+                        console.error(mrElement);
+                        console.error("is not a valid full date");
+                        mrInvalidElement("mr-max-fb");
+                    }
+                } else if(!isNaN(mrElement.getAttribute("max")))
+                {
+                    if((mrCompareValue(mrElement, "max", ">") || mrElement.validity.rangeOverflow))
+                    {
+                        mrInvalidElement("mr-max-fb");
+                    }   else
+                    {
+                        mrValidElement("mr-max-fb");
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The max attributte of element:");
+                    console.error(mrElement);
+                    console.error("is not a valid number");
+                    mrInvalidElement("mr-max-fb");
+                }
+            }   else
+            {
+                mrValidElement("mr-max-fb");
+            }
+        }
+    }
+
+
+    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID DATE FORMAT
+    mrDate(mrElement);
+    function mrDate(mrElement)
+    {
+        if (mrHasInputType(mrElement, "date") || mrHasClass(mrElement,"mr-date"))  //IF INPUT TYPE IS DATE
+        {
+            var mrDateFormat = mrElement.getAttribute("data-dateformat");
+            if(mrDateFormat == null)
+            {
+                mrDateFormat = mrElement.getAttribute("dateformat");
+            }
+            if(!mrIsValidFullDate(mrElement.value, mrDateFormat) && !mrIsEmptyElementValue(mrElement)){
+                mrInvalidElement("mr-date-fb");
+            } else{
+                mrValidElement("mr-date-fb");
+            } 
+            
+        }
+    }
+    
+
+    //VALIDATE IF THE ELEMENT'S VALUE IS LESS THAN ITS MINLENGTH ATTRIBUTE
+    mrMinlength(mrElement);
+    function mrMinlength(mrElement)
+    {
+        if(mrHasAttribute(mrElement, "minlength") || mrHasAttribute(mrElement, "data-minlength"))
+        {
+            var minlength = mrElement.getAttribute("data-minlength");
+            if(minlength == null)
+            {
+                minlength = mrElement.getAttribute("minlength");
+            }
+
+            if(minlength != "")
+            {
+                if (mrCompareValueLength(mrElement, minlength, "<") && !mrIsEmptyElementValue(mrElement))
+                {
+                    mrInvalidElement("mr-minlength-fb");
+                }   else
+                {
+                    mrValidElement("mr-minlength-fb");
+                }
+            }
+        }
+    }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE EXCEEDS ITS MAXLENGTH ATTRIBUTE
-    if(mrHasAttribute(mrElement,"maxlength"))
+    mrMaxlenght(mrElement);
+    function mrMaxlenght(mrElement)
     {
-        if ((mrCompareEleValueLength(mrElement, mrElement.getAttribute("maxlength"),1) || mrElement.validity.tooLong) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasAttribute(mrElement,"maxlength"))
         {
-            mrInvalidElement("mr-maxlength-fb");
-        }   else
-        {
-            mrValidElement("mr-maxlength-fb");
+            var maxlength = mrElement.getAttribute("maxlength");
+            if(maxlength != "")
+            {
+                if ((mrCompareValueLength(mrElement, mrElement.getAttribute("maxlength"), ">") || mrElement.validity.tooLong) && !mrIsEmptyElementValue(mrElement))
+                {
+                    mrInvalidElement("mr-maxlength-fb");
+                }   else
+                {
+                    mrValidElement("mr-maxlength-fb");
+                }
+            }
         }
     }
-
-    //VALIDATE IF THE ELEMENT'S VALUE IS LESS THAN ITS MAXLENGTH ATTRIBUTE
-    if(mrHasAttribute(mrElement,"minlength"))
-    {
-        if ((mrCompareEleValueLength(mrElement, mrElement.getAttribute("minlength"),2) || mrElement.validity.tooShort) && !mrIsEmptyElementValue(mrElement))
-        {
-            mrInvalidElement("mr-minlength-fb");
-        }   else
-        {
-            mrValidElement("mr-minlength-fb");
-        }
-    }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE DOES NOT MATCH ITS PATTERN ATTRIBUTE
-    if(mrHasAttribute(mrElement,"pattern"))
+    mrPattern(mrElement);
+    function mrPattern(mrElement)
     {
-        var pattern = mrElement.getAttribute("pattern");
-        var regularExpression = new RegExp(pattern);
-
-        if ((!regularExpression.test(mrElement.value) || mrElement.validity.patternMismatch) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasAttribute(mrElement,"pattern"))
         {
-            mrInvalidElement("mr-pattern-fb");
-        }   else
-        {
-            mrValidElement("mr-pattern-fb");
+            var pattern = mrElement.getAttribute("pattern");
+            if(pattern != "")
+            {
+                var regularExpression = new RegExp(pattern);
+    
+                if ((!regularExpression.test(mrElement.value) || mrElement.validity.patternMismatch) && !mrIsEmptyElementValue(mrElement))
+                {
+                    mrInvalidElement("mr-pattern-fb");
+                }   else
+                {
+                    mrValidElement("mr-pattern-fb");
+                }
+            }
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS NOT A VALID EMAIL
-    if(mrHasClass(mrElement,"mr-email") || mrElement.getAttribute("type")=="email")
+    mrEmail(mrElement);
+    function mrEmail(mrElement)
     {
-        var mrEmailRegularExpression = /(^[A-Za-z]((([A-Za-z0-9]([-_.]))*)+([A-Za-z0-9]))*)+([A-Za-z0-9]*)+@+(([A-Za-z0-9]{2,})+([.]))+([A-Za-z]{2,}$)/;
+        if(mrHasClass(mrElement,"mr-email") || mrHasInputType(mrElement,"email"))
+        {
+            if(!mrHasInputType(mrElement,"email"))
+            {
+                mrElement.setAttribute("type","email");
+            }
 
-        if(!mrEmailRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
-        {
-            mrInvalidElement("mr-email-fb");
-        }   else
-        {
-            mrValidElement("mr-email-fb");
+            let mrIsValidEmail = true;
+            if(mrHasClass(mrElement,"mr-browser-email") && !mrIsEmptyElementValue(mrElement))
+            {
+                if(mrElement.validity.typeMismatch)
+                {
+                    mrIsValidEmail = false;
+                }
+            }   else if(!mrIsEmptyElementValue(mrElement))
+            {
+                let mrPrintableSpecialChars = mrGetPrintableSpecialChars(mrElement);
+                mrPrintableSpecialChars =  mrPrintableSpecialChars.replace(".","");
+
+                let mrEmailRegularExpression = "^[A-Za-z0-9" + mrPrintableSpecialChars + "]+([.][A-Za-z0-9" + mrPrintableSpecialChars + "]+)*@(([A-Za-z0-9]+([\-]+[A-Za-z0-9]+)*([.][A-Za-z0-9]+([\-][A-Za-z0-9]+)*)+)|(\\u005B((([0-9]{1,3})(([.][0-9]{1,3}){3}))|(([0-9A-Fa-f]{4}|[0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4})(([:][0-9A-Fa-f]{4}|[:][0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4}){0,7}([:]{2}){0,1})))\\u005D))$";
+                let mrEmailPattern = new RegExp(mrEmailRegularExpression, "i");
+
+                if(!mrEmailPattern.test(mrElement.value))
+                {
+                    mrIsValidEmail = false;
+                }   else
+                {
+                    let splitAt = mrElement.value.split("@");
+                    let mrLocalPart = splitAt[0];
+                    if(mrLocalPart.length > 64)
+                    {
+                        mrIsValidEmail = false;
+                    } else
+                    {
+                        let mrDomain = splitAt[1];
+                        let mrLastIndexOfDot = mrDomain.lastIndexOf(".");   
+                        let mrIndexOfLeftSquareBracket = mrDomain.indexOf("[");
+
+                        if(mrLastIndexOfDot >= 0)
+                        {
+                            mrLastIndexOfDot += 1;
+                            let mrTopLevelDomain = mrDomain.slice(mrLastIndexOfDot, mrDomain.length);
+                            if(mrIsInteger(mrTopLevelDomain))
+                            {
+                                mrIsValidEmail = false;
+                            }
+                        }
+                        if(mrIndexOfLeftSquareBracket >= 0)
+                        {
+                            let mrDomainIP = mrDomain.replace("[","");
+                            mrDomainIP = mrDomainIP.replace("]","");
+                            if
+                            (
+                                !mrIsIPv4DotDecimalNotation(mrDomainIP) &&
+                                !mrIsIPv4DotBinaryNotation(mrDomainIP) &&
+                                !mrIsIPv6(mrDomainIP)
+                            )
+                            {
+                                mrIsValidEmail = false;                            
+                            }
+                        }                 
+                    }
+                }
+            }
+
+            if(mrIsValidEmail)
+            {
+                mrValidElement("mr-email-fb");
+            }   else
+            {
+                mrInvalidElement("mr-email-fb");
+            }
         }
     }
+    
+
+    //VALIDATE IF THE ELEMENT'S VALUE IS NOT A VALID URL
+    mrUrl(mrElement);
+    function mrUrl(mrElement)
+    {
+        if(mrHasClass(mrElement,"mr-url") || mrHasInputType(mrElement,"url"))
+        {   
+            if(!mrHasInputType(mrElement,"url"))
+            {
+                mrElement.setAttribute("type","url");
+            }
+
+            let mrIsValidURL = true;
+            if(mrHasClass(mrElement, "mr-browser-url")  && !mrIsEmptyElementValue(mrElement))
+            {
+                if(mrElement.validity.typeMismatch)
+                {
+                    mrIsValidURL = false;
+                }
+            }   else if(!mrIsEmptyElementValue(mrElement))
+            {
+                let mrURLregularExpression = "^[A-Za-z][A-Za-z0-9+.\-]*[:]";
+                if(mrHasClass(mrElement, "mr-url-http"))
+                {
+                    mrURLregularExpression = "^((http|https)://)";
+                }   else if(mrHasClass(mrElement, "mr-url-https"))
+                {
+                    mrURLregularExpression = "^(https://)";
+                }
+
+                let mrURLpattern = new RegExp(mrURLregularExpression,"i");
+                
+                if(mrURLpattern.test(mrElement.value))
+                {
+                    let mrURL = mrElement.value;
+                    mrURL = mrURL.trim();
+                    mrURL = mrURL.split(":");
+                    if((mrURL[1].length == 0 || mrURL[1] == "/"|| mrURL[1] == "//"))
+                    {
+                        mrIsValidURL = false;
+                    }
+                }   else
+                {
+                    mrIsValidURL = false;
+                }
+
+            }
+
+            if(mrIsValidURL)
+            {
+                mrValidElement("mr-url-fb");
+            }   else
+            {
+                mrInvalidElement("mr-url-fb");
+            }
+        }
+    }
+    
+
+    //VALIDATE IF THE ELEMENT'S VALUE IS NOT A VALID IP ADDRESS
+    mrIPaddress(mrElement);
+    function mrIPaddress(mrElement)
+    {
+        if(mrHasClass(mrElement,"mr-ip-address") || mrHasInputType(mrElement,"mr-ip-address"))
+        { 
+
+            let mrIsValidIPaddress = false;
+            if(!mrIsEmptyElementValue(mrElement))
+            {
+                if
+                (
+                    !mrHasClass(mrElement,"mr-ipv4") &&
+                    !mrHasClass(mrElement,"mr-ipv4-dot-decimal") &&
+                    !mrHasClass(mrElement,"mr-ipv4-dot-binary") &&
+                    !mrHasClass(mrElement,"mr-ipv4-dot-hexadecimal") &&
+                    !mrHasClass(mrElement,"mr-ipv4-dot-octal-byte") &&
+                    !mrHasClass(mrElement,"mr-ipv6") &&
+                    !mrHasClass(mrElement,"mr-ipv6-hexadecimal") &&
+                    !mrHasClass(mrElement,"mr-ipv6-binary")
+                )
+                {
+                    if(mrIsIP(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                }   else
+                {
+                    if(mrHasClass(mrElement,"mr-ipv4") && mrIsIPv4(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                    if(mrHasClass(mrElement,"mr-ipv4-dot-decimal") && mrIsIPv4DotDecimalNotation(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                    if(mrHasClass(mrElement,"mr-ipv4-dot-binary") && mrIsIPv4DotBinaryNotation(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                    if(mrHasClass(mrElement,"mr-ipv4-dot-hexadecimal") && mrIsIPv4DotHexadecimalNotation(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                    if(mrHasClass(mrElement,"mr-ipv4-dot-octal-byte") && mrIsIPv4DotOctalByteNotation(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                    if(mrHasClass(mrElement,"mr-ipv6") && mrIsIPv6(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                    if(mrHasClass(mrElement,"mr-ipv6-hexadecimal") && mrIsIPv6HexadecimalNotation(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                    if(mrHasClass(mrElement,"mr-ipv6-binary") && mrIsIPv6BinaryNotation(mrElement.value))
+                    {
+                        mrIsValidIPaddress = true;
+                    }
+                }
+            }
+
+            if(mrIsValidIPaddress)
+            {
+                mrValidElement("mr-ip-address-fb");
+            }   else
+            {
+                mrInvalidElement("mr-ip-address-fb");
+            }
+        }
+    }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS INVALID PER ITS STEP ATTRIBUTE
-    if(mrHasAttribute(mrElement,"step"))
+    mrStep(mrElement);
+    function mrStep(mrElement)
     {
-        var mrStep = mrElement.getAttribute("step");
-        var mrIsvalidStep;
-
-        if(!isNaN(mrStep))
+        if(mrHasAttribute(mrElement,"step"))
         {
-            if(!isNaN(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+            var mrStepElement = mrElement.getAttribute("step");
+            var mrIsvalidStep = false;
+    
+            if(mrStepElement != "")
             {
-                if(mrElement.value % Number(mrStep) == 0 || mrElement.validity.stepMismatch)
+                if(!isNaN(mrStepElement))
                 {
-                    mrIsvalidStep = true;
+                    if(!isNaN(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+                    {
+                        if(mrElement.value % Number(mrStepElement) == 0 || mrElement.validity.stepMismatch)
+                        {
+                            mrIsvalidStep = true;
+                        }
+        
+                        if(!mrIsvalidStep)
+                        {
+                            mrInvalidElement("mr-step-fb");
+                        }   else
+                        {
+                            mrValidElement("mr-step-fb");
+                        }
+                    }
                 }   else
                 {
-                    mrIsvalidStep = false;
-                }
-
-                if(!mrIsvalidStep)
-                {
+                    console.error("MY RULES ERROR:\n" + "- The value of step attributte of element:");
+                    console.error(mrElement);
+                    console.error("is not a valid number");
                     mrInvalidElement("mr-step-fb");
-                }   else
-                {
-                    mrValidElement("mr-step-fb");
                 }
             }
-        }   else
-        {
-            console.error("MY RULES ERROR:\n" + "- The value of step attributte of element:");
-            console.error(mrElement);
-            console.error("is not a valid number");
-            mrInvalidElement("mr-step-fb");
-        }
+        }   
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS INVALID PASSWORD-GOOD (LOWERCASE OR/AND UPPERCASE AND NUMBER OR/AND SPECIAL CHAR)
-    if(mrHasClass(mrElement,"mr-password-good"))
+    mrPasswordGood(mrElement);
+    function mrPasswordGood(mrElement)
     {
-        var mrPasswordGoodRegularExpression = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Za-z]).*$/;
-        var mrIsValidPasswordMinlength = true;
-
-        //CHANGE THE REGULAR EXPRESSION IF THE ELEMENT HAVE ATTRIBUTE password-minlength
-        if (mrHasAttribute(mrElement,"password-minlength"))
+        if(mrHasClass(mrElement,"mr-password-good"))
         {
-            if(mrElement.getAttribute("password-minlength") != "" && mrElement.getAttribute("password-minlength") != null && !Number.isInteger(mrElement.getAttribute("password-minlength")))
+            var mrPasswordGoodRegularExpression = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Za-z]).*$/;
+            var mrWhiteSpaceRegularExpression  = /[\s ]/;
+            var mrIsValidPasswordMinlength = true;
+    
+            //CHANGE THE REGULAR EXPRESSION IF THE ELEMENT HAVE ATTRIBUTE minlength
+            if (mrHasAttribute(mrElement,"minlength") || mrHasAttribute(mrElement,"data-minlength"))
             {
-                var mrPasswordGoodPattern = "(?=^.{" + mrElement.getAttribute("password-minlength") + ",}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Za-z]).*$";
-                mrPasswordGoodRegularExpression = new RegExp(mrPasswordGoodPattern);
-            }   else
-            {
-                console.error("MY RULES ERROR:\n" + "- The value of password-minlength attributte of element:");
-                console.error(mrElement);
-                console.error("is non a number");
-                mrIsValidPasswordMinlength = false;
+                var minlength = mrElement.getAttribute("data-minlength");
+                if(minlength == null)
+                {
+                    minlength = mrElement.getAttribute("minlength");
+                }
+
+                if(minlength != "" && minlength != null && mrIsInteger(minlength))
+                {
+                    var mrPasswordGoodPattern = "(?=^.{" + minlength + ",}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Za-z]).*$";
+                    mrPasswordGoodRegularExpression = new RegExp(mrPasswordGoodPattern);
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of minlength attributte of element:");
+                    console.error(mrElement);
+                    console.error("is non a number");
+                    mrIsValidPasswordMinlength = false;
+                }
             }
-        }
-
-        if(mrIsValidPasswordMinlength)
-        {
-            if (!mrPasswordGoodRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+    
+            if(mrIsValidPasswordMinlength)
+            {
+                if (!mrPasswordGoodRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement) || mrWhiteSpaceRegularExpression.test(mrElement.value))
+                {
+                    mrInvalidElement("mr-password-good-fb");
+                }   else
+                {
+                    mrValidElement("mr-password-good-fb");
+                }
+            }   else
             {
                 mrInvalidElement("mr-password-good-fb");
-            }   else
-            {
-                mrValidElement("mr-password-good-fb");
             }
-        }   else
-        {
-            mrInvalidElement("mr-password-good-fb");
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS INVALID PASSWORD-STRONG (LOWERCASE, UPPERCASE AND NUMBER OR/AND SPECIAL CHAR)
-    if(mrHasClass(mrElement,"mr-password-strong"))
+    mrPasswordStrong(mrElement);
+    function mrPasswordStrong(mrElement)
     {
-        var mrPasswordStrongRegularExpression = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-        var mrIsValidPasswordMinlength = true;
-
-        //CHANGE THE REGULAR EXPRESSION IF THE ELEMENT HAVE ATTRIBUTE password-minlength
-        if (mrHasAttribute(mrElement,"password-minlength"))
+        if(mrHasClass(mrElement,"mr-password-strong"))
         {
-            if(mrElement.getAttribute("password-minlength") != "" && mrElement.getAttribute("password-minlength") != null && !Number.isInteger(mrElement.getAttribute("password-minlength")))
+            var mrPasswordStrongRegularExpression = /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+            var mrWhiteSpaceRegularExpression  = /[\s ]/;
+            var mrIsValidPasswordMinlength = true;
+    
+            //CHANGE THE REGULAR EXPRESSION IF THE ELEMENT HAVE ATTRIBUTE minlength
+            if (mrHasAttribute(mrElement,"minlength") || mrHasAttribute(mrElement,"data-minlength"))
             {
-                var mrPasswordStrongPattern = "(?=^.{" + mrElement.getAttribute("password-minlength") + ",}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
-                mrPasswordStrongRegularExpression = new RegExp(mrPasswordStrongPattern);
-            }   else
-            {
-                console.error("MY RULES ERROR:\n" + "- The value of password-minlength attributte of element:");
-                console.error(mrElement);
-                console.error("is non a number");
-                mrIsValidPasswordMinlength = false;
+                var minlength = mrElement.getAttribute("data-minlength");
+                if(minlength == null)
+                {
+                    minlength = mrElement.getAttribute("minlength");
+                }
+
+                if(minlength != "" && minlength != null && mrIsInteger(minlength))
+                {
+                    var mrPasswordStrongPattern = "(?=^.{" + minlength + ",}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
+                    mrPasswordStrongRegularExpression = new RegExp(mrPasswordStrongPattern);
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of minlength attributte of element:");
+                    console.error(mrElement);
+                    console.error("is non a number");
+                    mrIsValidPasswordMinlength = false;
+                }
             }
-        }
-
-        if(mrIsValidPasswordMinlength)
-        {
-            if (!mrPasswordStrongRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+    
+            if(mrIsValidPasswordMinlength)
+            {
+                if (!mrPasswordStrongRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement) || mrWhiteSpaceRegularExpression.test(mrElement.value))
+                {
+                    mrInvalidElement("mr-password-strong-fb");
+                }   else
+                {
+                    mrValidElement("mr-password-strong-fb");
+                }
+            }   else
             {
                 mrInvalidElement("mr-password-strong-fb");
-            }   else
-            {
-                mrValidElement("mr-password-strong-fb");
             }
-        }   else
-        {
-            mrInvalidElement("mr-password-strong-fb");
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS INVALID PASSWORD-VERY-STRONG (ALPHA LOWERCASE, ALPHA UPPERCASE, NUMBER AND SPECIAL CHAR)
-    if(mrHasClass(mrElement,"mr-password-very-strong"))
+    mrPasswordVeryStrong(mrElement);
+    function mrPasswordVeryStrong(mrElement)
     {
-        var mrPasswordVeryStrongRegularExpression = /((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-        var mrIsValidPasswordMinlength = true;
-
-        //CHANGE THE REGULAR EXPRESSION IF THE ELEMENT HAVE ATTRIBUTE password-minlength
-        if (mrHasAttribute(mrElement,"password-minlength"))
+        if(mrHasClass(mrElement,"mr-password-very-strong"))
         {
-            if(mrElement.getAttribute("password-minlength") != "" && mrElement.getAttribute("password-minlength") != null && !Number.isInteger(mrElement.getAttribute("password-minlength")))
+            var mrPasswordVeryStrongRegularExpression = /((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+            var mrWhiteSpaceRegularExpression  = /[\s ]/;
+            var mrIsValidPasswordMinlength = true;
+    
+            //CHANGE THE REGULAR EXPRESSION IF THE ELEMENT HAVE ATTRIBUTE minlength
+            if (mrHasAttribute(mrElement,"minlength") || mrHasAttribute(mrElement,"data-minlength"))
             {
-                var mrPasswordVeryStrongPattern = "(?=^.{" + mrElement.getAttribute("password-minlength") + ",}$)((?=.*\\d)(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
-                mrPasswordVeryStrongRegularExpression = new RegExp(mrPasswordVeryStrongPattern);
-            }   else
-            {
-                console.error("MY RULES ERROR:\n" + "- The value of password-minlength attributte of element:");
-                console.error(mrElement);
-                console.error("is not a valid number");
-                mrIsValidPasswordMinlength = false;
+                var minlength = mrElement.getAttribute("data-minlength");
+                if(minlength == null)
+                {
+                    minlength = mrElement.getAttribute("minlength");
+                }
+
+                if(minlength != "" && minlength != null && mrIsInteger(minlength))
+                {
+                    var mrPasswordVeryStrongPattern = "(?=^.{" + minlength + ",}$)((?=.*\\d)(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
+                    mrPasswordVeryStrongRegularExpression = new RegExp(mrPasswordVeryStrongPattern);
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of minlength attributte of element:");
+                    console.error(mrElement);
+                    console.error("is not a valid number");
+                    mrIsValidPasswordMinlength = false;
+                }
             }
-        }
-
-        if(mrIsValidPasswordMinlength)
-        {
-            if (!mrPasswordVeryStrongRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+    
+            if(mrIsValidPasswordMinlength)
+            {
+                if (!mrPasswordVeryStrongRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement) || mrWhiteSpaceRegularExpression.test(mrElement.value))
+                {
+                    mrInvalidElement("mr-password-very-strong-fb");
+                }   else
+                {
+                    mrValidElement("mr-password-very-strong-fb");
+                }
+            }   else
             {
                 mrInvalidElement("mr-password-very-strong-fb");
-            }   else
-            {
-                mrValidElement("mr-password-very-strong-fb");
             }
-        }   else
-        {
-            mrInvalidElement("mr-password-very-strong-fb");
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE MARTCHES THE OTHER ELEMENT'S VALUE
-    if(mrHasClass(mrElement,"mr-match-subject"))
+    mrMatchSubject(mrElement);
+    function mrMatchSubject(mrElement)
     {
-        var mrMatches = mrForm.querySelectorAll(".mr-match");
-        var mrMatchSubjects = mrForm.querySelectorAll(".mr-match-subject");
-
-        if(mrMatches.length == mrMatchSubjects.length)
+        if(mrHasClass(mrElement,"mr-match"))
         {
-            var mrArrayMatchSubjects = [];
-
-            for(mrMatchSubject of mrMatchSubjects)
+            var mrMatches = mrForm.querySelectorAll(".mr-match");
+            var mrMatchSubjects = mrForm.querySelectorAll(".mr-match-subject");
+    
+            if(mrMatches.length == mrMatchSubjects.length)
             {
-                mrArrayMatchSubjects.push(mrMatchSubject);
-            }
-            var mrIndexOfMatchSubject = mrArrayMatchSubjects.indexOf(mrElement);
-            var mrMatch = mrForm.querySelectorAll(".mr-match")[mrIndexOfMatchSubject];
-
-            if(mrMatch.value != mrElement.value && !mrIsEmptyElementValue(mrElement))
-            {
-                mrInvalidElement("mr-match-subject-fb");
+                var mrArrayMatches = [];
+    
+                for(var i = 0; i < mrMatches.length; i++)
+                {
+                    var mrMatchElement = mrMatches[i];
+                    mrArrayMatches.push(mrMatchElement);
+                }
+                var mrIndexOfMatch = mrArrayMatches.indexOf(mrElement);
+                var mrMatchSubject = mrMatchSubjects[mrIndexOfMatch];
+                var mrPatternMatchSubject = new RegExp("^"+mrMatchSubject.value+"$");
+    
+                if(!mrPatternMatchSubject.test(mrElement.value) && !mrIsEmptyElementValue(mrMatchSubject))
+                {
+                    mrInvalidElement("mr-match-fb");
+                }   else
+                {
+                    mrValidElement("mr-match-fb");
+                }
             }   else
             {
-                mrValidElement("mr-match-subject-fb");
+                console.error("MY RULES ERROR:\n" + "- The number of class .mr-macth and number of class .mr-match-subject must be iqual in form: ");
+                console.error(mrForm);
             }
-        }   else
-        {
-            console.error("MY RULES ERROR:\n" + "- The number of class .mr-macth and number of class .mr-match-subject must be iqual in form: ");
-            console.error(mrForm);
         }
     }
+    
 
-    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID USERNAME (UPERCASE, LOWERCASE, NUMBER, DOT, MINUS, LOW LINE)
-    if(mrHasClass(mrElement, "mr-username"))
+    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID USERNAME (UPERCASE, LOWERCASE, NUMBER, ALLOWED PRINTABLE SPECIAL CHARS)
+    mrUsername(mrElement);
+    function mrUsername(mrElement)
     {
-        var mrUsernameRegularExpression = /^[a-zA-Z](([a-zA-Z0-9-_\.])*[a-zA-Z0-9-_])$/
-        if(!mrUsernameRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasClass(mrElement, "mr-username"))
         {
-            mrInvalidElement("mr-username-fb");
-        }   else
-        {
-            var mrDuplicatedDotRegularExpression = /\.\./;
-            if(mrDuplicatedDotRegularExpression.test(mrElement.value))
+            let mrPrintableSpecialChars = mrGetPrintableSpecialChars(mrElement);
+            let mrPeriod = "[.]";
+
+            if(mrPrintableSpecialChars.indexOf(".") < 0)
+            {
+                mrPeriod = "";
+            }
+            mrPrintableSpecialChars =  mrPrintableSpecialChars.replace(".","");
+
+            let mrUsernameRegularExpression = "(^[A-Za-z0-9" + mrPrintableSpecialChars + "]+(" + mrPeriod + "[A-Za-z0-9" + mrPrintableSpecialChars + "]+)*)$"
+          
+            let mrUsernamePattern = new RegExp(mrUsernameRegularExpression, "i");
+            if(!mrUsernamePattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
             {
                 mrInvalidElement("mr-username-fb");
             }   else
@@ -683,290 +1110,1529 @@ function mrValidateElement(mrElement)
             }
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS A VALID ALPHA
-    if(mrHasClass(mrElement,"mr-alpha"))
+    mrAlpha(mrElement);
+    function mrAlpha(mrElement)
     {
-        var mrAlphaRegularExpression = /^[a-zA-Z]+$/;
-        if(!mrAlphaRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasClass(mrElement,"mr-alpha"))
         {
-            mrInvalidElement("mr-alpha-fb");
-        }   else
-        {
-            mrValidElement("mr-alpha-fb");
+            var mrAlphaPattern = /^[a-zA-Z]+$/;
+            if(!mrAlphaPattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+            {
+                mrInvalidElement("mr-alpha-fb");
+            }   else
+            {
+                mrValidElement("mr-alpha-fb");
+            }
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS A VALID ALPHA-SPACE
-    if(mrHasClass(mrElement,"mr-alpha-space"))
+    mrAlphaSpace(mrElement);
+    function mrAlphaSpace(mrElement)
     {
-        var mrAlphaRegularExpression = /^[a-zA-Z ]+$/;
-        if(!mrAlphaRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasClass(mrElement,"mr-alpha-space"))
         {
-            mrInvalidElement("mr-alpha-space-fb");
-        }   else
-        {
-            mrValidElement("mr-alpha-space-fb");
+            var mrAlphaSpacePattern = /^[a-zA-Z ]+$/;
+            if(!mrAlphaSpacePattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+            {
+                mrInvalidElement("mr-alpha-space-fb");
+            }   else
+            {
+                mrValidElement("mr-alpha-space-fb");
+            }
         }
     }
+    
 
-    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID ALPHA-NUMERIC
-    if(mrHasClass(mrElement,"mr-alpha-numeric"))
+    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID ALPHA-NUMERIC~
+    mrAlphaNumeric(mrElement);
+    function mrAlphaNumeric(mrElement)
     {
-        var mrAlphaRegularExpression = /^[a-zA-Z0-9]+$/;
-        if(!mrAlphaRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasClass(mrElement,"mr-alpha-numeric"))
         {
-            mrInvalidElement("mr-alpha-numeric-fb");
-        }   else
-        {
-            mrValidElement("mr-alpha-numeric-fb");
+            var mrAlphaNumericPattern = /^[a-zA-Z0-9]+$/;
+            if(!mrAlphaNumericPattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+            {
+                mrInvalidElement("mr-alpha-numeric-fb");
+            }   else
+            {
+                mrValidElement("mr-alpha-numeric-fb");
+            }
         }
     }
+    
 
-    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID ALPHA-SPACE
-    if(mrHasClass(mrElement,"mr-alpha-numeric-space")) {
-        var mrAlphaRegularExpression = /^[a-zA-Z0-9 ]+$/;
-        if (!mrAlphaRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement)) {
-            mrInvalidElement("mr-alpha-numeric-space-fb");
-        } else {
-            mrValidElement("mr-alpha-numeric-space-fb");
+    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID ALPHA-SPACE-NUMERIC-SPACE
+    mrAlphaNumericSpace(mrElement);
+    function mrAlphaNumericSpace(mrElement)
+    {
+        if(mrHasClass(mrElement,"mr-alpha-numeric-space")) {
+            var mrAlphaNumericSpacePattern = /^[a-zA-Z0-9 ]+$/;
+            if (!mrAlphaNumericSpacePattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement)) {
+                mrInvalidElement("mr-alpha-numeric-space-fb");
+            } else {
+                mrValidElement("mr-alpha-numeric-space-fb");
+            }
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS A VALID LATIN
-    if(mrHasClass(mrElement,"mr-latin"))
+    mrLatin(mrElement);
+    function mrLatin(mrElement)
     {
-        var mrAlphaRegularExpression = /^[a-zA-ZÀ-ÖØ-öø-ʯ]+$/;
-        if(!mrAlphaRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasClass(mrElement,"mr-latin"))
         {
-            mrInvalidElement("mr-latin-fb");
-        }   else
-        {
-            mrValidElement("mr-latin-fb");
+            var mrLatinPattern = /^[a-zA-ZÀ-ÖØ-öø-ʯ]+$/i;
+            if(!mrLatinPattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+            {
+                mrInvalidElement("mr-latin-fb");
+            }   else
+            {
+                mrValidElement("mr-latin-fb");
+            }
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS A VALID LATIN-SPACE
-    if(mrHasClass(mrElement,"mr-latin-space"))
+    mrLatinSpace(mrElement);
+    function mrLatinSpace(mrElement)
     {
-        var mrAlphaRegularExpression = /^[a-zA-ZÀ-ÖØ-öø-ʯ ]+$/;
-        if(!mrAlphaRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasClass(mrElement,"mr-latin-space"))
         {
-            mrInvalidElement("mr-latin-space-fb");
-        }   else
-        {
-            mrValidElement("mr-latin-space-fb");
+            var mrLatinSpacePattern = /^[a-zA-ZÀ-ÖØ-öø-ʯ ]+$/i;
+            if(!mrLatinSpacePattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+            {
+                mrInvalidElement("mr-latin-space-fb");
+            }   else
+            {
+                mrValidElement("mr-latin-space-fb");
+            }
         }
     }
+    
 
     //VALIDATE IF THE ELEMENT'S VALUE IS A VALID LATIN-NUMERIC
-    if(mrHasClass(mrElement,"mr-latin-numeric"))
+    mrLatinNumeric(mrElement);
+    function mrLatinNumeric(mrElement)
     {
-        var mrAlphaRegularExpression = /^[a-zA-ZÀ-ÖØ-öø-ʯ0-9]+$/;
-        if(!mrAlphaRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
+        if(mrHasClass(mrElement,"mr-latin-numeric"))
         {
-            mrInvalidElement("mr-latin-numeric-fb");
-        }   else
-        {
-            mrValidElement("mr-latin-numeric-fb");
-        }
-    }
-
-    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID LATIN-SPACE
-    if(mrHasClass(mrElement,"mr-latin-numeric-space"))
-    {
-        var mrAlphaRegularExpression = /^[a-zA-ZÀ-ÖØ-öø-ʯ0-9 ]+$/;
-        if (!mrAlphaRegularExpression.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
-        {
-            mrInvalidElement("mr-latin-numeric-space-fb");
-        }   else
-        {
-            mrValidElement("mr-latin-numeric-space-fb");
-        }
-    }
-
-    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID INTEGER
-    if(mrHasClass(mrElement,"mr-number-int"))
-    {
-        if(!mrIsEmptyElementValue(mrElement))
-        {
-            if(!isNaN(mrElement.value))
+            var mrLatinNumericPattern = /^[a-zA-ZÀ-ÖØ-öø-ʯ0-9]+$/i;
+            if(!mrLatinNumericPattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
             {
-                if(!Number.isInteger(Number(mrElement.value)))
-                {
-                    mrInvalidElement("mr-number-int-fb");
-                }   else
-                {
-                    mrValidElement("mr-number-int-fb");
-                }
+                mrInvalidElement("mr-latin-numeric-fb");
             }   else
             {
-                mrInvalidElement("mr-number-int-fb");
+                mrValidElement("mr-latin-numeric-fb");
             }
-        }   else
-        {
-            mrValidElement("mr-number-int-fb");
         }
     }
+    
 
-    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID NUMERIC
-    if(mrHasClass(mrElement,"mr-numeric") || mrHasInputType(mrElement,"number"))
+    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID LATIN-NUMERIC-SPACE
+    mrLatinNumericSpace(mrElement);
+    function mrLatinNumericSpace(mrElement)
     {
-        if(!mrIsEmptyElementValue(mrElement))
+        if(mrHasClass(mrElement,"mr-latin-numeric-space"))
         {
-            if(isNaN(mrElement.value))
+            var mrLatinNumericSpacePattern = /^[a-zA-ZÀ-ÖØ-öø-ʯ0-9 ]+$/i;
+            if (!mrLatinNumericSpacePattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
             {
-                mrInvalidElement("mr-numeric-fb");
+                mrInvalidElement("mr-latin-numeric-space-fb");
             }   else
             {
-                mrValidElement("mr-numeric-fb");
+                mrValidElement("mr-latin-numeric-space-fb");
             }
-        }   else
-        {
-            mrValidElement("mr-numeric-fb");
         }
     }
+    
 
-    //VALIDATE THE MAX NUMBER OF SELECTED OPTIONS IN MULTIPLE SELECT
-    if(mrHasAttribute(mrElement, "maxselect"))
+    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID INTEGER NUMBER
+    mrNumberInt(mrElement);
+    function mrNumberInt(mrElement)
     {
-        if(mrElement.tagName == "SELECT")
+        if(mrHasClass(mrElement,"mr-number-int"))
         {
             if(!mrIsEmptyElementValue(mrElement))
             {
-                if(mrIsNumberInt(mrElement.getAttribute("maxselect")))
+                if(!isNaN(mrElement.value))
                 {
-                    if(mrElement.selectedOptions.length > mrElement.getAttribute("maxselect"))
+                    if(!mrIsInteger(Number(mrElement.value)))
                     {
-                        mrInvalidElement("mr-maxselect-fb");
+                        mrInvalidElement("mr-number-int-fb");
                     }   else
                     {
-                        mrValidElement("mr-maxselect-fb");
+                        mrValidElement("mr-number-int-fb");
                     }
                 }   else
                 {
-                    console.error("MY RULES ERROR:\n" + "- The attribute maxselect's value is not a valid integer in element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-maxselect-fb");
+                    mrInvalidElement("mr-number-int-fb");
                 }
             }   else
             {
-                mrValidElement("mr-maxselect-fb");
+                mrValidElement("mr-number-int-fb");
             }
-        }   else
+        }
+    }
+    
+
+    // VALIDATE IF THE ELEMENT VALUE HAS MINIMUM VALID FILE SIZE
+    mrMinsize(mrElement);
+    function mrMinsize(mrElement)
+    {
+        if(mrHasInputType(mrElement,"file") && (mrHasAttribute(mrElement, "minsize") || mrHasAttribute(mrElement, "data-minsize")))
         {
-            console.error("MY RULES ERROR:\n" + "- The attribute maxselect must be setted in multiple select element:");
-            console.error(mrElement);
-            mrInvalidElement("mr-maxselect-fb");
+            
+            var minFilesize = mrElement.getAttribute("data-minsize");
+            if(minFilesize == null)
+            {
+                minFilesize = mrElement.getAttribute("minsize");
+            }
+
+            if(!mrIsEmptyElementValue(mrElement) && minFilesize != "")
+            {
+                var fileList = mrElement.files;
+                var betySizes = {
+                    byte: {description: "byte", size: 1},
+                    kb: {description: "Kilobyte", size: 1024},
+                    mb: {description: "Megabyte", size: 1048576},
+                    gb: {description: "Gigabyte", size: 1073741824}
+                }
+    
+                var formatfilesizePattern = /^\d+$|(^\d+)byte$|(^\d+)kb$|(^\d+)mb$|(^\d+)gb$/i;
+                if(formatfilesizePattern.test(minFilesize))
+                {
+                    var formatfilesizePatterns =  {
+                        byte: /^\d+$|(^\d+)byte$/i,
+                        kb: /(^\d+)kb$/i,
+                        mb: /(^\d+)mb$/i,
+                        gb: /(^\d+)gb$/i
+                    }
+    
+                    var countValidFilesize = 0;
+                    var SumFilesizes = 0;
+                    var minFilesizeBytes = 0;
+    
+                    for(var i = 0; i < fileList.length; i++)
+                    {
+                        var file = fileList[i];
+                        var filesize = file.size;
+                        SumFilesizes += filesize;
+                        if(formatfilesizePatterns.byte.test(minFilesize))
+                        {
+                            minFilesize = minFilesize + "";
+                            minFilesize = minFilesize.replace(/byte/i,"");
+                            minFilesize = minFilesize * betySizes.byte.size;
+                            if(filesize >= minFilesize)
+                            {
+                                countValidFilesize++;
+                            }
+                            minFilesizeBytes = minFilesize;
+                        }   else if(formatfilesizePatterns.kb.test(minFilesize))
+                        {
+                            minFilesize = minFilesize + "";
+                            minFilesize = minFilesize.replace(/kb/i,"");
+                            minFilesize = minFilesize * betySizes.kb.size;
+                            if(filesize >= minFilesize)
+                            {
+                                countValidFilesize++;
+                            }
+                            minFilesizeBytes = minFilesize;
+                        }   else if(formatfilesizePatterns.mb.test(minFilesize))
+                        {
+                            minFilesize = minFilesize + "";
+                            minFilesize = minFilesize.replace(/mb/i,"");
+                            minFilesize = minFilesize * betySizes.mb.size;
+                            if(filesize >= minFilesize)
+                            {
+                                countValidFilesize++;
+                            }
+                            minFilesizeBytes = minFilesize;
+                        }   else if(formatfilesizePatterns.gb.test(minFilesize))
+                        {
+                            minFilesize = minFilesize + "";
+                            minFilesize = minFilesize.replace(/gb/i,"");
+                            minFilesize = minFilesize * betySizes.gb.size;
+                            if(filesize >= minFilesize)
+                            {
+                                countValidFilesize++;
+                            }
+                            minFilesizeBytes = minFilesize;
+                        }
+                    }
+    
+                    var isValidFilesize = false;
+                    if(mrHasClass(mrElement, "mr-sum-minsizes"))
+                    {
+                        if(SumFilesizes >= minFilesizeBytes)
+                        {
+                            isValidFilesize = true;
+                        }
+                    }   else
+                    {
+                        if(countValidFilesize >= fileList.length)
+                        {
+                            isValidFilesize = true;
+                        }
+                    }
+                    
+                    if(isValidFilesize)
+                    {
+                        mrValidElement("mr-minsize-fb");
+                    }   else
+                    {
+                        mrInvalidElement("mr-minsize-fb");
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The file size \"" + file + "\" is invalid minimum format size at input element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-minsize-fb");
+                }
+            }
+            // else
+            // {
+            //     mrValidElement("mr-minsize-fb");
+            // }
         }
     }
 
 
-    //VALIDATE THE MIN NUMBER OF SELECTED OPTIONS IN MULTIPLE SELECT
-    if(mrHasAttribute(mrElement, "minselect"))
+    // VALIDATE IF THE ELEMENT VALUE HAS VALID MAX FILE SIZE
+    mrMaxsize(mrElement);
+    function mrMaxsize(mrElement)
     {
-        if(mrElement.tagName == "SELECT")
+        if(mrHasInputType(mrElement,"file") && (mrHasAttribute(mrElement, "maxsize") || mrHasAttribute(mrElement, "data-maxsize")))
         {
-            if(mrIsNumberInt(mrElement.getAttribute("minselect")))
+            var maxFilesize = mrElement.getAttribute("data-maxsize");
+            if(maxFilesize == null)
             {
-                if(mrElement.selectedOptions.length < mrElement.getAttribute("minselect"))
+                maxFilesize = mrElement.getAttribute("maxsize");
+            }
+
+            if(!mrIsEmptyElementValue(mrElement) && maxFilesize != "")
+            {
+                var fileList = mrElement.files;
+                var betySizes = {
+                    byte: {description: "byte", size: 1},
+                    kb: {description: "Kilobyte", size: 1024},
+                    mb: {description: "Megabyte", size: 1048576},
+                    gb: {description: "Gigabyte", size: 1073741824}
+                }
+    
+                var formatfilesizePattern = /^\d+$|(^\d+)byte$|(^\d+)kb$|(^\d+)mb$|(^\d+)gb$/i;
+                if(formatfilesizePattern.test(maxFilesize))
                 {
-                    mrInvalidElement("mr-minselect-fb");
+                    var formatfilesizePatterns =  {
+                        byte: /^\d+$|(^\d+)byte$/i,
+                        kb: /(^\d+)kb$/i,
+                        mb: /(^\d+)mb$/i,
+                        gb: /(^\d+)gb$/i
+                    }
+    
+                    var countValidFilesize = 0;
+                    var SumFilesizes = 0;
+                    var maxFilesizeBytes = 0;
+    
+                    for(var i = 0; i < fileList.length; i++)
+                    {
+                        var file = fileList[i];
+                        var filesize = file.size;
+                        SumFilesizes += filesize;
+                        if(formatfilesizePatterns.byte.test(maxFilesize))
+                        {
+                            maxFilesize = maxFilesize + "";
+                            maxFilesize = maxFilesize.replace(/byte/i,"");
+                            maxFilesize = maxFilesize * betySizes.byte.size;
+                            if(filesize <= maxFilesize)
+                            {
+                                countValidFilesize++;
+                            }
+                            maxFilesizeBytes = maxFilesize;
+                        }   else if(formatfilesizePatterns.kb.test(maxFilesize))
+                        {
+                            maxFilesize = maxFilesize + "";
+                            maxFilesize = maxFilesize.replace(/kb/i,"");
+                            maxFilesize = maxFilesize * betySizes.kb.size;
+                            if(filesize <= maxFilesize)
+                            {
+                                countValidFilesize++;
+                            }
+                            maxFilesizeBytes = maxFilesize;
+                        }   else if(formatfilesizePatterns.mb.test(maxFilesize))
+                        {
+                            maxFilesize = maxFilesize + "";
+                            maxFilesize = maxFilesize.replace(/mb/i,"");
+                            maxFilesize = maxFilesize * betySizes.mb.size;
+                            if(filesize <= maxFilesize)
+                            {
+                                countValidFilesize++;
+                            }
+                            maxFilesizeBytes = maxFilesize;
+                        }   else if(formatfilesizePatterns.gb.test(maxFilesize))
+                        {
+                            maxFilesize = maxFilesize + "";
+                            maxFilesize = maxFilesize.replace(/gb/i,"");
+                            maxFilesize = maxFilesize * betySizes.gb.size;
+                            if(filesize <= maxFilesize)
+                            {
+                                countValidFilesize++;
+                            }
+                            maxFilesizeBytes = maxFilesize;
+                        }
+                    }
+    
+                    var isValidFilesize = false;
+                    if(mrHasClass(mrElement, "mr-sum-maxsizes"))
+                    {
+                        if(SumFilesizes <= maxFilesizeBytes)
+                        {
+                            isValidFilesize = true;
+                        }
+                    }   else
+                    {
+                        if(countValidFilesize >= fileList.length)
+                        {
+                            isValidFilesize = true;
+                        }
+                    }
+                    
+                    if(isValidFilesize)
+                    {
+                        mrValidElement("mr-maxsize-fb");
+                    }   else
+                    {
+                        mrInvalidElement("mr-maxsize-fb");
+                    }
                 }   else
                 {
-                    mrValidElement("mr-minselect-fb");
+                    console.error("MY RULES ERROR:\n" + "- The file size \"" + file + "\" is invalid maximum format size at input element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-maxsize-fb");
+                }
+            } 
+            // else
+            // {
+            //     mrValidElement("mr-maxsize-fb");
+            // }
+        }
+    }
+    
+
+    // VALIDATE IF THE ELEMENT VALUE IS A VALID MIME TYPE
+    mrAccept(mrElement);
+    function mrAccept(mrElement)
+    {
+        if(mrHasInputType(mrElement,"file") && mrHasAttribute(mrElement, "accept"))
+        {
+            if(!mrIsEmptyElementValue(mrElement) && mrElement.getAttribute("accept") != "")
+            {
+                var mimeTypes = mrGetMimeTypes(); 
+                
+                var acceptedFiles = mrElement.getAttribute("accept");
+                acceptedFiles = acceptedFiles.replace(/[ ]/g,"");
+                acceptedFiles = acceptedFiles.split(",");
+                
+                var selectedFiles = [];
+                var fileList = mrElement.files;
+                for(var i = 0; i < fileList.length; i++)
+                {
+                    var file = fileList[i];
+                    var fileName = file.name;
+                    fileName = fileName.split(".");
+                    selectedFiles.push({mimeType: file.type, extension: "." + fileName[fileName.length -1]});
+                }
+                var acceptedFilesNormalized = [];
+                for(var i = 0; i < acceptedFiles.length; i++)
+                {
+                    var acceptedFile = acceptedFiles[i];
+                    if(acceptedFilesNormalized.indexOf(acceptedFile) < 0 && acceptedFiles != "")
+                    {
+                        acceptedFilesNormalized.push(acceptedFile);
+                    };
+                }
+                acceptedFiles = acceptedFilesNormalized;
+    
+                
+                for(var i = 0; i < acceptedFiles.length; i++)
+                {
+                    var acceptedFile = acceptedFiles[i];
+                    if(mimeTypes[acceptedFile] != undefined)
+                    {
+                        if(acceptedFiles.indexOf(mimeTypes[acceptedFile].mimeType) < 0)
+                        {
+                            acceptedFiles[i] = mimeTypes[acceptedFile].mimeType;
+                        }
+                    };
+                }
+                
+                acceptedFiles = acceptedFiles.toString();
+    
+                var mimeTypePatterns = {
+                    video: {pattern: /video\/\*/, patternGlobal : /video\/[a-z0-9.-]+[a-z0-9]/g},
+                    image: {pattern: /image\/\*/, patternGlobal : /image\/[a-z0-9.-]+[a-z0-9]/g},
+                    audio: {pattern: /audio\/\*/, patternGlobal : /audio\/[a-z0-9.-]+[a-z0-9]/g},
+                    application: {pattern: /application\/\*/,  patternGlobal : /application\/[a-z0-9.-]+[a-z0-9]/g},
+                    defaultPattern: /^([a-z]+)\/(([a-z0-9. -]+)+([a-z0-9]+)$|\*$)/i
+                };
+    
+                if(mimeTypePatterns.video.pattern.test(acceptedFiles))
+                {
+                    acceptedFiles = acceptedFiles.replace(mimeTypePatterns.video.patternGlobal,"");
+                }
+                if(mimeTypePatterns.image.pattern.test(acceptedFiles))
+                {
+                    acceptedFiles = acceptedFiles.replace(mimeTypePatterns.image.patternGlobal,"");
+                }
+                if(mimeTypePatterns.audio.pattern.test(acceptedFiles))
+                {
+                    acceptedFiles = acceptedFiles.replace(mimeTypePatterns.audio.patternGlobal,"");
+                }
+                if(mimeTypePatterns.application.pattern.test(acceptedFiles))
+                {
+                    acceptedFiles = acceptedFiles.replace(mimeTypePatterns.application.patternGlobal,"");
+                }
+    
+                acceptedFilesSplit = acceptedFiles.split(",");
+                acceptedFiles = [];
+                var acceptedExtensions = [];
+                var patternExtension = /(^(\.)(([a-z0-9]+))$)/;
+                var acceptedFilesSintaxError = [];
+                
+                for(var i = 0; i < acceptedFilesSplit.length; i++)
+                {
+                    var acceptedFile = acceptedFilesSplit[i];
+                    if(acceptedFile != "")
+                    {
+                        
+                        if(mimeTypePatterns.defaultPattern.test(acceptedFile))
+                        {
+                            acceptedFiles.push(acceptedFile);
+                        }   else
+                        {
+                            if(patternExtension.test(acceptedFile))
+                            {
+                                acceptedExtensions.push(acceptedFile);
+                            }   else
+                            {
+                                acceptedFilesSintaxError.push(acceptedFile);
+                            }
+                        }
+                    }
+                }
+    
+                if(acceptedFilesSintaxError.length < 1)
+                {
+                    var countAcceptedFiles = 0;
+                    for(var i = 0; i < selectedFiles.length; i++)
+                    {
+                        var selectedFile = selectedFiles[i];
+                        var validAcceptedFile = false;
+
+                        for(var j = 0; j < acceptedFiles.length; j++)
+                        {
+                            var acceptedFile = acceptedFiles[j];
+                            var regularExpression = "" + acceptedFile + "";
+                            var pattern = new RegExp(regularExpression);            
+                            if(pattern.test(selectedFile.mimeType))
+                            {
+                                countAcceptedFiles++;
+                                validAcceptedFile = true;
+                                break;
+                            }
+                        }
+                        if(!validAcceptedFile)
+                        {
+                            for(var j = 0; j < acceptedExtensions.length; j++)
+                            {
+                                if(acceptedExtensions.indexOf(selectedFile.extension) >= 0)
+                                {
+                                    countAcceptedFiles++;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if(countAcceptedFiles >= fileList.length)
+                    {
+                        mrValidElement("mr-accept-fb");
+                    }   else
+                    {
+                        mrInvalidElement("mr-accept-fb");
+                    }   
+                }   else
+                {
+                    acceptedFilesSintaxError = acceptedFilesSintaxError.toString();
+                    console.error("MY RULES ERROR:\n" + "- The accepts type \"" + acceptedFilesSintaxError + "\" has SINTAX ERROR or kay not found at input element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-accept-fb");
+                }
+            }
+            // else
+            // {
+            //     mrValidElement("mr-accept-fb");
+            // }
+        }
+    }
+
+
+    //VALIDATE IF THE ELEMENT'S VALUE IS A VALID NUMERIC
+    mrNumber(mrElement);
+    function mrNumber(mrElement)
+    {
+        if(mrHasClass(mrElement,"mr-number") || mrHasInputType(mrElement,"number"))
+        {
+            if(!mrIsEmptyElementValue(mrElement))
+            {
+                if(isNaN(mrElement.value))
+                {
+                    mrInvalidElement("mr-number-fb");
+                }   else
+                {
+                    mrValidElement("mr-number-fb");
                 }
             }   else
             {
-                console.error("MY RULES ERROR:\n" + "- The attribute minselect's value is not a valid integer in element:");
+                mrValidElement("mr-number-fb");
+            }
+        }
+    }
+    
+   
+    //VALIDATE THE MIN NUMBER OF SELECTED OPTIONS IN MULTIPLE SELECT AND MIN NUMBER OF SELECTED FILES IN INPUT TYPE FILE
+    mrMinselect(mrElement);
+    function mrMinselect(mrElement)
+    {
+        if(mrHasAttribute(mrElement, "minselect") || mrHasAttribute(mrElement, "data-minselect"))
+        {
+            if(mrElement.tagName == "SELECT" || mrHasInputType(mrElement, "file"))
+            {
+                if(!mrIsEmptyElementValue(mrElement))
+                {
+                    var minselect = mrElement.getAttribute("data-minselect");
+                    if(minselect == null)
+                    {
+                        minselect = mrElement.getAttribute("minselect")
+                    }
+
+                    if(minselect != "")
+                    {
+                        if(mrIsInteger(minselect))
+                        {
+                            if(mrElement.tagName == "SELECT")
+                            {
+                                if(mrElement.selectedOptions.length < minselect)
+                                {
+                                    mrInvalidElement("mr-minselect-fb");
+                                }   else
+                                {
+                                    mrValidElement("mr-minselect-fb");
+                                }
+                            }   else if(mrHasInputType(mrElement, "file"))
+                            {
+                                if(mrElement.files.length < minselect)
+                                {
+                                    mrInvalidElement("mr-minselect-fb");
+                                }   else
+                                {
+                                    mrValidElement("mr-minselect-fb");
+                                }
+                            }
+                        }   else
+                        {
+                            console.error("MY RULES ERROR:\n" + "- The attribute value of minselect is not a valid integer in element:");
+                            console.error(mrElement);
+                            mrInvalidElement("mr-minselect-fb");
+                        }
+                    }
+                }
+                // else
+                // {
+                //     mrValidElement("mr-minselect-fb");
+                // }
+            }   else
+            {
+                console.error("MY RULES ERROR:\n" + "- The attribute minselect must be setted in multiple select element or input type file:");
                 console.error(mrElement);
                 mrInvalidElement("mr-minselect-fb");
             }
-        }   else
-        {
-            console.error("MY RULES ERROR:\n" + "- The attribute minselect must be setted in multiple select element:");
-            console.error(mrElement);
-            mrInvalidElement("mr-minselect-fb");
         }
     }
+    
 
-    //VALIDATE THE MAX NUMBER OF CHECKED CHECKBOX
-    if(mrHasAttribute(mrElement,"maxcheck"))
+    //VALIDATE THE MAX NUMBER OF SELECTED OPTIONS IN MULTIPLE SELECT AND MAX NUMBER OF SELECTED FILES IN INPUT TYPE FILE
+    mrMaxselect(mrElement);
+    function mrMaxselect(mrElement)
     {
-        if(mrElement.classList.contains("mr-checkbox"))
+        if(mrHasAttribute(mrElement, "maxselect") || mrHasAttribute(mrElement, "data-maxselect"))
         {
-            if(mrIsNumberInt(mrElement.getAttribute("maxcheck")))
+            if(mrElement.tagName == "SELECT" || mrHasInputType(mrElement, "file"))
             {
-                var mrChecked = 0;
-                var mrCheckboxs = mrElement.querySelectorAll("input[type=checkbox]");
-
-                for (mrCheckbox of mrCheckboxs)
+                if(!mrIsEmptyElementValue(mrElement))
                 {
-                    if(mrCheckbox.checked)
+                    var maxselect = mrElement.getAttribute("data-maxselect");
+                    if(maxselect == null)
                     {
-                        mrChecked++;
+                        maxselect = mrElement.getAttribute("maxselect");
                     }
-                }
 
-                if(mrChecked > mrElement.getAttribute("maxcheck"))
-                {
-                    mrInvalidElement("mr-maxcheck-fb");
-                }   else
-                {
-                    mrValidElement("mr-maxcheck-fb");
-                }
+                    if(maxselect != "")
+                    {
+                        if(mrIsInteger(maxselect))
+                        {
+                            if(mrElement.tagName == "SELECT")
+                            {
+                                if(mrElement.selectedOptions.length > maxselect)
+                                {
+                                    mrInvalidElement("mr-maxselect-fb");
+                                }   else
+                                {
+                                    mrValidElement("mr-maxselect-fb");
+                                }
+                            }   else if(mrHasInputType(mrElement, "file"))
+                            {
+                                if(mrElement.files.length > maxselect)
+                                {
+                                    mrInvalidElement("mr-maxselect-fb");
+                                }   else
+                                {
+                                    mrValidElement("mr-maxselect-fb");
+                                }
+                            }
+                        }   else
+                        {
+                            console.error("MY RULES ERROR:\n" + "- The value of attribute maxselect is not a valid integer in element:");
+                            console.error(mrElement);
+                            mrInvalidElement("mr-maxselect-fb");
+                        }
+                    }
+                }   
+                // else
+                // {
+                //     mrValidElement("mr-maxselect-fb");
+                // }
             }   else
             {
-                console.error("MY RULES ERROR:\n" + "- The attribute maxcheck's value is not a valid integer in element:");
+                console.error("MY RULES ERROR:\n" + "- The attribute maxselect must be setted in multiple select element or input type file:");
                 console.error(mrElement);
-                mrInvalidElement("mr-maxcheck-fb");
+                mrInvalidElement("mr-maxselect-fb");
             }
-        }   else
-        {
-            console.error("MY RULES ERROR:\n" + "- The class .mr-checkbox is needed in element:");
-            console.error(mrElement);
-            mrInvalidElement("mr-maxcheck-fb");
         }
     }
+
 
     //VALIDATE THE MIN NUMBER OF CHECKED CHECKBOX
-    if(mrHasAttribute(mrElement,"mincheck"))
+    mrMincheck(mrElement);
+    function mrMincheck(mrElement)
     {
-        if(mrElement.classList.contains("mr-checkbox"))
+        if(mrHasAttribute(mrElement, "mincheck") || mrHasAttribute(mrElement, "data-mincheck"))
         {
-            if(mrIsNumberInt(mrElement.getAttribute("mincheck")))
+            if(mrElement.classList.contains("mr-checkbox"))
             {
-                var mrChecked = 0;
-                var mrCheckboxs = mrElement.querySelectorAll("input[type=checkbox]");
-
-                for (mrCheckbox of mrCheckboxs)
+                var mincheck = mrElement.getAttribute("data-mincheck");
+                if(mincheck == null)
                 {
-                    if(mrCheckbox.checked)
-                    {
-                        mrChecked++;
-                    }
+                    mincheck = mrElement.getAttribute("mincheck");
                 }
 
-                if(mrChecked < mrElement.getAttribute("mincheck"))
+                if(mincheck != "")
                 {
-                    mrInvalidElement("mr-mincheck-fb");
-                }   else
-                {
-                    mrValidElement("mr-mincheck-fb");
+                    if(mrIsInteger(mincheck))
+                    {
+                        var mrChecked = 0;
+                        var mrCheckboxs = mrElement.querySelectorAll("input[type=checkbox]");
+        
+                        for(var i = 0; i < mrCheckboxs.length; i++)
+                        {
+                            var mrCheckbox = mrCheckboxs[i];
+                            if(mrCheckbox.checked && !mrIsEmptyElementValue(mrCheckbox))
+                            {
+                                mrChecked++;
+                            }
+                        }
+        
+                        if(mrChecked < mincheck)
+                        {
+                            mrInvalidElement("mr-mincheck-fb");
+                        }   else
+                        {
+                            mrValidElement("mr-mincheck-fb");
+                        }
+                    }   else
+                    {
+                        console.error("MY RULES ERROR:\n" + "- The attribute mincheck's value is not a valid integer in element:");
+                        console.error(mrElement);
+                        mrInvalidElement("mr-mincheck-fb");
+                    }
                 }
             }   else
             {
-                console.error("MY RULES ERROR:\n" + "- The attribute mincheck's value is not a valid integer in element:");
+                console.error("MY RULES ERROR:\n" + "- The class .mr-checkbox is needed in element:");
                 console.error(mrElement);
                 mrInvalidElement("mr-mincheck-fb");
             }
-        }   else
-        {
-            console.error("MY RULES ERROR:\n" + "- The class .mr-checkbox is needed in element:");
-            console.error(mrElement);
-            mrInvalidElement("mr-mincheck-fb");
         }
     }
+
+
+    //VALIDATE THE MAX NUMBER OF CHECKED CHECKBOX
+    mrMaxcheck(mrElement);
+    function mrMaxcheck(mrElement)
+    {
+        if(mrHasAttribute(mrElement, "maxcheck") || mrHasAttribute(mrElement, "data-maxcheck"))
+        {
+            if(mrElement.classList.contains("mr-checkbox"))
+            {
+                var maxcheck = mrElement.getAttribute("data-maxcheck");
+                if(maxcheck == null)
+                {
+                    maxcheck = mrElement.getAttribute("maxcheck");
+                }
+                if(maxcheck != "")
+                {
+                    if(mrIsInteger(maxcheck))
+                    {
+                        var mrChecked = 0;
+                        var mrCheckboxs = mrElement.querySelectorAll("input[type=checkbox]");
+        
+                        for(var i = 0; i < mrCheckboxs.length; i++)
+                        {
+                            var mrCheckbox = mrCheckboxs[i];
+                            if(mrCheckbox.checked && !mrIsEmptyElementValue(mrCheckbox))
+                            {
+                                mrChecked++;
+                            }
+                        }
+        
+                        if(mrChecked > maxcheck)
+                        {
+                            mrInvalidElement("mr-maxcheck-fb");
+                        }   else
+                        {
+                            mrValidElement("mr-maxcheck-fb");
+                        }
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The attribute maxcheck's value is not a valid integer in element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-maxcheck-fb");
+                }
+            }   else
+            {
+                console.error("MY RULES ERROR:\n" + "- The class .mr-checkbox is needed in element:");
+                console.error(mrElement);
+                mrInvalidElement("mr-maxcheck-fb");
+            }
+        }
+    }
+    
+
+    //VALIDATE THE WIDTH OF IMAGE INPUTED IN FILE INPUT
+    mrWidth(mrElement);
+    function mrWidth(mrElement)
+    {
+        if((mrHasAttribute(mrElement, "width") || mrHasAttribute(mrElement, "data-width")) && mrHasInputType(mrElement, "file"))
+        {
+            var acceptedWidth = mrElement.getAttribute("data-width");
+            if(acceptedWidth == null)
+            {
+                acceptedWidth = mrElement.getAttribute("width");
+            }
+
+            if(acceptedWidth != "")
+            {
+                if(mrIsInteger(acceptedWidth) && acceptedWidth > 0)
+                {
+                    var fileList = mrElement.files;
+                    var isValidImagesMimeTypes = true;
+                    mrValidElement("mr-width-fb");
+        
+                    for(var i = 0; i < fileList.length; i++)
+                    {  
+                        var file = fileList[i];    
+                        fileMimeType = file.type;
+                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+                        if(!patternImageMimeType.test(fileMimeType))
+                        {
+                            isValidImagesMimeTypes = false;
+                            break;
+                        }
+        
+                        var fileReader = new FileReader;
+                        fileReader.readAsDataURL(file);
+        
+                        fileReader.onload = function(e)
+                        {
+                            var result = e.target.result;
+                            imageElementTest = newImageElementTest(result);
+                            
+                            var width = imageElementTest.naturalWidth;
+    
+                            if(width == 0)
+                            {
+                                return mrWidth(mrElement);
+                            }
+        
+                            if(width != acceptedWidth)
+                            {
+                                mrInvalidElement("mr-width-fb");
+                                mrForm.onsubmit = function (event)
+                                {
+                                    if(mrElement.classList.contains("mr-invalid"))
+                                    {
+                                        event.preventDefault();
+                                    }
+                                }
+                            }
+                        }
+                    }
+        
+                    if(!isValidImagesMimeTypes)
+                    {
+                        mrInvalidElement("mr-width-fb");
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of attribute width is not a valid integer number or is less than 1 at the element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-width-fb");
+                }
+            }
+        }
+    }
+
+
+    //VALIDATE THE IMAGE HEIGHT OF FILE INPUT
+    mrHeight(mrElement);
+    function mrHeight(mrElement)
+    {
+        if((mrHasAttribute(mrElement, "height") || mrHasAttribute(mrElement, "data-height")) && mrHasInputType(mrElement, "file"))
+        {
+            var acceptedHeight = mrElement.getAttribute("data-height");
+            if(acceptedHeight == null)
+            {
+                acceptedHeight = mrElement.getAttribute("height");
+            }
+
+            if(acceptedHeight != "")
+            {
+                if(mrIsInteger(acceptedHeight) && acceptedHeight > 0)
+                {
+                    var fileList = mrElement.files;
+                    var isValidImagesMimeTypes = true;
+                    mrValidElement("mr-height-fb");
+        
+                    for(var i = 0; i < fileList.length; i++)
+                    {  
+                        var file = fileList[i];    
+                        fileMimeType = file.type;
+                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+                        if(!patternImageMimeType.test(fileMimeType))
+                        {
+                            isValidImagesMimeTypes = false;
+                            break;
+                        }
+        
+                        var fileReader = new FileReader;
+                        fileReader.readAsDataURL(file);
+        
+                        fileReader.onload = function(e)
+                        {
+                            var result = e.target.result;
+                            imageElementTest = newImageElementTest(result);
+                            
+                            var height = imageElementTest.naturalHeight;
+    
+                            if(height == 0)
+                            {
+                                return mrHeight(mrElement);
+                            }
+        
+                            if(height != acceptedHeight)
+                            {
+                                mrInvalidElement("mr-height-fb");
+                                mrForm.onsubmit = function (event)
+                                {
+                                    if(mrElement.classList.contains("mr-invalid"))
+                                    {
+                                        event.preventDefault();
+                                    }
+                                }
+                            }
+                        }
+                    }
+        
+                    if(!isValidImagesMimeTypes)
+                    {
+                        mrInvalidElement("mr-height-fb");
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of attribute height is not a valid integer number or is less than 1 at the element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-height-fb");
+                }
+            }
+        }
+    }
+
+
+    //VALIDATE THE MINIMUM WIDTH OF IMAGE INPUTED IN FILE INPUT
+    mrMinwidth(mrElement);
+    function mrMinwidth(mrElement)
+    {
+        if((mrHasAttribute(mrElement, "minwidth") || mrHasAttribute(mrElement, "data-minwidth")) && mrHasInputType(mrElement, "file"))
+        {
+            var acceptedMinWidth = mrElement.getAttribute("data-minwidth");
+            if(acceptedMinWidth == null)
+            {
+                acceptedMinWidth = mrElement.getAttribute("minwidth");
+            }
+
+            if(acceptedMinWidth != "")
+            {
+                if(mrIsInteger(acceptedMinWidth) && acceptedMinWidth > 0)
+                {
+                    var fileList = mrElement.files;
+                    var isValidImagesMimeTypes = true;
+                    mrValidElement("mr-minwidth-fb");
+        
+                    for(var i = 0; i < fileList.length; i++)
+                    {  
+                        var file = fileList[i];    
+                        fileMimeType = file.type;
+                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+                        if(!patternImageMimeType.test(fileMimeType))
+                        {
+                            isValidImagesMimeTypes = false;
+                            break;
+                        }
+        
+                        var fileReader = new FileReader;
+                        fileReader.readAsDataURL(file);
+        
+                        fileReader.onload = function(e)
+                        {
+                            var result = e.target.result;
+                            imageElementTest = newImageElementTest(result);
+                            
+                            var width = imageElementTest.naturalWidth;
+    
+                            if(width == 0)
+                            {
+                                return mrMinwidth(mrElement);
+                            }
+    
+                            if(width < acceptedMinWidth)
+                            {
+                                mrInvalidElement("mr-minwidth-fb");
+                                mrForm.onsubmit = function (event)
+                                {
+                                    if(mrElement.classList.contains("mr-invalid"))
+                                    {
+                                        event.preventDefault();
+                                    }
+                                }
+                            }
+                        }
+                    }
+        
+                    if(!isValidImagesMimeTypes)
+                    {
+                        mrInvalidElement("mr-minwidth-fb");
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of attribute minwidth is not a valid integer number or is less than 1 at the element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-minwidth-fb");
+                }
+            }
+        }
+    }
+
+
+    //VALIDATE THE MAXIMUM WIDTH OF IMAGE INPUTED IN FILE INPUT 
+    mrMaxwidth(mrElement);
+    function mrMaxwidth(mrElement)
+    {
+        if((mrHasAttribute(mrElement, "maxwidth") || mrHasAttribute(mrElement, "data-maxwidth")) && mrHasInputType(mrElement, "file"))
+        {
+            var acceptedMaxWidth = mrElement.getAttribute("data-maxwidth");
+            if(acceptedMaxWidth == null)
+            {
+                acceptedMaxWidth = mrElement.getAttribute("maxwidth");
+            }
+
+            if(acceptedMaxWidth != "")
+            {
+                if(mrIsInteger(acceptedMaxWidth) && acceptedMaxWidth > 0)
+                {
+                    var fileList = mrElement.files;
+                    var isValidImagesMimeTypes = true;
+                    mrValidElement("mr-maxwidth-fb");
+        
+                    for(var i = 0; i < fileList.length; i++)
+                    { 
+                        var file = fileList[i];     
+                        fileMimeType = file.type;
+                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+                        if(!patternImageMimeType.test(fileMimeType))
+                        {
+                            isValidImagesMimeTypes = false;
+                            break;
+                        }
+        
+                        var fileReader = new FileReader;
+                        fileReader.readAsDataURL(file);
+        
+                        fileReader.onload = function(e)
+                        {
+                            var result = e.target.result;
+                            imageElementTest = newImageElementTest(result);
+                            
+                            var width = imageElementTest.naturalWidth;
+    
+                            if(width == 0)
+                            {
+                                return mrMaxwidth(mrElement);
+                            }
+    
+        
+                            if(width > acceptedMaxWidth)
+                            {
+                                mrInvalidElement("mr-maxwidth-fb");
+                                mrForm.onsubmit = function (event)
+                                {
+                                    if(mrElement.classList.contains("mr-invalid"))
+                                    {
+                                        event.preventDefault();
+                                    }
+                                }
+                            }
+                        }
+                    }
+        
+                    if(!isValidImagesMimeTypes)
+                    {
+                        mrInvalidElement("mr-maxwidth-fb");
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of attribute maxwidth is not a valid integer number or is less than 1 at the element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-maxwidth-fb");
+                }
+            }
+        }
+    }
+
+
+    //VALIDATE THE IMAGE MiNIMUM HEIGHT OF FILE INPUT
+    mrMinheight(mrElement);
+    function mrMinheight(mrElement)
+    {
+        if((mrHasAttribute(mrElement, "minheight") || mrHasAttribute(mrElement, "data-minheight")) && mrHasInputType(mrElement, "file"))
+        {
+            var acceptedMinHeight = mrElement.getAttribute("data-minheight");
+            if(acceptedMinHeight == null)
+            {
+                acceptedMinHeight = mrElement.getAttribute("minheight");
+            }
+
+            if(acceptedMinHeight != "")
+            {
+                if(mrIsInteger(acceptedMinHeight) && acceptedMinHeight > 0)
+                {
+                    var fileList = mrElement.files;
+                    var isValidImagesMimeTypes = true;
+                    mrValidElement("mr-minheight-fb");
+        
+                    for(var i = 0; i < fileList.length; i++)
+                    {    
+                        var file = fileList[i];  
+                        fileMimeType = file.type;
+                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+                        if(!patternImageMimeType.test(fileMimeType))
+                        {
+                            isValidImagesMimeTypes = false;
+                            break;
+                        }
+        
+                        var fileReader = new FileReader;
+                        fileReader.readAsDataURL(file);
+        
+                        fileReader.onload = function(e)
+                        {
+                            var result = e.target.result;
+                            imageElementTest = newImageElementTest(result);
+                            
+                            var height = imageElementTest.naturalHeight;
+    
+                            if(height == 0)
+                            {
+                                return mrMinheight(mrElement);
+                            }
+    
+                            if(height < acceptedMinHeight)
+                            {
+                                mrInvalidElement("mr-minheight-fb");
+                                mrForm.onsubmit = function (event)
+                                {
+                                    if(mrElement.classList.contains("mr-invalid"))
+                                    {
+                                        event.preventDefault();
+                                    }
+                                }
+                            }
+                        }
+                    }
+        
+                    if(!isValidImagesMimeTypes)
+                    {
+                        mrInvalidElement("mr-minheight-fb");
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of attribute minheight is not a valid integer number or is less than 1 at the element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-minheight-fb");
+                }
+            }
+        }
+    }
+
+
+    //VALIDATE THE IMAGE MAXIMUM HEIGHT OF FILE INPUT
+    mrMaxheight(mrElement);
+    function mrMaxheight(mrElement)
+    {
+        if((mrHasAttribute(mrElement, "maxheight") || mrHasAttribute(mrElement, "data-maxheight")) && mrHasInputType(mrElement, "file"))
+        {
+            var acceptedMaxHeight = mrElement.getAttribute("data-maxheight");
+            if(acceptedMaxHeight == null)
+            {
+                acceptedMaxHeight = mrElement.getAttribute("maxheight");
+            }
+
+            if(acceptedMaxHeight != "")
+            {
+                if(mrIsInteger(acceptedMaxHeight) && acceptedMaxHeight > 0)
+                {
+                    var fileList = mrElement.files;
+                    var isValidImagesMimeTypes = true;
+                    mrValidElement("mr-maxheight-fb");
+        
+                    for(var i = 0; i < fileList.length; i++)
+                    {   
+                        var file = fileList[i];   
+                        fileMimeType = file.type;
+                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+                        if(!patternImageMimeType.test(fileMimeType))
+                        {
+                            isValidImagesMimeTypes = false;
+                            break;
+                        }
+        
+                        var fileReader = new FileReader;
+                        fileReader.readAsDataURL(file);
+        
+                        fileReader.onload = function(e)
+                        {
+                            var result = e.target.result;
+                            imageElementTest =  newImageElementTest(result);
+                            
+                            var height = imageElementTest.naturalHeight;
+    
+                            if(height == 0)
+                            {
+                                return mrMaxheight(mrElement);
+                            }
+    
+                            if(height > acceptedMaxHeight)
+                            {
+                                mrInvalidElement("mr-maxheight-fb");
+                                mrForm.onsubmit = function (event)
+                                {
+                                    if(mrElement.classList.contains("mr-invalid"))
+                                    {
+                                        event.preventDefault();
+                                    }
+                                }
+                            }
+                        }
+                    }
+        
+                    if(!isValidImagesMimeTypes)
+                    {
+                        mrInvalidElement("mr-maxheight-fb");
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- The value of attribute maxheight is not a valid integer number or is less than 1 at the element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-maxheight-fb");
+                }
+            }
+        }
+    }
+    
+
+    //VALIDATE THE IMAGE RESOLUTION OF FILE INPUT
+    mrResolution(mrElement);
+    function mrResolution(mrElement)
+    {
+        if((mrHasAttribute(mrElement, "resolution") || mrHasAttribute(mrElement, "data-resolution")) && mrHasInputType(mrElement, "file"))
+        {
+            var acceptedResolutions = mrElement.getAttribute("data-resolution");
+            if(acceptedResolutions == null)
+            {
+                acceptedResolutions = mrElement.getAttribute("resolution");
+            }
+
+            if(acceptedResolutions != "")
+            {
+                var patternValidResolutions = /(^([\s]*[0-9]+)x([0-9]+[\s]*)$)|^([\s]*[0-9]+)x([0-9]+[\s]*)(,([\s]*[0-9]+)x([0-9]+)+[\s]*)*$/i;
+                var isValidAcceptedResolutions = true;
+        
+                if(!patternValidResolutions.test(acceptedResolutions))
+                {
+                    isValidAcceptedResolutions = false;
+                }   else
+                {
+                    acceptedResolutions = acceptedResolutions.replace(/[ ]/g, "");
+                    acceptedResolutions = acceptedResolutions.replace(/[X]/g, "x");
+                    acceptedResolutionsSplitted = acceptedResolutions.split(",");
+        
+                    for(var i = 0; i < acceptedResolutionsSplitted.length; i++)
+                    {
+                        var acceptedResolution = acceptedResolutionsSplitted[i];
+                        acceptedResolution = acceptedResolution.split(/x/i);
+                        if(!mrIsInteger(acceptedResolution[0]) && acceptedResolution[0] < 0)
+                        {
+                            isValidAcceptedResolutions = false;
+                        }
+                        if(!mrIsInteger(acceptedResolution[1]) && acceptedResolution[1] < 0)
+                        {
+                            isValidAcceptedResolutions = false;
+                        }
+                    }
+                }
+        
+                if(isValidAcceptedResolutions)
+                {
+                    var fileList = mrElement.files;
+                    if(fileList.length > 0)
+                    {
+                        var isValidImagesMimeTypes = true;
+                        mrValidElement("mr-resolution-fb");
+                        
+                        for(var i = 0; i <= fileList.length; i++)
+                        { 
+    
+                            var file = fileList[i];
+                            if(i == fileList.length)
+                            {
+                                file = fileList[fileList.length-1];
+                            }
+            
+                            fileMimeType = file.type;
+                            patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+            
+                            if(!patternImageMimeType.test(fileMimeType))
+                            {
+                                isValidImagesMimeTypes = false;
+                                break;
+                            }
+            
+                            var fileReader = new FileReader;
+                            fileReader.readAsDataURL(file);
+    
+                            
+                            fileReader.onload = function(e)
+                            {
+                                var result = e.target.result;
+                                imageElementTest = newImageElementTest(result);
+                            
+                                var width = imageElementTest.naturalWidth;
+                                var height = imageElementTest.naturalHeight;
+                                var resolution = width + "x" + height;
+    
+                                if(width == 0 || height == 0)
+                                {
+                                    return mrResolution(mrElement);
+                                }
+            
+                                var patternResolution = new RegExp(resolution)                            
+                                if(!patternResolution.test(acceptedResolutions))
+                                {
+                                    mrInvalidElement("mr-resolution-fb");
+                                    mrForm.onsubmit = function (event)
+                                    {
+                                        if(mrElement.classList.contains("mr-invalid"))
+                                        {
+                                            event.preventDefault();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+            
+                        if(!isValidImagesMimeTypes)
+                        {
+                            mrInvalidElement("mr-resolution-fb");
+                        }
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- Is not a valid resolution valu at the element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-resolution-fb");
+                }
+            }
+        }
+    }
+    
+
+    //VALIDATE THE IMAGE ASPECT RATIO OF FILE INPUT
+    mrRatio(mrElement);
+    function mrRatio(mrElement)
+    {
+        if((mrHasAttribute(mrElement, "ratio") || mrHasAttribute(mrElement, "data-ratio")) && mrHasInputType(mrElement, "file"))
+        {
+            var acceptedRatios = mrElement.getAttribute("data-ratio");
+            if(acceptedRatios == null)
+            {
+                acceptedRatios = mrElement.getAttribute("ratio");
+            }
+            
+            if(acceptedRatios != "")
+            {
+                var patternValidRatios = /((^([\s]*[0-9]+)\.([0-9]+[\s]*)$)|(^([\s]*[0-9]+):([0-9]+[\s]*)$)|(^([\s]*(1)[\s]*)$))|((^([\s]*[0-9]+)\.([0-9]+[\s]*))|(^([\s]*[0-9]+):([0-9]+[\s]*))|(^([\s]*(1)[\s]*)))(,((([\s]*[0-9]+)\.([0-9]+[\s]*))|(([\s]*[0-9]+):([0-9]+[\s]*))|(([\s]*(1)[\s]*))))*$/;
+                var isValidAcceptedRatios = true;
+        
+                if(!patternValidRatios.test(acceptedRatios))
+                {
+                    isValidAcceptedRatios = false;
+                }   else
+                {
+                    acceptedRatios = acceptedRatios.replace(/[ ]/g, "");
+                    acceptedRatios = acceptedRatios.split(",");
+                    var patternDivisionRatio = /^([\s]*[0-9]+):([0-9]+[\s]*)$/;
+    
+                    var acceptedRatiosNormalized = [];
+                    for(var i = 0; i < acceptedRatios.length; i++)
+                    {
+                        
+                        if(patternDivisionRatio.test(acceptedRatios[i]))
+                        {
+                            var divisionRatioSplitted = acceptedRatios[i].split(":");
+                            acceptedRatios[i] = divisionRatioSplitted[0]/divisionRatioSplitted[1];
+                        }
+    
+                        acceptedRatios[i] = Number(acceptedRatios[i]);
+                        acceptedRatios[i] = acceptedRatios[i].toFixed(3);
+    
+                        if(acceptedRatiosNormalized.indexOf(acceptedRatios[i]) < 0)
+                        {
+                            acceptedRatiosNormalized.push(acceptedRatios[i]);
+                        }
+                    }
+    
+                    acceptedRatios = acceptedRatiosNormalized;
+                    acceptedRatios = acceptedRatios.toString();
+                    acceptedRatiosNormalized = undefined;
+                }
+    
+                if(isValidAcceptedRatios)
+                {
+                    var fileList = mrElement.files;
+                    if(fileList.length > 0)
+                    {
+                        var isValidImagesMimeTypes = true;
+                        mrValidElement("mr-ratio-fb");
+    
+                        for(var i = 0; i <= fileList.length; i++)
+                        {  
+                            var file = fileList[i];
+                            if(i == fileList.length)
+                            {
+                                file = fileList[fileList.length-1];
+                            }
+            
+                            fileMimeType = file.type;
+                            patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+            
+                            if(!patternImageMimeType.test(fileMimeType))
+                            {
+                                isValidImagesMimeTypes = false;
+                                break;
+                            }
+            
+                            var fileReader = new FileReader;
+                            fileReader.readAsDataURL(file);
+                            
+                            fileReader.onload = function(e)
+                            {
+                                var result = e.target.result;
+                                imageElementTest = newImageElementTest(result);
+                            
+                                var width = imageElementTest.naturalWidth;
+                                var height = imageElementTest.naturalHeight;
+                                var ratio = width/height;
+                                ratio = ratio.toFixed(3);
+    
+                                if(width == 0 || height == 0)
+                                {
+                                    return mrRatio(mrElement);
+                                }
+            
+                                var patternRatio = new RegExp(ratio);
+    
+                                if(!patternRatio.test(acceptedRatios))
+                                {
+                                    mrInvalidElement("mr-ratio-fb");
+                                    mrForm.onsubmit = function (event)
+                                    {
+                                        if(mrElement.classList.contains("mr-invalid"))
+                                        {
+                                            event.preventDefault();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+            
+                        if(!isValidImagesMimeTypes)
+                        {
+                            mrInvalidElement("mr-ratio-fb");
+                        }
+                    }
+                }   else
+                {
+                    console.error("MY RULES ERROR:\n" + "- Is not a valid ratio valu at the element:");
+                    console.error(mrElement);
+                    mrInvalidElement("mr-ratio-fb");
+                }
+            }
+        }
+    }
+    
+
     //END OF ELEMENT VALIDATION
 
     //NON DISPLAY ELEMENT .mrFeedback IF THE ELEMENT HAS VALID
@@ -1031,7 +2697,7 @@ function mrValidateElement(mrElement)
         mrRemoveClass(mrElement,"mr-invalid");
 
         //CUSTUM ELEMENT WHEN HAS VALID
-        if(mrForm != undefined && mrForm.classList.contains("mr-colors") && mrIsvalidElement)
+        if(mrForm != undefined && mrForm.classList.contains("mr-colors-style") && mrIsvalidElement)
         {
             if(mrElement.classList.contains("mr-checkbox") || mrElement.classList.contains("mr-radio"))
             {
@@ -1044,8 +2710,9 @@ function mrValidateElement(mrElement)
                     mrCheckElements = mrElement.querySelectorAll("input[type=radio]");
                 }
 
-                for (mrCheckElement of mrCheckElements)
+                for(var i = 0; i < mrCheckElements.length; i++)
                 {
+                    var mrCheckElement = mrCheckElements[i];
                     mrCheckElement.style.borderColor = "rgb(22, 160, 133)";
                     mrCheckElement.style.boxShadow = "0 0 0 2px rgb(22, 160, 133, 0.5)";
                     mrCheckElement.style.backgroundColor = "rgba(22, 160, 133, 0.5)";
@@ -1071,7 +2738,7 @@ function mrValidateElement(mrElement)
         if(mrFeedbackMessage != null)
         {
             mrFeedbackMessage.style.display = "none";
-            if(mrForm != undefined && mrForm.classList.contains("mr-colors"))
+            if(mrForm != undefined && mrForm.classList.contains("mr-colors-style"))
             {
                 mrFeedbackMessage.style.color = "rgb(22, 160, 133)";
             }
@@ -1086,7 +2753,7 @@ function mrValidateElement(mrElement)
         mrRemoveClass(mrElement,"mr-valid");
 
         //CUSTUM ELEMENT WHEN HAS INVALID
-        if(mrForm != undefined && mrForm.classList.contains("mr-colors"))
+        if(mrForm != undefined && mrForm.classList.contains("mr-colors-style"))
         {
             if(mrElement.classList.contains("mr-checkbox") || mrElement.classList.contains("mr-radio"))
             {
@@ -1099,8 +2766,9 @@ function mrValidateElement(mrElement)
                     mrCheckElements = mrElement.querySelectorAll("input[type=radio]");
                 }
 
-                for (mrCheckElement of mrCheckElements)
+                for(var i = 0; i < mrCheckElements.length; i++)
                 {
+                    var mrCheckElement = mrCheckElements[i];
                     mrCheckElement.style.borderColor = "rgb(242, 127, 127)";
                     mrCheckElement.style.boxShadow = "0 0 0 2px rgb(239, 105, 92, 0.5)";
                 }
@@ -1127,7 +2795,7 @@ function mrValidateElement(mrElement)
             mrFeedback.style.display = "";
             mrFeedbackMessage.style.display = "";
 
-            if(mrForm != undefined && mrForm.classList.contains("mr-colors"))
+            if(mrForm != undefined && mrForm.classList.contains("mr-colors-style"))
             {
                 mrFeedbackMessage.style.color = "rgb(225, 104, 104)";
             }
@@ -1169,17 +2837,17 @@ function mrValidateElement(mrElement)
     }
 
     //COMPARE AN ELEMENT VALUE WITH THERE ATTRIBUTE VALUE
-    function mrCompareElemValueAttrValue(element, attributeName, typeOfComparation)
+    function mrCompareValue(element, attributeName, typeOfComparation)
     {
         if(mrHasAttribute(element, attributeName))
         {
             switch (typeOfComparation)
             {
-                case 1:  //COMPARE IF ELEMENT'S VALUE IS GREATER THAN ATTRIBUTE'S VALUE
+                case ">":  //COMPARE IF ELEMENT'S VALUE IS GREATER THAN ATTRIBUTE'S VALUE
                     return Number(element.value) > Number(element.getAttribute(attributeName));
-                case 2: //COMPARE IF ELEMENT'S VALUE IS LESS THAN ATTRIBUTE'S VALUE
+                case "<": //COMPARE IF ELEMENT'S VALUE IS LESS THAN ATTRIBUTE'S VALUE
                     return Number(element.value) < Number(element.getAttribute(attributeName));
-                case 3: //COMPARE IF ELEMENT'S VALUE IS IQUAL TO ATTRIBUTE'S VALUE
+                case "=": //COMPARE IF ELEMENT'S VALUE IS IQUAL TO ATTRIBUTE'S VALUE
                     return Number(element.value) == Number(element.getAttribute(attributeName));
             }
         }
@@ -1187,15 +2855,21 @@ function mrValidateElement(mrElement)
     }
 
     //COMPARE TWO DATE'S VALUE
-    function mrCompareDates(date1, date2, typeOfComparation)
+    function mrCompareDates(date1, date2, typeOfComparation, dateFormat)
     {
+        date1 = mrConvertDateFormat(date1, dateFormat, "YYYY-MM-DD");
+        date1 = date1.fullDate;
+
+        date2 = mrConvertDateFormat(date2, dateFormat, "YYYY-MM-DD");
+        date2 = date2.fullDate;
+
         switch (typeOfComparation)
         {
-            case 1: //COMPARE IF DATE 1 IS GREATER THAN DATE 2
+            case ">": //COMPARE IF DATE 1 IS GREATER THAN DATE 2
                 return date1 > date2;
-            case 2: //COMPARE IF DATE 1 IS LESS THAN DATE 2
+            case "<": //COMPARE IF DATE 1 IS LESS THAN DATE 2
                 return date1 < date2;
-            case 3: //COMPARE IF DATA 1 IS IQUAL TO DATE 2
+            case "=": //COMPARE IF DATA 1 IS IQUAL TO DATE 2
                 return date1 == date2;
         }
         return false;
@@ -1216,8 +2890,17 @@ function mrValidateElement(mrElement)
     }
 
     //GET DATE OBJECT HAS STRING
-    function mrGetDateString()
+    function mrGetfullDate(dateFormat)
     {
+        if(dateFormat == null || dateFormat == "")
+        {
+            dateFormat = "YYYY-MM-DD";
+        }
+        if(!mrIsValidDateFormat(dateFormat))
+        {
+            return false;
+        }
+
         var mrDateObject = new Date();
         var mrYear = mrDateObject.getFullYear();
 
@@ -1233,40 +2916,603 @@ function mrValidateElement(mrElement)
             mrDay = "0" + mrDay;
         }
 
-        var mrDateString = mrYear + "-" + mrMonth + "-" + mrDay;
+        var mrFullDate = mrConvertDateFormat(mrDateString, "YYYY-MM-DD", dateFormat);
+        mrFulldate = mrFullDate.fullDate;
 
-        return mrDateString;
+        return mrFullDate.fullDate;
     }
+
+    // FUNCTION TO GET DATE FORMATS
+    function mrGetdateFormats()
+    { 
+        const DATEFORMATS = [
+            "YYYY-MM-DD",
+            "YYYY/MM/DD", 
+            "YYYY.MM.DD", 
+            "YYYY,MM,DD",
+            "DD-MM-YYYY",
+            "DD/MM/YYYY",
+            "DD.MM.YYYY",
+            "DD,MM,YYYY",
+            "MM-DD-YYYY",
+            "MM/DD/YYYY",
+            "MM.DD.YYYY",
+            "MM,DD,YYYY"
+        ];
+        return DATEFORMATS;
+    }
+
+    // FUNCTION TO VERIFY IF IS VALID DATE FORMAT
+    function mrIsValidDateFormat(dateFormat)
+    {
+        var dateFormats = mrGetdateFormats();
+        
+        var isValidDateFormat = false;
+        for(var i = 0; i < dateFormats.length; i++)
+        {
+            var df = dateFormats[i];
+            var dateFormatRegularExpression = "^" + df + "$";
+            dateFormatRegularExpression = dateFormatRegularExpression.replace("YYYY", "(YYYY){1}");
+            dateFormatRegularExpression = dateFormatRegularExpression.replace("MM", "(MM){1}");
+            dateFormatRegularExpression = dateFormatRegularExpression.replace("DD", "(DD){1}");
+            dateFormatRegularExpression = dateFormatRegularExpression.replace(/[-]/g, "[-]{1}");
+            dateFormatRegularExpression = dateFormatRegularExpression.replace(/[/]/g, "[/]{1}");
+            dateFormatRegularExpression = dateFormatRegularExpression.replace(/[.]/g, "[.]{1}");
+            dateFormatRegularExpression = dateFormatRegularExpression.replace(/[,]/g, "[,]{1}");
+            
+            var dateFormatPattern = new RegExp(dateFormatRegularExpression);
+            if(dateFormatPattern.test(dateFormat))
+            {
+                isValidDateFormat = true;
+            }
+        }
+        return isValidDateFormat;
+    }
+
+
+    // FUNCTION TO CONVERT THE FORMAT OF DATE
+    function mrConvertDateFormat(date , dateFormat, toDateFormat)
+    {
+        var dateFormats = mrGetdateFormats();
+
+        if(dateFormat == "" || dateFormat == null)
+        {
+            dateFormat = dateFormats[0];
+        }
+        if(toDateFormat == "" || toDateFormat == null)
+        {
+            toDateFormat = dateFormats[0];
+        }
+      
+        var mrYear;
+        var mrMonth;
+        var mrDay
+        
+        if(!mrIsValidDateFormat)
+        {
+            return false;
+        }
+
+        if(dateFormat == dateFormats[0] || dateFormat == dateFormats[1] || dateFormat == dateFormats[2])
+        {
+            mrYear = date.slice(0, 4);
+            mrMonth = date.slice(5, 7);
+            mrDay = date.slice(8, 10);
+        } else if(dateFormat == dateFormats[3] || dateFormat == dateFormats[4] || dateFormat == dateFormats[5])
+        {
+            mrDay = date.slice(0, 2);
+            mrMonth = date.slice(3, 5);
+            mrYear = date.slice(6, 10);
+        } else if(dateFormat == dateFormats[6] || dateFormat == dateFormats[7] || dateFormat == dateFormats[8])
+        {
+            mrmonth = date.slice(0, 2);
+            mrDay = date.slice(3, 5);
+            mrYear = date.slice(6, 10);
+        }
+
+        switch(toDateFormat) 
+        {
+            case dateFormats[0]:
+                return {fullDate: mrYear + "-" + mrMonth + "-" + mrDay, year: mrYear, month: mrMonth, day: mrDay};
+            
+            case dateFormats[1]:
+                return {fullDate: mrYear + "/" + mrMonth + "/" + mrDay, year: mrYear, month: mrMonth, day: mrDay};
+
+            case dateFormats[2]:
+                return {fullDate: mrYear + "." + mrMonth + "." + mrDay, year: mrYear, month: mrMonth, day: mrDay};
+                
+            case dateFormats[3]:
+                return {fullDate: mrYear + "," + mrMonth + "," + mrDay, year: mrYear, month: mrMonth, day: mrDay};
+
+            case dateFormats[4]:
+                return {fullDate: mrDay + "-" + mrMonth + "-" + mrYear, year: mrYear, month: mrMonth, day: mrDay};
+            
+            case dateFormats[5]:
+                return {fullDate: mrDay + "/" + mrMonth + "/" + mrYear, year: mrYear, month: mrMonth, day: mrDay};
+
+            case dateFormats[6]:
+                return {fullDate: mrDay + "." + mrMonth + "." + mrYear, year: mrYear, month: mrMonth, day: mrDay};
+
+            case dateFormats[7]:
+                return {fullDate: mrDay + "," + mrMonth + "," + mrYear, year: mrYear, month: mrMonth, day: mrDay};
+
+            case dateFormats[8]:
+                return {fullDate: mrMonth + "-" + mrDay + "-" + mrYear, year: mrYear, month: mrMonth, day: mrDay};
+            
+            case dateFormats[9]:
+                return {fullDate: mrMonth + "/" + mrDay + "/" + mrYear, year: mrYear, month: mrMonth, day: mrDay};
+
+            case dateFormats[10]:
+                return {fullDate: mrMonth + "." + mrDay + "." + mrYear, year: mrYear, month: mrMonth, day: mrDay};
+
+            case dateFormats[11]:
+                return {fullDate: mrMonth + "," + mrDay + "," + mrYear, year: mrYear, month: mrMonth, day: mrDay};
+        }
+
+    }
+
 
     //VERIFY IF IS VALID FULL DATE
-    function mrIsValidFullDate(date)
+    function mrIsValidFullDate(date, dateFormat)
     {
-        var mrFullDateRegularExpression = /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/;
-        return mrFullDateRegularExpression.test(date);
+        var dateFormats = mrGetdateFormats();
+
+        if(dateFormat == "" || dateFormat == null)
+        {
+            dateFormat = dateFormats[0];
+        }
+
+        var isValidDateFormat = mrIsValidDateFormat(dateFormat);
+
+        if(isValidDateFormat)
+        {
+            var standardDate = mrConvertDateFormat(date, dateFormat, "YYYY-MM-DD");
+            var year = standardDate.year;
+            var month = standardDate.month;
+            var day = standardDate.day;
+            
+            var dateRegularExpression;
+            switch(dateFormat) 
+            {
+                case dateFormats[0]:
+                    dateRegularExpression = "(^[0-9]{4})[-]{1}([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[-]{1}([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})$";
+                    break;
+                case dateFormats[1]:
+                    dateRegularExpression = "(^[0-9]{4})[/]{1}([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[/]{1}([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})$";
+                    break;
+
+                case dateFormats[2]:
+                    dateRegularExpression = "(^[0-9]{4})[.]{1}([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[.]{1}([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})$";
+                    break;
+                    
+                case dateFormats[3]:
+                    dateRegularExpression = "(^[0-9]{4})[,]{1}([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[,]{1}([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})$";
+                    break;
+
+                case dateFormats[4]:
+                    dateRegularExpression = "^([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})[-]{1}([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[-]{1}([0-9]{4})$";
+                    break;
+                
+                case dateFormats[5]:
+                    dateRegularExpression = "^([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})[/]{1}([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[/]{1}([0-9]{4})$";
+                    break;
+
+                case dateFormats[6]:
+                    dateRegularExpression = "^([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})[.]{1}([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[.]{1}([0-9]{4})$";
+                    break;
+
+                case dateFormats[7]:
+                    dateRegularExpression = "^([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})[,]{1}([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[,]{1}([0-9]{4})$";
+                    break;
+
+                case dateFormats[8]:
+                    dateRegularExpression = "^([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[-]{1}([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})[-]{1}([0-9]{4})$";
+                    break;
+                
+                    case dateFormats[9]:
+                    dateRegularExpression = "^([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[/]{1}([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})[/]{1}([0-9]{4})$";
+                    break;
+
+                case dateFormats[10]:
+                    dateRegularExpression = "^([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[.]{1}([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})[.]{1}([0-9]{4})$";
+                    break;
+
+                case dateFormats[11]:
+                    dateRegularExpression = "^([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[,]{1}([0]{1}[1-9]{1}|[1]{1}[0-9]{1}|[2]{1}[0-9]{1}|[3]{1}[0-1]{1})[,]{1}([0-9]{4})$";
+                    break;
+            }
+
+            var datePattern = new RegExp(dateRegularExpression);
+            if(!datePattern.test(date))
+            {
+                return false;
+            }
+            if(year == "0000")
+            {
+                return false;
+            }
+
+            var dateObject = new Date(year + "-" + month + "-" + day);
+            if(Number.isNaN(dateObject.getDate()))
+            {
+                return false;
+            }
+            return true;
+        } else
+        {
+            console.error("MY RULES ERROR:\n" + "- Invalid date format \"" + dateFormat + "\" set at: ");
+            
+            var mrDateInputs = mrForm.querySelectorAll(".mr-date");
+            
+            for(var i = 0; i < mrDateInputs.length; i++)
+            {
+                var mrDateInput = mrDateInputs[i];
+                if(mrDateInput.getAttribute("dateformat") == dateFormat)
+                {
+                    console.log(mrDateInput);
+                }
+            }
+            return false;
+        }
     }
 
+    function mrGetMimeTypes()
+    {
+        var mimeTypes = {
+            json: {extension: ".json", documentKind: "JSON format", mimeType: "application/json"},
+            jsonld: {extension: ".jsonld", documentKind: "JSON-LD format", mimeType: "application/ld+json"},
+            mid: {extension: ".mid", documentKind: "Musical Instrument Digital Interface (MIDI)", mimeType: "audio/midi"},
+            midi: {extension: ".midi", documentKind: "Musical Instrument Digital Interface (MIDI)", mimeType: "audio/x-midi"},
+            mjs: {extension: ".mjs", documentKind: "JavaScript module", mimeType: "text/javascript"},
+            mp3: {extension: ".mp3", documentKind: "MP3 audio", mimeType: "audio/mpeg"},
+            cda: {extension: ".cda", documentKind: "CD audio", mimeType: "application/x-cdf"},
+            mp4: {extension: ".mp4", documentKind: "MP4 audio", mimeType: "video/mp4"},
+            mpeg: {extension: ".mpeg", documentKind: "MPEG Video", mimeType: "video/mpeg"},
+            doc: {extension: ".doc", documentKind: "Microsoft Word - Rich Test Format", mimeType: "application/msword"},
+            docx: {extension: ".docx", documentKind: "Microsoft Word Document", mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
+            mpkg: {extension: ".mpkg", documentKind: "Apple Installer Package", mimeType: "application/vnd.apple.installer+xml"},
+            odp: {extension: ".odp", documentKind: "OpenDocument presentation document", mimeType: "application/vnd.oasis.opendocument.presentation"},
+            ods: {extension: ".ods", documentKind: "OpenDocument spreadsheet document", mimeType: "application/vnd.oasis.opendocument.spreadsheet"},
+            odt: {extension: ".odt", documentKind: "OpenDocument text document", mimeType: "application/vnd.oasis.opendocument.text"},
+            oga: {extension: ".oga", documentKind: "OGG audio", mimeType: "audio/ogg"},
+            ogv: {extension: ".ogv", documentKind: "OGG video", mimeType: "video/ogg"},
+            ogx: {extension: ".ogx", documentKind: "OGG", mimeType: "application/ogg"},
+            opus: {extension: ".opus", documentKind: "Opus audio", mimeType: "audio/opus"},
+            otf: {extension: ".otf", documentKind: "OpenType font", mimeType: "font/otf"},
+            png: {extension: ".png", documentKind: "Portable Network Graphics", mimeType: "image/png"},
+            jpeg: {extension: ".jpeg", documentKind: "JPGE Image", mimeType: "image/jpeg"},
+            pdf: {extension: ".pdf", documentKind: "Adobe Portable Document Format(PDF)", mimeType: "application/pdf"},
+            php: {extension: ".php", documentKind: "Hypertext Preprocessor (Personal Home Page)", mimeType: "application/x-httpd-php"},
+            ppt: {extension: ".ppt", documentKind: "Microsoft PowerPoint", mimeType: "application/vnd.ms-powerpoint"},
+            pptx: {extension: ".pptx", documentKind: "Microsoft PowerPoint (OpenXML)", mimeType: "application/vnd.openxmlformats-officedocument.presentationml.presentation"},
+            rar: {extension: ".rar", documentKind: "RAR archive", mimeType: "application/vnd.rar"},
+            rtf: {extension: ".rtf", documentKind: "Rich Text Format (RTF)", mimeType: "application/rtf"},
+            sh: {extension: ".sh", documentKind: "Bourne shell script", mimeType: "application/x-sh"},
+            svg: {extension: ".svg", documentKind: "Scalable Vector Graphics (SVG)", mimeType: "image/svg+xml"},
+            swf: {extension: ".swf", documentKind: "Small web format (SWF) or Adobe Flash document", mimeType: "application/x-shockwave-flash"},
+            tar: {extension: ".tar", documentKind: "Tape Archive (TAR)", mimeType: "application/x-tar"},
+            tif: {extension: ".tif", documentKind: "Tagged Image File Format (TIFF)", mimeType: "image/tiff"},
+            tiff: {extension: ".tiff", documentKind: "Tagged Image File Format (TIFF)", mimeType: "image/tiff"},
+            ts: {extension: ".ts", documentKind: "MPEG transport stream", mimeType: "video/mp2t"},
+            ttf: {extension: ".ttf", documentKind: "TrueType Font", mimeType: "font/ttf"},
+            txt: {extension: ".txt", documentKind: "Text, (generally ASCII or ISO 8859-n)", mimeType: "text/plain"},
+            vsd: {extension: ".vsd", documentKind: "Microsoft Visio", mimeType: "application/vnd.visio"},
+            wav: {extension: ".wav", documentKind: "Waveform Audio Format", mimeType: "audio/wav"},
+            weba: {extension: ".weba", documentKind: "WEBM audio", mimeType: "audio/webm"},
+            webm: {extension: ".webm", documentKind: "WEBM video", mimeType: "video/webm"},
+            webp: {extension: ".webp", documentKind: "WEBP image", mimeType: "image/webp"},
+            woff: {extension: ".woff", documentKind: "Web Open Font Format (WOFF)", mimeType: "font/woff"},
+            woff2: {extension: ".woff2", documentKind: "Web Open Font Format (WOFF)", mimeType: "font/woff2"},
+            xhtml: {extension: ".xhtml", documentKind: "XHTML", mimeType: "application/xhtml+xml"},
+            xls: {extension: ".xls", documentKind: "Microsoft Excel", mimeType: "application/vnd.ms-excel"},
+            xlsx: {extension: ".xlsx", documentKind: "Microsoft Excel (OpenXML)", mimeType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+            pub: {extension: ".pub", documentKind: "Microsoft Publisher", mimeType: "application/vnd.ms-publisher"},
+            accdb: {extension: ".accdb", documentKind: "Microsoft Access", mimeType: "application/msaccess"},
+            xml: {extension: ".xml", documentKind: "XML - (if not readable from casual users)", mimeType: "application/xml"},
+            xmltext: {extension: ".xml", documentKind: "XML - (if readable from casual users)", mimeType: "text/xml"},
+            xul: {extension: ".xul", documentKind: "XUL", mimeType: "application/vnd.mozilla.xul+xml"},
+            zip: {extension: ".zip", documentKind: "ZIP archive", mimeType: "application/zip"},
+            video3gp: {extension: ".3gp", documentKind: "3GPP - audio/video container (if it contains video)", mimeType: "video/3gpp"},
+            audio3gp: {extension: ".3gp", documentKind: "3GPP - audio/video container (if it doesn't contain video)", mimeType: "audio/3gpp"},
+            video3gp2: {extension: ".3gp2", documentKind: "3GPP - audio/video container (if it contains video)", mimeType: "video/3gpp2"},
+            audio3gp2: {extension: ".3gp2", documentKind: "3GPP2 - audio/video container (if it doesn't contain video)", mimeType: "audio/3gpp2"},
+            zip7z: {extension: ".7z", documentKind: "7-zip - archive", mimeType: "application/x-7z-compressed"}
+        };
+
+        return mimeTypes;
+    }
+    
+    // FUNCTION TO VALIDATE AN IP
+    function mrIsIP(ip)
+    {
+        if
+        (
+            mrIsIPv4DotDecimalNotation(ip) ||
+            mrIsIPv4DotBinaryNotation(ip) ||
+            mrIsIPv4DotHexadecimalNotation(ip) ||
+            mrIsIPv4DotOctalByteNotation(ip) ||
+            mrIsIPv6HexadecimalNotation(ip) ||
+            mrIsIPv6BinaryNotation(ip)
+        )
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    // FUNCTION TO VALIDATE AN IPv4
+    function mrIsIPv4(ip)
+    {
+        if
+        (
+            mrIsIPv4DotDecimalNotation(ip) ||
+            mrIsIPv4DotBinaryNotation(ip) ||
+            mrIsIPv4DotHexadecimalNotation(ip) ||
+            mrIsIPv4DotOctalByteNotation(ip)
+        )
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    // FUNCTION TO VALIDATE AN IPv6
+    function mrIsIPv6(ip)
+    {
+        if (mrIsIPv6HexadecimalNotation(ip) || mrIsIPv6BinaryNotation(ip))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    
+    // FUNCTION TO VALIDATE AN IPv4 DOT-DECIMAL NOTATION
+    function mrIsIPv4DotDecimalNotation(ip)
+    {
+        var ipv4RegularExpression = "^([0-9]{1,3})(([.][0-9]{1,3}){3})$";
+        var ipv4Pattern = new RegExp(ipv4RegularExpression);
+
+        if(ipv4Pattern.test(ip))
+        {
+            var mrOctets = ip.split(".");
+            
+            for (var i = 0; i < mrOctets.length; i++)
+            {
+                var mrOctet = mrOctets[i];
+                if(mrOctet < 0 || mrOctet > 255)
+                {
+                    return false
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    
+    // FUNCTION TO VALIDATE AN IPv4 DOT-BINARY NOTATION
+    function mrIsIPv4DotBinaryNotation(ip)
+    {
+        var ipv4RegularExpression = "^(([0-1]){8})(([.][0-1]{8}){3})$";
+        var ipv4Pattern = new RegExp(ipv4RegularExpression);
+
+        if(ipv4Pattern.test(ip))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    
+    // FUNCTION TO VALIDATE AN IPv4 DOT-HEXADECIMAL NOTATION
+    function mrIsIPv4DotHexadecimalNotation(ip)
+    {
+        var ipv4RegularExpression = "^([0][x][0-9A-Fa-f]{2})(([.][0][x][0-9A-Fa-f]{2}){3})$";
+        var ipv4Pattern = new RegExp(ipv4RegularExpression);
+
+        if(ipv4Pattern.test(ip))
+        {
+            ipWithoutPrefix =  ip.replace(/0x/g,"");
+            ipWithoutPrefix = ipWithoutPrefix.toUpperCase();
+            var mrOctets = ipWithoutPrefix.split(".");
+
+            for (var i = 0; i < mrOctets.length; i++)
+            {
+                var mrOctet = mrOctets[i] + "";
+
+                if(mrOctet > "FF")
+                {
+                    return false
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    
+    // FUNCTION TO VALIDATE AN IPv4 DOT-OCTAL BYTE NOTATION
+    function mrIsIPv4DotOctalByteNotation(ip)
+    {
+        var ipv4RegularExpression = "^([0][0-7]{3})(([.][0][0-7]{3}){3})$";
+        var ipv4Pattern = new RegExp(ipv4RegularExpression);
+
+        if(ipv4Pattern.test(ip))
+        {
+            var mrOctets = ipWithoutPrefix.split(".");
+
+            for (var i = 0; i < mrOctets.length; i++)
+            {
+                var mrOctet = mrOctets[i] + "";
+
+                if(mrOctet > "0377")
+                {
+                    return false
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    
+    // FUNCTION TO VALIDATE AN IPv6 DOT-HEXADECIMAL NOTATION
+    function mrIsIPv6HexadecimalNotation(ip)
+    {
+        let ipv6RegularExpression = "^([0-9A-Fa-f]{4}|[0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4})(([:][0-9A-Fa-f]{4}|[:][0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4}){0,7}([:]{2}){0,1})$";
+        let ipv6Pattern = new RegExp(ipv6RegularExpression);
+
+        let firstIndexOfAbbreviation = ip.indexOf("::");
+        let lastIndexOfAbbreviation = ip.lastIndexOf("::");
+        
+        if(firstIndexOfAbbreviation != lastIndexOfAbbreviation)
+        {
+            return false;
+        }
+
+        if(ipv6Pattern.test(ip))
+        {
+            ip = ip.toUpperCase();
+            let mr16Bits = ip.split(":");
+
+            if(firstIndexOfAbbreviation < 0 && mr16Bits.length != 8)
+            {
+                return false;
+            }
+
+            for (let i = 0; i < mr16Bits.length; i++)
+            {
+                let mr16Bit = mr16Bits[i];
+                if(mr16Bit != "")
+                {
+                    if(mr16Bit > "FFFF")
+                    {
+                        return false
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // FUNCTION TO VALIDATE AN IPv6 DOT-BINARY NOTATION
+    function mrIsIPv6BinaryNotation(ip)
+    {
+        var ipv4RegularExpression = "^(([0-1]){16})(([.][0-1]{16}){7})$";
+        var ipv4Pattern = new RegExp(ipv4RegularExpression);
+
+        if(ipv4Pattern.test(ip))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // FUNCTION TO CREATE A NEW HIDDEN IMAGE TO MAKE TEST OF VALIDATIONS OF DIMENTIONS OF IMAGE
+    function newImageElementTest(imgSrc)
+    {
+        
+        var id = "mr-image-element-test-id";
+
+        var newImageElementTest = document.getElementById(id);
+        var appendImageElementTest = false;
+        if(newImageElementTest == null)
+        {
+            appendImageElementTest =  true;
+            newImageElementTest = document.createElement("IMG");
+        }
+
+        newImageElementTest.setAttribute("hidden","");
+        newImageElementTest.setAttribute("id", id);
+
+        if(imgSrc != null)
+        {
+            newImageElementTest.setAttribute("src", imgSrc);
+        }
+
+        if(appendImageElementTest == true)
+        {
+            document.body.appendChild(newImageElementTest);
+        }
+
+        return document.querySelector("#"+id);
+    }
+
+
+    // FUNCTION TO GET THE ACCEPTED PRINTABLE SPECIAL CHARS OF AN E-MAIL AND USERNAME
+    function mrGetPrintableSpecialChars(mrElement)
+    {
+        
+        let mrSpecialChars = mrElement.getAttribute("data-specialchars");
+        if(mrSpecialChars == null)
+        {
+            mrSpecialChars = mrElement.getAttribute("specialchars");
+        }
+
+        let mrAcceptedPrintableSpecialChars = "!#$%&'*+-/=?^_`{|}~.";
+
+        let mrPrintableSpecialChars = mrAcceptedPrintableSpecialChars;
+
+        if(mrSpecialChars != null && mrSpecialChars != "")
+        {
+            mrPrintableSpecialChars = "";
+            mrSpecialChars = mrSpecialChars.split("");
+
+            for(mrSpecialChar of mrSpecialChars)
+            {
+                if(mrAcceptedPrintableSpecialChars.indexOf(mrSpecialChar) >= 0)
+                {
+                    if(mrPrintableSpecialChars.indexOf(mrSpecialChar < 0))
+                    {
+                        mrPrintableSpecialChars += mrSpecialChar;
+                    }
+                }
+            }
+            if(mrPrintableSpecialChars == "")
+            {
+                mrPrintableSpecialChars = "!#$%&'*+-/=?^_`{|}~.";
+            }
+        }
+        mrPrintableSpecialChars = mrPrintableSpecialChars.replace("-","\\-");
+        return mrPrintableSpecialChars;
+    }
+
+
+
     //COMPARE THE ELEMENT'S VALUE LENGTH
-    function mrCompareEleValueLength(element, comparationLength, typeOfComparation)
+    function mrCompareValueLength(element, comparationLength, typeOfComparation)
     {
         switch (typeOfComparation)
         {
-            case 1: //COMPARE IF ELEMENT'S VALUE IS GREATER THAN THE COMPARATION LENGTH
+            case ">": //COMPARE IF ELEMENT'S VALUE IS GREATER THAN THE COMPARATION LENGTH
                 return element.value.length > comparationLength;
-            case 2: //COMPARE IF ELEMENT'S VALUE IS LESS THAN THE COMPARATION LENGTH
+            case "<": //COMPARE IF ELEMENT'S VALUE IS LESS THAN THE COMPARATION LENGTH
                 return element.value.length < comparationLength;
-            case 3: //COMPARE IF ELEMENT'S VALUE IS IQUEL TO THE COMPARATION LENGTH
+            case "=": //COMPARE IF ELEMENT'S VALUE IS IQUEL TO THE COMPARATION LENGTH
                 return element.value.length == comparationLength;
         }
         return false;
     }
 
     //VERIFY IF THE VALUE IS INTEGER
-    function mrIsNumberInt(value)
+    function mrIsInteger(value)
     {
-        if(!isNaN(value))
+        if(!isNaN(Number(value)) || value != "" || value != null)
         {
-            var mrNumberIntRegularExpression = /^[0-9]+$/;
-            return Number.isInteger(Number(value)) || mrNumberIntRegularExpression.test(value);
+            try
+            {
+                return Number.isInteger(Number(value));
+            } catch (error)
+            {
+                var patternDecimalNumber = /\.|(e-)/i;
+                if(patternDecimalNumber.test(value))
+                {
+                    return false;
+                }
+                return true;
+            }
         }
         return false;
     }

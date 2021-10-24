@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Classes and Attributes of Validation. myrules's Documentation - The javascript form validation">
+    <meta name="Keywords" content="myrules, myrules Validation, myrules Validation Form, myrules Documentation, Documentation, myrules Validation Attributes, myrules Validation Classes, myrules Attributes of Validation, myrules Classes of Validation, Using myrles Custom Attribute, Using HTML 5 myrles Custom Attribute, Using myrules Classes, using myrules, Using myrules Attribute, Using Classes and Attributes of Validation">
+    <meta name="author" content="Alberto Jordane Adolfo">
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/docs-style.css">
+    <link rel="stylesheet" href="assets/css/codepanel.css">
+
+    <title>Classes and Attributes of Validation  and Feedback Classes - myrules</title>
+    
+</head>
+<body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+<div id="nav"></div>
+<!--INCLUDE HEADER-->
+<div id="include-header" data-navactive="nav-documentation"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!--INCLUDE SIDEBAR-->
+        <div id="include-sidebar" data-navactive="classes-and-attributes-validation-and-feedback-classes-sidebar"></div>
+
+        <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
+            <div class="container-fluid">
+
+                <section id="mr-types-and-attributes-section">
+                    <h1 id="class-attribute-heading">Classes and Attributes of Validation and Feedback Classes</h1>
+                    <p>myrules validate a form element in two ways: using <strong>Validation Classes</strong> and <strong>Validation Attributes</strong>.</p>
+                    <p><strong>Validation Classes</strong> are classes given by myrules to validate form elements and <strong>Validation Attributes</strong> are HTML input attributes and myrules Custom Attributes used too, to validate the form elements.</p>
+                    <p>To validate an element add the class <code class="class">.mr</code> into the element class to specifies that this element must be validated by myrules and add the <strong>class</strong> or <strong>attribute</strong> of validation into the same element to specifies the type of validation.</p>
+                    
+                    <div class="code-panel pt-1 pb-1">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
+<i class="comment">&lt;!--the attribute "required" is a Validation Attribute--&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                    <div class="code-panel pt-1 pb-1">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-number-int"</i><i class="tag">&gt;</i> 
+<i class="comment">&lt;!--the class "mr-number-int" is a Validation Class--&gt;</i>
+</pre>
+                        </code>
+                    </div>
+
+                    <p>Some types of validations uses Validation Classes  to validate elements, other uses Validation Attributes and some ones uses both.</p>
+                    <p>All Classes and Attributes of Validations has their <strong>Feedback Class</strong>. The Feedback Classes are classes used to display feedbacks of validations of the elements.</p>
+                    <p>To display the feedback of an element validation, add the class <code class="class">.mr-feedback</code> into the element where the feedback will placed and add the <strong>Feedback Class</strong> of the Class or Attribute of Validation.</p>                    
+                    
+                    <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
+<i class="comment">&lt;!--Validation feedback--&gt;</i>
+<i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field!<i class="tag">&lt;/p&gt;</i>
+<i class="comment">&lt;!--the class "mr-required-fb" is Feeback Class of Validation Attribute "required"--&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                    <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-number-int"</i><i class="tag">&gt;</i> 
+<i class="comment">&lt;!--Validation feedback--&gt;</i>
+<i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-number-int-fb"</i><i class="tag">&gt;</i>Please input an integer number!<i class="tag">&lt;/p&gt;</i>
+<i class="comment">&lt;!--the class "mr-number-int-fb"" is Feeback Class of Validation Class "mr-number-int-fb"--&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                    <div class="panel-warning">
+                        <p>The number of classes <code class="class">.mr</code> (elements to validate) must be iqual of the number of classes <code class="class">.mr-feedback</code> (feedbacks to display).</p>
+                    </div>
+
+                    <p>The Feedback Classes <code class="class">.mr-valid-fb</code> and <code class="class">.mr-invalid-fb</code> are <strong>Global Feedback Classes</strong>, it means that their can be used to feedback all Classes and Attributes of Validation.</p>
+                                       
+                    <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
+<i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-invalid-fb"</i><i class="tag">&gt;</i>Please fill out this field!<i class="tag">&lt;/p&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                    <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-number-int"</i><i class="tag">&gt;</i> 
+<i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-valid-fb"</i><i class="tag">&gt;</i>Good, it´s valid integer number!<i class="tag">&lt;/p&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                   
+                    <p>All Feedback Classes are displayed when the element has invalid, except the class <code class="class">.mr-valid-fb</code> that is displayed when the element has valid.</p>
+                
+                    <h2 id="class-validation-heading"> Validation Classes</h2>
+                    <p>myrules provide many classes that allows to validate diferents form elements. For instance, the classes <code class="class">.mr-required</code>, <code class="class">.mr-email</code>, <code class="class">.mr-integer-number</code>, <code class="class">.mr-password-good</code>, <code class="class">.mr-username</code>, etc.</p>
+                    
+                    <h3 class="h5">Example: validate integer number using myrules Validation Classes</h3>
+                    <p>To validate integer number using a myrules <strong>Validation Classes</strong>, just add the classes <code class="class">.mr</code> and <code class="class">.mr-number-int</code> into the attributes classes of the input element.</p>
+                    <p>The Feedback Class of an invalid integer number is <code class="class">.mr-number-int-fb</code>. The feedback will displayed when the element was invalid.</p>
+                    <p>Add the class <code class="class">.mr-feedback</code> into the classes of elements where the validation feedbacks will placed with the Feedback Class <code class="class">.mr-number-int-fb</code>.</p>
+                    
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <p>Try to submit an invalid integer number.</p>
+                        </div>
+                        <form>
+                            <!--Integer number text field-->
+                            <input type="number" class="mr mr-number-int" placeholder="Integer number" > <br>
+                            <!--Validation feedback-->
+                            <p class= "mr-feedback mr-number-int-fb">Please input an integer number!</p>
+                        
+                            <input type="submit" value="submit">
+                            <input type="reset" value="reset">
+                        </form>
+                    </div>
+                    
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Integer number text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="number"</i> <i class="attr">class</i><i class="value">="mr mr-number-int"</i> <i class="attr">placeholder</i><i class="value">="Integer number"</i> <i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-number-int-fb"</i><i class="tag">&gt;</i>Please input an integer number!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+
+                    <h2 id="input-atrribute-heading">Validation Attributes</h2>
+                    <P>Other way to validate a form elements is using <strong>Validation Attributes</strong>.</P>
+                    <p>They are two types of Validation Attributes:</p>
+                    <ul class="list-type-disc">
+                        <li><strong>HTML input attributes</strong> (example: <code class="attr">required</code>, <code class="attr">max</code>, <code class="attr">min</code>, <code class="attr">maxlength</code>, <code class="attr">type</code>); and</li>
+                        <li><strong>myrules Custom Attributes</strong> (example: <code class="attr">minlength</code> or  <code class="attr">data-minlength</code>, <code class="attr">resolution</code> or <code class="attr">data-resolution</code>, <code class="attr">maxcheck</code> or <code class="attr">data-maxcheck</code>)</li>
+                    </ul>
+                    <p>myrules Custom Attributes are attributes not form elements attributes or are not conceived to that use.</p>
+
+                    <h3 class="h5">Example 1: validate requireds fields using Validation Attribute</h3>
+                    <p>To validate a required fields using Validation Attribute, add the class <code class="class">.mr</code> and HTML input attribute <code class="attr">required</code> (Validation Attribute) into the form elements.</p>
+
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <p>Try to submit the form without fill out the text fields.</p>
+                        </div>
+                        <form>
+                            <!--Required text field-->
+                            <input type="text" class="mr" required placeholder="First name"> <br>
+                            <!--Validation feedback-->
+                            <p class= "mr-feedback mr-required-fb">Please fill out this field</p>
+                        
+                            <!--Required text field-->
+                            <input type="text" class="mr" required placeholder="Last name"> <br>
+                            <!--Validation feedback-->
+                            <p class= "mr-feedback mr-required-fb">Please fill out this field</p>
+                        
+                            <input type="submit" value="submit">
+                            <input type="reset" value="reset">
+                        </form>
+                    </div>
+                    
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Required text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="attr">placeholder</i><i class="value">="First name"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="comment">&lt;!--Required text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="attr">placeholder</i><i class="value">="Last name"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this field!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+
+                    <h3 class="h5">Example 2: validate the minimum allowed length of an input field using Validation Attribute</h3>
+                    <p>To validate the minimum allowed length of an input field using Validation Attribute, add the class <code class="class">.mr</code> and the myrules Custom Attribute <code class="attr">minlength</code> with the value of minimum allowed length into the form element.</p>
+                    
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <ul>
+                                <li>The minimum allowed length is 5</li>
+                                <li>Try to submit an invalid allowed length</li>
+                            </ul>
+                        </div>
+                        <form>
+                            <!--Input text-->
+                            <input type="text" class="mr" minlength="5" placeholder="Fill out this text field"> <br>
+                            
+                            <!--Validation feedback-->
+                            <p class= "mr-feedback mr-minlength-fb">Please, input at least 5 characters!</p>
+                        
+                            <input type="submit" value="submit">
+                            <input type="reset" value="reset">
+                        </form>
+                    </div>
+                        
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Input text--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">minlength</i><i class="value">="5"</i> <i class="attr">placeholder</i><i class="value">="Fill out this text field"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-minlength-fb"</i><i class="tag">&gt;</i>Please, input at least 5 characters!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+
+                    
+                    <h3 class="h4">HTML 5 valid page with myrules Custom Attributes</h3>
+                    <p><strong>myrules Custom Attributes</strong> are not HTML input attributes or are not conceived to that uses, so, if you want to make your HTML 5 page valid, use the HTML 5 Global Attribute <code class="attr">data-*</code> instead of the regular myrules Custom Attribute.</p>
+                    <p>For exemple: <code class="attr">minlength</code>  - this is a regular myrules Custom Attribute; <code class="attr">data-minlength</code> - this is a myrules HTML 5 Custom Attribute.</p>
+                    
+                    <div class="panel-success">
+                        <p>myrules HTML 5 Custom Attribute is <strong>best pratice</strong>.</p>
+                    </div>
+                    <h3 class="h5">Example: validate the minimum allowed length of an input field using HTML 5 Global Attribute data-*</h3>
+                    <p>To a HTML 5 valid page use the myrules HTML 5 Custom Attribute <code class="attr">data-minlength</code> instead of regular myrules Custom Attribute <code class="attr">minlength</code>.</p>
+                    
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <p>Try to submit less than 5 characters.</p>
+                        </div>
+                        <form>
+                            <!--Input text-->
+                            <input type="text" class="mr" data-minlength="5" placeholder="Fill out this text field"> <br>
+                            
+                            <!--Validation feedback-->
+                            <p class= "mr-feedback mr-minlength-fb">Please, input at least 5 characters!</p>
+                        
+                            <input type="submit" value="submit">
+                            <input type="reset" value="reset">
+                        </form>
+                    </div>
+                        
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Input text--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">data-minlength</i><i class="value">="5"</i> <i class="attr">placeholder</i><i class="value">="Fill out this text field"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-minlength-fb"</i><i class="tag">&gt;</i>Please, input at least 5 characters!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+
+                    <h1 id="listof-class-attribute-heading">List of Classes and Attributes of Validation and their Feedback Classes</h1>
+                    <p>Complete list of all Classes and Attributes of Validation with description and their Feedback Classes.</p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Attribute</th>
+                                    <th>Class</th>
+                                    <th>Description</th>
+                                    <th>Feedback Class</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="attr">required</code></td>
+                                    <td><code class="class">.mr-required</code></td>
+                                    <td>Specifies that the form element requires a value</td>
+                                    <td><code class="class">.mr-required-fb</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">min</code></td>
+                                    <td></td>
+                                    <td>Specifies the minimum value of an input element</td>
+                                    <td><code class="class">.mr-min-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">max</code></td>
+                                    <td></td>
+                                    <td>Specifies the maximum value of an input element</td>
+                                    <td><code class="class">.mr-max-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">minlength</code> or <code class="attr">data-minlength</code></td>
+                                    <td></td>
+                                    <td>Specifies the minimum number of characters allowed in the filled out element (when the element value is not empty)</td>
+                                    <td><code class="class">.mr-minlength-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">maxlength</code></td>
+                                    <td></td>
+                                    <td>Specifies the maximum number of characters allowed in the element</td>
+                                    <td><code class="class">.mr-maxlength-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">minselect</code> or <code class="attr">data-minselect</code></td>
+                                    <td></td>
+                                    <td>Specifies the minimum allowed number of selection on a  select element or an input type file with attribute multiple.</td>
+                                    <td><code class="class">.mr-minselect-fb</code></td>    
+                                </tr>
+                                <tr><td><code class="attr">maxselect</code> or <code class="attr">data-maxselect</code></td>
+                                    <td></td>
+                                    <td>Specifies the maximum allowed number of selection of a select element or an input type file with attribute multiple.</td>
+                                    <td><code class="class">.mr-maxselect-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">mincheck</code> or <code class="attr">data-mincheck</code></td>
+                                    <td></td>
+                                    <td>Specifies the minimum number of checkboxs allowed to select in a group of inputs type checkbox.</td>
+                                    <td><code class="class">.mr-mincheck-fb</code></td>    
+                                </tr>
+                                <tr>
+                                        <td><code class="attr">maxcheck</code> or <code class="attr">data-maxcheck</code></td>
+                                    <td></td>
+                                    <td>Specifies the maximum number of checkboxs allowed to select in a group of inputs type checkbox.</td>
+                                    <td><code class="class">.mr-maxcheck-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">type=</code><code class="value">"email"</code></td>
+                                    <td><code class="class">.mr-email</code></td>
+                                    <td>Specifies that the input value must be a valid email</td>
+                                    <td><code class="class">.mr-email-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-username</code></td>
+                                    <td>Specifies that the input value must be a valid username. It matches: lowercase, upercase, number, and low line (_). Is not allowed special characters</td>
+                                    <td><code class="class">.mr-username-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-password-good</code></td>
+                                    <td>Specifies that the password must match: lowercase or/and uppercase and number or/and special character.</td>
+                                    <td><code class="class">.mr-password-good-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-password-strong</code></td>
+                                    <td>Specifies that the password must match: lowercase, uppercase and number or/and special character.</td>
+                                    <td><code class="class">.mr-password-strong-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-password-very-strong</code></td>
+                                    <td>Specifies that the password must match: lowercase, uppercase, number and special character.</td>
+                                    <td><code class="class">.mr-password-very-strong-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-match</code></td>
+                                    <td>Specifies that the value of an input element with class <code class="class">.mr-match</code> must match the value of other one correspondent input element with class <code class="class">.mr-match-subject</code></td>
+                                    <td><code class="class">.mr-match-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">type=</code><code class="value">"url"</code></td>
+                                    <td><code class="class">.mr-url</code></td>
+                                    <td>Specifies that the input value must be a valid URL address</td>
+                                    <td><code class="class">.mr-url-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">type=</code><code class="value">"number"</code></td>
+                                    <td><code class="class">.mr-number</code></td>
+                                    <td>Specifies that the input value must be a numeric.</td>
+                                    <td><code class="class">.mr-number-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-number-int</code></td>
+                                    <td>Specifies that the input value must be a integer number.</td>
+                                    <td><code class="class">.mr-number-int-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">step</code></td>
+                                    <td></td>
+                                    <td>Specifies the legal number intervals of an input element.</td>
+                                    <td><code class="class">.mr-step-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">type=</code><code class="value">"date"</code></td>
+                                    <td><code class="class">.mr-date</code></td>
+                                    <td>Specifies that the input value must be a valid complete date</td>
+                                    <td><code class="class">.mr-date-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">pattern</code></td>
+                                    <td></td>
+                                    <td>Specifies the value pattern of an input element</td>
+                                    <td><code class="class">.mr-pattern-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-ip-address</code></td>
+                                    <td>Specifies that the input value must be a valid IP address address</td>
+                                    <td><code class="class">.mr-ip-address-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-alpha</code></td>
+                                    <td>Specifies that the input value must macth alpha chars ([a-zA-Z]).</td>
+                                    <td><code class="class">.mr-alpha-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-alpha-space</code></td>
+                                    <td>Specifies that the input value must macth alpha and space ([a-zA-Z ]).</td>
+                                    <td><code class="class">.mr-alpha-space-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-alpha-numeric</code></td>
+                                    <td>Specifies that the input value must macth alpha and numeric ([a-zA-Z0-9]).</td>
+                                    <td><code class="class">.mr-alpha-numeric-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-alpha-numeric-space</code></td>
+                                    <td>Specifies that the input value must macth alpha, numeric anf space ([a-zA-Z0-9 ]).</td>
+                                    <td><code class="class">.mr-alpha-numeric-space-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-latin</code></td>
+                                    <td>Specifies that the input value must macth Latim characters ([a-zA-ZÀ-ÖØ-öø-ʯ]).</td>
+                                    <td><code class="class">.mr-latin-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-latin-space</code></td>
+                                    <td>Specifies that the input value must macth Latim with space ([a-zA-ZÀ-ÖØ-öø-ʯ ]).</td>
+                                    <td><code class="class">.mr-latin-space-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-latin-numeric</code></td>
+                                    <td>Specifies that the input value must macth Latim with numeric characters ([a-zA-ZÀ-ÖØ-öø-ʯ0-9]).</td>
+                                    <td><code class="class">.mr-latin-numeric-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><code class="class">.mr-latin-numeric-space</code></td>
+                                    <td>Specifies that the input value must macth Latim with numeric characters and space([a-zA-ZÀ-ÖØ-öø-ʯ0-9 ]).</td>
+                                    <td><code class="class">.mr-latin-numeric-space-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">accept</code></td>
+                                    <td></td>
+                                    <td>Specifies the accepted MIME types and file extensions of an input file.</td>
+                                    <td><code class="class">.mr-accept-fb</code></td>    
+                                </tr>
+                                <tr>
+                                        <td><code class="attr">minsize</code> or <code class="attr">data-minsize</code></td>
+                                    <td></td>
+                                    <td>Specifies the mimimum size of an input file.</td>
+                                    <td><code class="class">.mr-minsize-fb</code></td>    
+                                </tr>
+                                <tr>
+                                        <td><code class="attr">maxsize</code> or <code class="attr">data-maxsize</code></td>
+                                    <td></td>
+                                    <td>Specifies the maximum size of an input file.</td>
+                                    <td><code class="class">.mr-maxsize-fb</code></td>    
+                                </tr>
+                                <tr>
+                                        <td><code class="attr">width</code> or <code class="attr">data-width</code></td>
+                                    <td></td>
+                                    <td>Specifies the width of an inputed image file.</td>
+                                    <td><code class="class">.mr-width-fb</code></td>    
+                                </tr>
+                                <tr>
+                                        <td><code class="attr">height</code> or <code class="attr">data-height</code></td>
+                                    <td></td>
+                                    <td>Specifies the height of an inputed image file.</td>
+                                    <td><code class="class">.mr-height-fb</code></td>    
+                                </tr>
+                                <tr>
+                                        <td><code class="attr">minwidth</code> or <code class="attr">data-minwidth</code></td>
+                                    <td></td>
+                                    <td>Specifies the minimum width of an inputed image file.</td>
+                                    <td><code class="class">.mr-minwidth-fb</code></td>    
+                                </tr>
+                                <tr>
+                                        <td><code class="attr">maxwidth</code> or <code class="attr">data-maxwidth</code></td>
+                                    <td></td>
+                                    <td>Specifies the maximum width of an inputed image file.</td>
+                                    <td><code class="class">.mr-maxwidth-fb</code></td>    
+                                </tr>
+                                <tr>
+                                        <td><code class="attr">minheight</code> or <code class="attr">data-minheight</code></td>
+                                    <td></td>
+                                    <td>Specifies the minimum height of an inputed image file.</td>
+                                    <td><code class="class">.mr-minheight-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">maxheight</code> or <code class="attr">data-maxheight</code></td>
+                                    <td></td>
+                                    <td>Specifies the maximum height of an inputed image file.</td>
+                                    <td><code class="class">.mr-maxheight-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">resolution</code> or <code class="attr">data-resolution</code></td>
+                                    <td></td>
+                                    <td>Specifies the resolutions of an inputed image file.</td>
+                                    <td><code class="class">.mr-resolution-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="attr">ratio</code> or <code class="attr">data-ratio</code></td>
+                                    <td></td>
+                                    <td>Specifies the aspect ratio of an inputed image file</td>
+                                    <td><code class="class">.mr-ratio-fb</code></td>    
+                                </tr>
+                                <tr rowspan="2">
+                                    <td colspan="2" rowspan="2" class="w3-display-container"><span class="w3-display-left" style="padding-left: 10px">All Classes and Attributes of Validation</span></td>
+                                    <td rowspan="2"></td>
+                                    <td><code class="class">.mr-valid-fb</code></td>    
+                                </tr>
+                                <tr>
+                                    <td><code class="class">.mr-invalid-fb</code></td>    
+                                </tr>
+                            </tbody>
+                        </table> 
+                    </div>
+                    <div class="panel-info">
+                        <p>All Feedback Classes are displayed when the element has invalid, except class <code class="class">.mr-valid-fb</code> that is displayed when the element has valid.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#class-attribute-heading">Classes and Attributes of Validation and Feedback Classes</a>
+                    <ul class="navbar-nav sub-nav">
+                        <li class="nav-item">
+                            <a href="#class-validation-heading" class="nav-link">Validation Classes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#input-atrribute-heading" class="nav-link">Validation Attributes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#listof-class-attribute-heading">List of Classes and Attributes of Validation</a>
+                </li>
+            </ul>
+        </aside>
+    </div>
+</div>
+
+<!--INCLUDE FOOTER-->
+<div id="include-footer"></div>
+
+<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="assets/vendor/popper/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../dist/myrules.js"></script>
+
+<!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+<script src="assets/js/docs-includes.js"></script>
+
+</body>
+</html>

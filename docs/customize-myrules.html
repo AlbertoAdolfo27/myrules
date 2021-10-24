@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Multi-validation of elements. myrules's Documentation - The javascript form validation">
+    <meta name="Keywords" content="myrules, Customize, Customize myrules, myrules colors style, mr-colors-style, validate element on data input, validate element on input, mr-validate-oninput, myrules Documentation, Documentation">
+    <meta name="author" content="Alberto Jordane Adolfo">
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/docs-style.css">
+    <link rel="stylesheet" href="assets/css/codepanel.css">
+
+    <title>Customize myrules - myrules</title>
+</head>
+<body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+<div id="nav"></div>
+<!--INCLUDE HEADER-->
+<div id="include-header" navactive="nav-documentation"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!--INCLUDE SIDEBAR-->
+        <div id="include-sidebar" data-navactive="customize-myrules-sidebar"></div>
+
+        <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
+            <div class="container-fluid">
+                <section class="pb-25" id="customize-myrules">
+                    <h1>Customize myrules</h1>
+                    <p>myrules is not static, it´s dynamic. By default, myrules validate an element when event change occurs (onchange) and when a form is submitted (onsubmit), but you can add the extra event, to validate the element when it gets user input (oninput), furthermore, you can add myrules colors style of validation status to the form elements and their feedbacks.</p>
+                    
+                    <article id="validate-element-oninput">
+                        <h2 class="mt-30">Validate element oninput</h2>
+                        <p>oninput event occurs immediately after the value of an element has changed, while onchange occurs when the element loses focus, after the content has been changed.</p>
+                        <p>To validate an element oninput event, add a class <code class="class">.mr-validate-oninput</code>  into the <code class="tag">&lt;form&gt;</code> class.</p>
+                        
+                        <h3 class="h5">Example: Validate element oninput event</h3>
+                        <div class="mr-test">
+                            <div class="panel-info">
+                                <p>The E-mail text fields is required.</p>
+                            </div>
+
+                            <form class="mr-validate-oninput">
+                                <input type="email" class="mr" required placeholder="E-mail"> <br>
+                                <div class="mr-feedback">
+                                    <p class="mr-required-fb">Please fill out this text field!</p>
+                                    <p class="mr-email-fb">Please input a valid e-mail!</p>
+                                    <p class="mr-valid-fb">it´s valid E-mail!</p>
+                                </div>
+                            
+                                <input type="submit" value="submit">
+                                <input type="reset" value="reset">
+                            </form>
+                        </div>
+
+                        <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i> <i class="class">class=</i><i class="value">"mr-validate-oninput"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="email"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="attr">placeholder</i><i class="value">="E-mail"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+<i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-email-fb"</i><i class="tag">&gt;</i>Please input a valid e-mail!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-valid-fb"</i><i class="tag">&gt;</i>it´s valid E-mail!<i class="tag">&lt;/p&gt;</i>
+<i class="tag">&lt;/div&gt;</i>
+
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                            </code>
+                        </div>
+                    </article>
+                    
+                    <article id="myrules-colors-style">
+                        <h2>myrules colors style</h2>
+                        <p>To add myrules colors style of elements validation, add a class <code class="class">.mr-colors-style</code> into the <code class="tag">&lt;form&gt;</code> class.</p>
+                        
+                        <h3 class="h5">Example: Adding myrules colors style of element validation</h3>
+                        <div class="mr-test">
+                            <div class="panel-info">
+                                <p>The E-mail text fields is required.</p>
+                            </div>
+
+                            <form class="mr-colors-style">
+                                <input type="email" class="mr" required placeholder="E-mail"> <br>
+                                <div class="mr-feedback">
+                                    <p class="mr-required-fb">Please fill out this text field!</p>
+                                    <p class="mr-email-fb">Please input a valid e-mail!</p>
+                                    <p class="mr-valid-fb">it´s valid E-mail!</p>
+                                </div>
+                            
+                                <input type="submit" value="submit">
+                                <input type="reset" value="reset">
+                            </form>
+                        </div>
+        
+                        <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i> <i class="class">class=</i><i class="value">"mr-colors-style"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="email"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="attr">placeholder</i><i class="value">="E-mail"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-email-fb"</i><i class="tag">&gt;</i>Please input a valid e-mail!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-valid-fb"</i><i class="tag">&gt;</i>it´s valid E-mail!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                            </code>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </main>
+
+        <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a href="#customize-myrules" class="nav-link">Customize myrules</a>
+                    <ul class="navbar-nav sub-nav">
+                        <li class="nav-item">
+                            <a href="#validate-element-oninput" class="nav-link">Validate element oninput</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#myrules-colors-style" class="nav-link">myrules colors style</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+    </div>
+</div>
+
+<!--INCLUDE FOOTER-->
+<div id="include-footer"></div>
+
+<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="assets/vendor/popper/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../dist/myrules.js"></script>
+
+<!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+<script src="assets/js/docs-includes.js"></script>
+
+</body>
+</html>

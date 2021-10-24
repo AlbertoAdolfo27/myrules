@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Riquered. myrules Documentation - The javascript form validation">
+        <meta name="Keywords" content="myrules, myrules Validation, minselect, maxselect, minselect and maxselect, Validation Attribute minselect, Validation Attribute maxselect, Validation Attribute minselect and Validation Attribute maxselect, mr-minselect-fb, mr-maxselect-fb, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Minselect and Maxselect</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-minselect-and-maxselect-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
+                <div class="container-fluid">
+                    <section id="validate-minlebgth-and-maxselect">
+                        <article>
+                            <h1>Minselect and Maxselect</h1>
+                            <p>The Validation Attribute <code class="attr">minselect</code> and the Validation Attribute <code class="attr">minselect</code> specifies the minimum and the maximum allowed number of options to select in a <span class="code-line"><code class="tag">&lt;select&gt;</code> element or an <code class="tag">&lt;input</code> <code class="attr">type</code><code class="value">="file"</code><code class="tag">&gt;</code></span> element with attribute <code class="attr">multiple</code>, respectively.</p>        
+                            <p>The Feedback Class of Validation Attribute <code class="attr">minselect</code> is <code class="class">.mr-minselect-fb</code> and the Feedback Class of Validation Attribute <code class="attr">maxselect</code> is <code class="class">.mr-maxselect-fb</code>.</p>
+                            <p>The attributes <code class="attr">minselect</code> and <code class="attr">maxselect</code> are not attributes of HTML form elements, they're myrules custom attributes.</p>
+                            <p>The myrules HTML 5 Custom Attribute of <code class="attr">minselect</code> is <code class="attr">data-minselect</code> and myrules HTML 5 Custom Attribute of <code class="attr">maxselect</code> is <code class="attr">data-maxselect</code>. Use they if you want to make your HTML 5 page valid</p>
+                      
+                            <div class="panel-info">
+                                <p>The Validation Class <code class="attr">minselect</code> don´t specifies that the element requires a value. If your want to specifies that the element must be selected use the Validation Attribute <a href="validate-required.html"><code class="attr">required</code></a>.</p>
+                            </div>
+
+                            <div class="panel-warning">
+                                <p>Elements with none value are ignored.</p>
+                            </div>
+                        </article>
+                        
+                        <article id="applying-select">
+                            <h2>Applying in &lt;select&gt;</h2>
+                            <h3 class="h5 mt-30">Select Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The minimum allowed number of sports to select is 2</li>
+                                        <li>The maximum allowed number of sports to select is 3</li>
+                                        <li>Try to select less than 2 and more than 3 sports</li>
+                                    </ul>
+                                </div>
+                                <form>
+                                    <label>Select your favorite sport:</label> <br>
+                                    <!--Select element-->    
+                                    <select class="mr" multiple data-minselect="2" data-maxselect="3"> 
+                                        <option name="sport" value="cyclism">Cyclism</option> 
+                                        <option name="sport" value="football">Football</option>  
+                                        <option name="sport" value="basketball">Basketball</option>  
+                                        <option name="sport" value="baseball">Baseball</option>  
+                                        <option name="sport" value="golf">Golf</option> 
+                                    </select>  <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-minselect-fb">Please, select at least 2 sports!</p>
+                                        <p class="mr-maxselect-fb">Please, select till 3 sports!</p>
+                                    </div>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;label&gt;</i>Select your favorite sport:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Select element--&gt;</i>    
+    <i class="tag">&lt;select</i> <i class="attr">class=</i><i class="value">"mr"</i> <i class="attr">multiple</i> <i class="attr">data-minselect</i><i class="value">="2"</i> <i class="attr">data-maxselect</i><i class="value">="3"</i><i class="tag">&gt;</i> 
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value</i><i class="value">="cyclism"</i><i class="tag">&gt;</i>Cyclism<i class="tag">&lt;/option&gt;</i> 
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value</i><i class="value">="football"</i><i class="tag">&gt;</i>Football<i class="tag">&lt;/option&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value</i><i class="value">="basketball"</i><i class="tag">&gt;</i>Basketball<i class="tag">&lt;/option&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value</i><i class="value">="baseball"</i><i class="tag">&gt;</i>Baseball<i class="tag">&lt;/option&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value</i><i class="value">="golf"</i><i class="tag">&gt;</i>Golf<i class="tag">&lt;/option&gt;</i> 
+    <i class="tag">&lt;/select&gt;</i>  <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minselect-fb"</i><i class="tag">&gt;</i>Please, select at least 2 sports!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-maxselect-fb"</i><i class="tag">&gt;</i>Please, select till 3 sports!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"reset"</i> <i class="attr">value=</i><i class="value">"reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                        
+                        <article id="applying-input-type-file">
+                            <h2>Applying in &lt;input type="file"&gt;</h2>
+                            
+                            <h3 class="h5 mt-30">Input type="file" Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The minimum allowed number of files to select is 2</li>
+                                        <li>The maximum allowed number of files to select is 3</li>
+                                        <li>Try to select less than 2 and more than 3 files</li>
+                                    </ul>
+                                </div>
+
+                                <form>
+                                    <!--input text-->
+                                    <input type="file" class="mr" multiple data-minselect="2" maxselect="3" placeholder="Select files"> <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-minselect-fb">Please, select at least 2 files!</p>
+                                        <p class="mr-maxselect-fb">Please, select till 3 files!</p>
+                                    </div>
+                                
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>              
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--input text--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">multiple</i> <i class="attr">data-minselect</i><i class="value">="2"</i> <i class="attr">maxselect</i><i class="value">="3"</i> <i class="attr">placeholder</i><i class="value">="Select files"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minselect-fb"</i><i class="tag">&gt;</i>Please, select at least 2 files!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-maxselect-fb"</i><i class="tag">&gt;</i>Please, select till 3 files!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-minlebgth-and-maxselect">Minselect and Maxselect</a>
+                        <ul class="navbar-nav sub-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-select">Applying in &lt;select&gt;</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-file">Applying in &lt;input type="file"&gt;</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+
+    </body>
+</html>

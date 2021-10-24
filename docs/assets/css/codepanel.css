@@ -6,40 +6,56 @@
     margin-bottom: 15px;
 }
 
-.lang-html i
+.lang-html i,
+.lang-css i
 {
     font-style:normal ;
 }
 
 .tag,
 .class,
-.code
+.code,
+.attr,
+.value,
+.css-selector,
+.css-property,
+.css-value
+{
+    color: #f44336;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+.lang-html .tag
 {
     color: #f44336;
 }
 
-.lang-html .attr
+.lang-html .attr,
+.lang-css .css-property
 {
     color: #0277bd;
 }
 
-.lang-html .value
+.lang-html .value,
+.lang-css .css-value
 {
     color: #388E3C;
 }
 
-.lang-html pre
+.lang-html pre,
+.lang-css pre
 {
     color: #343a40 !important;
     font-size: 1.1em;
 }
 
-.doctype
+.lang-html .doctype
 {
     color: #92b5e6;
 }
 
-.comment
+.lang-html .comment,
+.lang-css .comment
 {
     color: #b9bbbe;
 }

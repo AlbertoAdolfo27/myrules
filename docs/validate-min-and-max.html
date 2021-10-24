@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Min an Max. myrules Documentation - The javascript form validation">
+        <meta name="Keywords" content="myrules, myrules Validation, max, min, Validation Attribute max, Validation Attribute min, min and max, min='today', max='today, min='today' and max='today' date, Validation Attributes min and max, mr-max-fb, mr-min-fb, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Min and Man</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-min-and-max-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
+                <div class="container-fluid">
+                    <section id="validate-required">
+                        <article>
+                            <h1>Min and Max</h1>
+                            <p>The Validation Attributes <code class="attr">min</code> and <code class="attr">max</code> specifies the minimum and maximum value of the element respectively.</p>        
+                            <p>The Feedback Class of Validation Attribute <code class="attr">min</code> is <code class="class">.mr-min-fb</code> and the Feedback Class of Validation Attribute <code class="attr">max</code> is <code class="class">.mr-max-fb</code>.</p>
+                        </article>
+                        
+                        <article id="applying-input-type-number">
+                            <h2>Applying in &lt;input type="number"&gt;</h2>
+                            <h3 class="h5 mt-30">Input type="number" Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The minimum quantity allowed is 1</li>
+                                        <li>The maximum quantity allowed is 100</li>
+                                        <li>Try to submit the invalid minimum and maximum value allowed</li>
+                                    </ul>
+                                </div>
+                                <form>
+                                    <!--Input number-->
+                                    <input type="number" class="mr" min="1" max="100" placeholder="Quantity"> <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-min-fb">The minimum allowed quantity is 1!</p>
+                                        <p class="mr-max-fb">The maximum allowed quantity is 100!</p>
+                                    </div>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Input type number--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="number"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">min</i><i class="value">="1"</i> <i class="attr">max</i><i class="value">="100"</i> <i class="attr">placeholder</i><i class="value">="Quantity"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-min-fb"</i><i class="tag">&gt;</i>The minimum allowed quantity is 1!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-max-fb"</i><i class="tag">&gt;</i>The maximum allowed quantity is 100!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                        <article id="applying-input-type-date">
+                            <h2>Applying in &lt;input type="date"&gt;</h2>
+                            <h3 class="h5 mt-30">Input type="date" Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The date format of Validation Attribute <span class="code-line"><code class="attr">type</code><code class="value">="date"</code></span> is ISO 8601 (YYYY-MM-DD). it can´t be changed</li>
+                                        <li>The minimum date allowed is <span class="eighty-years-ago"></span></li>
+                                        <li>The maximum date allowed is <span class="six-years-ago"></span></li>
+                                        <li>Try to submit the invalid minimum and maximum date allowed</li>
+                                    </ul>
+                                </div>
+                                <form>
+                                    <!--Input date-->
+                                    <input type="date" class="mr test-date-min-max" min="" max="" placeholder="Birthday"> <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-date-fb mb-0">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-min-fb mb-0">The minimum allowed date is <span class="eighty-years-ago"></span></p>
+                                        <p class="mr-max-fb">The maximum allowed date is <span class="six-years-ago"></span>!</p>
+                                    </div>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Input type date--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="date"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">min</i><i class="value">="<span class="eighty-years-ago"></span>"</i> <i class="attr">max</i><i class="value">="<span class="six-years-ago"></span>"</i> <i class="attr">placeholder</i><i class="value">="Birthday"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date (YYYY-MM-DD)!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-min-fb"</i><i class="tag">&gt;</i>The minimum allowed date is <span class="eighty-years-ago"></span>!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-max-fb"</i><i class="tag">&gt;</i>The maximum allowed date is <span class="six-years-ago"></span>!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+
+                        <article id="applying-input-type-text">  
+                            <h2>Applying in &lt;input type="text"&gt;</h2>
+                            <h3 class="h5">input type="text" with Validation Class .mr-date Example</h3>
+                            <p>To validate the min and max date in an <span class="code-line"><code class="tag">&lt;input</code> <code class="attr">type</code><code class="value">="text"</code><code class="tag">&gt;</code></span> add the class <code class="class">.mr-date</code> into the element class to specifies than the input value must be a date.</p>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p class="mb-0">The standard date format of Validation Class <code class="class">.mr-date</code> is ISO 8601 (YYYY-MM-DD). You can change it with myrules costum attribute <code class="attr">dateformat</code>(or myrules HTML 5 costum attribute <code class="attr">data-dateformat</code>).</p>
+                                    <p class="mt-0">Lean about the date formats of Validation Class <code class="class">.mr-date</code> in <a href="validate-date">Validate date</a> subject.</p>
+                                </div>
+                                <form>
+                                    <!--Input text-->
+                                    <input type="text" class="mr mr-date test-date-min-max" min="" max="" placeholder="Birthday"> <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-date-fb mb-0">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-min-fb mb-0">The minimum allowed date is <span class="eighty-years-ago"></span>!</p>
+                                        <p class="mr-max-fb">The maximum allowed date is <span class="six-years-ago"></span>!</p>
+                                    </div>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Input type text with Validation Class ".mr-date"--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-date"</i> <i class="attr">min</i><i class="value">="<span class="eighty-years-ago"></span>"</i> <i class="attr">max</i><i class="value">="<span class="six-years-ago"></span>"</i> <i class="attr">placeholder</i><i class="value">="Birthday"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date (YYYY-MM-DD)!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-min-fb"</i><i class="tag">&gt;</i>The minimum allowed date is <span class="eighty-years-ago"></span>!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-max-fb"</i><i class="tag">&gt;</i>The maximum allowed date is <span class="six-years-ago"></span>!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                        <article id="min-today-and-max-today-date">
+                            <h2>min="today" and max="today" date</h2>
+                            <p>Set the <strong>current date</strong> as value of the attribute <code class="attr">min</code> or <code class="attr">max</code> by using the value "today". It will update every day the value of the attribute <code class="attr">min</code> or <code class="attr">max</code> to the actual date.</p>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The minimum date allowed is <span class="date-today"></span></li>
+                                        <li>Try to submit the invalid minimum date allowed</li>
+                                    </ul>
+                                </div>
+
+                                <form>
+                                    <!--Input type date-->
+                                    <input type="date" class="mr test-date-min-max min-today" min="today" placeholder="Meeting date"> <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-date-fb mb-0">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-min-fb">The minimum allowed date is <span class="date-today"></span>!</p>
+                                    </div>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Input type date--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="date"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">min</i><i class="value">="today"</i> <i class="attr">placeholder</i><i class="value">="Meeting date"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date (YYYY-MM-DD)!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-min-fb"</i><i class="tag">&gt;</i>The minimum allowed date is <span class="date-today"></span>!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-required">Min and Max</a>
+                        <ul class="navbar-nav sub-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-number">Applying in input type="number"</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-date">Applying in input type="date"</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-text">Applying in input type="text"</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#min-today-and-max-today-date" class="nav-link">min="today" and max="today" date</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+
+    <script>
+        var mrDateObject = new Date();
+        var mrYear = mrDateObject.getFullYear();
+        var mrMonth = (mrDateObject.getMonth() + 1).toString();
+        if(mrMonth.length < 2)
+        {
+            mrMonth = "0" + mrMonth;
+        }
+        var mrDay = (mrDateObject.getDate()).toString();
+        if (mrDay.length < 2)
+        {
+            mrDay = "0" + mrDay;
+        }
+        var mrDateString = mrYear + "-" + mrMonth + "-" + mrDay;
+
+        var todayElements = document.getElementsByClassName("date-today");
+        for(var i = 0; i < todayElements.length; i++)
+        {
+            todayElement = todayElements[i];
+            todayElement.innerHTML = mrDateString;
+        }
+
+        var sixYearsAgoElements = document.getElementsByClassName("six-years-ago");
+        for(var i = 0; i < sixYearsAgoElements.length; i++)
+        {
+            sixYearsAgoElement = sixYearsAgoElements[i];
+            sixYearsAgoElement.innerHTML = (mrYear - 6) + "-" + mrMonth + "-" + mrDay;
+            sixYearsAgoElement = sixYearsAgoElements[i];
+            var fulldate = (mrYear - 6) + "-" + mrMonth + "-" + mrDay;
+            var dateObject = new Date(fulldate);
+            if(Number.isNaN(dateObject.getDate()))
+            {
+                fulldate = (mrYear - 6) + "-" + mrMonth + "-" + (mrDay - 1);
+            }
+            sixYearsAgoElement.innerHTML = fulldate;
+        }
+
+        var eightyYearsAgoElements = document.getElementsByClassName("eighty-years-ago");
+        for(var i = 0; i < eightyYearsAgoElements.length; i++)
+        {
+            eightyYearsAgoElement = eightyYearsAgoElements[i];
+            var fulldate = (mrYear - 80) + "-" + mrMonth + "-" + mrDay;
+            var dateObject = new Date(fulldate);
+            if(Number.isNaN(dateObject.getDate()))
+            {
+                fulldate = (mrYear - 80) + "-" + mrMonth + "-" + (mrDay - 1);
+            }
+            eightyYearsAgoElement.innerHTML = fulldate;
+        }
+
+        var inputsTestDateMinMax = document.getElementsByClassName("test-date-min-max");
+        for(var i = 0; i < inputsTestDateMinMax.length; i++)
+        {
+            inputTestDateMinMax = inputsTestDateMinMax[i];
+            if(inputTestDateMinMax.getAttribute("min") != null)
+            {
+                if(inputTestDateMinMax.classList.contains("min-today"))
+                {
+                    inputTestDateMinMax.setAttribute("min", mrDateString);
+                }   else
+                {
+                    var fulldate = (mrYear - 80) + "-" + mrMonth + "-" + mrDay;
+                    var dateObject = new Date(fulldate);
+                    if(Number.isNaN(dateObject.getDate()))
+                    {
+                        fulldate = (mrYear - 80) + "-" + mrMonth + "-" + (mrDay - 1);
+                    }
+                    inputTestDateMinMax.setAttribute("min", fulldate);
+                }
+            }
+            if(inputTestDateMinMax.getAttribute("max") != null)
+            {
+                var fulldate = (mrYear - 6) + "-" + mrMonth + "-" + mrDay;
+                var dateObject = new Date(fulldate);
+                if(Number.isNaN(dateObject.getDate()))
+                {
+                    fulldate = (mrYear - 6) + "-" + mrMonth + "-" + (mrDay - 1);
+                }
+                inputTestDateMinMax.setAttribute("max", fulldate);
+            }
+            
+        }
+    </script>
+
+    </body>
+</html>

@@ -1,18 +1,18 @@
 <header class="navbar navbar-expand-md navbar-dark fixed-top">
-    <a class="navbar-brand" href="index.html"><img src="assets/img/myrules-logo.png" id="myrules-logo" alt="My Rules Logo"></a>
+    <a class="navbar-brand home-href" href="../index.html"><img src="assets/img/myrules-logo.png" id="myrules-logo" alt="My Rules Logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <nav class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" id="nav-home">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link  home-href" href="../index.html">Home</a>
             </li>
             <li class="nav-item" id="nav-documentation">
-                <a class="nav-link" href="getting-started.html">Documentation</a>
+                <a class="nav-link" id="nav-getting-started-href" href="getting-started.html">Documentation</a>
             </li>
             <li class="nav-item" id="nav-about">
-                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" id="nav-about-href" href="about.html">About</a>
             </li>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
@@ -32,13 +32,35 @@
 
     if(header != null)
     {
-        var navActive = header.getAttribute("navactive");
+        var navActive = header.getAttribute("data-navactive");
+        if(navActive == null)
+        {
+            navActive = header.getAttribute("navactive");
+        }
+        
         if(navActive != "")
         {
             var navItem = document.getElementById(navActive);
             if(navActive != "")
             {
                 navItem.classList.add("active");
+
+                if(navActive == "nav-home"){
+                    var myrulesLogo = document.getElementById("myrules-logo");
+                    myrulesLogo.setAttribute("src","./docs/assets/img/myrules-logo.png");       
+
+                    homeHrefs = document.getElementsByClassName("home-href");   
+                    for(homeHref of homeHrefs)
+                    {
+                        homeHref.setAttribute("href","./index.html");
+                    }
+
+                    var gettingStartedHref = document.getElementById("nav-getting-started-href");
+                    var aboutHref = document.getElementById("nav-about-href");
+
+                    gettingStartedHref.setAttribute("href","./docs/getting-started.html");
+                    aboutHref.setAttribute("href","./docs/about.html");
+                }
             }
         }
     }

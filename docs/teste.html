@@ -3,15 +3,96 @@
 <head>
     <title>Hello, world!</title>
     <meta charset="utf-8">
+    <style>
+        .mr-feedback {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<form class= "">
+<form class= "mr-colors">
     <!--Required element-->
-    <input type="text" class="mr mr-required"> <br>
+    <!-- <input type="file" class="mr mr-sum-minsizes mr-sum-maxsizes" multiple minsize="25MB" maxsize="100MB" maxsizesum="" minselect="2" maxselect="4"  extension=".pdf, .doc, .mp4, .mkv, m4v" accept="video/*, pdf, doc, docx, mp4, mp3, mpeg" required> <br> -->
     <!--Validation feedback-->
-    <p class= "mr-feedback mr-required-fb">Please fill out this field</p>
+    <!-- <div class="mr-feedback">
+        <p class= "mr-required-fb">Please fill out this field</p>
+        <p class= "mr-maxselect-fb">Max select 4</p>
+        <p class= "mr-minselect-fb">Min select 2</p>
+        <p class= "mr-accept-fb">Select a video</p>
+        <p class= "mr-maxsize-fb">Max size 50MB</p>
+        <p class= "mr-minsize-fb">Min size 25MB</p>
+        <p class= "mr-extension-fb">Valid extensions - .pdf, .doc, .mp4</p>
+    </div> -->
 
+    <!-- <input type="file" multiple class="mr" height="" width="">
+    <div class="mr-feedback">
+        <p class= "mr-required-fb">Please fill out this field</p>
+        <p class= "mr-width-fb">Max select 4</p>
+        <p class= "mr-height-fb">Max select 4</p>
+        <p class= "mr-maxwidth-fb">Max width: </p>
+        <p class= "mr-minheight-fb">Min height: </p>
+    </div> -->
+
+    <!-- <input type="file" class="mr" required minheight="350" minwidth="350" resolution="350X500, 500X500, 350x350"> -->
+    <!-- <input type="file" class="mr" required multiple minheight="350" minwidth="350" ratio="0.7,1, 1:1, 4:3, 3:4, 16:9, 9:16, 7:3, 3:7, 13:7, 7:13, 5:3, 1, 3:5, 13:7, 7:13, 21:9, 9:21">
+    <div class="mr-feedback">
+        <p class="mr-required-fb">Please fill out this field</p>
+        <p class="mr-ratio-fb">Invalid resolution</p>
+        <p class="mr-accept-fb">Invalid accept</p>
+        <p class="mr-minheight-fb">Invalid minheight</p>
+        <p class="mr-minwidth-fb">Invalid minwidth</p>
+    </div>
+     -->
+
+    <!-- <input type="file" multiple class="mr" data-width="500" accept="image/*" data-resolution="500X500, 350x500" required>
+    <div class="mr-feedback">
+        <p class= "mr-required-fb">Please fill out this field</p>
+        <p class="mr-ratio-fb">Invalid ratio</p>
+        <p class="mr-resolution-fb">Invalid resolution</p>
+        <p class= "mr-accept-fb">Invalid accepted file</p>
+        <p class= "mr-height-fb">Invalid height</p>
+        <p class= "mr-minheight-fb">Invalid minheight</p>
+        <p class= "mr-maxheight-fb">Invalid maxheight</p>
+        <p class= "mr-width-fb">Invalid width</p>
+        <p class= "mr-minwidth-fb">Invalid minwidth</p>
+        <p class= "mr-maxwidth-fb">Invalid maxwidth</p>
+    </div>
+<br>
+    <input type="submit" value="submit"> -->
+
+
+
+    <!--Options to check -->
+    <!-- <div class="mr mr-checkbox" data-maxcheck="4" mincheck="2">
+        <input type="checkbox" name="sport1" value="football">Football<br>
+        <input type="checkbox" name="sport2" value="basketball">Basketball<br>
+        <input type="checkbox" name="sport3" value="baseball">Baseball<br>
+        <input type="checkbox" name="sport4" value="golf">Golf<br>
+        <input type="checkbox" name="sport4" value="athletics">Athletics<br>
+        <input type="checkbox" name="sport5" value="cyclism">Cyclism
+    </div> -->
+    <!--Validation feedbacks-->
+    <!-- <div class="mr-feedback">
+        <p class= "mr-mincheck-fb">The minimum options allowed to check is 2</p>
+        <p class= "mr-maxcheck-fb">The maximum options allowed to check is 4</p>
+    </div> -->
+
+    <!-- <label for="password">Password:</label> <br>
+    <input type="text" name="password" id="password" class="mr mr-password-good mr-match-subject"> <br>
+    <p class="mr-feedback mr-password-good-fb">The password must match: lowercase or/and uppercase and number or/and special character.!</p>
+
+    <label for="password2">Confirm password:</label> <br>
+    <input type="text" name="password2" id="password2" class="mr mr-match"> <br>
+    <p class="mr-feedback mr-match-fb">The password not matchs!</p>
+ -->
+
+    <input type="text" class="mr mr-email mr-required">
+    <p class="mr-feedback mr-email-fb">Invalid email!</p>
     <input type="submit" value="submit">
+
+
+
+
 </form>
 
 <!--MY RULES-->

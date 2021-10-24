@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Getting started myrules. myrules's Documentation - The javascript form validation">
-    <meta name="Keywords" content="myrules, myrules Validation, myrules Validation Form, myrules Documentation, Documentation, Getting started, Quick start, Basic Validation, Explaning the code">
+    <meta name="description" content="Multiple validation and feedbacks. myrules's Documentation - The javascript form validation">
+    <meta name="Keywords" content="myrules, myrules Multiple validation and feedbacks, myrules Documentation, Documentation, Form Validation, Javascript form validation, myrules.js">
     <meta name="author" content="Alberto Jordane Adolfo">
     <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
 
@@ -29,21 +29,30 @@
     <div class="row">
 
         <!--INCLUDE SIDEBAR-->
-        <div id="include-sidebar" data-navactive="getting-started-sidebar"></div>
+        <div id="include-sidebar" data-navactive="multiple-alidation-and-feedbacks-sidebar"></div>
 
         <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
             <div class="container-fluid">
 
-                <section class="pb-25" id="quickstart">
-                    
-                        <h1>Quick start</h1>
-                        <p>Copy-paste the following <code class="tag">&lt;script</code><code class="tag">&gt;</code> near the end of your web pages, before the closing <code class="tag">&lt;/body&gt;</code> tag. If  you need, <a href="">download the source file</a> and host yourself.</p>
-    
-                        <div class="code-panel mt-3">
-                            <code class="lang-html">
-                                <pre><i class="tag">&lt;script</i> <i class="attr">src</i><i class="value">="http://exemplo.cdn/myrules.min.js"</i><i class="tag">&gt;</i><i class="tag">&lt;script/&gt;</i></pre>
-                            </code>
-                        </div>
+                <section class="pb-25" id="multiple-validation">
+                    <h1>Multiple validation and feedbacks</h1>
+                    <p>You can validate an element with more than one Class or Attribute of Validation. All you need is set the Class and Attribute of Validation into the element.</p>
+                    <div class="code-panel mt-3 pt-0 pb-0">
+                        <code class="lang-html">
+<pre>
+<i class="comment">&lt;!--Attributes "type='email'" and "required" are Validation Attributes--&gt;</i>
+<i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"email"</i> <i class="attr">class=</i><i class="value">"mr"</i> <i class="attr">required</i> <i class="attr">placeholder=</i><i class="value">"E-mail"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+<i class="comment">&lt;!--Attributes "required" and "data-minlength" are Validation Attributes and class ".mr-password-good" is Validation Class--&gt;</i>
+<i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"password"</i> <i class="attr">class=</i><i class="value">"mr mr-password-good"</i> <i class="attr">required</i> <i class="attr">data-minlength=</i><i class="value">"6"</i> <i class="attr">placeholder=</i><i class="value">"Password"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                    <p>The unique thing that you have to lean is how to display a multiple feedbacks.</p>
+                    <div class="code-panel mt-3 pt-0 pb-0">
+                        <code class="lang-html">
+                            <pre><i class="tag">&lt;script</i> <i class="attr">src</i><i class="value">="http://exemplo.cdn/myrules.min.js"</i><i class="tag">&gt;</i><i class="tag">&lt;script/&gt;</i></pre>
+                        </code>
+                    </div>
 
                     <article id="basic-validation">
                         <h2>Basic validation</h2>
@@ -53,8 +62,8 @@
                         <div class="mr-test">
                             <div class="panel-info">
                                 <ul>
-                                    <li>The inputs text First name and Last name are required fields</li>
-                                    <li>Try to submit the form without fill out the text fields</li>
+                                    <li>The inputs text First name and Last name are required fields.</li>
+                                    <li>Try to submit the form without fill out the text fields.</li>
                                 </ul>
                             </div>
                             <form>
@@ -106,17 +115,17 @@
                             </code>
                         </div>
                         <h3 id="explaning-code">Explaning the code</h3>
-                        <p>The class <code class="class">.mr</code> indicates that the form element must be validated by myrules.</p>
-                        <p>The attribute <code class="attr">required</code> is a <strong>validation attribute</strong>. The myrules classes and attributes of validation are classes and attributes that specifies the type of validation of the element. the validation attribute <code class="attr">required</code>  specifies that the element value is required, it must be filled out before submitting the form. Learn more about <a href="classes-and-attributes-validation-and-feedback-classes.html">myrules Classes and Attributes of Validation</a>.</p>
-                        <p>The class <code class="class">.mr-required-fb</code> is an <strong>feedback class</strong> of validation attribute <code class="attr">required</code>. Feedbacks classes are classes used to display feedbacks of validations of the elements. The element with class <code class="class">.mr-required-fb</code> will displayed when the required element was invalid.</p>                        
-                        <p>The class <code class="class">.mr-feedback</code> indicates the element where the feedbacks of validatiobs of element will placed.</p>
-                        <p>For each element <code class="class">.mr</code> needs one class <code class="class">.mr-feedback</code>. The number of class <code class="class">.mr</code> and class <code class="class">.mr-feedback</code> must be iqual in the form.</p>
+                        <p>The class <samp class="class">.mr</samp> indicates that the form element must be validated by myrules.</p>
+                        <p>The attribute <samp class="attr">required</samp> is a <strong>validation attribute</strong>. The myrules classes and attributes of validation are classes and attributes that specifies the type of validation of the element. the validation attribute <samp class="attr">required</samp>  specifies that the element value is required, it must be filled out before submitting the form. Learn more about <a href="classes-and-attributes-validation-and-feedback-classes.html">myrules Classes and Attributes of Validation</a>.</p>
+                        <p>The class <samp class="class">.mr-required-fb</samp> is an <strong>feedback class</strong> of validation attribute <samp class="attr">required</samp>. Feedbacks classes are classes used to display feedbacks of validations of the elements. The element with class <samp class="class">.mr-required-fb</samp> will displayed when the required element was invalid.</p>                        
+                        <p>The class <samp class="class">.mr-feedback</samp> indicates the element where the feedbacks of validatiobs of element will placed.</p>
+                        <p>For each element <samp class="class">.mr</samp> needs one class <samp class="class">.mr-feedback</samp>. The number of class <samp class="class">.mr</samp> and class <samp class="class">.mr-feedback</samp> must be iqual in the form.</p>
                     </article>
 
                     <article id="best-loading-experience">
                         <h2>Best loading experience</h2>
                         <p>The feedbacks element are hidden after the page loaded. Depending the speed of page loading the user can see the feedbacks of validation before their hidden.</p>
-                        <p>Proportionate better loading experience for the user adding the below CSS style sheet into the <code class="tag">&lt;head&gt;</code> section of your HTML page, to hide (display none) quick the feedbacks of validation preventing user see they.</p>
+                        <p>Proportionate better loading experience for the user adding the below CSS style sheet into the <samp class="tag">&lt;head&gt;</samp> section of your HTML page, to hide (display none) quick the feedbacks of validation preventing user see they.</p>
                         
                         <div class="code-panel">
                             <code class="lang-css">
@@ -127,7 +136,7 @@
 </pre>
                             </code>
                         </div>
-                        <p>You can insert this style sheet by including the reference to the external style sheet file inside the <code class="tag">&lt;link&gt;</code> element or by internal style sheet, defining the style sheet within the <code class="tag">&lt;style&gt;</code> element.</p>
+                        <p>You can insert this style sheet by including the reference to the external style sheet file inside the <samp class="tag">&lt;link&gt;</samp> element or by internal style sheet, defining the style sheet within the <samp class="tag">&lt;style&gt;</samp> element.</p>
                     </article>
                 </section>
             </div>

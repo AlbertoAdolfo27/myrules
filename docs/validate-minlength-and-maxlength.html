@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Riquered. myrules Documentation - The javascript form validation">
+        <meta name="Keywords" content="myrules, myrules Validation, minlength, maxlength, minlength and maxlength, Validation Attribute minlength, Validation Attribute maxlength, Validation Attribute minlength and Validation Attribute maxlength, mr-minlength-fb, mr-maxlength-fb, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Minlength and Maxlength</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-minlength-and-maxlength-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
+                <div class="container-fluid">
+                    <section id="validate-minlength-and-maxlength">
+                        <article>
+                            <h1>Minlength and Maxlength</h1>
+                            <p>The Validation Attribute <code class="attr">minlength</code> specifies the minimum number of characters allowed in the filled out element (when the element value is not empty) and the Validation Attribute <code class="attr">maxlength</code> specifies the maximum number of characters allowed in the element.</p>        
+                            <p>The Feedback Class of Validation Attribute <code class="attr">minlength</code> is <code class="class">.mr-minlength-fb</code> and the Feedback Class of Validation Attribute <code class="attr">maxlength</code> is <code class="class">.mr-maxlength-fb</code>.</p>
+                            <p>The attribute <code class="attr">minlength</code> is not an attribute of HTML form element, it's myrules custom attribute. The myrules HTML 5 Custom Attribute is <code class="attr">data-minlength</code>. Use it if you want to make your HTML 5 page valid.</p>
+                        
+                            <div class="panel-info">
+                                <p>The Validation Class <code class="attr">minlength</code> don´t specifies that the element requires a value. If your want to specifies that the element must be filled out use the Validation Attribute <a href="validate-required.html"><code class="attr">required</code></a>.</p>
+                            </div>
+                        </article>
+                        
+                        <article id="applying-input">
+                            <h2>Applying in &lt;input&gt;</h2>
+                            <h3 class="h5 mt-30">Input Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The minimum allowed number of characters of the input field Username after filled out is 4</li>
+                                        <li>The maximum allowed number of characters of the input field Username is 10</li>
+                                        <li>Try to submit an invalid value</li>
+                                    </ul>
+                                </div>
+                                <form>
+                                    <!--input text-->
+                                    <input type="text" class="mr" data-minlength="4" maxlength="10" placeholder="Username"> <br>
+                                    <!--Validation feedback-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-minlength-fb">Please, input at least 4 characters!</p>
+                                        <p class="mr-maxlength-fb">Please, input till 10 characters!</p>
+                                    </div>
+                                
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--input text--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">data-minlength</i><i class="value">="4"</i> <i class="attr">maxlength</i><i class="value">="10"</i> <i class="attr">placeholder</i><i class="value">="Username"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>Please, input at least 4 characters!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-maxlength-fb"</i><i class="tag">&gt;</i>Please, input till 10 characters!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+
+                            
+                        </article>
+                        
+                        <article id="applying-textarea">
+                            <h2>Applying in &lt;textarea&gt;</h2>
+                            
+                            <h3 class="h5 mt-30">Textarea Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The minimum allowed length of the Comment textarea after filled out is 5</li>
+                                        <li>The maximum allowed length of the Comment textarea is 20</li>
+                                        <li>Try to submit an invalid value</li>
+                                    </ul>
+                                </div>
+
+                                <form>
+                                    <label>Write a comment:</label> <br>
+                                    <!--Textarea element-->    
+                                    <textarea class="mr" name="comment" data-minlength="5" maxlength="20"></textarea>  <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-minlength-fb">Please, input at least 5 characters!</p>
+                                        <p class="mr-maxlength-fb">Please, input till 20 characters!</p>
+                                    </div>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>              
+                            </div>
+                                
+                            <div class="code-panel">
+                                <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;label&gt;</i>Write a comment:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Textarea element--&gt;</i>    
+    <i class="tag">&lt;textarea</i> <i class="attr">class=</i><i class="value">"mr"</i> <i class="attr">name=</i><i class="value">"comment"</i> <i class="attr">data-minlength</i><i class="value">="5"</i> <i class="attr">maxlength</i><i class="value">="20"</i><i class="tag">&gt;</i><i class="tag">&lt;/textarea&gt;</i>  <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>Please, input at least 5 characters!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-maxlength-fb"</i><i class="tag">&gt;</i>Please, input till 20 characters!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"reset"</i> <i class="attr">value=</i><i class="value">"reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-minlength-and-maxlength">Minlength and Maxlength</a>
+                        <ul class="navbar-nav sub-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input">Applying in &lt;input&gt;</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-textarea">Applying in &lt;textarea&gt;</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+
+    </body>
+</html>

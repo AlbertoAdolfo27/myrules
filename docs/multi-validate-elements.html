@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Multi-validate elements. myrules's Documentation - The javascript form validation">
+    <meta name="Keywords" content="myrules, Multi-validation, Multi-validate elements, myrules Documentation, Documentation">
+    <meta name="author" content="Alberto Jordane Adolfo">
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/docs-style.css">
+    <link rel="stylesheet" href="assets/css/codepanel.css">
+
+    <title>Multi-validate elements - myrules</title>
+</head>
+<body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+<div id="nav"></div>
+<!--INCLUDE HEADER-->
+<div id="include-header" navactive="nav-documentation"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!--INCLUDE SIDEBAR-->
+        <div id="include-sidebar" data-navactive="multi-validation-of-elements-sidebar"></div>
+
+        <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
+            <div class="container-fluid">
+                <section class="pb-25" id="multi-validation-of-elements">
+                    <h1>Multi-validate elements</h1>
+                    <p>You can validate an element with more than one Class or Attribute of Validation. All you need is set the Class and Attribute of Validation into the element.</p>
+                    
+                    <div class="code-panel">
+                            <code class="lang-html">
+<pre>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-latin-space"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i><i class="tag">&gt;</i>
+<i class="comment">&lt;!--Attributes "data-minlength" and "required" are Validation Attributes and class ".mr-latin-space" is Validation Class--&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                    
+                    <p>To display multiple feedbacks of validations, add the class <code class="class">.mr-feedback</code> into the <code class="tag">&lt;DIV&gt;</code> element, then add child element of each Feedback Class of validation of the element.</p>
+                    
+                    <h3 class="h5">Example 1: Multi-validate First Name and a Last Name text fields</h3>
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <ul>
+                                <li>The First Name and Last Name are requireds fields</li>
+                                <li>The text fields First Name and Last Name must macth Latim with space ([a-zA-ZÀ-ÖØ-öø-ʯ ])</li>
+                                <li>The text fields First Name and Last Name must have at least two characters</li>
+                                <li>Try to input an invalid First Name and a Last Name</li>
+                            </ul>
+                        </div>
+                        <form>
+                            <!--First Name text field-->
+                            <input type="text" class="mr mr-latin-space" required data-minlength="2" placeholder="First name"> <br>
+                            <!--Validation feedbacks-->
+                            <div class="mr-feedback">
+                                <p class="mr-required-fb">Please fill out this text field!</p>
+                                <p class="mr-latin-space-fb">Please input a valid name!</p>
+                                <p class="mr-minlength-fb">A valid name must have at least two characters!</p>
+                            </div>
+                        
+                            <!--Last Name text field-->
+                            <input type="text" class="mr mr-latin-space" required data-minlength="2" placeholder="Last name"> <br>
+                            <!--Validation feedbacks-->
+                            <div class="mr-feedback">
+                                <p class="mr-required-fb">Please fill out this text field!</p>
+                                <p class="mr-latin-space-fb mb-0">Please input a valid name!</p>
+                                <p class="mr-minlength-fb">A valid name must have at least two characters!</p>
+                            </div>
+                        
+                            <input type="submit" value="submit">
+                            <input type="reset" value="reset">
+                        </form>
+                    </div>
+                    
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--First Name text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-latin-space"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i> <i class="attr">placeholder</i><i class="value">="First name"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-latin-space-fb"</i><i class="tag">&gt;</i>Please input a valid name!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>A valid name must have at least two characters!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="comment">&lt;!--Last Name text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-latin-space"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i> <i class="attr">placeholder</i><i class="value">="Last name"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-latin-space-fb"</i><i class="tag">&gt;</i>Please input a valid name!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>A valid name must have at least two characters!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+
+                    <h3 class="h5">Example 2: Multi-validate e-mail and very strong password text fields</h3>
+                    
+                    <div class="mr-test">
+                        <div class="panel-info">
+                            <ul>
+                                <li>The E-mail and Very Strong Password text fields are requireds</li>
+                                <li>A Very Strong Password must match: lowercase, uppercase, number and special character</li>
+                                <li>The password must have at least two characters</li>
+                                <li>Try to input invalid e-mail and strong password</li>                                
+                            </ul>
+                        </div>
+
+                        <form>
+                            <!--E-mail text field-->
+                            <input type="email" class="mr" required placeholder="E-mail"> <br>
+                            <!--Validation feedbacks-->
+                            <div class="mr-feedback">
+                                <p class="mr-required-fb">Please fill out this text field!</p>
+                                <p class="mr-email-fb">Please input a valid e-mail!</p>
+                                <p class="mr-valid-fb">it´s valid E-mail!</p>
+                            </div>
+                        
+                            <!--Password text field-->
+                            <input type="password" class="mr mr-password-very-strong" required data-minlength="6" placeholder="Password"> <br>
+                            <!--Validation feedbacks-->
+                            <div class="mr-feedback">
+                                <p class="mr-valid-fb">it´s valid Strong Paasword!</p>        
+                                <p class="mr-invalid-fb mb-0">Invalid field!</p>
+                                <p class="mr-required-fb">Please fill out this text field!</p>
+                                <p class="mr-password-very-strong-fb">Please input a strong password! (mutch: lowercase, uppercase, number and special character, with at least 6 characters).</p>
+                            </div>
+                        
+                            <input type="submit" value="submit">
+                            <input type="reset" value="reset">
+                        </form>
+                    </div>
+    
+                    <div class="code-panel">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--E-mail text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="email"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="attr">placeholder</i><i class="value">="E-mail"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-email-fb"</i><i class="tag">&gt;</i>Please input a valid e-mail!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-valid-fb"</i><i class="tag">&gt;</i>it´s valid E-mail!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="comment">&lt;!--Password text field--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="password"</i> <i class="attr">class</i><i class="value">="mr mr-password-very-strong"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="6"</i> <i class="attr">placeholder</i><i class="value">="Password"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-valid-fb"</i><i class="tag">&gt;</i>it´s valid Strong Paasword!<i class="tag">&lt;/p&gt;</i>        
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-invalid-fb"</i><i class="tag">&gt;</i>Invalid field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-password-very-strong-fb"</i><i class="tag">&gt;</i>Please input a strong password! (mutch: lowercase, uppercase, number and special character, with at least 6 characters).<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                        </code>
+                    </div>
+                  
+                </section>
+            </div>
+        </main>
+
+        <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a href="#multi-validation-of-elements" class="nav-link">Multi-validate elements</a>
+                </li>
+            </ul>
+        </aside>
+    </div>
+</div>
+
+<!--INCLUDE FOOTER-->
+<div id="include-footer"></div>
+
+<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="assets/vendor/popper/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../dist/myrules.js"></script>
+
+<!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+<script src="assets/js/docs-includes.js"></script>
+
+</body>
+</html>
