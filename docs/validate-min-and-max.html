@@ -35,8 +35,29 @@
                     <section id="validate-required">
                         <article>
                             <h1>Min and Max</h1>
-                            <p>The Validation Attributes <code class="attr">min</code> and <code class="attr">max</code> specifies the minimum and maximum value of the element respectively.</p>        
-                            <p>The Feedback Class of Validation Attribute <code class="attr">min</code> is <code class="class">.mr-min-fb</code> and the Feedback Class of Validation Attribute <code class="attr">max</code> is <code class="class">.mr-max-fb</code>.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">min</code></td>
+                                            <td>Specifies the minimum value of an input element</td>
+                                            <td><code class="class">.mr-min-fb</code></td>    
+                                        </tr>
+                                        <tr>
+                                            <td><code class="attr">max</code></td>
+                                            <td>Specifies the maximum value of an input element</td>
+                                            <td><code class="class">.mr-max-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </article>
                         
                         <article id="applying-input-type-number">
@@ -50,8 +71,8 @@
                                         <li>Try to submit the invalid minimum and maximum value allowed</li>
                                     </ul>
                                 </div>
-                                <form>
-                                    <!--Input number-->
+                                <form class="mr-colors">
+                                    <!--Input type number-->
                                     <input type="number" class="mr" min="1" max="100" placeholder="Quantity"> <br>
                                     <!--Validation feedbacks-->
                                     <div class="mr-feedback">
@@ -67,7 +88,7 @@
                             <div class="code-panel">
                                     <code class="lang-html">
 <pre>
-<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+<i class="tag">&lt;form</i> <i class="class">class=</i><i class="value">"mr-colors"</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Input type number--&gt;</i>
     <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="number"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">min</i><i class="value">="1"</i> <i class="attr">max</i><i class="value">="100"</i> <i class="attr">placeholder</i><i class="value">="Quantity"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
@@ -95,14 +116,14 @@
                                         <li>Try to submit the invalid minimum and maximum date allowed</li>
                                     </ul>
                                 </div>
-                                <form>
-                                    <!--Input date-->
-                                    <input type="date" class="mr test-date-min-max" min="" max="" placeholder="Birthday"> <br>
+                                <form class="mr-colors">
+                                    <!--Input type date-->
+                                    <input type="date" class="mr" min="1941-10-25" max="2015-10-25" placeholder="Birthday"> <br>
                                     <!--Validation feedbacks-->
                                     <div class="mr-feedback">
-                                        <p class="mr-date-fb mb-0">Please input a valid date (YYYY-MM-DD)!</p>
-                                        <p class="mr-min-fb mb-0">The minimum allowed date is <span class="eighty-years-ago"></span></p>
-                                        <p class="mr-max-fb">The maximum allowed date is <span class="six-years-ago"></span>!</p>
+                                        <p class="mr-date-fb">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-min-fb">The minimum allowed date is 1941-10-25!</p>
+                                        <p class="mr-max-fb">The maximum allowed date is 2015-10-25!</p>
                                     </div>
                                 
                                     <input type="submit" value="submit">
@@ -113,7 +134,7 @@
                             <div class="code-panel">
                                     <code class="lang-html">
 <pre>
-<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+<i class="tag">&lt;form</i> <i class="class">class=</i><i class="value">"mr-colors"</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Input type date--&gt;</i>
     <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="date"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">min</i><i class="value">="<span class="eighty-years-ago"></span>"</i> <i class="attr">max</i><i class="value">="<span class="six-years-ago"></span>"</i> <i class="attr">placeholder</i><i class="value">="Birthday"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
@@ -138,16 +159,16 @@
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p class="mb-0">The standard date format of Validation Class <code class="class">.mr-date</code> is ISO 8601 (YYYY-MM-DD). You can change it with myrules costum attribute <code class="attr">dateformat</code>(or myrules HTML 5 costum attribute <code class="attr">data-dateformat</code>).</p>
-                                    <p class="mt-0">Lean about the date formats of Validation Class <code class="class">.mr-date</code> in <a href="validate-date">Validate date</a> subject.</p>
+                                    <p class="mt-0">Lean about the date formats of Validation Class <code class="class">.mr-date</code> in <a href="validate-date.html">Validate date</a> subject.</p>
                                 </div>
-                                <form>
-                                    <!--Input text-->
-                                    <input type="text" class="mr mr-date test-date-min-max" min="" max="" placeholder="Birthday"> <br>
+                                <form class="mr-colors">
+                                    <!--Input type text with Validation Class ".mr-date"-->
+                                    <input type="text" class="mr mr-date" min="1941-10-25" max="2015-10-25" placeholder="Birthday"> <br>
                                     <!--Validation feedbacks-->
                                     <div class="mr-feedback">
-                                        <p class="mr-date-fb mb-0">Please input a valid date (YYYY-MM-DD)!</p>
-                                        <p class="mr-min-fb mb-0">The minimum allowed date is <span class="eighty-years-ago"></span>!</p>
-                                        <p class="mr-max-fb">The maximum allowed date is <span class="six-years-ago"></span>!</p>
+                                        <p class="mr-date-fb">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-min-fb">The minimum allowed date is 1941-10-25!</p>
+                                        <p class="mr-max-fb">The maximum allowed date is 2015-10-25!</p>
                                     </div>
                                 
                                     <input type="submit" value="submit">
@@ -158,7 +179,7 @@
                             <div class="code-panel">
                                     <code class="lang-html">
 <pre>
-<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+<i class="tag">&lt;form</i> <i class="class">class=</i><i class="value">"mr-colors"</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Input type text with Validation Class ".mr-date"--&gt;</i>
     <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-date"</i> <i class="attr">min</i><i class="value">="<span class="eighty-years-ago"></span>"</i> <i class="attr">max</i><i class="value">="<span class="six-years-ago"></span>"</i> <i class="attr">placeholder</i><i class="value">="Birthday"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
@@ -181,18 +202,31 @@
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <ul>
-                                        <li>The minimum date allowed is <span class="date-today"></span></li>
-                                        <li>Try to submit the invalid minimum date allowed</li>
+                                        <li>The minimum allowed date in the Meeting date text field is <span class="date-today"></span> (current date)</li>
+                                        <li>The maximum allowed date in the Birthday text field is <span class="date-today"></span> (current date)</li>
+                                        <li>Try to submit the invalid minimum and maximum allowed date in the text fields</li>
                                     </ul>
                                 </div>
 
-                                <form>
+                                <form class="mr-colors">
+                                    <label>Meeting date:</label> <br> 
                                     <!--Input type date-->
-                                    <input type="date" class="mr test-date-min-max min-today" min="today" placeholder="Meeting date"> <br>
+                                    <input type="date" class="mr" min="today" placeholder="Meeting date"> <br>
+                                    
                                     <!--Validation feedbacks-->
                                     <div class="mr-feedback">
-                                        <p class="mr-date-fb mb-0">Please input a valid date (YYYY-MM-DD)!</p>
-                                        <p class="mr-min-fb">The minimum allowed date is <span class="date-today"></span>!</p>
+                                        <p class="mr-date-fb">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-min-fb">The minimum allowed date is current date!</p>
+                                    </div> <br>
+                                
+                                    
+                                    <label>Birthday:</label> <br> 
+                                    <!--Input type date-->
+                                    <input type="date" class="mr" max="today" placeholder="Birthday"> <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-date-fb">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-max-fb">The maximum allowed date is current date!</p>
                                     </div>
                                 
                                     <input type="submit" value="submit">
@@ -203,13 +237,25 @@
                             <div class="code-panel">
                                     <code class="lang-html">
 <pre>
-<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+<i class="tag">&lt;form</i> <i class="attr">class=</i><i class="value">"mr-colors"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;label&gt;</i>Meeting date:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i> 
     <i class="comment">&lt;!--Input type date--&gt;</i>
     <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="date"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">min</i><i class="value">="today"</i> <i class="attr">placeholder</i><i class="value">="Meeting date"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
     <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
         <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date (YYYY-MM-DD)!<i class="tag">&lt;/p&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-min-fb"</i><i class="tag">&gt;</i>The minimum allowed date is <span class="date-today"></span>!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-min-fb"</i><i class="tag">&gt;</i>The minimum allowed date is current date!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    
+    <i class="tag">&lt;label&gt;</i>Birthday:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i> 
+    <i class="comment">&lt;!--Input type date--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="date"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">max</i><i class="value">="today"</i> <i class="attr">placeholder</i><i class="value">="Birthday"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date (YYYY-MM-DD)!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-max-fb"</i><i class="tag">&gt;</i>The maximum allowed date is current date!<i class="tag">&lt;/p&gt;</i>
     <i class="tag">&lt;/div&gt;</i>
 
     <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
