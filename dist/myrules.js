@@ -328,8 +328,8 @@ function mrValidateElement(mrElement)
     }
     //END OF GET FEEDBACK MESSAGE .mr-invalid-fb OF ELEMENT
 
-    //CUSTOM .mr-valid-fb AND .mr-invalid-fb IF THE FORM CONTAIN .mr-colors-style CLASS
-    if(mrForm.classList.contains("mr-colors-style"))
+    //CUSTOM .mr-valid-fb AND .mr-invalid-fb IF THE FORM CONTAIN .mr-colors CLASS
+    if(mrForm.classList.contains("mr-colors"))
     {
         if(mrValid != null)
         {
@@ -2697,7 +2697,7 @@ function mrValidateElement(mrElement)
         mrRemoveClass(mrElement,"mr-invalid");
 
         //CUSTUM ELEMENT WHEN HAS VALID
-        if(mrForm != undefined && mrForm.classList.contains("mr-colors-style") && mrIsvalidElement)
+        if(mrForm != undefined && mrForm.classList.contains("mr-colors") && mrIsvalidElement)
         {
             if(mrElement.classList.contains("mr-checkbox") || mrElement.classList.contains("mr-radio"))
             {
@@ -2738,7 +2738,7 @@ function mrValidateElement(mrElement)
         if(mrFeedbackMessage != null)
         {
             mrFeedbackMessage.style.display = "none";
-            if(mrForm != undefined && mrForm.classList.contains("mr-colors-style"))
+            if(mrForm != undefined && mrForm.classList.contains("mr-colors"))
             {
                 mrFeedbackMessage.style.color = "rgb(22, 160, 133)";
             }
@@ -2753,7 +2753,7 @@ function mrValidateElement(mrElement)
         mrRemoveClass(mrElement,"mr-valid");
 
         //CUSTUM ELEMENT WHEN HAS INVALID
-        if(mrForm != undefined && mrForm.classList.contains("mr-colors-style"))
+        if(mrForm != undefined && mrForm.classList.contains("mr-colors"))
         {
             if(mrElement.classList.contains("mr-checkbox") || mrElement.classList.contains("mr-radio"))
             {
@@ -2795,7 +2795,7 @@ function mrValidateElement(mrElement)
             mrFeedback.style.display = "";
             mrFeedbackMessage.style.display = "";
 
-            if(mrForm != undefined && mrForm.classList.contains("mr-colors-style"))
+            if(mrForm != undefined && mrForm.classList.contains("mr-colors"))
             {
                 mrFeedbackMessage.style.color = "rgb(225, 104, 104)";
             }
