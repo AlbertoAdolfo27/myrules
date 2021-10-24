@@ -631,3 +631,7 @@ body > .container
     list-style-type: disc;
     margin-left: 20px;
 }
+
+.strong{
+    font-weight: bolder;
+}
