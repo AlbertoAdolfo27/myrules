@@ -30,25 +30,16 @@
     <div class="row">
 
         <!--INCLUDE SIDEBAR-->
-        <div id="include-sidebar" data-navactive="classes-and-attributes-validation-and-feedback-classes-sidebar"></div>
+        <div id="include-sidebar" data-navactive="myrules-classes-attributes-sidebar"></div>
 
         <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
             <div class="container-fluid">
 
                 <section id="mr-types-and-attributes-section">
-                    <h1 id="class-attribute-heading">Classes and Attributes of Validation and Feedback Classes</h1>
-                    <p>myrules validate a form element in two ways: using <strong>Validation Classes</strong> and <strong>Validation Attributes</strong>.</p>
-                    <p><strong>Validation Classes</strong> are classes given by myrules to validate form elements and <strong>Validation Attributes</strong> are HTML input attributes and myrules Custom Attributes used too, to validate the form elements.</p>
-                    <p>To validate an element add the class <code class="class">.mr</code> into the element class to specifies that this element must be validated by myrules and add the <strong>class</strong> or <strong>attribute</strong> of validation into the same element to specifies the type of validation.</p>
+                    <h1 id="class-attribute-heading">myrules Classes and Attributes of Validation</h1>
+                    <p>myrules validate a form element by two ways: using <strong>Validation Classes</strong> and <strong>Validation Attributes</strong>.</p>
                     
-                    <div class="code-panel pt-1 pb-1">
-                            <code class="lang-html">
-<pre>
-<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
-<i class="comment">&lt;!--the attribute "required" is a Validation Attribute--&gt;</i>
-</pre>
-                        </code>
-                    </div>
+                    <p><strong>Validation Classes</strong> are classes given by myrules to validate form elements</p>
                     <div class="code-panel pt-1 pb-1">
                         <code class="lang-html">
 <pre>
@@ -58,8 +49,20 @@
                         </code>
                     </div>
 
-                    <p>Some types of validations uses Validation Classes  to validate elements, other uses Validation Attributes and some ones uses both.</p>
-                    <p>All Classes and Attributes of Validations has their <strong>Feedback Class</strong>. The Feedback Classes are classes used to display feedbacks of validations of the elements.</p>
+                    <p><strong>Validation Attributes</strong> are HTML input attributes used too, to validate the form elements.</p>
+                    <div class="code-panel pt-1 pb-1">
+                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
+<i class="comment">&lt;!--the attribute "required" is a Validation Attribute--&gt;</i>
+</pre>
+                    </code>
+                </div>
+
+                    <p>Some types of validations uses both (class and attribute) to make validation. For exemple, to specifies that the element value is required you can use validation atrribute <code class="attr">required</code> or validation class <code class="class">.mr-required</code>.</p>
+                    
+                    <h2 id="feedback-classes-heading">Feedback classes</h2>
+                    <p>All Classes and Attributes of Validations has their <strong>Feedback Class</strong>. The Feedback Classes are classes used to display the feedback of validation.</p>
                     <p>To display the feedback of an element validation, add the class <code class="class">.mr-feedback</code> into the element where the feedback will placed and add the <strong>Feedback Class</strong> of the Class or Attribute of Validation.</p>                    
                     
                     <div class="code-panel">
@@ -72,18 +75,9 @@
 </pre>
                         </code>
                     </div>
-                    <div class="code-panel">
-                            <code class="lang-html">
-<pre>
-<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-number-int"</i><i class="tag">&gt;</i> 
-<i class="comment">&lt;!--Validation feedback--&gt;</i>
-<i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-number-int-fb"</i><i class="tag">&gt;</i>Please input an integer number!<i class="tag">&lt;/p&gt;</i>
-<i class="comment">&lt;!--the class "mr-number-int-fb"" is Feeback Class of Validation Class "mr-number-int-fb"--&gt;</i>
-</pre>
-                        </code>
-                    </div>
-                    <div class="panel-warning">
-                        <p>The number of classes <code class="class">.mr</code> (elements to validate) must be iqual of the number of classes <code class="class">.mr-feedback</code> (feedbacks to display).</p>
+
+                    <div class="panel-danger">
+                        <p>The number of classes <code class="class">.mr</code> (elements to validate) must be iqual of the number of classes <code class="class">.mr-feedback</code> (feedbacks to display) in the form element.</p>
                     </div>
 
                     <p>The Feedback Classes <code class="class">.mr-valid-fb</code> and <code class="class">.mr-invalid-fb</code> are <strong>Global Feedback Classes</strong>, it means that their can be used to feedback all Classes and Attributes of Validation.</p>
@@ -93,12 +87,7 @@
 <pre>
 <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
 <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-invalid-fb"</i><i class="tag">&gt;</i>Please fill out this field!<i class="tag">&lt;/p&gt;</i>
-</pre>
-                        </code>
-                    </div>
-                    <div class="code-panel">
-                            <code class="lang-html">
-<pre>
+
 <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-number-int"</i><i class="tag">&gt;</i> 
 <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-valid-fb"</i><i class="tag">&gt;</i>Good, it´s valid integer number!<i class="tag">&lt;/p&gt;</i>
 </pre>
@@ -108,12 +97,13 @@
                     <p>All Feedback Classes are displayed when the element has invalid, except the class <code class="class">.mr-valid-fb</code> that is displayed when the element has valid.</p>
                 
                     <h2 id="class-validation-heading"> Validation Classes</h2>
+                    
                     <p>myrules provide many classes that allows to validate diferents form elements. For instance, the classes <code class="class">.mr-required</code>, <code class="class">.mr-email</code>, <code class="class">.mr-integer-number</code>, <code class="class">.mr-password-good</code>, <code class="class">.mr-username</code>, etc.</p>
                     
                     <h3 class="h5">Example: validate integer number using myrules Validation Classes</h3>
-                    <p>To validate integer number using a myrules <strong>Validation Classes</strong>, just add the classes <code class="class">.mr</code> and <code class="class">.mr-number-int</code> into the attributes classes of the input element.</p>
-                    <p>The Feedback Class of an invalid integer number is <code class="class">.mr-number-int-fb</code>. The feedback will displayed when the element was invalid.</p>
-                    <p>Add the class <code class="class">.mr-feedback</code> into the classes of elements where the validation feedbacks will placed with the Feedback Class <code class="class">.mr-number-int-fb</code>.</p>
+                    <p>To validate integer number using a myrules <strong>Validation Classes</strong>, just add the classes <code class="class">.mr</code> and <code class="class">.mr-number-int</code> into the attributes classes of the input element to validate.</p>
+                    <p>The Feedback Class of an invalid integer number is <code class="class">.mr-number-int-fb</code>.</p>
+                    <p>Add the class <code class="class">.mr-feedback</code> into the classes of elements where the validation feedbacks will placed with their Feedback Class <code class="class">.mr-number-int-fb</code>.</p>
                     
                     <div class="mr-test">
                         <div class="panel-info">
@@ -146,9 +136,9 @@
                         </code>
                     </div>
 
-                    <h2 id="input-atrribute-heading">Validation Attributes</h2>
-                    <P>Other way to validate a form elements is using <strong>Validation Attributes</strong>.</P>
-                    <p>They are two types of Validation Attributes:</p>
+                    <h2 id="validation-atrributes-heading">Validation Attributes</h2>
+                    <P>Other way to validate a form elements is using <strong>Validation Attributes</strong>. They are two types of Validation Attributes:</P>
+                    <p></p>
                     <ul class="list-type-disc">
                         <li><strong>HTML input attributes</strong> (example: <code class="attr">required</code>, <code class="attr">max</code>, <code class="attr">min</code>, <code class="attr">maxlength</code>, <code class="attr">type</code>); and</li>
                         <li><strong>myrules Custom Attributes</strong> (example: <code class="attr">minlength</code> or  <code class="attr">data-minlength</code>, <code class="attr">resolution</code> or <code class="attr">data-resolution</code>, <code class="attr">maxcheck</code> or <code class="attr">data-maxcheck</code>)</li>
@@ -156,8 +146,8 @@
                     <p>myrules Custom Attributes are attributes not form elements attributes or are not conceived to that use.</p>
 
                     <h3 class="h5">Example 1: validate requireds fields using Validation Attribute</h3>
-                    <p>To validate a required fields using Validation Attribute, add the class <code class="class">.mr</code> and HTML input attribute <code class="attr">required</code> (Validation Attribute) into the form elements.</p>
-
+                    <p>The validation attribute of required field is the HTML input attribute <code class="attr">required</code> and their feedback class is <code class="class">.mr-required-fb</code>.</p>
+                   
                     <div class="mr-test">
                         <div class="panel-info">
                             <p>Try to submit the form without fill out the text fields.</p>
@@ -200,7 +190,7 @@
                     </div>
 
                     <h3 class="h5">Example 2: validate the minimum allowed length of an input field using Validation Attribute</h3>
-                    <p>To validate the minimum allowed length of an input field using Validation Attribute, add the class <code class="class">.mr</code> and the myrules Custom Attribute <code class="attr">minlength</code> with the value of minimum allowed length into the form element.</p>
+                    <p>The validation attribute of the minimum allowed length of an input field is the myrules Custom Attribute <code class="attr">minlength</code> and their feedback class is <code class="class">.mr-minlength-fb</code>.</p>
                     
                     <div class="mr-test">
                         <div class="panel-info">
@@ -239,15 +229,14 @@
                     </div>
 
                     
-                    <h3 class="h4">HTML 5 valid page with myrules Custom Attributes</h3>
-                    <p><strong>myrules Custom Attributes</strong> are not HTML input attributes or are not conceived to that uses, so, if you want to make your HTML 5 page valid, use the HTML 5 Global Attribute <code class="attr">data-*</code> instead of the regular myrules Custom Attribute.</p>
-                    <p>For exemple: <code class="attr">minlength</code>  - this is a regular myrules Custom Attribute; <code class="attr">data-minlength</code> - this is a myrules HTML 5 Custom Attribute.</p>
-                    
+                    <h3 id="html5-valid-heading" class="h4">HTML 5 valid page with myrules Custom Attributes</h3>
+                    <p>If you want to make your HTML 5 page valid, use the HTML 5 Global Attribute <code class="attr">data-*</code> instead of the regular <strong>myrules Custom Attribute</strong>.</p>
+                    <p>For example: use the myrules HTML 5 Custom Attribute <code class="attr">data-minlength</code> instead of regular myrules Custom Attribute <code class="attr">minlength</code>.</p>
+
                     <div class="panel-success">
                         <p>myrules HTML 5 Custom Attribute is <strong>best pratice</strong>.</p>
                     </div>
                     <h3 class="h5">Example: validate the minimum allowed length of an input field using HTML 5 Global Attribute data-*</h3>
-                    <p>To a HTML 5 valid page use the myrules HTML 5 Custom Attribute <code class="attr">data-minlength</code> instead of regular myrules Custom Attribute <code class="attr">minlength</code>.</p>
                     
                     <div class="mr-test">
                         <div class="panel-info">
@@ -562,13 +551,19 @@
         <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="#class-attribute-heading">Classes and Attributes of Validation and Feedback Classes</a>
+                    <a class="nav-link" href="#class-attribute-heading">myrules Classes and Attributes of Validation</a>
                     <ul class="navbar-nav sub-nav">
+                        <li class="nav-item">
+                            <a href="#feedback-classes-heading" class="nav-link">Validation Classes</a>
+                        </li>
                         <li class="nav-item">
                             <a href="#class-validation-heading" class="nav-link">Validation Classes</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#input-atrribute-heading" class="nav-link">Validation Attributes</a>
+                            <a href="#validation-atrributes-heading" class="nav-link">Validation Attributes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#html5-valid-heading" class="nav-link">HTML 5 valid page with myrules Custom Attributes</a>
                         </li>
                     </ul>
                 </li>
