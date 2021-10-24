@@ -29,13 +29,13 @@
     <div class="row">
 
         <!--INCLUDE SIDEBAR-->
-        <div id="include-sidebar" data-navactive="multi-validation-of-elements-sidebar"></div>
+        <div id="include-sidebar" data-navactive="multi-validate-an-element-sidebar"></div>
 
         <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
             <div class="container-fluid">
-                <section class="pb-25" id="multi-validation-of-elements">
-                    <h1>Multi-validate elements</h1>
-                    <p>You can validate an element with more than one Class or Attribute of Validation. All you need is set the Class and Attribute of Validation into the element.</p>
+                <section class="pb-25" id="multi-validate-an-element">
+                    <h1>Multi-validate an element</h1>
+                    <p>You can validate an element with more than one Class or Attribute of Validation. All you need is to set the Class and Attribute of Validation into the element.</p>
                     
                     <div class="code-panel">
                             <code class="lang-html">
@@ -46,15 +46,15 @@
                         </code>
                     </div>
                     
-                    <p>To display multiple feedbacks of validations, add the class <code class="class">.mr-feedback</code> into the <code class="tag">&lt;DIV&gt;</code> element, then add child element of each Feedback Class of validation of the element.</p>
+                    <p>To display the feedback of each validation, add the class <code class="class">.mr-feedback</code> into a <code class="tag">&lt;DIV&gt;</code> element, then add child element of each Feedback validation of the element.</p>
                     
-                    <h3 class="h5">Example 1: Multi-validate First Name and a Last Name text fields</h3>
+                    <h3 class="h5">Example 1: Validate the First Name and a Last Name text fields with more than one type of validation</h3>
                     <div class="mr-test">
                         <div class="panel-info">
                             <ul>
                                 <li>The First Name and Last Name are requireds fields</li>
-                                <li>The text fields First Name and Last Name must macth Latim with space ([a-zA-ZÀ-ÖØ-öø-ʯ ])</li>
-                                <li>The text fields First Name and Last Name must have at least two characters</li>
+                                <li>The text fields must macth Latim with space ([a-zA-ZÀ-ÖØ-öø-ʯ ])</li>
+                                <li>The text fields must have at least two characters</li>
                                 <li>Try to input an invalid First Name and a Last Name</li>
                             </ul>
                         </div>
@@ -111,7 +111,7 @@
                         </code>
                     </div>
 
-                    <h3 class="h5">Example 2: Multi-validate e-mail and very strong password text fields</h3>
+                    <h3 class="h5">Example 2: Validate the e-mail text field and very strong password text field with more than one type of validation</h3>
                     
                     <div class="mr-test">
                         <div class="panel-info">
@@ -185,7 +185,7 @@
         <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a href="#multi-validation-of-elements" class="nav-link">Multi-validate elements</a>
+                    <a href="#multi-validate-an-element" class="nav-link">Multi-validate an element</a>
                 </li>
             </ul>
         </aside>
