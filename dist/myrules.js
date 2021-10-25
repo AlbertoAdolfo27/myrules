@@ -430,7 +430,7 @@ function mrValidateElement(mrElement)
                     }
 
                     var mrMinDate = mrElement.getAttribute("min");
-                    if(mrElement.getAttribute("max") == "today")
+                    if(mrMinDate == "today")
                     {
                         mrMaxDate = mrGetfullDate(mrDateFormat);
                     }
@@ -504,7 +504,7 @@ function mrValidateElement(mrElement)
                     }
 
                     var mrMaxDate = mrElement.getAttribute("max");
-                    if(mrElement.getAttribute("max") == "today")
+                    if(mrMaxDate == "today")
                     {
                         mrMaxDate = mrGetfullDate(mrDateFormat);
                     }
