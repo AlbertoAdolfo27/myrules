@@ -432,7 +432,7 @@ function mrValidateElement(mrElement)
                     var mrMinDate = mrElement.getAttribute("min");
                     if(mrMinDate == "today")
                     {
-                        mrMaxDate = mrGetfullDate(mrDateFormat);
+                        mrMinDate = mrGetfullDate(mrDateFormat);
                     }
 
                     if(mrIsValidFullDate(mrMinDate, mrDateFormat))
