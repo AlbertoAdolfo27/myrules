@@ -107,18 +107,18 @@
                         </div>
                         <h3 id="explaning-code">Explaning the code</h3>
                         <p><code class="class">.mr</code> - class that indicates that the form element must be validated by myrules.</p>
-                        <p><code class="attr">required</code> - is an <strong>attribute validation</strong> that specifies that the element value is required, it must be filled out before submitting the form. myrules uses classes and attributes to validate the form elements, learn more about <a href="classes-attributes-validation.html">Classes and Attributes of Validation</a>.</p>
-                        <p><code class="class">.mr-required-fb</code> is the <strong>feedback class</strong> of validation attribute <code class="attr">required</code>. Feedbacks classes are classes used to display feedbacks of validations of the elements. The element with class <code class="class">.mr-required-fb</code> will displayed when the required element was invalid.</p>
-                        <p>The class <code class="class">.mr-feedback</code> indicates the element where the feedbacks validation elements will placed.</p>
+                        <p><code class="attr">required</code> - is an <strong>validation attribute</strong> that specifies that the element value is required, it must be filled out before submitting the form. myrules uses classes and attributes to validate the form elements, learn more about <a href="classes-attributes-validation.html">Classes and Attributes of Validation</a>.</p>
+                        <p><code class="class">.mr-required-fb</code> is the <strong>feedback class</strong> of <code class="attr">required</code> validation attribute. Feedback classes are classes used to display feedbacks of validation of the elements. The element with <code class="class">.mr-required-fb</code> class will displayed when the required element was invalid.</p>
+                        <p>The <code class="class">.mr-feedback</code> class indicates the element where validation feedback will be placed.</p>
                         <div class="panel-danger">
-                            <p>For each element <code class="class">.mr</code> needs one class <code class="class">.mr-feedback</code>. The number of class <code class="class">.mr</code> and class <code class="class">.mr-feedback</code> must be iqual in the form element.</p>
+                            <p>For each form element with <code class="class">.mr</code> class it needs its corresponding  element with <code class="class">.mr-feedback</code> class. The number of <code class="class">.mr</code> and <code class="class">.mr-feedback</code> classes must be the same in the form.</p>
                         </div>
                     
                     </article>
 
                     <article id="hide-feedbacks-faster">
                         <h2>Hide feedbacks faster when page loading</h2>
-                        <p>The feedbacks element are hidden after the page loaded. Depending the internet speed the user can see the feedbacks of validation before their hidden.</p>
+                        <p>The feedbacks element are hidden after the page loaded. Depending the internet speed the user can see the feedbacks of validation before they hidden.</p>
                         <p>Add the below CSS style sheet into the <code class="tag">&lt;head&gt;</code> section of your HTML page, to hide (display none) quick the feedbacks validation preventing user see they.</p>
                         
                         <div class="code-panel">
