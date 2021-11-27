@@ -35,11 +35,29 @@
                     <section id="validate-minlebgth-and-maxselect">
                         <article>
                             <h1>Minselect and Maxselect</h1>
-                            <p>The Validation Attribute <code class="attr">minselect</code> and the Validation Attribute <code class="attr">minselect</code> specifies the minimum and the maximum allowed number of options to select in a <span class="code-line"><code class="tag">&lt;select&gt;</code> element or an <code class="tag">&lt;input</code> <code class="attr">type</code><code class="value">="file"</code><code class="tag">&gt;</code></span> element with attribute <code class="attr">multiple</code>, respectively.</p>        
-                            <p>The Feedback Class of Validation Attribute <code class="attr">minselect</code> is <code class="class">.mr-minselect-fb</code> and the Feedback Class of Validation Attribute <code class="attr">maxselect</code> is <code class="class">.mr-maxselect-fb</code>.</p>
-                            <p>The attributes <code class="attr">minselect</code> and <code class="attr">maxselect</code> are not attributes of HTML form elements, they're Custom Attributes.</p>
-                            <p>The myrules HTML 5 Custom Attribute of <code class="attr">minselect</code> is <code class="attr">data-minselect</code> and myrules HTML 5 Custom Attribute of <code class="attr">maxselect</code> is <code class="attr">data-maxselect</code>. Use they if you want to make your HTML 5 page valid</p>
-                      
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">minselect</code> or <code class="attr">data-minselect</code></td>
+                                            <td>Specifies the minimum allowed number of selection on a  select element or an input type file with attribute multiple.</td>
+                                            <td><code class="class">.mr-minselect-fb</code></td>    
+                                        </tr>
+                                        <tr><td><code class="attr">maxselect</code> or <code class="attr">data-maxselect</code></td>
+                                            <td>Specifies the maximum allowed number of selection of a select element or an input type file with attribute multiple.</td>
+                                            <td><code class="class">.mr-maxselect-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                           
                             <div class="panel-info">
                                 <p>The Validation Class <code class="attr">minselect</code> don´t specifies that the element requires a value. If your want to specifies that the element must be selected use the Validation Attribute <a href="validate-required.html"><code class="attr">required</code></a>.</p>
                             </div>

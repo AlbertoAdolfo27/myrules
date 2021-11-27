@@ -35,10 +35,29 @@
                     <section id="validate-minlength-and-maxlength">
                         <article>
                             <h1>Minlength and Maxlength</h1>
-                            <p>The Validation Attribute <code class="attr">minlength</code> specifies the minimum number of characters allowed in the filled out element (when the element value is not empty) and the Validation Attribute <code class="attr">maxlength</code> specifies the maximum number of characters allowed in the element.</p>        
-                            <p>The Feedback Class of Validation Attribute <code class="attr">minlength</code> is <code class="class">.mr-minlength-fb</code> and the Feedback Class of Validation Attribute <code class="attr">maxlength</code> is <code class="class">.mr-maxlength-fb</code>.</p>
-                            <p>The attribute <code class="attr">minlength</code> is not an attribute of HTML form element, it's myrules custom attribute. The myrules HTML 5 Custom Attribute is <code class="attr">data-minlength</code>. Use it if you want to make your HTML 5 page valid.</p>
-                        
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">minlength</code> or <code class="attr">data-minlength</code></td>
+                                            <td>Specifies the minimum number of characters allowed in the filled out element (when the element value is not empty)</td>
+                                            <td><code class="class">.mr-minlength-fb</code></td>    
+                                        </tr>
+                                        <tr>
+                                            <td><code class="attr">maxlength</code></td>
+                                            <td>Specifies the maximum number of characters allowed in the element</td>
+                                            <td><code class="class">.mr-maxlength-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             <div class="panel-info">
                                 <p>The Validation Class <code class="attr">minlength</code> don´t specifies that the element requires a value. If your want to specifies that the element must be filled out use the Validation Attribute <a href="validate-required.html"><code class="attr">required</code></a>.</p>
                             </div>

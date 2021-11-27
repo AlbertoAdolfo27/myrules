@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-<form class= "mr-colors">
+<form class= "mr-colors mr-validate-onsumit-only">
     <!--Required element-->
     <!-- <input type="file" class="mr mr-sum-minsizes mr-sum-maxsizes" multiple minsize="25MB" maxsize="100MB" maxsizesum="" minselect="2" maxselect="4"  extension=".pdf, .doc, .mp4, .mkv, m4v" accept="video/*, pdf, doc, docx, mp4, mp3, mpeg" required> <br> -->
     <!--Validation feedback-->
@@ -87,7 +87,10 @@
  -->
 
     <input type="text" class="mr mr-email mr-required">
-    <p class="mr-feedback mr-email-fb">Invalid email!</p>
+    <div class="mr-feedback">
+        <p class="mr-email-fb">Invalid email!</p>
+        <p class="mr-required-fb">Required field!</p>
+    </div>
     <input type="submit" value="submit">
 
 

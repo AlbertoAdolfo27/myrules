@@ -35,11 +35,30 @@
                     <section id="validate-mincheck-and-maxcheck">
                         <article>
                             <h1>Mincheck and Maxcheck</h1>
-                            <p>The Validation Attribute <code class="attr">mincheck</code> and  <code class="attr">maxcheck</code> specifies the minimum and the maximum number of checkboxs allowed to select in a group of inputs type checkbox, respectively.</p>        
-                            <p>The Feedback Class of Validations Attributes <code class="attr">mincheck</code> is <code class="class">.mr-mincheck-fb</code> and the Feedback Class of Validation Attribute <code class="attr">maxcheck</code> is <code class="class">.mr-maxcheck-fb</code>.</p>
-                            <p>The attributes <code class="attr">mincheck</code> and <code class="attr">maxcheck</code> are not attributes of HTML form elements, they're Custom Attributes.</p>
-                            <p>The myrules HTML 5 Custom Attribute of <code class="attr">mincheck</code> is <code class="attr">data-mincheck</code> and myrules HTML 5 Custom Attribute of <code class="attr">maxcheck</code> is <code class="attr">data-maxcheck</code>. Use they if you want to make your HTML 5 page valid</p>
-                        
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">mincheck</code> or <code class="attr">data-mincheck</code></td>
+                                            <td>Specifies the minimum number of checkboxs allowed to select in a group of inputs type checkbox</td>
+                                            <td><code class="class">.mr-mincheck-fb</code></td>    
+                                        </tr>
+                                        <tr>
+                                            <td><code class="attr">maxcheck</code> or <code class="attr">data-maxcheck</code></td>
+                                            <td>Specifies the maximum number of checkboxs allowed to select in a group of inputs type checkbox</td>
+                                            <td><code class="class">.mr-maxcheck-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
                             <div class="panel-info">
                                 <p>The Validation Class <code class="attr">mincheck</code> don´t specifies that the element requires a value. If your want to specifies that the element must be selected use the Validation Attribute <a href="validate-required.html"><code class="attr">required</code></a>.</p>
                             </div>
