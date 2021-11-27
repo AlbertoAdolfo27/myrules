@@ -52,16 +52,19 @@ function mrWindowLoad()
                 mrFeedbacks[j].classList.add("mr-feedback-element");
 
                 var mrElement = mrElements[j];
-                mrElement.onchange = function(e)
+                if(!mrForm.classList.contains("mr-validate-onsumit-only"))
                 {
-                    mrValidateElement(this);
-                }
-
-                if(mrForm.classList.contains("mr-validate-oninput"))
-                {
-                    mrElement.oninput = function(e)
+                    mrElement.onchange = function(e)
                     {
                         mrValidateElement(this);
+                    }
+
+                    if(mrForm.classList.contains("mr-validate-oninput"))
+                    {
+                        mrElement.oninput = function(e)
+                        {
+                            mrValidateElement(this);
+                        }
                     }
                 }
             }
