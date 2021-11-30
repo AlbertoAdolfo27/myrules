@@ -661,59 +661,67 @@ function mrValidateElement(mrElement)
             }
 
             let mrIsValidEmail = true;
-            if(mrHasClass(mrElement,"mr-browser-email") && !mrIsEmptyElementValue(mrElement))
+            // if(mrHasClass(mrElement,"mr-browser-email") && !mrIsEmptyElementValue(mrElement))
+            // {
+            //     if(mrElement.validity.typeMismatch)
+            //     {
+            //         mrIsValidEmail = false;
+            //     }
+            // }   else if(!mrIsEmptyElementValue(mrElement))
+            if(!mrIsEmptyElementValue(mrElement))
             {
                 if(mrElement.validity.typeMismatch)
                 {
                     mrIsValidEmail = false;
                 }
-            }   else if(!mrIsEmptyElementValue(mrElement))
-            {
-                let mrPrintableSpecialChars = mrGetPrintableSpecialChars(mrElement);
-                mrPrintableSpecialChars =  mrPrintableSpecialChars.replace(".","");
-
-                let mrEmailRegularExpression = "^[A-Za-z0-9" + mrPrintableSpecialChars + "]+([.][A-Za-z0-9" + mrPrintableSpecialChars + "]+)*@(([A-Za-z0-9]+([\-]+[A-Za-z0-9]+)*([.][A-Za-z0-9]+([\-][A-Za-z0-9]+)*)+)|(\\u005B((([0-9]{1,3})(([.][0-9]{1,3}){3}))|(([0-9A-Fa-f]{4}|[0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4})(([:][0-9A-Fa-f]{4}|[:][0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4}){0,7}([:]{2}){0,1})))\\u005D))$";
-                let mrEmailPattern = new RegExp(mrEmailRegularExpression, "i");
-
-                if(!mrEmailPattern.test(mrElement.value))
+                if(!mrHasClass((mrElement,"mr-browser-email")) && mrIsValidEmail)
                 {
-                    mrIsValidEmail = false;
-                }   else
-                {
-                    let splitAt = mrElement.value.split("@");
-                    let mrLocalPart = splitAt[0];
-                    if(mrLocalPart.length > 64)
+                    let mrPrintableSpecialChars = mrGetPrintableSpecialChars(mrElement);
+                    mrPrintableSpecialChars =  mrPrintableSpecialChars.replace(".","");
+
+                    let mrEmailRegularExpression = "^[A-Za-z0-9" + mrPrintableSpecialChars + "]+([.][A-Za-z0-9" + mrPrintableSpecialChars + "]+)*@(([A-Za-z0-9]+([\-]+[A-Za-z0-9]+)*([.][A-Za-z0-9]+([\-][A-Za-z0-9]+)*)+)|(\\u005B((([0-9]{1,3})(([.][0-9]{1,3}){3}))|(([0-9A-Fa-f]{4}|[0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4})(([:][0-9A-Fa-f]{4}|[:][0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4}){0,7}([:]{2}){0,1})))\\u005D))$";
+                    let mrEmailPattern = new RegExp(mrEmailRegularExpression, "i");
+
+                    if(!mrEmailPattern.test(mrElement.value))
                     {
                         mrIsValidEmail = false;
-                    } else
+                    }   else
                     {
-                        let mrDomain = splitAt[1];
-                        let mrLastIndexOfDot = mrDomain.lastIndexOf(".");   
-                        let mrIndexOfLeftSquareBracket = mrDomain.indexOf("[");
+                        let splitAt = mrElement.value.split("@");
+                        let mrLocalPart = splitAt[0];
+                        if(mrLocalPart.length > 64)
+                        {
+                            mrIsValidEmail = false;
+                        } else
+                        {
+                            let mrDomain = splitAt[1];
+                            let mrLastIndexOfDot = mrDomain.lastIndexOf(".");   
+                            let mrIndexOfLeftSquareBracket = mrDomain.indexOf("[");
 
-                        if(mrLastIndexOfDot >= 0)
-                        {
-                            mrLastIndexOfDot += 1;
-                            let mrTopLevelDomain = mrDomain.slice(mrLastIndexOfDot, mrDomain.length);
-                            if(mrIsInteger(mrTopLevelDomain))
+                            if(mrLastIndexOfDot >= 0)
                             {
-                                mrIsValidEmail = false;
+                                mrLastIndexOfDot += 1;
+                                let mrTopLevelDomain = mrDomain.slice(mrLastIndexOfDot, mrDomain.length);
+                                if(mrIsInteger(mrTopLevelDomain))
+                                {
+                                    mrIsValidEmail = false;
+                                }
                             }
+                            if(mrIndexOfLeftSquareBracket >= 0)
+                            {
+                                let mrDomainIP = mrDomain.replace("[","");
+                                mrDomainIP = mrDomainIP.replace("]","");
+                                if
+                                (
+                                    !mrIsIPv4DotDecimalNotation(mrDomainIP) &&
+                                    !mrIsIPv4DotBinaryNotation(mrDomainIP) &&
+                                    !mrIsIPv6(mrDomainIP)
+                                )
+                                {
+                                    mrIsValidEmail = false;                            
+                                }
+                            }                 
                         }
-                        if(mrIndexOfLeftSquareBracket >= 0)
-                        {
-                            let mrDomainIP = mrDomain.replace("[","");
-                            mrDomainIP = mrDomainIP.replace("]","");
-                            if
-                            (
-                                !mrIsIPv4DotDecimalNotation(mrDomainIP) &&
-                                !mrIsIPv4DotBinaryNotation(mrDomainIP) &&
-                                !mrIsIPv6(mrDomainIP)
-                            )
-                            {
-                                mrIsValidEmail = false;                            
-                            }
-                        }                 
                     }
                 }
             }
