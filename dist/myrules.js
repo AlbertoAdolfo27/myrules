@@ -661,71 +661,35 @@ function mrValidateElement(mrElement)
             }
 
             let mrIsValidEmail = true;
-            // if(mrHasClass(mrElement,"mr-browser-email") && !mrIsEmptyElementValue(mrElement))
-            // {
-            //     if(mrElement.validity.typeMismatch)
-            //     {
-            //         mrIsValidEmail = false;
-            //     }
-            // }   else if(!mrIsEmptyElementValue(mrElement))
             if(!mrIsEmptyElementValue(mrElement))
             {
                 if(mrElement.validity.typeMismatch)
                 {
                     mrIsValidEmail = false;
                 }
-                if(!mrHasClass((mrElement,"mr-browser-email")) && mrIsValidEmail)
+
+                if(!mrHasClass(mrElement,"mr-email-browser") && mrIsValidEmail)
                 {
-                    let mrPrintableSpecialChars = mrGetPrintableSpecialChars(mrElement);
+                    let mrPrintableSpecialChars = mrGetPrintableChars(mrElement);
                     mrPrintableSpecialChars =  mrPrintableSpecialChars.replace(".","");
 
-                    let mrEmailRegularExpression = "^[A-Za-z0-9" + mrPrintableSpecialChars + "]+([.][A-Za-z0-9" + mrPrintableSpecialChars + "]+)*@(([A-Za-z0-9]+([\-]+[A-Za-z0-9]+)*([.][A-Za-z0-9]+([\-][A-Za-z0-9]+)*)+)|(\\u005B((([0-9]{1,3})(([.][0-9]{1,3}){3}))|(([0-9A-Fa-f]{4}|[0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4})(([:][0-9A-Fa-f]{4}|[:][0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4}){0,7}([:]{2}){0,1})))\\u005D))$";
+                    let mrEmailRegularExpression = "^[A-Za-z0-9" + mrPrintableSpecialChars + "]+([.][A-Za-z0-9" + mrPrintableSpecialChars + "]+)*@(([A-Za-z0-9]+([\-]+[A-Za-z0-9]+)*([.][A-Za-z0-9]+([\-][A-Za-z0-9]+)*)+))$";
                     let mrEmailPattern = new RegExp(mrEmailRegularExpression, "i");
 
                     if(!mrEmailPattern.test(mrElement.value))
                     {
                         mrIsValidEmail = false;
-                    }   else
+                    }else if(mrIsValidEmail)
                     {
-                        let splitAt = mrElement.value.split("@");
-                        let mrLocalPart = splitAt[0];
-                        if(mrLocalPart.length > 64)
+                        emailDotSplit = mrElement.value.split('.');
+                        topLevelDomain = emailDotSplit[emailDotSplit.length-1];
+                        if(mrIsInteger(topLevelDomain))
                         {
-                            mrIsValidEmail = false;
-                        } else
-                        {
-                            let mrDomain = splitAt[1];
-                            let mrLastIndexOfDot = mrDomain.lastIndexOf(".");   
-                            let mrIndexOfLeftSquareBracket = mrDomain.indexOf("[");
-
-                            if(mrLastIndexOfDot >= 0)
-                            {
-                                mrLastIndexOfDot += 1;
-                                let mrTopLevelDomain = mrDomain.slice(mrLastIndexOfDot, mrDomain.length);
-                                if(mrIsInteger(mrTopLevelDomain))
-                                {
-                                    mrIsValidEmail = false;
-                                }
-                            }
-                            if(mrIndexOfLeftSquareBracket >= 0)
-                            {
-                                let mrDomainIP = mrDomain.replace("[","");
-                                mrDomainIP = mrDomainIP.replace("]","");
-                                if
-                                (
-                                    !mrIsIPv4DotDecimalNotation(mrDomainIP) &&
-                                    !mrIsIPv4DotBinaryNotation(mrDomainIP) &&
-                                    !mrIsIPv6(mrDomainIP)
-                                )
-                                {
-                                    mrIsValidEmail = false;                            
-                                }
-                            }                 
+                            mrIsValidEmail = false
                         }
                     }
                 }
             }
-
             if(mrIsValidEmail)
             {
                 mrValidElement("mr-email-fb");
@@ -1100,7 +1064,7 @@ function mrValidateElement(mrElement)
     {
         if(mrHasClass(mrElement, "mr-username"))
         {
-            let mrPrintableSpecialChars = mrGetPrintableSpecialChars(mrElement);
+            let mrPrintableSpecialChars = mrGetPrintableChars(mrElement);
             let mrPeriod = "[.]";
 
             if(mrPrintableSpecialChars.indexOf(".") < 0)
@@ -3452,14 +3416,14 @@ function mrValidateElement(mrElement)
     }
 
 
-    // FUNCTION TO GET THE ACCEPTED PRINTABLE SPECIAL CHARS OF AN E-MAIL AND USERNAME
-    function mrGetPrintableSpecialChars(mrElement)
+    // FUNCTION TO GET THE ACCEPTED PRINTABLE CHARS OF AN E-MAIL AND USERNAME
+    function mrGetPrintableChars(mrElement)
     {
         
-        let mrSpecialChars = mrElement.getAttribute("data-specialchars");
+        let mrSpecialChars = mrElement.getAttribute("data-printablechars");
         if(mrSpecialChars == null)
         {
-            mrSpecialChars = mrElement.getAttribute("specialchars");
+            mrSpecialChars = mrElement.getAttribute("printablechars");
         }
 
         let mrAcceptedPrintableSpecialChars = "!#$%&'*+-/=?^_`{|}~.";
