@@ -32,9 +32,9 @@
 
             <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
                 <div class="container-fluid">
-                    <section id="validate-email">
+                    <section>
                         <article>
-                            <h1>Email</h1>
+                            <h1  id="validate-email-heading">Email</h1>
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
@@ -58,7 +58,7 @@
                             <p>When validating an email, myrules uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/typeMismatch">ValidityState.typeMismatch</a> property of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation">Constraint validation API</a>, combined with a set of rules to define the valid syntax of an email address.</p>
                             <p>the <strong>typeMismatch</strong> property is used to check if the input value does not conform to the constraints set by the type='email' attribute of the element. In addition to checking the typeMismatch it is also checked if the input value matches the email address syntax defined by myrules.</p>
 
-                            <h2>myrules email address syntax</h2>
+                            <h2 id="email-syntax-heading">myrules email address syntax</h2>
                             The format of an email address is <strong>local-part</strong>@<strong>domain</strong></strong>
 
                             <h3 class="h5 mt-3">Local-part</h3>
@@ -87,9 +87,9 @@
                             </ul>
                         </article>
                         
-                        <article id="applying-input-type-email">
-                            <h2>Applying in &lt;input type="email"&gt;</h2>
-                            <h3 class="h5 mt-30">Input Example using type="email" attribute</h3>
+                        <article>
+                            <h2  id="applying-input-heading">Applying in &lt;input&gt;</h2>
+                            <h3 class="h5 mt-30">Example using type="email" attribute</h3>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid email.</p>
@@ -120,12 +120,8 @@
 </pre>
                                 </code>
                             </div>
-                        </article>
-                        
-                        <article id="applying-input-type-text">
-                            <h2>Applying in &lt;input type="text"&gt;</h2>
-                            <p>To validate an email on the input type="text" you must add the <code class="class">mr-email</code> class in the element's class attribute</p>
-                            <h3 class="h5 mt-30">Input Example using type="text" attribute</h3>
+
+                            <h3 class="h5 mt-30">Example using .mr-email class on input type="text"</h3>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid email.</p>
@@ -158,8 +154,8 @@
                             </div>
                         </article>
 
-                        <article id="setting-printable-characters">
-                            <h2>Setting printable characters in the local part of the email</h2>
+                        <article>
+                            <h2 id="setting-printable-chars-heading">Setting printable characters in the local part of the email</h2>
                             <p>We have already seen the printable characters accepted in the local part of the email, they are: <code class="code">!#$%&'*+-/=?^_`{|}~</code>, you can change them and define the characters of your choice in this part.</p>
                             <p>For example, Gmail and outlook.com only allows creation of email addresses using alphanumerics, dot (<code class="code">.</code>), underscore (<code class="code">_</code>) and hyphen (<code class="code">-</code>)</p>
                             <p>You can define your printable characters in the <code class="attr">data-printablechars</code> or <code class="attr">printablechars</code> attribute value</p>
@@ -200,8 +196,8 @@
                             </div>
                         </article>
 
-                        <article id="ingnoring-myrules-email-syntax">
-                            <h2>Ingnoring myrules email address syntax</h2>
+                        <article>
+                            <h2 id="ingnore-email-syntax-heading">Ingnoring myrules email address syntax</h2>
                             <h3 class="h5 mt-30">Example: ingnoring myrules email syntax</h3>
                             <p>If you ignore myrules email syntax, my rules will only use the <code class="code">ValidityState.typeMismatch</code> property to validate the input value. In this type of case, an email like "john.due@example" or "john.due@example1111.." might be valid, which by the default validation would be invalid.</p>
                             <p>The <code class="class">.mr-email-browser</code> class will cause the myrules email address syntax to be ignored and only Constraint validation API's ValidityState.typeMismatch property to be considered</p>
@@ -244,10 +240,19 @@
             <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
                 <ul class="navbar-nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#validate-email">Email</a>
+                        <a class="nav-link active" href="#validate-email-heading">Email</a>
                         <ul class="navbar-nav sub-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#applying-input-type-email">Applying in &lt;input&gt;</a>
+                                <a class="nav-link" href="#applying-input-heading">Applying in &lt;input&gt;</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#email-syntax-heading">myrules email address syntax</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#setting-printable-chars-heading">Setting printable characters</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ingnore-email-syntax-heading">Ingnoring myrules email address syntax</a>
                             </li>
                         </ul>
                     </li>
