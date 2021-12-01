@@ -55,18 +55,47 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <p>When validating an email, myrules uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/typeMismatch">ValidityState.typeMismatch</a> property of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation">Constraint validation API</a>, combined with a set of rules to define the valid syntax of an email address.</p>
+                            <p>the <strong>typeMismatch</strong> property is used to check if the input value does not conform to the constraints set by the type='email' attribute of the element. In addition to checking the typeMismatch it is also checked if the input value matches the email address syntax defined by myrules.</p>
 
+                            <h2>myrules email address syntax</h2>
+                            The format of an email address is <strong>local-part</strong>@<strong>domain</strong></strong>
+
+                            <h3 class="h5 mt-3">Local-part</h3>
+                            <ul class="list-type-disc">
+                                <li>The local-part of the email address may use any of these ASCII characters:</li>
+                                <ul class="list-type-circle">
+                                    <li>uppercase and lowercase Latin letters <code class="code">A</code> to <code class="code">Z</code> and <code class="code">a</code> to <code class="code">z</code></li>
+                                    <li>digits <code class="code">0</code> to <code class="code">9</code></li>
+                                    <li>some printable characters <code class="code">!#$%&'*+-/=?^_`{|}~</code></li>
+                                    <li>dot <code class="code">.</code></li>
+                                </ul>
+                                <li>it must start with uppercase and lowercase Latin letters</li>
+                                <li>Dot cannot be the first or last character and it and cannot appear consecutively</li>
+                            </ul>
+
+                            <h3 class="h5 mt-3">Domain</h3>
+                            <ul class="list-type-disc">
+                                <li>The domain consists of a list of dot-separated DNS labels, each label consists of these characters:</li>
+                                <ul class="list-type-circle">
+                                    <li>uppercase and lowercase Latin letters <code class="code">A</code> to <code class="code">Z</code> and <code class="code">a</code> to <code class="code">z</code></li>
+                                    <li>digits <code class="code">0</code> to <code class="code">9</code></li>
+                                    <li>hyphen <code class="code">-</code></li>
+                                </ul>
+                                <li>top-level domain names cannot all be numeric</li>
+                                <li>Hyphen cannot be the first or last character</li>
+                            </ul>
                         </article>
                         
-                        <article id="applying-input">
-                            <h2>Applying in &lt;input&gt;</h2>
+                        <article id="applying-input-type-email">
+                            <h2>Applying in &lt;input type="email"&gt;</h2>
                             <h3 class="h5 mt-30">Input Example using type="email" attribute</h3>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid email.</p>
                                 </div>
                                 <form>
-                                    <!--Validate email text field using Validation Attribute type="email"-->
+                                    <!--Validate email text field using  type="email" attribute"-->
                                     <input type="email" class="mr" placeholder="Email"> <br>
                                     <!--Validation feedback-->
                                     <p class="mr-feedback mr-email-fb">Invalid email!</p>
@@ -80,7 +109,7 @@
                                     <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
-    <i class="comment">&lt;!--Validate email text field using Validation Attribute type="email"--&gt;</i>
+    <i class="comment">&lt;!--Validate email text field using  type="email" attribute"--&gt;</i>
     <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="email"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">placeholder</i><i class="value">="Email"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedback--&gt;</i>
     <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-email-fb"</i><i class="tag">&gt;</i>Invalid email!<i class="tag">&lt;/p&gt;</i>
@@ -92,6 +121,122 @@
                                 </code>
                             </div>
                         </article>
+                        
+                        <article id="applying-input-type-text">
+                            <h2>Applying in &lt;input type="text"&gt;</h2>
+                            <p>To validate an email on the input type="text" you must add the <code class="class">mr-email</code> class in the element's class attribute</p>
+                            <h3 class="h5 mt-30">Input Example using type="text" attribute</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit an invalid email.</p>
+                                </div>
+                                <form>
+                                    <!--Validate email text field using .mr-email class-->
+                                    <input type="text" class="mr mr-email" placeholder="Email"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-email-fb">Invalid email!</p>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Validate email text field using .mr-email class--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-email"</i> <i class="attr">placeholder</i><i class="value">="Email"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-email-fb"</i><i class="tag">&gt;</i>Invalid email!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+
+                        <article id="setting-printable-characters">
+                            <h2>Setting printable characters in the local part of the email</h2>
+                            <p>We have already seen the printable characters accepted in the local part of the email, they are: <code class="code">!#$%&'*+-/=?^_`{|}~</code>, you can change them and define the characters of your choice in this part.</p>
+                            <p>For example, Gmail and outlook.com only allows creation of email addresses using alphanumerics, dot (<code class="code">.</code>), underscore (<code class="code">_</code>) and hyphen (<code class="code">-</code>)</p>
+                            <p>You can define your printable characters in the <code class="attr">data-printablechars</code> or <code class="attr">printablechars</code> attribute value</p>
+                            
+                            <h3 class="h5 mt-30">Example: setting printable characters</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The valid email address only allows alphanumerics, dot (.), underscore (_) and hyphen (-)</li>
+                                        <li>Try to submit an invalid email</li>
+                                    </ul>
+                                </div>
+                                <form>
+                                    <!--Defining your printable characters in the data-printablechars attribute.-->
+                                    <input type="email" class="mr" data-printablechars="_-" placeholder="Email"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-email-fb">Invalid email!</p>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Defining your printable characters in the data-printablechars attribute.--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="email"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">data-printablechars</i><i class="value">="_-"</i> <i class="attr">placeholder</i><i class="value">="Email"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-email-fb"</i><i class="tag">&gt;</i>Invalid email!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+
+                        <article id="ingnoring-myrules-email-syntax">
+                            <h2>Ingnoring myrules email address syntax</h2>
+                            <h3 class="h5 mt-30">Example: ingnoring myrules email syntax</h3>
+                            <p>If you ignore myrules email syntax, my rules will only use the <code class="code">ValidityState.typeMismatch</code> property to validate the input value. In this type of case, an email like "john.due@example" or "john.due@example1111.." might be valid, which by the default validation would be invalid.</p>
+                            <p>The <code class="class">.mr-email-browser</code> class will cause the myrules email address syntax to be ignored and only Constraint validation API's ValidityState.typeMismatch property to be considered</p>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit an email.</p>
+                                </div>
+                                <form>
+                                    <!--Ingnoring myrules email address syntax using .mr-email-browser class"-->
+                                    <input type="email" class="mr mr-email-browser" placeholder="Email"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-email-fb">Invalid email!</p>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Ingnoring myrules email address syntax using .mr-email-browser class"--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="email"</i> <i class="attr">class</i><i class="value">="mr mr-email-browser"</i> <i class="attr">placeholder</i><i class="value">="Email"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-email-fb"</i><i class="tag">&gt;</i>Invalid email!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                        
                     </section>                           
                 </div>
             </main>
@@ -102,7 +247,7 @@
                         <a class="nav-link active" href="#validate-email">Email</a>
                         <ul class="navbar-nav sub-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#applying-input">Applying in &lt;input&gt;</a>
+                                <a class="nav-link" href="#applying-input-type-email">Applying in &lt;input&gt;</a>
                             </li>
                         </ul>
                     </li>

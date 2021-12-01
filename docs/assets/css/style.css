@@ -697,6 +697,12 @@ body > .container
     margin-left: 20px;
 }
 
+.list-type-circle
+{
+    list-style-type: circle;
+    margin-left: 20px;
+}
+
 .strong{
     font-weight: bolder;
 }
