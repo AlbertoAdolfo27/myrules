@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Username - myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, username, validate username, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Username</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-username-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
+                <div class="container-fluid">
+                    <section>
+                        <article>
+                            <h1  id="validate-username-heading">Username</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Class</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="class">.mr-username</code></td>
+                                            <td>Specifies that the input value must be a valid username</td>
+                                            <td><code class="class">.mr-username-fb</code></td>  
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h2 id="username-syntax-heading">myrules username syntax</h2>
+                            <ul class="list-type-disc">
+                                <li>The username may use any of these ASCII characters:</li>
+                                <ul class="list-type-circle">
+                                    <li>uppercase and lowercase Latin letters <code class="code">A</code> to <code class="code">Z</code> and <code class="code">a</code> to <code class="code">z</code></li>
+                                    <li>digits <code class="code">0</code> to <code class="code">9</code></li>
+                                    <li>some printable characters: <code class="code">-_.</code></li>
+                                </ul>
+                                <li>it must start with uppercase or lowercase Latin letters and end with uppercase or lowercase Latin letters or digits</li>
+                                <li>Printable characters cannot appear consecutively</li>
+                                <li>You can <a href="#changing-printable-chars-heading">change the printable characters</a></li>
+                            </ul>
+                        </article>
+                        
+                        <article>
+                            <h2  id="applying-input-heading">Applying in &lt;input&gt;</h2>
+                            <h3 class="h5 mt-30">Input Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit an invalid username.</p>
+                                </div>
+                                <form>
+                                    <!--Validate username text field using .mr-username class"-->
+                                    <input type="text" class="mr mr-username" placeholder="Username"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-username-fb">Invalid username!</p>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Validate username text field using .mr-username class"--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-username"</i> <i class="attr">placeholder</i><i class="value">="Username"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-username-fb"</i><i class="tag">&gt;</i>Invalid username!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+
+                        <article>
+                            <h2 id="changing-printable-chars-heading">Changing printable characters in username</h2>
+                            <p>the default printable characters for myrules username are: <code class="code">-_.</code> you can change them using any of the following supported printable characters: <code class="code">!#$%&'*+-/=?^_`{|}~.@</code></p>
+                            <p>You can define your printable characters in the <code class="attr">data-printablechars</code> or <code class="attr">printablechars</code> attribute value</p>
+                            
+                            <h3 class="h5 mt-30">Example: changing printable characters</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The valid username allows alphanumerics and these printable characters: @._-$</li>
+                                        <li>it must start with uppercase or lowercase Latin letters and end with uppercase or lowercase Latin letters or digits</li>
+                                        <li>Printable characters cannot appear consecutively</li>
+                                        <li>Try to submit an invalid email</li>
+                                    </ul>
+                                </div>
+                                <form>
+                                    <!--Defining your printable characters in the data-printablechars attribute.-->
+                                    <input type="text" class="mr mr-username" data-printablechars="@._-$" placeholder="Username"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-username-fb">Invalid username!</p>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Defining your printable characters in the data-printablechars attribute.--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-username"</i> <i class="attr">data-printablechars</i><i class="value">="@._-$"</i> <i class="attr">placeholder</i><i class="value">="Username"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-username-fb"</i><i class="tag">&gt;</i>Invalid username!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-username-heading">Username</a>
+                        <ul class="navbar-nav sub-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#username-syntax-heading">myrules username syntax</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-heading">Applying in &lt;input&gt;</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#changing-printable-chars-heading">Changing printable characters</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+
+    </body>
+</html>

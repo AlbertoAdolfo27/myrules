@@ -670,10 +670,11 @@ function mrValidateElement(mrElement)
 
                 if(!mrHasClass(mrElement,"mr-email-browser") && mrIsValidEmail)
                 {
-                    let mrPrintableSpecialChars = mrGetPrintableChars(mrElement);
-                    mrPrintableSpecialChars =  mrPrintableSpecialChars.replace(".","");
-
-                    let mrEmailRegularExpression = "^[A-Za-z0-9" + mrPrintableSpecialChars + "]+([.][A-Za-z0-9" + mrPrintableSpecialChars + "]+)*@(([A-Za-z0-9]+([\-]+[A-Za-z0-9]+)*([.][A-Za-z0-9]+([\-][A-Za-z0-9]+)*)+))$";
+                    let mrPrintableChars = mrGetPrintableChars(mrElement);
+                    mrPrintableChars =  mrPrintableChars.replace(".","");
+                    mrPrintableChars =  mrPrintableChars.replace("@","");
+                    
+                    let mrEmailRegularExpression = "^[A-Za-z0-9" + mrPrintableChars + "]+([.][A-Za-z0-9" + mrPrintableChars + "]+)*@(([A-Za-z0-9]+([\-]+[A-Za-z0-9]+)*([.][A-Za-z0-9]+([\-][A-Za-z0-9]+)*)+))$";
                     let mrEmailPattern = new RegExp(mrEmailRegularExpression, "i");
 
                     if(!mrEmailPattern.test(mrElement.value))
@@ -683,6 +684,7 @@ function mrValidateElement(mrElement)
                     {
                         emailDotSplit = mrElement.value.split('.');
                         topLevelDomain = emailDotSplit[emailDotSplit.length-1];
+
                         if(mrIsInteger(topLevelDomain))
                         {
                             mrIsValidEmail = false
@@ -690,6 +692,7 @@ function mrValidateElement(mrElement)
                     }
                 }
             }
+
             if(mrIsValidEmail)
             {
                 mrValidElement("mr-email-fb");
@@ -1064,18 +1067,14 @@ function mrValidateElement(mrElement)
     {
         if(mrHasClass(mrElement, "mr-username"))
         {
-            let mrPrintableSpecialChars = mrGetPrintableChars(mrElement);
-            let mrPeriod = "[.]";
+            let mrPrintableChars = mrGetPrintableChars(mrElement, true);
 
-            if(mrPrintableSpecialChars.indexOf(".") < 0)
-            {
-                mrPeriod = "";
-            }
-            mrPrintableSpecialChars =  mrPrintableSpecialChars.replace(".","");
-
-            let mrUsernameRegularExpression = "(^[A-Za-z0-9" + mrPrintableSpecialChars + "]+(" + mrPeriod + "[A-Za-z0-9" + mrPrintableSpecialChars + "]+)*)$"
+            let mrUsernameRegularExpression = "^[A-Za-z]+([A-Za-z0-9]*([" +  mrPrintableChars + "](?![" + mrPrintableChars + "]))*([A-Za-z0-9]*([" +  mrPrintableChars + "](?![" + mrPrintableChars + "]))*)*)[A-Za-z0-9]+$"
+            console.log(mrUsernameRegularExpression);
           
             let mrUsernamePattern = new RegExp(mrUsernameRegularExpression, "i");
+            console.log(mrUsernamePattern);
+
             if(!mrUsernamePattern.test(mrElement.value) && !mrIsEmptyElementValue(mrElement))
             {
                 mrInvalidElement("mr-username-fb");
@@ -3417,41 +3416,54 @@ function mrValidateElement(mrElement)
 
 
     // FUNCTION TO GET THE ACCEPTED PRINTABLE CHARS OF AN E-MAIL AND USERNAME
-    function mrGetPrintableChars(mrElement)
+    function mrGetPrintableChars(mrElement, mrIsUsername = false)
     {
-        
-        let mrSpecialChars = mrElement.getAttribute("data-printablechars");
-        if(mrSpecialChars == null)
+        let mrDataPrintableChars = mrElement.getAttribute("data-printablechars");
+        if(mrDataPrintableChars == null)
         {
-            mrSpecialChars = mrElement.getAttribute("printablechars");
+            mrDataPrintableChars = mrElement.getAttribute("printablechars");
         }
 
-        let mrAcceptedPrintableSpecialChars = "!#$%&'*+-/=?^_`{|}~.";
-
-        let mrPrintableSpecialChars = mrAcceptedPrintableSpecialChars;
-
-        if(mrSpecialChars != null && mrSpecialChars != "")
+        let MR_ACCEPTED_PRINTABLE_SPECIAL_CHARS = "!#$%&'*+-/=?^_`{|}~.@";
+        let mrDefaultUsernamePrintableChars = "-_."
+       
+        let mrPrintableChars;
+        if(mrIsUsername)
         {
-            mrPrintableSpecialChars = "";
-            mrSpecialChars = mrSpecialChars.split("");
+            mrPrintableChars  = mrDefaultUsernamePrintableChars;
+        }   else
+        {
+            mrPrintableChars = MR_ACCEPTED_PRINTABLE_SPECIAL_CHARS;
+        }
 
-            for(mrSpecialChar of mrSpecialChars)
+        if(mrDataPrintableChars != null && mrDataPrintableChars != "")
+        {
+            mrPrintableChars = "";
+            mrDataPrintableChars = mrDataPrintableChars.split("");
+
+            for(mrSpecialChar of mrDataPrintableChars)
             {
-                if(mrAcceptedPrintableSpecialChars.indexOf(mrSpecialChar) >= 0)
+                if(MR_ACCEPTED_PRINTABLE_SPECIAL_CHARS.indexOf(mrSpecialChar) >= 0)
                 {
-                    if(mrPrintableSpecialChars.indexOf(mrSpecialChar < 0))
+                    if(mrPrintableChars.indexOf(mrSpecialChar < 0))
                     {
-                        mrPrintableSpecialChars += mrSpecialChar;
+                        mrPrintableChars += mrSpecialChar;
                     }
                 }
             }
-            if(mrPrintableSpecialChars == "")
+            if(mrPrintableChars == "")
             {
-                mrPrintableSpecialChars = "!#$%&'*+-/=?^_`{|}~.";
+                if(mrIsUsername)
+                {
+                    mrPrintableChars  = mrDefaultUsernamePrintableChars;
+                }   else
+                {
+                    mrPrintableChars = MR_ACCEPTED_PRINTABLE_SPECIAL_CHARS;
+                }
             }
         }
-        mrPrintableSpecialChars = mrPrintableSpecialChars.replace("-","\\-");
-        return mrPrintableSpecialChars;
+        mrPrintableChars = mrPrintableChars.replace("-","\\-");
+        return mrPrintableChars;
     }
 
 
