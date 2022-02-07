@@ -31,7 +31,7 @@
             <div id="include-sidebar" data-navactive="validate-mincheck-and-maxcheck-sidebar"></div>
 
             <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
-                <div class="container-fluid">
+                <div class="container-fluid" id="main-container">
                     <section id="validate-mincheck-and-maxcheck">
                         <article>
                             <h1>Mincheck and Maxcheck</h1>
@@ -103,6 +103,9 @@
                             </div>
                                 
                             <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
                                 <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
@@ -157,6 +160,7 @@
 
     <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
     <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/modal-form-validated.js"></script>
 
     </body>
 </html>

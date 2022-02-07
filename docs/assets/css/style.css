@@ -32,6 +32,12 @@ body
     background-color: #339999;
 }
 
+.default-bg-color
+{
+    background-color: #339999;
+    color: #fff;
+}
+
 .navbar-nav .nav-item.active
 {
     font-weight: bold;
@@ -705,4 +711,9 @@ body > .container
 
 .strong{
     font-weight: bolder;
+}
+
+.btn-copy-clipboard{
+    padding-top: 2px;
+    padding-bottom: 2px;
 }

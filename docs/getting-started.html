@@ -32,14 +32,17 @@
         <div id="include-sidebar" data-navactive="getting-started-sidebar"></div>
 
         <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
-            <div class="container-fluid">
+            <div class="container-fluid" id="main-container">
 
                 <section class="pb-25" id="quickstart">
                     
                         <h1>Quick start</h1>
                         <p>Copy-paste the following <code class="tag">&lt;script</code><code class="tag">&gt;</code> near the end of your web pages, before the closing <code class="tag">&lt;/body&gt;</code> or <a href="https://cdn.jsdelivr.net/gh/AlbertoAdolfo27/myrules/dist/myrules.js">download</a>  the source file and host yourself.</p>
     
-                        <div class="code-panel mt-3">
+                        <div class="code-panel">
+                            <div class="clearfix">
+                                <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                            </div>
                             <code class="lang-html">
                                 <pre><i class="tag">&lt;script</i> <i class="attr">src</i><i class="value">="https://cdn.jsdelivr.net/gh/AlbertoAdolfo27/myrules/dist/myrules.js"</i><i class="tag">&gt;</i><i class="tag">&lt;/script&gt;</i></pre>
                             </code>
@@ -74,6 +77,9 @@
                         </div>
                                                 
                         <div class="code-panel">
+                            <div class="clearfix">
+                                <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                            </div>
                             <code class="lang-html">
 <pre>
 <i class="doctype">&lt;!doctype html&gt;</i>
@@ -122,6 +128,9 @@
                         <p>Add the below CSS style sheet into the <code class="tag">&lt;head&gt;</code> section of your HTML page, to hide (display none) quick the feedbacks validation preventing user see they.</p>
                         
                         <div class="code-panel">
+                            <div class="clearfix">
+                                <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                            </div>
                             <code class="lang-css">
 <pre>
 <i class="css-selector">.mr-feedback {</i>
@@ -171,6 +180,7 @@
 
 <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
 <script src="assets/js/docs-includes.js"></script>
+<script src="assets/js/docs.js"></script>
 
 </body>
 </html>

@@ -31,7 +31,7 @@
             <div id="include-sidebar" data-navactive="validate-email-sidebar"></div>
 
             <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
-                <div class="container-fluid">
+                <div class="container-fluid" id="main-container">
                     <section>
                         <article>
                             <h1  id="validate-email-heading">Email</h1>
@@ -106,7 +106,10 @@
                             </div>
                                 
                             <div class="code-panel">
-                                    <code class="lang-html">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Validate email text field using  type="email" attribute"--&gt;</i>
@@ -138,7 +141,10 @@
                             </div>
                                 
                             <div class="code-panel">
-                                    <code class="lang-html">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Validate email text field using .mr-email class--&gt;</i>
@@ -184,7 +190,10 @@
                             </div>
                                 
                             <div class="code-panel">
-                                    <code class="lang-html">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Defining your printable characters in the data-printablechars attribute.--&gt;</i>
@@ -221,7 +230,10 @@
                             </div>
                                 
                             <div class="code-panel">
-                                    <code class="lang-html">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Ingnoring myrules email address syntax using .mr-email-browser class"--&gt;</i>
@@ -275,6 +287,7 @@
 
     <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
     <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
 
     </body>
 </html>

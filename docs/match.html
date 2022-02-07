@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Match field value. myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, match, Validation Class .mr-match, .mr-match, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Match field value</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="90">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-match-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
+                <div class="container-fluid" id="main-container">
+                    <section id="validate-required">
+                        <article>
+                            <h1>Match field value</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Class</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="class">.mr-match</code></td>
+                                            <td>Specifies that the value of an input element with class <code class="class">.mr-match</code> must match the value of other one correspondent input element with class <code class="class">.mr-match-subject</code></td>
+                                            <td><code class="class">.mr-match-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </article>
+                        
+                        <article id="applying-input">
+                            <h2>Applying in &lt;input&gt;</h2>
+                            <h3 class="h5 mt-30">Input type="text" Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit the form without fill out the text fields.</p>
+                                    <p>Try to submit the form with different text fields values.</p>
+                                </div>
+                                <form class="mr-colors">
+                                    <!--Match two fields values using Validation Class ".mr-match" and ".mr-match-subject"-->
+                                    <input type="text" class="mr-match-subject" placeholder="nickname"> <br>
+                                    <input type="text" class="mr mr-match" placeholder="confirm the nickname"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-match-fb">The nickname don't match!</p>
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Match two fields values using Validation Class ".mr-match" and ".mr-match-subject"--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr-match-subject"</i> <i class="attr">placeholder</i><i class="value">="nickname"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-match"</i> <i class="attr">placeholder</i><i class="value">="confirm the nickname"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-match-fb"</i><i class="tag">&gt;</i>The nickname don't match!<i class="tag">&lt;/p&gt;</i>
+    
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+
+                            <h3 class="h5 mt-30">Input type="password" Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit the form without fill out the text fields.</p>
+                                    <p>Try to submit the form with different text fields values.</p>
+                                </div>
+                                <form>
+                                    <input type="text" class="mr mr-password-good mr-match-subject" placeholder="password"> <br>
+                                    <p class="mr-feedback mr-password-good-fb">Please input a segure password!</p>
+                                   
+                                    <input type="text" class="mr mr-match" placeholder="confirm the password"> <br>
+                                    <p class="mr-feedback mr-match-fb">The password don't match!</p>
+                                    
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>
+                            </div>
+                                
+                            <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-password-good mr-match-subject"</i> <i class="attr">placeholder</i><i class="value">="password"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-password-good-fb"</i><i class="tag">&gt;</i>Please input a segure password!<i class="tag">&lt;/p&gt;</i>
+   
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-match"</i> <i class="attr">placeholder</i><i class="value">="confirm the password"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-match-fb"</i><i class="tag">&gt;</i>The password don't match!<i class="tag">&lt;/p&gt;</i>
+    
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+
+                        <article id="applying-select">
+                            <h2>Applying in &lt;select&gt;</h2>
+
+                            <h3 class="h5 mt-30">Select Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit the form without select any option with value.</p>
+                                </div>
+
+                                <form >
+                                    <label>Select your favorite sport:</label> <br>
+                                    <select class="mr-match-subject">  
+                                        <option name="sport" value="football">Football</option>  
+                                        <option name="sport" value="basketball">Basketball</option>
+                                        <option name="sport" value="baseball">Baseball</option>  
+                                        <option name="sport" value="golf">Golf</option> 
+                                    </select>  <br><br>
+                                
+                                    <label>Confirm your selection:</label> <br>    
+                                    <select class="mr mr-match">  
+                                        <option name="sport-confirm" value="football">Football</option>  
+                                        <option name="sport-confirm" value="basketball">Basketball</option>
+                                        <option name="sport-confirm" value="baseball">Baseball</option>  
+                                        <option name="sport-confirm" value="golf">Golf</option> 
+                                    </select>  <br>
+                                    <p class="mr-feedback mr-match-fb">The options don't matches!</p>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>                    
+                            </div>
+                                
+                            <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i> <i class="tag">&gt;</i>
+    <i class="tag">&lt;label&gt;</i>Select your favorite sport:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;select</i> <i class="attr">class=</i><i class="value">"mr-match-subject"</i><i class="tag">&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value=</i><i class="value">"football"</i><i class="tag">&gt;</i>Football<i class="tag">&lt;/option&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value=</i><i class="value">"basketball"</i><i class="tag">&gt;</i>Basketball<i class="tag">&lt;/option&gt;</i>
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value=</i><i class="value">"baseball"</i><i class="tag">&gt;</i>Baseball<i class="tag">&lt;/option&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport"</i> <i class="attr">value=</i><i class="value">"golf"</i><i class="tag">&gt;</i>Golf<i class="tag">&lt;/option&gt;</i> 
+    <i class="tag">&lt;/select&gt;</i>  <i class="tag">&lt;br&gt;</i><i class="tag">&lt;br&gt;</i>
+
+    <i class="tag">&lt;label&gt;</i>Confirm your selection:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>    
+    <i class="tag">&lt;select</i> <i class="attr">class=</i><i class="value">"mr mr-match"</i><i class="tag">&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport-confirm"</i> <i class="attr">value=</i><i class="value">"football"</i><i class="tag">&gt;</i>Football<i class="tag">&lt;/option&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport-confirm"</i> <i class="attr">value=</i><i class="value">"basketball"</i><i class="tag">&gt;</i>Basketball<i class="tag">&lt;/option&gt;</i>
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport-confirm"</i> <i class="attr">value=</i><i class="value">"baseball"</i><i class="tag">&gt;</i>Baseball<i class="tag">&lt;/option&gt;</i>  
+        <i class="tag">&lt;option</i> <i class="attr">name=</i><i class="value">"sport-confirm"</i> <i class="attr">value=</i><i class="value">"golf"</i><i class="tag">&gt;</i>Golf<i class="tag">&lt;/option&gt;</i> 
+    <i class="tag">&lt;/select&gt;</i>  <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-feedback mr-match-fb"</i><i class="tag">&gt;</i>The options don't matches!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"reset"</i> <i class="attr">value=</i><i class="value">"reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                        
+                        <article id="applying-textarea">
+                            <h2>Applying in &lt;textarea&gt;</h2>
+                            
+                            <h3 class="h5 mt-30">Textarea Example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit the form without fill out the textarea.</p>
+                                </div>
+
+                                <form>
+                                    <label>Write a text:</label> <br>
+                                    <textarea class="mr-match-subject" name="comment"></textarea>  <br>
+                                    
+                                    <label>Confirm the text:</label> <br>
+                                    <textarea class="mr mr-match" name="comment2" ></textarea>  <br>
+                                    <p class="mr-feedback mr-match-fb">The texts don't matches!</p>
+                                
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>                 
+                            </div>
+                                
+                            <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;label&gt;</i>Write a text:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;textarea</i> <i class="attr">class=</i><i class="value">"mr-match-subject"</i> <i class="attr">name=</i><i class="value">"comment"</i><i class="tag">&gt;</i><i class="tag">&lt;/textarea&gt;</i>  <i class="tag">&lt;br&gt;</i>
+    
+    <i class="tag">&lt;label&gt;</i>Confirm the text:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;textarea</i> <i class="attr">class=</i><i class="value">"mr mr-match"</i> <i class="attr">name=</i><i class="value">"comment2"</i> <i class="tag">&gt;</i><i class="tag">&lt;/textarea&gt;</i>  <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class=</i><i class="value">"mr-feedback mr-match-fb"</i><i class="tag">&gt;</i>The texts don't matches!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"submit"</i> <i class="attr">value=</i><i class="value">"submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"reset"</i> <i class="attr">value=</i><i class="value">"reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-required">Required</a>
+                        <ul class="navbar-nav sub-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input">Applying in &lt;input&gt;</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-select">Applying in &lt;select&gt;</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-textarea">Applying in &lt;textarea&gt;</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+    </body>
+</html>

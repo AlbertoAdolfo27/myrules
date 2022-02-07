@@ -88,6 +88,7 @@ function mrWindowLoad()
         }
     }
 
+    //FUCTION TO RESET FORM
     function mrResetForm(form)
     {
         // ALL FEEDBACKS CLASSES

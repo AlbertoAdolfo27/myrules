@@ -33,7 +33,7 @@
         <div id="include-sidebar" data-navactive="classes-attributes-validation-sidebar"></div>
 
         <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3" id="main">
-            <div class="container-fluid">
+            <div class="container-fluid" id="main-container">
 
                 <section id="mr-types-and-attributes-section">
                     <h1 id="class-attribute-validation-heading">Classes and Attributes of Validation</h1>
@@ -42,7 +42,10 @@
                     <h2 id="validation-classes-heading">Validation Classes</h2>
                     <p>myrules provide many classes that allow you to validate diferents form elements. For instance: <code class="class">.mr-required</code>, <code class="class">.mr-email</code>, <code class="class">.mr-number-int</code>, <code class="class">.mr-password-good</code>, <code class="class">.mr-username</code>, etc.</p>
                     <p>In the example below, the <code class="class">.mr-number-int</code> class was used to indicate that the input value must be an integer number.</p> 
-                    <div class="code-panel pt-1 pb-1">
+                    <div class="code-panel">
+                        <div class="clearfix">
+                            <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                        </div>
                         <code class="lang-html">
 <pre>
 <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-number-int"</i><i class="tag">&gt;</i> 
@@ -61,7 +64,10 @@
                     <p><strong>Custom attributes</strong> are attributes that are not part of the standard HTML5 attributes or are not designed for a particular use.</p>
                     <p>The following example uses the <code class="attr">required</code> validation attribute to specify that the form element requires a value</p>
                     
-                    <div class="code-panel pt-1 pb-1">
+                    <div class="code-panel">
+                        <div class="clearfix">
+                            <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                        </div>
                         <code class="lang-html">
 <pre>
 <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
@@ -76,7 +82,10 @@
                     <p>To display the feedback of an element validation, add the <code class="class">.mr-feedback</code> class into the element where the feedback will placed and add the <strong>Feedback Class</strong> of the Class or Attribute of Validation.</p>                    
                     
                     <div class="code-panel">
-                            <code class="lang-html">
+                        <div class="clearfix">
+                            <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                        </div>
+                        <code class="lang-html">
 <pre>
 <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
 <i class="comment">&lt;!--Validation feedback--&gt;</i>
@@ -93,7 +102,10 @@
                     <p>The <code class="class">.mr-valid-fb</code> and <code class="class">.mr-invalid-fb</code> Feedback Classes are <strong>Global Feedback Classes</strong>, it means that their can be used to feedback all Classes and Attributes of Validation.</p>
                                        
                     <div class="code-panel">
-                            <code class="lang-html">
+                        <div class="clearfix">
+                            <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                        </div>
+                        <code class="lang-html">
 <pre>
 <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="tag">&gt;</i> 
 <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-invalid-fb"</i><i class="tag">&gt;</i>Please fill out this field!<i class="tag">&lt;/p&gt;</i>
@@ -129,6 +141,9 @@
                     </div>
                     
                     <div class="code-panel">
+                        <div class="clearfix">
+                            <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                        </div>
                         <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
@@ -170,6 +185,9 @@
                     </div>
                     
                     <div class="code-panel">
+                        <div class="clearfix">
+                            <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                        </div>
                         <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
@@ -213,6 +231,9 @@
                     </div>
                         
                     <div class="code-panel">
+                        <div class="clearfix">
+                            <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                        </div>
                         <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
@@ -256,6 +277,9 @@
                     </div>
                         
                     <div class="code-panel">
+                        <div class="clearfix">
+                            <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                        </div>
                         <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
@@ -592,6 +616,7 @@
 
 <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
 <script src="assets/js/docs-includes.js"></script>
+<script src="assets/js/docs.js"></script>
 
 </body>
 </html>

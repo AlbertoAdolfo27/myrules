@@ -31,7 +31,7 @@
             <div id="include-sidebar" data-navactive="validate-minlength-and-maxlength-sidebar"></div>
 
             <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pt-3 pb-30" id="main">
-                <div class="container-fluid">
+                <div class="container-fluid" id="main-container">
                     <section id="validate-minlength-and-maxlength">
                         <article>
                             <h1>Minlength and Maxlength</h1>
@@ -90,7 +90,10 @@
                             </div>
                                 
                             <div class="code-panel">
-                                    <code class="lang-html">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
+                                <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--input text--&gt;</i>
@@ -141,6 +144,9 @@
                             </div>
                                 
                             <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard!">Copy</button>
+                                </div>
                                 <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
@@ -192,6 +198,7 @@
 
     <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
     <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
 
     </body>
 </html>
