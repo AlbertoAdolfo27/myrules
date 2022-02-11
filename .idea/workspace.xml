@@ -4,7 +4,30 @@
     <bookmark url="file://$PROJECT_DIR$/dist/myrules.js" line="1270" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f250c093-bba2-474f-95ad-8da84a4f1170" name="Default" comment="" />
+    <list default="true" id="f250c093-bba2-474f-95ad-8da84a4f1170" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/css/codepanel.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/css/codepanel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/docs.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/js/docs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/classes-attributes-validation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/classes-attributes-validation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/customize-myrules.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/customize-myrules.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/email.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/footer-docs.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/footer-docs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/getting-started.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/getting-started.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/match.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/match.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/min-and-max.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/min-and-max.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/mincheck-and-maxcheck.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/mincheck-and-maxcheck.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/minlength-and-maxlength.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/minlength-and-maxlength.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/minselect-and-maxselect.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/minselect-and-maxselect.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/multi-validate-an-element.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/multi-validate-an-element.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/password.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/required.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/required.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/username.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/username.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +50,9 @@
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="true" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -61,6 +87,7 @@
     <option name="height" value="744" />
   </component>
   <component name="ProjectId" id="1zveYh3xb42lJMAUUGyrIPZUzDL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -186,6 +213,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FullScreen" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />

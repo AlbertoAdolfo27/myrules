@@ -1,10 +1,14 @@
 h1
 {
-    padding-top: 1rem;
+    padding-top: 2rem;
 }
 
-h2, h3
+h2
 {
+    padding-top: 3.5rem;
+}
+
+h3{
     margin-top: 3rem;
 }
 
@@ -93,3 +97,6 @@ h2, h3
     font-size: 0.96ren;
 }
 
+/* .main, #main{
+    margin-top: 15px;
+} */
