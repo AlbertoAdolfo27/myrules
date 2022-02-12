@@ -717,6 +717,8 @@ function mrValidateElement(mrElement)
             }
 
             let mrIsValidURL = true;
+            let mrHasSchemeError = false;
+
             if(mrHasClass(mrElement, "mr-browser-url")  && !mrIsEmptyElementValue(mrElement))
             {
                 if(mrElement.validity.typeMismatch)
@@ -726,38 +728,79 @@ function mrValidateElement(mrElement)
             }   else if(!mrIsEmptyElementValue(mrElement))
             {
                 let mrURLregularExpression = "^[A-Za-z][A-Za-z0-9+.\-]*[:]";
-                if(mrHasClass(mrElement, "mr-url-http"))
-                {
-                    mrURLregularExpression = "^((http|https)://)";
-                }   else if(mrHasClass(mrElement, "mr-url-https"))
-                {
-                    mrURLregularExpression = "^(https://)";
+
+                if(mrHasAttribute(mrElement,"data-url-scheme") || mrHasAttribute(mrElement, "url-scheme")){
+                    let mrScheme = mrElement.getAttribute("data-url-scheme");
+                    if(mrScheme == null){
+                        mrScheme = mrElement.getAttribute("url-scheme");
+                    }
+
+                    let mrSchemes  = mrScheme.split(",");
+                    let mrSchemeRegularExpression = "^[A-Za-z]([A-Za-z0-9+.\-]*)$";
+                    let mrSchemePattern = new RegExp(mrSchemeRegularExpression, "i");
+
+                    if(mrSchemes.length > 1){
+                        mrURLregularExpression = "^((";
+                        let i = 0;
+                        for(scheme of mrSchemes){
+                            scheme = scheme.trim();
+                            if(scheme != ""){
+                                if(mrSchemePattern.test(scheme)){
+                                    if(i == 0){
+                                        mrURLregularExpression += scheme;
+                                    }   else{
+                                        mrURLregularExpression += "|" + scheme;
+                                    }
+                                } else{
+                                    mrHasSchemeError = true;
+                                    break;
+                                }  
+                            }
+                            i++;
+                        }
+                        mrURLregularExpression += "):)";
+                    }   else{
+                        let scheme = mrSchemes[0];
+                        scheme = scheme.trim();
+                        if(mrSchemePattern.test(scheme)){
+                            mrURLregularExpression = "^("+ scheme +":)";
+                        } else{
+                            mrHasSchemeError = true;
+                        }
+                    }   
                 }
 
-                let mrURLpattern = new RegExp(mrURLregularExpression,"i");
+                if(!mrHasSchemeError){
+                    let mrURLpattern = new RegExp(mrURLregularExpression, "i");
                 
-                if(mrURLpattern.test(mrElement.value))
-                {
-                    let mrURL = mrElement.value;
-                    mrURL = mrURL.trim();
-                    mrURL = mrURL.split(":");
-                    if((mrURL[1].length == 0 || mrURL[1] == "/"|| mrURL[1] == "//"))
+                    if(mrURLpattern.test(mrElement.value))
+                    {
+                        let mrURL = mrElement.value;
+                        mrURL = mrURL.trim();
+                        mrURL = mrURL.split(":");
+                        if((mrURL[1].length == 0 || mrURL[1] == "/"|| mrURL[1] == "//"))
+                        {
+                            mrIsValidURL = false;
+                        }
+                    }   else
                     {
                         mrIsValidURL = false;
                     }
-                }   else
-                {
-                    mrIsValidURL = false;
                 }
 
             }
 
-            if(mrIsValidURL)
-            {
-                mrValidElement("mr-url-fb");
-            }   else
-            {
-                mrInvalidElement("mr-url-fb");
+            if(!mrHasSchemeError){
+                if(mrIsValidURL)
+                {
+                    mrValidElement("mr-url-fb");
+                }   else
+                {
+                    mrInvalidElement("mr-url-fb");
+                }
+            }   else{
+                console.error("MY RULES ERROR:\n" + "- Some invalid \""+ "" +"\" url-scheme on element:");
+                console.error(mrElement);
             }
         }
     }
@@ -870,7 +913,7 @@ function mrValidateElement(mrElement)
                     console.error("MY RULES ERROR:\n" + "- The value of step attributte of element:");
                     console.error(mrElement);
                     console.error("is not a valid number");
-                    mrInvalidElement("mr-step-fb");
+                    // mrInvalidElement("mr-step-fb");
                 }
             }
         }   
