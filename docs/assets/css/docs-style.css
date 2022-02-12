@@ -37,9 +37,24 @@ h3{
     font-weight: bold;
 }
 
-#sidebar .nav-item.active
+#sidebar .nav-link:focus, #sidebar .nav-link:hover
+{
+    border-color: rgba(153, 204, 204, 0.2);
+}
+
+.nav-tabs .nav-link {
+    border-radius: 0 !important;
+}
+
+#sidebar .nav-item.active, #sidebar .nav-item.active:focus, #sidebar .nav-item.active:hover
 {
     background-color: rgba(153, 204, 204, 0.2);
+}
+
+#sidebar .nav-item:focus, #sidebar .nav-item:hover
+{
+    background-color: rgba(153, 204, 204, 0.04);
+    border-color:  rgba(153, 204, 204, 0.01);
 }
 
 #aside
