@@ -718,14 +718,8 @@ function mrValidateElement(mrElement)
 
             let mrIsValidURL = true;
             let mrHasSchemeError = false;
-
-            if(mrHasClass(mrElement, "mr-url-browser")  && !mrIsEmptyElementValue(mrElement))
-            {
-                if(mrElement.validity.typeMismatch)
-                {
-                    mrIsValidURL = false;
-                }
-            }   else if(!mrIsEmptyElementValue(mrElement))
+            
+            if(!mrIsEmptyElementValue(mrElement))
             {
                 let mrURLregularExpression = "^[A-Za-z][A-Za-z0-9+.\-]*[:]";
 
