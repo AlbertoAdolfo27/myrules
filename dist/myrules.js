@@ -719,7 +719,7 @@ function mrValidateElement(mrElement)
             let mrIsValidURL = true;
             let mrHasSchemeError = false;
 
-            if(mrHasClass(mrElement, "mr-browser-url")  && !mrIsEmptyElementValue(mrElement))
+            if(mrHasClass(mrElement, "mr-url-browser")  && !mrIsEmptyElementValue(mrElement))
             {
                 if(mrElement.validity.typeMismatch)
                 {
