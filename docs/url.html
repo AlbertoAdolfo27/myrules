@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Url field. myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, url, Validation Class .mr-url, .mr-url, Validation attribute input type='url', myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Url</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="80">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-url-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pb-30" id="main">
+                <div class="container-fluid" id="main-container">
+                    <section>
+                        <article>
+                            <h1 id="validate-url">URL</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation attribute</th>
+                                            <th>Validation Class</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">type=</code><code class="value">"url"</code></td>
+                                            <td><code class="class">.mr-url</code></td>
+                                            <td>Specifies that the input value must be a valid URL address</td>
+                                            <td><code class="class">.mr-url-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h2 id="url-syntax-heading">myrules URL syntax</h2>
+                            <p class="mb-1">The commun url format is:</p>
+                            <ul class="list-type-disc">
+                                <li><strong>scheme</strong><span class="text-muted">://<strong>hostname</strong>:<strong>port</strong>/<strong>path</strong>/<strong>filename</strong>?<strong>query</strong>#<strong>fragment</strong></span></li>
+                            </ul>
+                            
+                            <h3 class="h5">Scheme</h3>
+                            <p>The <strong>scheme</strong> is the protocol, it defines the type of Internet service. Examples of popular schemes include <code>http</code>, <code>https</code>, <code>ftp</code>, <code>mailto</code>, <code>file</code>, <code>data</code> and <code>irc</code>.</p>
+                            
+                            <p class="mb-1">The scheme rules:</p>
+                            <ul class="list-type-disc">
+                                <li>A scheme consisting of sequence of characters beginning with a letter and followed by any combination of letters, digits, plus (<code>+</code>), period (<code>.</code>), or hyphen (<code>-</code>).</li>
+                                <li>Scheme component are followed by a colon (<code>:</code>)./li>
+                            </ul>
+                            
+
+                        </article>
+                        
+                        <article>
+                            <h2 id="applying-input">Applying in &lt;input&gt;</h2>
+                            <h3 class="h5 mt-30">Example 1: Input type="url"</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit an invalid URL.</p>
+                                </div>
+                                <form>
+                                    <!--Match two fields values using Validation Attribute type="url"-->
+                                    <input type="url" class="mr" placeholder="URL"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-url-fb">Invalid URL!</p>
+                                    
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>                                                
+                            </div>
+                                
+                            <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Match two fields values using Validation Attribute type="url"--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="url"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">placeholder</i><i class="value">="URL"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-url-fb"</i><i class="tag">&gt;</i>Invalid URL!<i class="tag">&lt;/p&gt;</i>
+    
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+
+                            <h3 class="h5 mt-30">Example 1: Input type="text" with .mr-url class</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit an invalid URL.</p>
+                                </div>
+                                <form>
+                                    <!-- Match two fields values using Validation Class .mr-url -->
+                                    <input type="text" class="mr mr-url" placeholder="URL"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-url-fb">Invalid URL!</p>
+                                    
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>                            
+                            </div>
+                                
+                            <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                </div>
+                                <code class="lang-html">
+<pre>
+    <i class="tag">&lt;form</i><i class="tag">&gt;</i>
+        <i class="comment">&lt;!-- Match two fields values using Validation Class .mr-url --&gt;</i>
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-url"</i> <i class="attr">placeholder</i><i class="value">="URL"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+        <i class="comment">&lt;!--Validation feedback--&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-url-fb"</i><i class="tag">&gt;</i>Invalid URL!<i class="tag">&lt;/p&gt;</i>
+        
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+
+                        <article>
+                            <h2 id="defining-acepted-schemes">Defining accepted URL schemes</h2>
+
+                            <p>You can define the accepted schemes of the URL.</p>
+                            <p>To define the accepted schemes set the scheme in the <code class="attr">data-url-scheme</code> or <code class="attr">url-scheme</code> attribute value.</p>
+                            <p>For example, if you want to set <code>hppt</code> as the unique accepted scheme, set the value of attribute <code class="attr">data-url-scheme</code> or <code class="attr">url-scheme</code> "http". (<code class="attr">data-url-scheme="http"</code>)</p>
+                            <p>If you have more than one scheme them separete with comma, for example, <code class="attr">data-url-scheme="http, https, file, ftp"</code>.</p>
+                        
+                            <div class="panel-warning">
+                                <p>Remember, a scheme consisting of sequence of characters beginning with a letter and followed by any combination of letters, digits, plus (<code>+</code>), period (<code>.</code>), or hyphen (<code>-</code>).</p>
+                            </div>
+                            
+                            <h3 class="h5 mt-30">Defining accepted URL schemes example</h3>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <ul>
+                                        <li>The first text field only accept https URL scheme.</li>
+                                        <li>The seconde text field only accept http, https, file and ftp URL schemes.</li>
+                                        <li>Try to submit an invalids URLs..</li>
+                                    </ul>
+                                </div>
+
+                                <form>
+                                    <!-- The accepted url schemes is https -->
+                                    <input type="url" class="mr" data-url-scheme="https" placeholder="https"> <br>
+                                    <p class="mr-feedback mr-url-fb">Invalid URL!</p>
+                                    
+                                    <!-- The accepted url schemes is http, https, file and ftp -->
+                                    <input type="url" class="mr" data-url-scheme="http, https, file, ftp" placeholder="http, https, file, ftp"> <br>
+                                    <p class="mr-feedback mr-url-fb">Invalid URL!</p>
+                             
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>                                                                        
+                            </div>
+                                
+                            <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                </div>
+                                <code class="lang-html">
+<pre>
+    <i class="tag">&lt;form</i><i class="tag">&gt;</i>
+        <i class="comment">&lt;!-- The accepted url schemes is https --&gt;</i>
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="url"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">data-url-scheme</i><i class="value">="https"</i> <i class="attr">placeholder</i><i class="value">="https"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-url-fb"</i><i class="tag">&gt;</i>Invalid URL!<i class="tag">&lt;/p&gt;</i>
+        
+        <i class="comment">&lt;!-- The accepted url schemes is http, https, file and ftp --&gt;</i>
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="url"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">data-url-scheme</i><i class="value">="http, https, file, ftp"</i> <i class="attr">placeholder</i><i class="value">="http, https, file, ftp"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-url-fb"</i><i class="tag">&gt;</i>Invalid URL!<i class="tag">&lt;/p&gt;</i>
+ 
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+
+                        <article>
+                            <h2 id="ingnore-url-scheme-syntax-heading">Ingnoring myrules URL schemes syntax</h2>
+                            <h3 class="h5 mt-30">Example: ingnoring myrules URL schemes syntax</h3>
+                            <p>The <code class="class">.mr-url-browser</code> class will cause the myrules URL schemes syntax to be ignored and only Constraint validation API's <code>ValidityState.typeMismatch</code> property to be considered</p>
+                            <div class="mr-test">
+                                <div class="panel-info">
+                                    <p>Try to submit an invalid email.</p>
+                                </div>
+                                <form>
+                                    <!-- ingnoring myrules email syntax using .mr-url-browser class -->
+                                    <input type="url" class="mr mr-url-browser" placeholder="URL"> <br>
+                                    <!--Validation feedback-->
+                                    <p class="mr-feedback mr-url-fb">Invalid URL!</p>
+                                    
+                                    <input type="submit" value="submit">
+                                    <input type="reset" value="reset">
+                                </form>                                                         
+                            </div>
+                                
+                            <div class="code-panel">
+                                <div class="clearfix">
+                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                </div>
+                                <code class="lang-html">
+<pre>
+    <i class="tag">&lt;form</i><i class="tag">&gt;</i>
+        <i class="comment">&lt;!-- ingnoring myrules email syntax using .mr-url-browser class --&gt;</i>
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="url"</i> <i class="attr">class</i><i class="value">="mr mr-url-browser"</i> <i class="attr">placeholder</i><i class="value">="URL"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+        <i class="comment">&lt;!--Validation feedback--&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-url-fb"</i><i class="tag">&gt;</i>Invalid URL!<i class="tag">&lt;/p&gt;</i>
+        
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;/form&gt;</i>
+</pre>
+                                </code>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-url"> Url</a>
+                        <ul class="navbar-nav sub-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#url-syntax-heading">myrules URL syntax</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input">Applying in &lt;input&gt;</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#defining-acepted-schemes">Defining accepted URL schemes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ingnore-url-scheme-syntax-heading">Ingnoring myrules URL schemes syntax</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+    </body>
+</html>
