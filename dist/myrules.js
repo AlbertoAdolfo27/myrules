@@ -773,7 +773,10 @@ function mrValidateElement(mrElement)
                 if(!mrHasSchemeError){
                     let mrURLpattern = new RegExp(mrURLregularExpression, "i");
                 
-                    if(mrURLpattern.test(mrElement.value))
+                    if(mrElement.validity.typeMismatch)
+                    {
+                        mrIsValidURL = false;
+                    }else if(mrURLpattern.test(mrElement.value))
                     {
                         let mrURL = mrElement.value;
                         mrURL = mrURL.trim();
