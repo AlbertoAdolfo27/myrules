@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Numbers - myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, numbers, validate numbers, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Numbers</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="80">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-numbers-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pb-30" id="main">
+                <div class="container-fluid" id="main-container">
+                    <section>
+                        <article>
+                            <h1  id="validate-numbers-heading">Numbers</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Validation Class</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">type=</code><code class="value">"number"</code></td>
+                                            <td><code class="class">.mr-number</code></td>
+                                            <td>Specifies that the input value must be a number.</td>
+                                            <td><code class="class">.mr-number-fb</code></td>    
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><code class="class">.mr-number-int</code></td>
+                                            <td>Specifies that the input value must be an integer number.</td>
+                                            <td><code class="class">.mr-number-int-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>Numbers can be written with or without decimals and with scientific (exponent) notation.</p>
+                            <h2 class="h5 pt-0">Examples:</h2>
+                            <ul class="list-type-disc">
+                                <li><code>23.15</code> - A number with decimals</li>
+                                <li><code>23</code> - A number without decimals</li>
+                                <li><code>19e7</code> - A number with exponent notation</li>
+                            </ul>
+                            <p>To specifies that the input value must be a number add the <code>type="number"</code> attribute into the <code>&lt;input&gt;</code> element or <code>.mr-number</code> class.</p>
+                            <p>To specifies that the input value must be an integer number (without decimals) add the <code>.mr-number-int</code> into the <code>&lt;input&gt;</code> element.</p>
+                        </article>
+                        
+                        <article>
+                            <h2  id="applying-input-heading">Applying in &lt;input&gt;</h2>
+                            <div>
+                                <h3 class="h5 mt-30" id="example-password-good">Input Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul><li>The Quantity and Temperature text fields values must be a number.</li>
+                                            <li>The Age text field value must be an integer number.</li>
+                                            <li>The minimum allowed Age is 0. (lean how to validate <a href="min-and-max.html">minimum and maximum allowed value</a> ).</li>
+                                            <li>Try to submit invalid values.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate Quantity with type="number" attribute-->
+                                        <label>Quantity:</label> <br>
+                                        <input type="number" class="mr" placeholder="Quantity"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-number-fb">The Quantity must e a number!</p>
+                                        
+                                        <!--Validate Temperature with .mr-number class-->
+                                        <label>Temperature:</label> <br>
+                                        <input type="text" class="mr mr-number" placeholder="Temperature"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-number-fb">The Temperature must e a number!</p>
+                                    
+                                        <!--Validate Age with .mr-number-int class and min attribute-->
+                                        <label>Age:</label> <br>
+                                        <input type="number" class="mr mr-number-int" min="0" placeholder="Age"> <br>
+                                        <!--Validation feedback-->
+                                        <div class="mr-feedback">
+                                            <p class="mr-number-int-fb">The age must be an integer number!</p>
+                                            <p class="mr-min-fb">The minimum allowed age is 0!</p>
+                                        </div>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate Quantity with type="number" attribute--&gt;</i>
+    <i class="tag">&lt;label&gt;</i>Quantity:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="number"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">placeholder</i><i class="value">="Quantity"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-number-fb"</i><i class="tag">&gt;</i>The Quantity must e a number!<i class="tag">&lt;/p&gt;</i>
+    
+    <i class="comment">&lt;!--Validate Temperature with .mr-number class--&gt;</i>
+    <i class="tag">&lt;label&gt;</i>Temperature:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-number"</i> <i class="attr">placeholder</i><i class="value">="Temperature"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-number-fb"</i><i class="tag">&gt;</i>The Temperature must e a number!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="comment">&lt;!--Validate Age with .mr-number-int class and min attribute--&gt;</i>
+    <i class="tag">&lt;label&gt;</i>Age:<i class="tag">&lt;/label&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="number"</i> <i class="attr">class</i><i class="value">="mr mr-number-int"</i> <i class="attr">min</i><i class="value">="0"</i> <i class="attr">placeholder</i><i class="value">="Age"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-number-int-fb"</i><i class="tag">&gt;</i>The age must be an integer number!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-min-fb"</i><i class="tag">&gt;</i>The minimum allowed age is 0!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <h3 class="h5 mt-30" id="example-password-strong">Example using .mr-password-strong</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The strong password must match: lowercase, uppercase and number or/and special character.</li>
+                                            <li>The Password is required field</li>
+                                            <li>Try to submit an invalid password</li>
+                                        </ul>
+                                    </div>
+                                    <form>
+                                        <!--Validate password text field using .mr-password-strong class"-->
+                                        <input type="password" class="mr mr-password-strong" required placeholder="Password"> <br>
+                                        <!--Validation feedback-->
+                                        <div class="mr-feedback">
+                                            <p class="mr-required-fb">Please fill out this text field!</p>
+                                            <p class="mr-password-strong-fb">Please input a strong password!</p>
+                                            <p class="mr-valid-fb">This is a strong password!</p>
+                                        </div>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                </div>
+                            
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Validate password text field using .mr-password-strong class"--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="password"</i> <i class="attr">class</i><i class="value">="mr mr-password-strong"</i> <i class="attr">required</i> <i class="attr">placeholder</i><i class="value">="Password"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-password-strong-fb"</i><i class="tag">&gt;</i>Please input a strong password!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-valid-fb"</i><i class="tag">&gt;</i>This is a strong password!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="h5 mt-30" id="example-password-very-strong">Example using .mr-password-very-strong</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The very strong password must match: lowercase, uppercase, number and special character.</li>
+                                            <li>The Password is required field</li>
+                                            <li>Try to submit an invalid password</li>
+                                        </ul>
+                                    </div>
+                                    <form>
+                                        <!--Validate password text field using .mr-password-very-strong class"-->
+                                        <input type="password" class="mr mr-password-very-strong" required placeholder="Password"> <br>
+                                        <!--Validation feedback-->
+                                        <div class="mr-feedback">
+                                            <p class="mr-required-fb">Please fill out this text field!</p>
+                                            <p class="mr-password-very-strong-fb">Please input a very strong password!</p>
+                                            <p class="mr-valid-fb">This is a very strong password!</p>
+                                        </div>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                </div>
+                            
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Validate password text field using .mr-password-very-strong class"--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="password"</i> <i class="attr">class</i><i class="value">="mr mr-password-very-strong"</i> <i class="attr">required</i> <i class="attr">placeholder</i><i class="value">="Password"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-password-very-strong-fb"</i><i class="tag">&gt;</i>Please input a very strong password!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-valid-fb"</i><i class="tag">&gt;</i>This is a very strong password!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article>
+                            <h1  id="password-minlength">Password's minimum length</h1>
+                            <p>You can specify minimum allowed number of characters for the the password using <a href="minlength-and-maxlength.html"><code class="attr">mr-minlength</code></a> attribute.</p>
+                            
+                            <div>
+                                <h3 class="h5 mt-30" id="example-password-good">Example using .mr-password-good</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The good password must match: lowercase or/and uppercase and number or/and special character.</li>
+                                            <li>The minimum allowed number of characters is 6</li>
+                                            <li>The Password is required field</li>
+                                            <li>Try to submit an invalid password</li>
+                                        </ul>
+                                    </div>
+                                    <form>
+                                        <!--Specify minimum allowed number of characters for the the password with mr-minlength attribute"-->
+                                        <input type="password" class="mr mr-password-good" required minlength="6" placeholder="Password"> <br>
+                                        <!--Validation feedback-->
+                                        <div class="mr-feedback">
+                                            <p class="mr-required-fb">Please fill out this text field!</p>
+                                            <p class="mr-password-good-fb">Please input a segure password!</p>
+                                            <p class="mr-minlength-fb">Please, input at least 6 characters!</p>
+                                            <p class="mr-valid-fb">This is a good password!</p>
+                                        </div>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Specify minimum allowed number of characters for the the password with mr-minlength attribute"--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="password"</i> <i class="attr">class</i><i class="value">="mr mr-password-good"</i> <i class="attr">required</i> <i class="attr">minlength</i><i class="value">="6"</i> <i class="attr">placeholder</i><i class="value">="Password"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-password-good-fb"</i><i class="tag">&gt;</i>Please input a segure password!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>Please, input at least 6 characters!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-valid-fb"</i><i class="tag">&gt;</i>This is a good password!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column borde">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-password-heading">Password</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-heading">Applying in &lt;input&gt;</a>
+                                <ul class="navbar-nav sub-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#example-password-good">Example using .mr-password-good</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#example-password-strong">Example using .mr-password-strong</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#example-password-very-strong">Example using .mr-password-very-strong</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#password-minlength">password's minimum length</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+    </body>
+</html>
