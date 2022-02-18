@@ -206,7 +206,7 @@
                             </div>
                         </article>
                         <article id="min-today-and-max-today-date">
-                            <h2>min="today" and max="today" date</h2>
+                            <h2>min="today" and max="today"</h2>
                             <p>Set the <strong>current date</strong> as value of the <code class="attr">min</code> or <code class="attr">max</code> attributes by using the value "today". It will update every day the value of the <code class="attr">min</code> or <code class="attr">max</code> attributes to the actual date.</p>
                             <div class="mr-test">
                                 <div class="panel-info">
@@ -217,26 +217,25 @@
                                     </ul>
                                 </div>
 
-                                <form>    
-                                    <!--Validate Quantity with type="number" attribute-->
-                                    <label>Quantity:</label> <br>
-                                    <input type="number" class="mr" placeholder ="Quantity"> <br>
-                                    <!--Validation feedback-->
-                                    <p class="mr-feedback mr-number-fb">The Quantity must e a number!</p>
+                                <form class="mr-colors">
+                                    <label>Meeting date:</label> <br> 
+                                    <!--Input type date-->
+                                    <input type="date" class="mr" min="today" placeholder="Meeting date"> <br>
                                     
-                                    <!--Validate Temperature with .mr-number class-->
-                                    <label>Temperature:</label> <br>
-                                    <input type="text" class="mr mr-number" placeholder ="Temperature"> <br>
-                                    <!--Validation feedback-->
-                                    <p class="mr-feedback mr-number-fb">The Temperature must e a number!</p>
-                                
-                                    <!--Validate Age with .mr-number-int class and min attribute-->
-                                    <label>Age:</label> <br>
-                                    <input type="number" class="mr mr-number-int" mix="0" placeholder ="Age"> <br>
-                                    <!--Validation feedback-->
+                                    <!--Validation feedbacks-->
                                     <div class="mr-feedback">
-                                        <p class="mr-number-int-fb">The age must be an integer number!</p>
-                                        <p class="mr-min-fb">The minimum allowed age is 0!</p>
+                                        <p class="mr-date-fb">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-min-fb">The minimum allowed date is current date!</p>
+                                    </div>
+                                
+                                    
+                                    <label>Birthday:</label> <br> 
+                                    <!--Input type date-->
+                                    <input type="date" class="mr" max="today" placeholder="Birthday"> <br>
+                                    <!--Validation feedbacks-->
+                                    <div class="mr-feedback">
+                                        <p class="mr-date-fb">Please input a valid date (YYYY-MM-DD)!</p>
+                                        <p class="mr-max-fb">The maximum allowed date is current date!</p>
                                     </div>
                                 
                                     <input type="submit" value="submit">
@@ -298,7 +297,7 @@
                                 <a class="nav-link" href="#applying-input-type-text">Applying in input type="text"</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#min-today-and-max-today-date" class="nav-link">min="today" and max="today" date</a>
+                                <a href="#min-today-and-max-today-date" class="nav-link">min="today" and max="today"</a>
                             </li>
                         </ul>
                     </li>
