@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Date - myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, date, validate date, input type date attribute, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Date</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="80">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-date-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pb-30" id="main">
+                <div class="container-fluid" id="main-container">
+                    <section>
+                        <article>
+                            <h1  id="validate-date-heading">Date</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Validation Class</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">type=</code><code class="value">"date"</code></td>
+                                            <td><code class="class">.mr-date</code></td>
+                                            <td>Specifies that the input value must be a valid complete date</td>
+                                            <td><code class="class">.mr-date-fb</code></td>         
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>You can validate a date using <code class="attr">type="date"</code> attribute on <code class="tag">&lt;input&gt;</code> element or <code class="class">.mr-date</code> on <code class="code">&lt;input type="text"&gt;</code> element.</p>
+                        </article>
+                        
+                        <article>
+                            <h2  id="applying-input-type-date-heading" class="mb-3">Applying in Input Type Date</h2>
+                            <p>The date format of <span class="code-line"><code class="attr">type</code><code class="value">="date"</code></span> attribute is ISO 8601 (YYYY-MM-DD).</p>
+                            <p>Depending on browser support, a date picker can show up in the input field.</p>
+                            <div>
+                                <h3 class="h5 mt-30" id="example-input-type-date">Input Type Date Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The valid date format is YYYY-MM-DD.</li>
+                                            <li>Try to input an invalid date.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate date with type="date" attribute-->
+                                        <input type="date" class="mr" placeholder="Date"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-date-fb">Please input a valid date!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>                                    
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate date with type="date" attribute--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="date"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">placeholder</i><i class="value">="Date"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+
+                            <p>You can also use the <code class="attr">min</code> and <code class="attr">max</code> attributes to add restrictions to dates. <a href="min-and-max.html#applying-input-type-date">Learn now</a>.</p>
+                        </article>                        
+                        
+                        <article>
+                            <h2  id="applying-input-type-text-heading" class="mb-3">Applying in Input Type Text</h2>
+                            <p>To validate a date on an <code class="code">&lt;input type="text"&gt;</code> use the <code class="class">.mr-date</code> class.</p>
+                            <p>The standard date format of <code class="class">.mr-class</code> is ISO 8601 (YYYY-MM-DD). You can define other <a href="#date-formats-heading">date input format</a>.</p>
+                            <div>
+                                <h3 class="h5 mt-30" id="example-input-type-text">Input Type Text Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The valid date format is YYYY-MM-DD.</li>
+                                            <li>Try to input an invalid date.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate date with .mr-date class-->
+                                        <input type="text" class="mr mr-date" placeholder="Date (YYYY-MM-DD)"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-date-fb">Please input a valid date!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate date with .mr-date class--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-date"</i> <i class="attr">placeholder</i><i class="value">="Date (YYYY-MM-DD)"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+                        </article>                        
+                        
+                        <article>
+                            <h2  id="date-formats-heading" class="mb-3">Date formats</h2>
+                            <p>myrules provide 12 date input formats:</p>
+                            <ul class="list-type-disc text-justify">
+                                <li>YYYY-MM-DD</li>
+                                <li>YYYY/MM/DD</li>
+                                <li>YYYY.MM.DD</li>
+                                <li>YYYY,MM,DD</li>
+                                <li>DD-MM-YYYY</li>
+                                <li>DD/MM/YYYY</li>
+                                <li>DD.MM.YYYY</li>
+                                <li>DD,MM,YYYY</li>
+                                <li>MM-DD-YYYY</li>
+                                <li>MM/DD/YYYY</li>
+                                <li>MM.DD.YYYY</li>
+                                <li>MM,DD,YYYY</li>
+                            </ul>
+                            <p>The standard date format is YYYY-MM-DD (ISO 8601 - The International Standard).</p>
+                            <p>Use <code class="attr">data-dateformat</code> (or <code class="attr">dateformat</code>) attribute to specifies the date input format.</p>
+                            <div>
+                                <h3 class="h5 mt-30" id="example-define-dateformat">Define date format Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The valid date format is MM/DD/YYYY</li>
+                                            <li>Try to input an invalid date.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate date with .mr-date class and data-dateformat attribute-->
+                                        <input type="text" class="mr mr-date" data-dateformat="MM/DD/YYYY" placeholder="Date (MM/DD/YYYY)"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-date-fb">Please input a valid date!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate date with .mr-date class and data-dateformat attribute--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-date"</i> <i class="attr">data-dateformat</i><i class="value">="MM/DD/YYYY"</i> <i class="attr">placeholder</i><i class="value">="Date (MM/DD/YYYY)"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column borde">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-date-heading">Date</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-date-heading">Applying in Input Type Date</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-text-heading">Applying in Input Type Text</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#date-formats-heading">Date formats</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+    </body>
+</html>
