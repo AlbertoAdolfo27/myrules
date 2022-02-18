@@ -113,7 +113,7 @@
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <ul>
-                                        <li>The date format of Validation Attribute <span class="code-line"><code class="attr">type</code><code class="value">="date"</code></span> is ISO 8601 (YYYY-MM-DD). it can´t be changed</li>
+                                        <li>The date format of <span class="code-line"><code class="attr">type</code><code class="value">="date"</code></span> attribute is ISO 8601 (YYYY-MM-DD). Lean about <a href="date">date validation</a>.</li>
                                         <li>The minimum date allowed is <span class="eighty-years-ago"></span></li>
                                         <li>The maximum date allowed is <span class="six-years-ago"></span></li>
                                         <li>Try to submit the invalid minimum and maximum date allowed</li>
@@ -158,53 +158,6 @@
                             </div>
                         </article>
 
-                        <article id="applying-input-type-text">  
-                            <h2>Applying in &lt;input type="text"&gt;</h2>
-                            <h3 class="h5">input type="text" with Validation Class .mr-date Example</h3>
-                            <p>To validate the min and max date in an <span class="code-line"><code class="tag">&lt;input</code> <code class="attr">type</code><code class="value">="text"</code><code class="tag">&gt;</code></span> add the <code class="class">.mr-date</code> class into the element class to specifies than the input value must be a date.</p>
-                            <div class="mr-test">
-                                <div class="panel-info">
-                                    <p class="mb-0">The standard date format of <code class="class">.mr-date</code> Validation Class is ISO 8601 (YYYY-MM-DD). You can change it with <code class="attr">dateformat</code> Costum Attribute(or <code class="attr">data-dateformat</code> HTML 5 costum attribute).</p>
-                                    <p class="mt-0">Lean about the date formats of <code class="class">.mr-date</code>  Validation Class in <a href="validate-date.html">Validate date</a> subject.</p>
-                                </div>
-                                <form class="mr-colors">
-                                    <!--Input type text with Validation Class ".mr-date"-->
-                                    <input type="text" class="mr mr-date" min="1941-10-25" max="2015-10-25" placeholder="Birthday"> <br>
-                                    <!--Validation feedbacks-->
-                                    <div class="mr-feedback">
-                                        <p class="mr-date-fb">Please input a valid date (YYYY-MM-DD)!</p>
-                                        <p class="mr-min-fb">The minimum allowed date is 1941-10-25!</p>
-                                        <p class="mr-max-fb">The maximum allowed date is 2015-10-25!</p>
-                                    </div>
-                                
-                                    <input type="submit" value="submit">
-                                    <input type="reset" value="reset">
-                                </form>
-                            </div>
-                                
-                            <div class="code-panel">
-                                <div class="clearfix">
-                                    <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
-                                </div>
-                                    <code class="lang-html">
-<pre>
-<i class="tag">&lt;form</i> <i class="attr">class=</i><i class="value">"mr-colors"</i><i class="tag">&gt;</i>
-    <i class="comment">&lt;!--Input type text with Validation Class ".mr-date"--&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-date"</i> <i class="attr">min</i><i class="value">="<span class="eighty-years-ago"></span>"</i> <i class="attr">max</i><i class="value">="<span class="six-years-ago"></span>"</i> <i class="attr">placeholder</i><i class="value">="Birthday"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
-    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
-    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-date-fb"</i><i class="tag">&gt;</i>Please input a valid date (YYYY-MM-DD)!<i class="tag">&lt;/p&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-min-fb"</i><i class="tag">&gt;</i>The minimum allowed date is <span class="eighty-years-ago"></span>!<i class="tag">&lt;/p&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-max-fb"</i><i class="tag">&gt;</i>The maximum allowed date is <span class="six-years-ago"></span>!<i class="tag">&lt;/p&gt;</i>
-    <i class="tag">&lt;/div&gt;</i>
-
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
-<i class="tag">&lt;/form&gt;</i>
-</pre>
-                                </code>
-                            </div>
-                        </article>
                         <article id="min-today-and-max-today-date">
                             <h2>min="today" and max="today"</h2>
                             <p>Set the <strong>current date</strong> as value of the <code class="attr">min</code> or <code class="attr">max</code> attributes by using the value "today". It will update every day the value of the <code class="attr">min</code> or <code class="attr">max</code> attributes to the actual date.</p>
@@ -292,9 +245,6 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#applying-input-type-date">Applying in input type="date"</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#applying-input-type-text">Applying in input type="text"</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#min-today-and-max-today-date" class="nav-link">min="today" and max="today"</a>
