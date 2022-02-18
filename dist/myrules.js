@@ -3008,17 +3008,17 @@ function mrValidateElement(mrElement)
             return false;
         }
 
-        if(dateFormat == dateFormats[0] || dateFormat == dateFormats[1] || dateFormat == dateFormats[2])
+        if(dateFormat == dateFormats[0] || dateFormat == dateFormats[1] || dateFormat == dateFormats[2] || dateFormat == dateFormats[3])
         {
             mrYear = date.slice(0, 4);
             mrMonth = date.slice(5, 7);
             mrDay = date.slice(8, 10);
-        } else if(dateFormat == dateFormats[3] || dateFormat == dateFormats[4] || dateFormat == dateFormats[5])
+        } else if(dateFormat == dateFormats[4] || dateFormat == dateFormats[5] || dateFormat == dateFormats[6] || dateFormat == dateFormats[7])
         {
             mrDay = date.slice(0, 2);
             mrMonth = date.slice(3, 5);
             mrYear = date.slice(6, 10);
-        } else if(dateFormat == dateFormats[6] || dateFormat == dateFormats[7] || dateFormat == dateFormats[8])
+        } else if(dateFormat == dateFormats[8] || dateFormat == dateFormats[9] || dateFormat == dateFormats[10] || dateFormat == dateFormats[11])
         {
             mrMonth = date.slice(0, 2);
             mrDay = date.slice(3, 5);
