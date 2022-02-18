@@ -889,28 +889,28 @@ function mrValidateElement(mrElement)
             if(mrStepElement != "")
             {
                 if(!isNaN(mrStepElement))
-                {
+                {   
                     if(!isNaN(mrElement.value) && !mrIsEmptyElementValue(mrElement))
                     {
-                        if(mrElement.value % Number(mrStepElement) == 0 || mrElement.validity.stepMismatch)
+                        if(mrElement.value % Number(mrStepElement) == 0 || !(mrElement.validity.stepMismatch))
                         {
                             mrIsvalidStep = true;
                         }
+                    }
         
-                        if(!mrIsvalidStep)
-                        {
-                            mrInvalidElement("mr-step-fb");
-                        }   else
-                        {
-                            mrValidElement("mr-step-fb");
-                        }
+                    if(!mrIsvalidStep && !mrIsEmptyElementValue(mrElement))
+                    {
+                        mrInvalidElement("mr-step-fb");
+                    }   else
+                    {
+                        mrValidElement("mr-step-fb");
                     }
                 }   else
                 {
                     console.error("MY RULES ERROR:\n" + "- The value of step attributte of element:");
                     console.error(mrElement);
                     console.error("is not a valid number");
-                    // mrInvalidElement("mr-step-fb");
+                    mrInvalidElement("mr-step-fb");
                 }
             }
         }   
