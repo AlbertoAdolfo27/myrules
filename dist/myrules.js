@@ -3020,7 +3020,7 @@ function mrValidateElement(mrElement)
             mrYear = date.slice(6, 10);
         } else if(dateFormat == dateFormats[6] || dateFormat == dateFormats[7] || dateFormat == dateFormats[8])
         {
-            mrmonth = date.slice(0, 2);
+            mrMonth = date.slice(0, 2);
             mrDay = date.slice(3, 5);
             mrYear = date.slice(6, 10);
         }
@@ -3071,7 +3071,6 @@ function mrValidateElement(mrElement)
     function mrIsValidFullDate(date, dateFormat)
     {
         var dateFormats = mrGetdateFormats();
-
         if(dateFormat == "" || dateFormat == null)
         {
             dateFormat = dateFormats[0];
