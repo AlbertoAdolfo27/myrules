@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Pattern - myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, pattern, validate pattern, pattern attribute, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Pattern</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="80">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-pattern-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pb-30" id="main">
+                <div class="container-fluid" id="main-container">
+                    <section>
+                        <article>
+                            <h1  id="validate-pattern-heading">Pattern</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">pattern</code></td>
+                                            <td>Specifies the value pattern of an input element</td>
+                                            <td><code class="class">.mr-pattern-fb</code></td>          
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="panel-info">
+                                <p>The pattern attribute can be used on this input types: text, date, search, url, tel, email, and password.</p>
+                            </div>
+                        </article>
+                        
+                        <article>
+                            <h2  id="applying-input-heading" class="mb-3">Applying in Input</h2>
+                            <div>
+                                <h3 class="h5 mt-30" id="example-input-type-text">Input Type Text Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The Year input field can contain only four numbers (YYYY).</li>
+                                            <li>Try to input an invalid year.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate Year with pattern attribute-->
+                                        <input type="text" class="mr" pattern="[0-9]{4}" placeholder="Year"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-pattern-fb">Please input a valid year!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate Year with pattern attribute--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">pattern</i><i class="value">="[0-9]{4}"</i> <i class="attr">placeholder</i><i class="value">="Year"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-pattern-fb"</i><i class="tag">&gt;</i>Please input a valid year!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="h5 mt-30" id="example-input-type-password">Input Type Password Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The password must contain 8 or more characters.</li>
+                                            <li>Try to input an invalid password.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate Password with pattern attribute-->
+                                        <input type="password" class="mr" pattern=".{6,}" placeholder="Password"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-pattern-fb">The password must contain 6 or more characters!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                      
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate Password with pattern attribute--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="password"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">pattern</i><i class="value">=".{6,}"</i> <i class="attr">placeholder</i><i class="value">="Password"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-pattern-fb"</i><i class="tag">&gt;</i>The password must contain 6 or more characters!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+                        </article>                        
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column borde">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-pattern-heading">Pattern</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-heading">Applying in Input</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+    </body>
+</html>
