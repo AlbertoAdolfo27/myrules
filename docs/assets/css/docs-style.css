@@ -9,7 +9,11 @@ h2
 }
 
 h3{
-    margin-top: 3rem;
+    padding-top: 3.5rem;
+}
+
+h3.h5{
+    padding-top: 1rem;
 }
 
 #sidebar
