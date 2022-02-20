@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Pattern - myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, ip-address, validate ip-address, ip-address class, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>IP Address</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="80">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-ip-address-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pb-30" id="main">
+                <div class="container-fluid" id="main-container">
+                    <section>
+                        <article>
+                            <h1  id="validate-ip-address-heading">IP Address</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Class</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="class">.mr-ip-address</code></td>
+                                            <td>Specifies that the input value must be a valid IP address address</td>
+                                            <td><code class="class">.mr-ip-address-fb</code></td>          
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="mb-0">myrules provide support to validate the IPv4 and IPv6.</p>
+                            <h2 class="mb-3" id="address-representation-heading">Address Representation</h2>
+                            <p class="mb-1"><strong>IPv4</strong> can be represented by four notations:</p>
+                            <ul class="list-type-disc">
+                                <li><strong>dot-decimal notation</strong>. Example: <code class="code text-dark">192.0.2.235</code>.</li>
+                                <li><strong>dot-binary notation</strong>. Example: <code class="code text-dark">11000000.00000000.00000010.11101011</code>.</li>
+                                <li><strong>dot-hexadecimal</strong>. Example: <code class="code text-dark">0xC0.0x00.0x02.0xEB</code>.</li>
+                                <li><strong>dot-octal notation</strong>. Example: <code class="code text-dark">0300.0000.0002.0353</code>.</li>
+                            </ul>
+                            
+                            <p>The <strong>IPv6</strong> are represented in 8 groups of 16 bits each. Each group is written as four hexadecimal digits and the groups are separated by colons (<code class="code text-dark">:</code>). Example: <code class="code text-dark">2001:0db8:85a3:03fa:0000:0000:0000:7344</code> or <code class="code text-dark">2001:db8:85a3:3fa::7344</code>.</p>
+                            <div class="panel-info">
+                                <p>The <code class="class">.mr-ip-address</code> make validation of IPv4 (dot-decimal, dot-binary, dot-hexadecimal and dot-octal notations) and IPv6 (hexadecimal).</p>
+                            </div>
+                        </article>
+                        
+                        <article>
+                            <h2  id="applying-input-type-text-heading" class="mb-3">Applying in Input Type Text</h2>
+                            <div>
+                                <h3 class="h5 mt-0" id="example-input-type-text">Input Type Text Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>Try to input an invalid IP Address.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate IP Address with .mr-ip-address class-->
+                                        <input type="text" class="mr mr-ip-address"placeholder="IP Address"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-ip-address-fb">Please submit a valid IP Address!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate IP Address with .mr-ip-address class--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-ip-address"</i><i class="attr">placeholder</i><i class="value">="IP Address"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-ip-address-fb"</i><i class="tag">&gt;</i>Please input a valid IP Address!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+
+                        </article>
+
+                        <article>
+                            <h2  id="define-accepted-ip-representation-heading" class="mb-3">Define the accepted IP Representation</h2>
+                            <p>The <code class="class">.mr-ip-address</code> class Specifies that the input value must be a valid IP address. It can be an IPv4 represented in dot-decimal notation, dot-binary notation, dot-hexadecimal notation and dot-octal notation and in IPv6 represented in hexadecimal digits.</p>
+                            <p>You can restrict the type of IP Representation into your input field. Just add the <code class="class">.mr-ip-address</code> class with the class that specifies the type of IP representation.</p>
+                            <p><strong>Examples:</strong> If you want to specify that the input value must be an IPv4 address, add the <code class="class">.mr-ip-address</code> and <code class="class">.mr-ipv4</code> classes into the element class; To specify that the input value must be an IPv6 address use <code class="class">.mr-ip-address</code> and <code class="class">.mr-ipv6</code>; or if the input value must be an IPv4 in dot-decimal notation or an IPv6 add the <code class="class">.mr-ip-address</code>, <code class="class">.mr-ipv4-dot-decimal</code> and <code class="class">.mr-ipv6</code> classes into the element class.</p>
+                            
+                            <h3 class="mb-3" id="ip-representation-classes-heading">IP Representation Classes</h3>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Class</th>
+                                            <th>IPv4 dot-decimal</th>
+                                            <th>IPv4 dot-binary</th>
+                                            <th>IPv4 dot-hexadecimal</th>
+                                            <th>IPv4 dot-octal</th>
+                                            <th>IPv6 hexadecimal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="class">.mr-ipv4</code></td>
+                                            <td class="bg-success text-white text-center my-auto"><i class="far fa-check-circle"></i></td>
+                                            <td class="bg-success text-white text-center my-auto"><i class="far fa-check-circle"></i></td>
+                                            <td class="bg-success text-white text-center my-auto"><i class="far fa-check-circle"></i></td>
+                                            <td class="bg-success text-white text-center my-auto"><i class="far fa-check-circle"></i></td>
+                                            <td class="bg-gray"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="class">.mr-ipv6</code></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-success text-white text-center my-auto"><i class="far fa-check-circle"></i></td>         
+                                        </tr>
+                                        <tr>
+                                            <td><code class="class">.mr-ipv4-dot-decimal</code></td>
+                                            <td class="bg-success text-white text-center my-auto"><i class="far fa-check-circle"></i></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>         
+                                        </tr>
+                                        <tr>
+                                            <td><code class="class">.mr-ipv4-dot-binary</code></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-success text-white text-center my-auto"><i class="far fa-check-circle"></i></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>          
+                                        </tr>
+                                        <tr>
+                                            <td><code class="class">.mr-ipv4-dot-hexadecimal</code></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-success text-white text-center my-auto"><i class="far fa-check-circle"></i></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>          
+                                        </tr>
+                                        <tr>
+                                            <td><code class="class">.mr-ipv4-dot-octal</code></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-gray"></td>
+                                            <td class="bg-success text-white text-center"><i class="far fa-check-circle"></i></td>
+                                            <td class="bg-gray"></td>          
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <h3 class="h5 mt-0" id="example2-input-type-text">Input Type Text Example 2</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The input value must be a valid IPv4  represented in dot-decimal notation and dot-binary notation and IPv6 represented in hexadecimal digits.</li>
+                                            <li>Try to submit an invalid IP Address.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate IP Address with .mr-ip-address, .mr-ipv4-dot-decimal, .mr-ipv4-dot-binary and .mr-ipv6 class-->
+                                        <input type="text" class="mr mr-ip-address mr-ipv4-dot-decimal mr-ipv4-dot-binary mr-ipv6"placeholder="IP Address"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-ip-address-fb">Please input a valid IP Address!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                        
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate IP Address with .mr-ip-address, .mr-ipv4-dot-decimal, .mr-ipv4-dot-binary and .mr-ipv6 class--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-ip-address mr-ipv4-dot-decimal mr-ipv4-dot-binary mr-ipv6"</i><i class="attr">placeholder</i><i class="value">="IP Address"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-ip-address-fb"</i><i class="tag">&gt;</i>Please input a valid IP Address!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column borde">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-ip-address-heading">IP Address</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#address-representation-heading">Address Representation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-text-heading">Applying in Input Type Text</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#define-accepted-ip-representation-heading">Define the accepted IP Representation</a>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#ip-representation-classes-heading">IP Representation Classes</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+    </body>
+</html>
