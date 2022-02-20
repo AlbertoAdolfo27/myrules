@@ -819,10 +819,8 @@ function mrValidateElement(mrElement)
                     !mrHasClass(mrElement,"mr-ipv4-dot-decimal") &&
                     !mrHasClass(mrElement,"mr-ipv4-dot-binary") &&
                     !mrHasClass(mrElement,"mr-ipv4-dot-hexadecimal") &&
-                    !mrHasClass(mrElement,"mr-ipv4-dot-octal-byte") &&
-                    !mrHasClass(mrElement,"mr-ipv6") &&
-                    !mrHasClass(mrElement,"mr-ipv6-hexadecimal") &&
-                    !mrHasClass(mrElement,"mr-ipv6-binary")
+                    !mrHasClass(mrElement,"mr-ipv4-dot-octal") &&
+                    !mrHasClass(mrElement,"mr-ipv6")
                 )
                 {
                     if(mrIsIP(mrElement.value))
@@ -847,7 +845,7 @@ function mrValidateElement(mrElement)
                     {
                         mrIsValidIPaddress = true;
                     }
-                    if(mrHasClass(mrElement,"mr-ipv4-dot-octal-byte") && mrIsIPv4DotOctalByteNotation(mrElement.value))
+                    if(mrHasClass(mrElement,"mr-ipv4-dot-octal") && mrIsIPv4DotOctalNotation(mrElement.value))
                     {
                         mrIsValidIPaddress = true;
                     }
@@ -855,23 +853,14 @@ function mrValidateElement(mrElement)
                     {
                         mrIsValidIPaddress = true;
                     }
-                    if(mrHasClass(mrElement,"mr-ipv6-hexadecimal") && mrIsIPv6HexadecimalNotation(mrElement.value))
-                    {
-                        mrIsValidIPaddress = true;
-                    }
-                    if(mrHasClass(mrElement,"mr-ipv6-binary") && mrIsIPv6BinaryNotation(mrElement.value))
-                    {
-                        mrIsValidIPaddress = true;
-                    }
                 }
-            }
-
-            if(mrIsValidIPaddress)
-            {
-                mrValidElement("mr-ip-address-fb");
-            }   else
-            {
-                mrInvalidElement("mr-ip-address-fb");
+                if(mrIsValidIPaddress)
+                {
+                    mrValidElement("mr-ip-address-fb");
+                }   else
+                {
+                    mrInvalidElement("mr-ip-address-fb");
+                }
             }
         }
     }
@@ -3244,9 +3233,8 @@ function mrValidateElement(mrElement)
             mrIsIPv4DotDecimalNotation(ip) ||
             mrIsIPv4DotBinaryNotation(ip) ||
             mrIsIPv4DotHexadecimalNotation(ip) ||
-            mrIsIPv4DotOctalByteNotation(ip) ||
-            mrIsIPv6HexadecimalNotation(ip) ||
-            mrIsIPv6BinaryNotation(ip)
+            mrIsIPv4DotOctalNotation(ip) ||
+            mrIsIPv6(ip)
         )
         {
             return true;
@@ -3262,18 +3250,8 @@ function mrValidateElement(mrElement)
             mrIsIPv4DotDecimalNotation(ip) ||
             mrIsIPv4DotBinaryNotation(ip) ||
             mrIsIPv4DotHexadecimalNotation(ip) ||
-            mrIsIPv4DotOctalByteNotation(ip)
+            mrIsIPv4DotOctalNotation(ip)
         )
-        {
-            return true;
-        }
-        return false;
-    }
-    
-    // FUNCTION TO VALIDATE AN IPv6
-    function mrIsIPv6(ip)
-    {
-        if (mrIsIPv6HexadecimalNotation(ip) || mrIsIPv6BinaryNotation(ip))
         {
             return true;
         }
@@ -3347,14 +3325,14 @@ function mrValidateElement(mrElement)
 
     
     // FUNCTION TO VALIDATE AN IPv4 DOT-OCTAL BYTE NOTATION
-    function mrIsIPv4DotOctalByteNotation(ip)
+    function mrIsIPv4DotOctalNotation(ip)
     {
         var ipv4RegularExpression = "^([0][0-7]{3})(([.][0][0-7]{3}){3})$";
         var ipv4Pattern = new RegExp(ipv4RegularExpression);
 
         if(ipv4Pattern.test(ip))
         {
-            var mrOctets = ipWithoutPrefix.split(".");
+            var mrOctets = ip.split(".");
 
             for (var i = 0; i < mrOctets.length; i++)
             {
@@ -3372,9 +3350,9 @@ function mrValidateElement(mrElement)
 
     
     // FUNCTION TO VALIDATE AN IPv6 DOT-HEXADECIMAL NOTATION
-    function mrIsIPv6HexadecimalNotation(ip)
+    function mrIsIPv6(ip)
     {
-        let ipv6RegularExpression = "^([0-9A-Fa-f]{4}|[0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4})(([:][0-9A-Fa-f]{4}|[:][0-9]{1,4}|[:]{2}[0-9A-Fa-f]{4}|[:]{2}[0-9]{1,4}){0,7}([:]{2}){0,1})$";
+        let ipv6RegularExpression = "^([0-9A-Fa-f]{1,4}|[0-9]{1,4}|[:]{2}[0-9A-Fa-f]{1,4}|[:]{2}[0-9]{1,4})(([:][0-9A-Fa-f]{1,4}|[:][0-9]{1,4}|[:]{2}[0-9A-Fa-f]{1,4}|[:]{2}[0-9]{1,4}){0,7}([:]{2}){0,1})$";
         let ipv6Pattern = new RegExp(ipv6RegularExpression);
 
         let firstIndexOfAbbreviation = ip.indexOf("::");
@@ -3384,7 +3362,7 @@ function mrValidateElement(mrElement)
         {
             return false;
         }
-
+        
         if(ipv6Pattern.test(ip))
         {
             ip = ip.toUpperCase();
@@ -3411,18 +3389,6 @@ function mrValidateElement(mrElement)
         return false;
     }
 
-    // FUNCTION TO VALIDATE AN IPv6 DOT-BINARY NOTATION
-    function mrIsIPv6BinaryNotation(ip)
-    {
-        var ipv4RegularExpression = "^(([0-1]){16})(([.][0-1]{16}){7})$";
-        var ipv4Pattern = new RegExp(ipv4RegularExpression);
-
-        if(ipv4Pattern.test(ip))
-        {
-            return true;
-        }
-        return false;
-    }
 
     // FUNCTION TO CREATE A NEW HIDDEN IMAGE TO MAKE TEST OF VALIDATIONS OF DIMENTIONS OF IMAGE
     function newImageElementTest(imgSrc)
