@@ -117,3 +117,7 @@ label{
     margin-top: 10px;
     margin-bottom: 2px;
 }
+
+.table td, .table th {
+    vertical-align: middle !important;
+}
