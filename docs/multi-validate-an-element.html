@@ -43,8 +43,8 @@
                         </div>
                             <code class="lang-html">
 <pre>
-<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-latin-space"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i><i class="tag">&gt;</i>
-<i class="comment">&lt;!--Attributes "data-minlength" and "required" are Validation Attributes and class ".mr-latin-space" is Validation Class--&gt;</i>
+<i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i><i class="tag">&gt;</i>
+<i class="comment">&lt;!--Attributes "data-minlength" and "required" are Validation Attributes--&gt;</i>
 </pre>
                         </code>
                     </div>
@@ -56,33 +56,31 @@
                         <div class="panel-info">
                             <ul>
                                 <li>The First Name and Last Name are requireds fields</li>
-                                <li>The text fields must macth Latim with space ([a-zA-ZÀ-ÖØ-öø-ʯ ])</li>
-                                <li>The text fields must have at least two characters</li>
-                                <li>Try to input an invalid First Name and a Last Name</li>
+                                <li>The input fields must have at least two characters</li>
+                                <li>Try to submit an invalid First Name and a Last Name</li>
                             </ul>
                         </div>
                         <form>
-                            <!--First Name text field-->
-                            <input type="text" class="mr mr-latin-space" required data-minlength="2" placeholder="First name"> <br>
+                            <!--Validate First Name with required and data-minlength attributes-->
+                            <input type="text" class="mr" required data-minlength="2" placeholder="First Name"> <br>
                             <!--Validation feedbacks-->
                             <div class="mr-feedback">
                                 <p class="mr-required-fb">Please fill out this text field!</p>
-                                <p class="mr-latin-space-fb">Please input a valid name!</p>
-                                <p class="mr-minlength-fb">A valid name must have at least two characters!</p>
+                                <p class="mr-minlength-fb">The First Name must have at least two characters!</p>
                             </div>
                         
-                            <!--Last Name text field-->
-                            <input type="text" class="mr mr-latin-space" required data-minlength="2" placeholder="Last name"> <br>
+                            <!--Last Name with required and data-minlength attributes-->
+                            <input type="text" class="mr" required data-minlength="2" placeholder="Last Name"> <br>
                             <!--Validation feedbacks-->
                             <div class="mr-feedback">
                                 <p class="mr-required-fb">Please fill out this text field!</p>
-                                <p class="mr-latin-space-fb mb-0">Please input a valid name!</p>
-                                <p class="mr-minlength-fb">A valid name must have at least two characters!</p>
+                                <p class="mr-minlength-fb">The Last Name must have at least two characters!</p>
                             </div>
                         
                             <input type="submit" value="submit">
                             <input type="reset" value="reset">
                         </form>
+                        
                     </div>
                     
                     <div class="code-panel">
@@ -92,22 +90,20 @@
                         <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
-    <i class="comment">&lt;!--First Name text field--&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-latin-space"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i> <i class="attr">placeholder</i><i class="value">="First name"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validate First Name with required and data-minlength attributes--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i> <i class="attr">placeholder</i><i class="value">="First Name"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
     <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
         <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-latin-space-fb"</i><i class="tag">&gt;</i>Please input a valid name!<i class="tag">&lt;/p&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>A valid name must have at least two characters!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>The First Name must have at least two characters!<i class="tag">&lt;/p&gt;</i>
     <i class="tag">&lt;/div&gt;</i>
 
-    <i class="comment">&lt;!--Last Name text field--&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr mr-latin-space"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i> <i class="attr">placeholder</i><i class="value">="Last name"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Last Name with required and data-minlength attributes--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="text"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">required</i> <i class="attr">data-minlength</i><i class="value">="2"</i> <i class="attr">placeholder</i><i class="value">="Last Name"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
     <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
         <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-required-fb"</i><i class="tag">&gt;</i>Please fill out this text field!<i class="tag">&lt;/p&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-latin-space-fb"</i><i class="tag">&gt;</i>Please input a valid name!<i class="tag">&lt;/p&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>A valid name must have at least two characters!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minlength-fb"</i><i class="tag">&gt;</i>The Last Name must have at least two characters!<i class="tag">&lt;/p&gt;</i>
     <i class="tag">&lt;/div&gt;</i>
 
     <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
@@ -125,7 +121,7 @@
                                 <li>The E-mail and Very Strong Password text fields are requireds</li>
                                 <li>A Very Strong Password must match: lowercase, uppercase, number and special character</li>
                                 <li>The password must have at least two characters</li>
-                                <li>Try to input invalid e-mail and strong password</li>                                
+                                <li>Try to submit invalid e-mail and strong password</li>                                
                             </ul>
                         </div>
 
