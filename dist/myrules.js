@@ -1379,7 +1379,7 @@ function mrValidateElement(mrElement)
     }
     
 
-    // VALIDATE IF THE ELEMENT VALUE IS A VALID MIME TYPE
+    // VALIDATE IF THE ELEMENT VALUE IS A VALID MEDIA TYPE or A VALID EXTENSION
     mrAccept(mrElement);
     function mrAccept(mrElement)
     {
@@ -1411,24 +1411,24 @@ function mrValidateElement(mrElement)
                 acceptedFiles = acceptedFilesNormalized;
                 acceptedFiles = acceptedFiles.toString();
     
-                var mimeTypePatterns = {
+                var mediaTypePatterns = {
                     video: {pattern: /video\/\*/, patternGlobal : /video\/(?![.+\-])([a-z0-9.+\-](?![.+\-]{2}))+[a-z0-9]/g,i},
                     image: {pattern: /image\/\*/, patternGlobal : /image\/(?![.+\-])([a-z0-9.+\-](?![.+\-]{2}))+[a-z0-9]/g,i},
                     audio: {pattern: /audio\/\*/, patternGlobal : /audio\/(?![.+\-])([a-z0-9.+\-](?![.+\-]{2}))+[a-z0-9]/g,i},
                     defaultPattern: /^([a-z]+)\/(?![.+\-])((([a-z0-9.+\-](?![.+\-]{2}))+)+([a-z0-9]+)$|\*$)/i
                 };
     
-                if(mimeTypePatterns.video.pattern.test(acceptedFiles))
+                if(mediaTypePatterns.video.pattern.test(acceptedFiles))
                 {
-                    acceptedFiles = acceptedFiles.replace(mimeTypePatterns.video.patternGlobal,"");
+                    acceptedFiles = acceptedFiles.replace(mediaTypePatterns.video.patternGlobal,"");
                 }
-                if(mimeTypePatterns.image.pattern.test(acceptedFiles))
+                if(mediaTypePatterns.image.pattern.test(acceptedFiles))
                 {
-                    acceptedFiles = acceptedFiles.replace(mimeTypePatterns.image.patternGlobal,"");
+                    acceptedFiles = acceptedFiles.replace(mediaTypePatterns.image.patternGlobal,"");
                 }
-                if(mimeTypePatterns.audio.pattern.test(acceptedFiles))
+                if(mediaTypePatterns.audio.pattern.test(acceptedFiles))
                 {
-                    acceptedFiles = acceptedFiles.replace(mimeTypePatterns.audio.patternGlobal,"");
+                    acceptedFiles = acceptedFiles.replace(mediaTypePatterns.audio.patternGlobal,"");
                 }
     
                 acceptedFilesSplit = acceptedFiles.split(",");
@@ -1441,7 +1441,7 @@ function mrValidateElement(mrElement)
                     var acceptedFile = acceptedFilesSplit[i];
                     if(acceptedFile != "")
                     {
-                        if(mimeTypePatterns.defaultPattern.test(acceptedFile))
+                        if(mediaTypePatterns.defaultPattern.test(acceptedFile))
                         {
                             acceptedFiles.push(acceptedFile);
                         }   else
