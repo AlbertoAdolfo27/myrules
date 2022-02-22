@@ -1387,10 +1387,7 @@ function mrValidateElement(mrElement)
         {
             if(!mrIsEmptyElementValue(mrElement) && mrElement.getAttribute("accept") != "")
             {
-                var mimeTypes = mrGetMimeTypes(); 
-                
                 var acceptedFiles = mrElement.getAttribute("accept");
-                acceptedFiles = acceptedFiles.replace(/[ ]/g,"");
                 acceptedFiles = acceptedFiles.split(",");
                 
                 var selectedFiles = [];
@@ -1405,35 +1402,20 @@ function mrValidateElement(mrElement)
                 var acceptedFilesNormalized = [];
                 for(var i = 0; i < acceptedFiles.length; i++)
                 {
-                    var acceptedFile = acceptedFiles[i];
+                    var acceptedFile = acceptedFiles[i].trim();
                     if(acceptedFilesNormalized.indexOf(acceptedFile) < 0 && acceptedFiles != "")
                     {
                         acceptedFilesNormalized.push(acceptedFile);
                     };
                 }
                 acceptedFiles = acceptedFilesNormalized;
-    
-                
-                for(var i = 0; i < acceptedFiles.length; i++)
-                {
-                    var acceptedFile = acceptedFiles[i];
-                    if(mimeTypes[acceptedFile] != undefined)
-                    {
-                        if(acceptedFiles.indexOf(mimeTypes[acceptedFile].mimeType) < 0)
-                        {
-                            acceptedFiles[i] = mimeTypes[acceptedFile].mimeType;
-                        }
-                    };
-                }
-                
                 acceptedFiles = acceptedFiles.toString();
     
                 var mimeTypePatterns = {
-                    video: {pattern: /video\/\*/, patternGlobal : /video\/[a-z0-9.-]+[a-z0-9]/g},
-                    image: {pattern: /image\/\*/, patternGlobal : /image\/[a-z0-9.-]+[a-z0-9]/g},
-                    audio: {pattern: /audio\/\*/, patternGlobal : /audio\/[a-z0-9.-]+[a-z0-9]/g},
-                    application: {pattern: /application\/\*/,  patternGlobal : /application\/[a-z0-9.-]+[a-z0-9]/g},
-                    defaultPattern: /^([a-z]+)\/(([a-z0-9. -]+)+([a-z0-9]+)$|\*$)/i
+                    video: {pattern: /video\/\*/, patternGlobal : /video\/(?![.+\-])([a-z0-9.+\-](?![.+\-]{2}))+[a-z0-9]/g,i},
+                    image: {pattern: /image\/\*/, patternGlobal : /image\/(?![.+\-])([a-z0-9.+\-](?![.+\-]{2}))+[a-z0-9]/g,i},
+                    audio: {pattern: /audio\/\*/, patternGlobal : /audio\/(?![.+\-])([a-z0-9.+\-](?![.+\-]{2}))+[a-z0-9]/g,i},
+                    defaultPattern: /^([a-z]+)\/(?![.+\-])((([a-z0-9.+\-](?![.+\-]{2}))+)+([a-z0-9]+)$|\*$)/i
                 };
     
                 if(mimeTypePatterns.video.pattern.test(acceptedFiles))
@@ -1448,23 +1430,17 @@ function mrValidateElement(mrElement)
                 {
                     acceptedFiles = acceptedFiles.replace(mimeTypePatterns.audio.patternGlobal,"");
                 }
-                if(mimeTypePatterns.application.pattern.test(acceptedFiles))
-                {
-                    acceptedFiles = acceptedFiles.replace(mimeTypePatterns.application.patternGlobal,"");
-                }
     
                 acceptedFilesSplit = acceptedFiles.split(",");
                 acceptedFiles = [];
                 var acceptedExtensions = [];
-                var patternExtension = /(^(\.)(([a-z0-9]+))$)/;
+                var patternExtension = /(^(\.)(([a-z0-9]+))$)/i;
                 var acceptedFilesSintaxError = [];
-                
                 for(var i = 0; i < acceptedFilesSplit.length; i++)
                 {
                     var acceptedFile = acceptedFilesSplit[i];
                     if(acceptedFile != "")
                     {
-                        
                         if(mimeTypePatterns.defaultPattern.test(acceptedFile))
                         {
                             acceptedFiles.push(acceptedFile);
@@ -1472,7 +1448,7 @@ function mrValidateElement(mrElement)
                         {
                             if(patternExtension.test(acceptedFile))
                             {
-                                acceptedExtensions.push(acceptedFile);
+                                acceptedExtensions.push(acceptedFile.toLowerCase());
                             }   else
                             {
                                 acceptedFilesSintaxError.push(acceptedFile);
@@ -1493,7 +1469,7 @@ function mrValidateElement(mrElement)
                         {
                             var acceptedFile = acceptedFiles[j];
                             var regularExpression = "" + acceptedFile + "";
-                            var pattern = new RegExp(regularExpression);            
+                            var pattern = new RegExp(regularExpression,"i");            
                             if(pattern.test(selectedFile.mimeType))
                             {
                                 countAcceptedFiles++;
@@ -1513,7 +1489,6 @@ function mrValidateElement(mrElement)
                             }
                         }
                     }
-                    
                     if(countAcceptedFiles >= fileList.length)
                     {
                         mrValidElement("mr-accept-fb");
@@ -1524,15 +1499,11 @@ function mrValidateElement(mrElement)
                 }   else
                 {
                     acceptedFilesSintaxError = acceptedFilesSintaxError.toString();
-                    console.error("MY RULES ERROR:\n" + "- The accepts type \"" + acceptedFilesSintaxError + "\" has SINTAX ERROR or kay not found at input element:");
+                    console.error("MY RULES ERROR:\n" + "- The accept value \"" + acceptedFilesSintaxError + "\" has INVALID");
                     console.error(mrElement);
                     mrInvalidElement("mr-accept-fb");
                 }
             }
-            // else
-            // {
-            //     mrValidElement("mr-accept-fb");
-            // }
         }
     }
 
