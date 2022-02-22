@@ -1250,10 +1250,10 @@ function mrValidateElement(mrElement)
                     mrInvalidElement("mr-minsize-fb");
                 }
             }
-            // else
-            // {
-            //     mrValidElement("mr-minsize-fb");
-            // }
+            else
+            {
+                mrValidElement("mr-minsize-fb");
+            }
         }
     }
 
@@ -1371,10 +1371,10 @@ function mrValidateElement(mrElement)
                     mrInvalidElement("mr-maxsize-fb");
                 }
             } 
-            // else
-            // {
-            //     mrValidElement("mr-maxsize-fb");
-            // }
+            else
+            {
+                mrValidElement("mr-maxsize-fb");
+            }
         }
     }
     
@@ -1503,6 +1503,9 @@ function mrValidateElement(mrElement)
                     console.error(mrElement);
                     mrInvalidElement("mr-accept-fb");
                 }
+            } else
+            {
+                mrValidElement("mr-accept-fb");
             }
         }
     }
@@ -1578,10 +1581,10 @@ function mrValidateElement(mrElement)
                         }
                     }
                 }
-                // else
-                // {
-                //     mrValidElement("mr-minselect-fb");
-                // }
+                else
+                {
+                    mrValidElement("mr-minselect-fb");
+                }
             }   else
             {
                 console.error("MY RULES ERROR:\n" + "- The attribute minselect must be setted in multiple select element or input type file:");
@@ -1639,10 +1642,10 @@ function mrValidateElement(mrElement)
                         }
                     }
                 }   
-                // else
-                // {
-                //     mrValidElement("mr-maxselect-fb");
-                // }
+                else
+                {
+                    mrValidElement("mr-maxselect-fb");
+                }
             }   else
             {
                 console.error("MY RULES ERROR:\n" + "- The attribute maxselect must be setted in multiple select element or input type file:");
