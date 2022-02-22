@@ -1777,18 +1777,18 @@ function mrValidateElement(mrElement)
                 if(mrIsInteger(acceptedWidth) && acceptedWidth > 0)
                 {
                     var fileList = mrElement.files;
-                    var isValidImagesMimeTypes = true;
+                    var isValidImagesMediaTypes = true;
                     mrValidElement("mr-width-fb");
         
                     for(var i = 0; i < fileList.length; i++)
                     {  
                         var file = fileList[i];    
-                        fileMimeType = file.type;
-                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+                        fileMediaType = file.type;
+                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
         
-                        if(!patternImageMimeType.test(fileMimeType))
+                        if(!patternImageMediaType.test(fileMediaType))
                         {
-                            isValidImagesMimeTypes = false;
+                            isValidImagesMediaTypes = false;
                             break;
                         }
         
@@ -1821,7 +1821,7 @@ function mrValidateElement(mrElement)
                         }
                     }
         
-                    if(!isValidImagesMimeTypes)
+                    if(!isValidImagesMediaTypes)
                     {
                         mrInvalidElement("mr-width-fb");
                     }
@@ -1853,18 +1853,18 @@ function mrValidateElement(mrElement)
                 if(mrIsInteger(acceptedHeight) && acceptedHeight > 0)
                 {
                     var fileList = mrElement.files;
-                    var isValidImagesMimeTypes = true;
+                    var isValidImagesMediaTypes = true;
                     mrValidElement("mr-height-fb");
         
                     for(var i = 0; i < fileList.length; i++)
                     {  
                         var file = fileList[i];    
-                        fileMimeType = file.type;
-                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+                        fileMediaType = file.type;
+                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
         
-                        if(!patternImageMimeType.test(fileMimeType))
+                        if(!patternImageMediaType.test(fileMediaType))
                         {
-                            isValidImagesMimeTypes = false;
+                            isValidImagesMediaTypes = false;
                             break;
                         }
         
@@ -1897,7 +1897,7 @@ function mrValidateElement(mrElement)
                         }
                     }
         
-                    if(!isValidImagesMimeTypes)
+                    if(!isValidImagesMediaTypes)
                     {
                         mrInvalidElement("mr-height-fb");
                     }
@@ -1929,18 +1929,18 @@ function mrValidateElement(mrElement)
                 if(mrIsInteger(acceptedMinWidth) && acceptedMinWidth > 0)
                 {
                     var fileList = mrElement.files;
-                    var isValidImagesMimeTypes = true;
+                    var isValidImagesMediaTypes = true;
                     mrValidElement("mr-minwidth-fb");
         
                     for(var i = 0; i < fileList.length; i++)
                     {  
                         var file = fileList[i];    
-                        fileMimeType = file.type;
-                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+                        fileMediaType = file.type;
+                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
         
-                        if(!patternImageMimeType.test(fileMimeType))
+                        if(!patternImageMediaType.test(fileMediaType))
                         {
-                            isValidImagesMimeTypes = false;
+                            isValidImagesMediaTypes = false;
                             break;
                         }
         
@@ -1973,7 +1973,7 @@ function mrValidateElement(mrElement)
                         }
                     }
         
-                    if(!isValidImagesMimeTypes)
+                    if(!isValidImagesMediaTypes)
                     {
                         mrInvalidElement("mr-minwidth-fb");
                     }
@@ -2005,18 +2005,18 @@ function mrValidateElement(mrElement)
                 if(mrIsInteger(acceptedMaxWidth) && acceptedMaxWidth > 0)
                 {
                     var fileList = mrElement.files;
-                    var isValidImagesMimeTypes = true;
+                    var isValidImagesMediaTypes = true;
                     mrValidElement("mr-maxwidth-fb");
         
                     for(var i = 0; i < fileList.length; i++)
                     { 
                         var file = fileList[i];     
-                        fileMimeType = file.type;
-                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+                        fileMediaType = file.type;
+                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
         
-                        if(!patternImageMimeType.test(fileMimeType))
+                        if(!patternImageMediaType.test(fileMediaType))
                         {
-                            isValidImagesMimeTypes = false;
+                            isValidImagesMediaTypes = false;
                             break;
                         }
         
@@ -2050,7 +2050,7 @@ function mrValidateElement(mrElement)
                         }
                     }
         
-                    if(!isValidImagesMimeTypes)
+                    if(!isValidImagesMediaTypes)
                     {
                         mrInvalidElement("mr-maxwidth-fb");
                     }
@@ -2082,18 +2082,18 @@ function mrValidateElement(mrElement)
                 if(mrIsInteger(acceptedMinHeight) && acceptedMinHeight > 0)
                 {
                     var fileList = mrElement.files;
-                    var isValidImagesMimeTypes = true;
+                    var isValidImagesMediaTypes = true;
                     mrValidElement("mr-minheight-fb");
         
                     for(var i = 0; i < fileList.length; i++)
                     {    
                         var file = fileList[i];  
-                        fileMimeType = file.type;
-                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+                        fileMediaType = file.type;
+                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
         
-                        if(!patternImageMimeType.test(fileMimeType))
+                        if(!patternImageMediaType.test(fileMediaType))
                         {
-                            isValidImagesMimeTypes = false;
+                            isValidImagesMediaTypes = false;
                             break;
                         }
         
@@ -2126,7 +2126,7 @@ function mrValidateElement(mrElement)
                         }
                     }
         
-                    if(!isValidImagesMimeTypes)
+                    if(!isValidImagesMediaTypes)
                     {
                         mrInvalidElement("mr-minheight-fb");
                     }
@@ -2158,18 +2158,18 @@ function mrValidateElement(mrElement)
                 if(mrIsInteger(acceptedMaxHeight) && acceptedMaxHeight > 0)
                 {
                     var fileList = mrElement.files;
-                    var isValidImagesMimeTypes = true;
+                    var isValidImagesMediaTypes = true;
                     mrValidElement("mr-maxheight-fb");
         
                     for(var i = 0; i < fileList.length; i++)
                     {   
                         var file = fileList[i];   
-                        fileMimeType = file.type;
-                        patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+                        fileMediaType = file.type;
+                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
         
-                        if(!patternImageMimeType.test(fileMimeType))
+                        if(!patternImageMediaType.test(fileMediaType))
                         {
-                            isValidImagesMimeTypes = false;
+                            isValidImagesMediaTypes = false;
                             break;
                         }
         
@@ -2202,7 +2202,7 @@ function mrValidateElement(mrElement)
                         }
                     }
         
-                    if(!isValidImagesMimeTypes)
+                    if(!isValidImagesMediaTypes)
                     {
                         mrInvalidElement("mr-maxheight-fb");
                     }
@@ -2263,7 +2263,7 @@ function mrValidateElement(mrElement)
                     var fileList = mrElement.files;
                     if(fileList.length > 0)
                     {
-                        var isValidImagesMimeTypes = true;
+                        var isValidImagesMediaTypes = true;
                         mrValidElement("mr-resolution-fb");
                         
                         for(var i = 0; i <= fileList.length; i++)
@@ -2275,12 +2275,12 @@ function mrValidateElement(mrElement)
                                 file = fileList[fileList.length-1];
                             }
             
-                            fileMimeType = file.type;
-                            patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+                            fileMediaType = file.type;
+                            patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
             
-                            if(!patternImageMimeType.test(fileMimeType))
+                            if(!patternImageMediaType.test(fileMediaType))
                             {
-                                isValidImagesMimeTypes = false;
+                                isValidImagesMediaTypes = false;
                                 break;
                             }
             
@@ -2317,7 +2317,7 @@ function mrValidateElement(mrElement)
                             }
                         }
             
-                        if(!isValidImagesMimeTypes)
+                        if(!isValidImagesMediaTypes)
                         {
                             mrInvalidElement("mr-resolution-fb");
                         }
@@ -2388,7 +2388,7 @@ function mrValidateElement(mrElement)
                     var fileList = mrElement.files;
                     if(fileList.length > 0)
                     {
-                        var isValidImagesMimeTypes = true;
+                        var isValidImagesMediaTypes = true;
                         mrValidElement("mr-ratio-fb");
     
                         for(var i = 0; i <= fileList.length; i++)
@@ -2399,12 +2399,12 @@ function mrValidateElement(mrElement)
                                 file = fileList[fileList.length-1];
                             }
             
-                            fileMimeType = file.type;
-                            patternImageMimeType = /image\/[a-z0-9.-]+[a-z0-9]/;
+                            fileMediaType = file.type;
+                            patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
             
-                            if(!patternImageMimeType.test(fileMimeType))
+                            if(!patternImageMediaType.test(fileMediaType))
                             {
-                                isValidImagesMimeTypes = false;
+                                isValidImagesMediaTypes = false;
                                 break;
                             }
             
@@ -2442,7 +2442,7 @@ function mrValidateElement(mrElement)
                             }
                         }
             
-                        if(!isValidImagesMimeTypes)
+                        if(!isValidImagesMediaTypes)
                         {
                             mrInvalidElement("mr-ratio-fb");
                         }
