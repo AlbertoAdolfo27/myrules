@@ -1341,7 +1341,7 @@ function mrValidateElement(mrElement)
                     }
     
                     var isValidFilesize = false;
-                    if(mrHasClass(mrElement, "mr-sum-maxsizes"))
+                    if(mrHasClass(mrElement, "mr-sum-sizes"))
                     {
                         if(SumFilesizes <= maxFilesizeBytes)
                         {
