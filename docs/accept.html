@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Accept - myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, accept, validate accept, accept attribute, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>Accept</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="80">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-accept-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pb-30" id="main">
+                <div class="container-fluid" id="main-container">
+                    <section>
+                        <article>
+                            <h1  id="validate-accept-heading">Accept</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">accept</code></td>
+                                            <td>Specifies the accepted media types and file extensions of an input file.</td>
+                                            <td><code class="class">.mr-accept-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="panel-info">
+                                <p>The accept attribute can only be used with input type file.</p>
+                            </div>
+                        </article>
+                        
+                        <article>
+                            <h2 id="attribute-values-heading" class="mb-3">Attribute values</h2>
+
+                            <p>The <code class="attr">accept</code> attribute can have these values:</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Value</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>file_extension</td>
+                                            <td>File extension is a suffix of a filename. It consists of a period (.) followed by one or more characters, e.g: <code class="code">.png</code>, <code class="code">.jpg</code>, <code class="code">.gif</code>, <code class="code">.doc</code>, <code class="code">.html</code></td>   
+                                        </tr>
+                                        <tr>
+                                            <td>image/*</td>
+                                            <td>All image files are accepted</td>   
+                                        </tr>
+                                        <tr>
+                                            <td>video/*</td>
+                                            <td>	All video files are accepted</td>   
+                                        </tr>
+                                        <tr>
+                                            <td>audio/*</td>
+                                            <td>All sound files are accepted</td>   
+                                        </tr>
+                                        <tr>
+                                            <td>media_type</td>
+                                            <td>A valid media type, with no parameters, e.g: <code class="code">audio/mpeg</code>, <code class="code">application/pdf</code>, <code class="code">image/png</code>, <code class="code">font/otf</code></td>   
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="panel-info">
+                                <p>To specify more than one value, separate the values with a comma.</p>
+                            </div>
+                        </article>
+                        
+                        <article>
+                            <h2  id="applying-input-type-file-heading" class="mb-3">Applying in Input Type File</h2>
+                            
+                            <div>
+                                <h3 class="h5 mt-0" id="example-input-type-file">Input Type File Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The input accept all image files.</li>
+                                            <li>Try to submit an invalid image file.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate Input File with accept attribute-->
+                                        <input type="file" class="mr" accept="image/*" placeholder="Files"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-accept-fb">Please input a valid image!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>                                    
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate Input File with accept attribute--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">accept</i><i class="value">="image/*"</i> <i class="attr">placeholder</i><i class="value">="Files"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-accept-fb"</i><i class="tag">&gt;</i>Please input a valid image!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="h5 mt-0" id="example2-input-type-file">Input Type File Example 2</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The input accept all image files, PDF files and files with .mp3 extension.</li>
+                                            <li>Try to submit an invalid file.</li>
+                                        </ul>
+                                    </div>
+
+                                    <form>    
+                                        <!--Validate Input File with accept attribute-->
+                                        <input type="file" class="mr" accept="image/*, application/pdf, .mp3" placeholder="Files"> <br>
+                                        <!--Validation feedback-->
+                                        <p class="mr-feedback mr-accept-fb">Please input a valid file!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                    <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>    
+    <i class="comment">&lt;!--Validate Input File with accept attribute--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">accept</i><i class="value">="image/*, application/pdf, .mp3"</i> <i class="attr">placeholder</i><i class="value">="Files"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedback--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-accept-fb"</i><i class="tag">&gt;</i>Please input a valid file!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+
+                        </article>                        
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column borde">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-accept-heading">Accept</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#attribute-values-heading">Attribute values</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-file-heading">Applying in Input Type File</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+    </body>
+</html>
