@@ -1397,7 +1397,7 @@ function mrValidateElement(mrElement)
                     var file = fileList[i];
                     var fileName = file.name;
                     fileName = fileName.split(".");
-                    selectedFiles.push({mimeType: file.type, extension: "." + fileName[fileName.length -1]});
+                    selectedFiles.push({mediaType: file.type, extension: "." + fileName[fileName.length -1]});
                 }
                 var acceptedFilesNormalized = [];
                 for(var i = 0; i < acceptedFiles.length; i++)
@@ -1470,7 +1470,7 @@ function mrValidateElement(mrElement)
                             var acceptedFile = acceptedFiles[j];
                             var regularExpression = "" + acceptedFile + "";
                             var pattern = new RegExp(regularExpression,"i");            
-                            if(pattern.test(selectedFile.mimeType))
+                            if(pattern.test(selectedFile.mediaType))
                             {
                                 countAcceptedFiles++;
                                 validAcceptedFile = true;
