@@ -1159,11 +1159,11 @@ function mrValidateElement(mrElement)
                     gb: {description: "Gigabyte", size: 1073741824}
                 }
     
-                var formatfilesizePattern = /^\d+$|(^\d+)byte$|(^\d+)kb$|(^\d+)mb$|(^\d+)gb$/i;
+                var formatfilesizePattern = /^\d+$|(^\d+)kb$|(^\d+)mb$|(^\d+)gb$/i;
                 if(formatfilesizePattern.test(minFilesize))
                 {
                     var formatfilesizePatterns =  {
-                        byte: /^\d+$|(^\d+)byte$/i,
+                        byte: /^\d+$/i,
                         kb: /(^\d+)kb$/i,
                         mb: /(^\d+)mb$/i,
                         gb: /(^\d+)gb$/i
@@ -1181,7 +1181,6 @@ function mrValidateElement(mrElement)
                         if(formatfilesizePatterns.byte.test(minFilesize))
                         {
                             minFilesize = minFilesize + "";
-                            minFilesize = minFilesize.replace(/byte/i,"");
                             minFilesize = minFilesize * betySizes.byte.size;
                             if(filesize >= minFilesize)
                             {
@@ -1280,11 +1279,11 @@ function mrValidateElement(mrElement)
                     gb: {description: "Gigabyte", size: 1073741824}
                 }
     
-                var formatfilesizePattern = /^\d+$|(^\d+)byte$|(^\d+)kb$|(^\d+)mb$|(^\d+)gb$/i;
+                var formatfilesizePattern = /^\d+$|(^\d+)kb$|(^\d+)mb$|(^\d+)gb$/i;
                 if(formatfilesizePattern.test(maxFilesize))
                 {
                     var formatfilesizePatterns =  {
-                        byte: /^\d+$|(^\d+)byte$/i,
+                        byte: /^\d+$/i,
                         kb: /(^\d+)kb$/i,
                         mb: /(^\d+)mb$/i,
                         gb: /(^\d+)gb$/i
@@ -1302,7 +1301,6 @@ function mrValidateElement(mrElement)
                         if(formatfilesizePatterns.byte.test(maxFilesize))
                         {
                             maxFilesize = maxFilesize + "";
-                            maxFilesize = maxFilesize.replace(/byte/i,"");
                             maxFilesize = maxFilesize * betySizes.byte.size;
                             if(filesize <= maxFilesize)
                             {
