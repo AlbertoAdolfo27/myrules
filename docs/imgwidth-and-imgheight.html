@@ -118,104 +118,8 @@
                                     </code>
                                 </div>
                             </div>
-
-                            <div>
-                                <h3 class="h5 mt-0">Input Type File with multiple attribute Example</h3>
-                                <div class="mr-test">
-                                    <div class="panel-info">
-                                        <ul>
-                                            <li>You can enter more than one file.</li>
-                                            <li>The minimum allowed file size of each file is 1 megabyte.</li>
-                                            <li>The maximum allowed file size of each file is 5 megabytes.</li>
-                                            <li>Try to submit an file with invalid allowed file size.</li>
-                                        </ul>
-                                    </div>
-                                    <form>
-                                        <!--Validate File with data-minsize and data-maxsize attributes-->
-                                        <input type="file" class="mr" multiple minsize="1mb" maxsize="5mb" placeholder="File"> <br>
-                                        <!--Validation feedbacks-->
-                                        <div class="mr-feedback">
-                                            <p class="mr-minsize-fb">The minimum allowed size of each file is 1 megabyte!</p>
-                                            <p class="mr-maxsize-fb">The maximum allowed size of each file is 5 megabytes!</p>
-                                        </div>
-                                    
-                                        <input type="submit" value="submit">
-                                        <input type="reset" value="reset">
-                                    </form>
-                                    
-                                </div>
-                                
-                                <div class="code-panel">
-                                    <div class="clearfix">
-                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
-                                    </div>
-                                        <code class="lang-html">
-<pre>
-<i class="tag">&lt;form</i><i class="tag">&gt;</i>
-    <i class="comment">&lt;!--Validate File with data-minsize and data-maxsize attributes--&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">multiple</i> <i class="attr">minsize</i><i class="value">="1mb"</i> <i class="attr">maxsize</i><i class="value">="5mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
-    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
-    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minsize-fb"</i><i class="tag">&gt;</i>The minimum allowed file size of each file is 1 megabyte!<i class="tag">&lt;/p&gt;</i>
-        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-maxsize-fb"</i><i class="tag">&gt;</i>The maximum allowed file size of each file is 5 megabytes!<i class="tag">&lt;/p&gt;</i>
-    <i class="tag">&lt;/div&gt;</i>
-
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
-<i class="tag">&lt;/form&gt;</i>
-</pre>
-                                    </code>
-                                </div>
-                            </div>
                         </article>
 
-                        <article>
-                            <h2 id="sum-size-heading">Sum the size of all entered files</h2>
-                            
-                            <div>
-                                <p>If you want to determine the maximum allowed size of the sum of all entered files just add the <code class="class">.mr-sum-sizes</code> class into the input element class.</p>
-
-                                <h3 class="h5 mt-0">Input Type File with multiple attribute exemple 2</h3>
-                                <div class="mr-test">
-                                    <div class="panel-info">
-                                        <ul>
-                                            <li>You can enter more than one file.</li>
-                                            <li>The maximum allowed size of the sum of all file is 7 megabytes.</li>
-                                            <li>Try to submit an file with invalid allowed file size.</li>
-                                        </ul>
-                                    </div>
-                                    <form>
-                                        <!--Validate File with data-maxsize attribute and .mr-sum-sizes class-->
-                                        <input type="file" class="mr mr-sum-sizes" multiple maxsize="7mb" placeholder="File"> <br>
-                                        <!--Validation feedbacks-->
-                                        <p class="mr-feedback mr-maxsize-fb">The maximum allowed size of the sum of all file is 7 megabytes!</p>
-                                    
-                                        <input type="submit" value="submit">
-                                        <input type="reset" value="reset">
-                                    </form>
-                                    
-                                </div>
-                                
-                                <div class="code-panel">
-                                    <div class="clearfix">
-                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
-                                    </div>
-                                        <code class="lang-html">
-<pre>
-<i class="tag">&lt;form</i><i class="tag">&gt;</i>
-    <i class="comment">&lt;!--Validate File with data-maxsize attribute and .mr-sum-sizes class--&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr mr-sum-sizes"</i> <i class="attr">multiple</i> <i class="attr">maxsize</i><i class="value">="7mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
-    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
-    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-maxsize-fb"</i><i class="tag">&gt;</i>The maximum allowed size of the sum of all file is 7 megabytes!<i class="tag">&lt;/p&gt;</i>
-
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
-<i class="tag">&lt;/form&gt;</i>
-</pre>
-                                    </code>
-                                </div>
-                            </div>
-                        </article>
                     </section>                           
                 </div>
             </main>
@@ -223,16 +127,10 @@
             <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
                 <ul class="navbar-nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#validate-imgwidth-and-imgheight-heading">Minsize and Maxsize</a>
+                        <a class="nav-link active" href="#validate-imgwidth-and-imgheight-heading">imgwidth and imgheight</a>
                         <ul class="navbar-nav sub-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#attribute-values-heading">Attribute values</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="#applying-input-type-file-heading">Applying in Input Type File</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#sum-size-heading">Sum the size of all entered files</a>
                             </li>
                         </ul>
                     </li>
