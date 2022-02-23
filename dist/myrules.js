@@ -121,8 +121,8 @@ function mrWindowLoad()
             ".mr-accept-fb",
             ".mr-minsize-fb",
             ".mr-maxsize-fb",
-            ".mr-width-fb",
-            ".mr-height-fb",
+            ".mr-imgwidth-fb",
+            ".mr-imgheight-fb",
             ".mr-minwidth-fb",
             ".mr-maxwidth-fb",
             ".mr-minheight-fb",
@@ -148,16 +148,16 @@ function mrWindowLoad()
             {
                 if
                 (
-                    mrElement.getAttribute("data-width") != null
-                    || mrElement.getAttribute("data-height") != null
+                    mrElement.getAttribute("data-imgwidth") != null
+                    || mrElement.getAttribute("data-imgheight") != null
                     || mrElement.getAttribute("data-minwidth") != null
                     || mrElement.getAttribute("data-maxwidth") != null
                     || mrElement.getAttribute("data-minheight") != null
                     || mrElement.getAttribute("data-maxheight") != null
                     || mrElement.getAttribute("data-resolution") != null
                     || mrElement.getAttribute("data-ratio") != null
-                    || mrElement.getAttribute("width") != null
-                    || mrElement.getAttribute("height") != null
+                    || mrElement.getAttribute("imgwidth") != null
+                    || mrElement.getAttribute("imgheight") != null
                     || mrElement.getAttribute("minwidth") != null
                     || mrElement.getAttribute("maxwidth") != null
                     || mrElement.getAttribute("minheight") != null
@@ -1762,15 +1762,15 @@ function mrValidateElement(mrElement)
     
 
     //VALIDATE THE WIDTH OF IMAGE INPUTED IN FILE INPUT
-    mrWidth(mrElement);
-    function mrWidth(mrElement)
+    mrImgWidth(mrElement);
+    function mrImgWidth(mrElement)
     {
-        if((mrHasAttribute(mrElement, "width") || mrHasAttribute(mrElement, "data-width")) && mrHasInputType(mrElement, "file"))
+        if((mrHasAttribute(mrElement, "imgwidth") || mrHasAttribute(mrElement, "data-imgwidth")) && mrHasInputType(mrElement, "file"))
         {
-            var acceptedWidth = mrElement.getAttribute("data-width");
+            var acceptedWidth = mrElement.getAttribute("data-imgwidth");
             if(acceptedWidth == null)
             {
-                acceptedWidth = mrElement.getAttribute("width");
+                acceptedWidth = mrElement.getAttribute("imgwidth");
             }
 
             if(acceptedWidth != "")
@@ -1779,7 +1779,7 @@ function mrValidateElement(mrElement)
                 {
                     var fileList = mrElement.files;
                     var isValidImagesMediaTypes = true;
-                    mrValidElement("mr-width-fb");
+                    mrValidElement("mr-imgwidth-fb");
         
                     for(var i = 0; i < fileList.length; i++)
                     {  
@@ -1805,12 +1805,12 @@ function mrValidateElement(mrElement)
     
                             if(width == 0)
                             {
-                                return mrWidth(mrElement);
+                                return mrImgWidth(mrElement);
                             }
         
                             if(width != acceptedWidth)
                             {
-                                mrInvalidElement("mr-width-fb");
+                                mrInvalidElement("mr-imgwidth-fb");
                                 mrForm.onsubmit = function (event)
                                 {
                                     if(mrElement.classList.contains("mr-invalid"))
@@ -1824,13 +1824,13 @@ function mrValidateElement(mrElement)
         
                     if(!isValidImagesMediaTypes)
                     {
-                        mrInvalidElement("mr-width-fb");
+                        mrInvalidElement("mr-imgwidth-fb");
                     }
                 }   else
                 {
-                    console.error("MY RULES ERROR:\n" + "- The value of attribute width is not a valid integer number or is less than 1 at the element:");
+                    console.error("MY RULES ERROR:\n" + "- The value of attribute imgwidth is not a valid integer number or is less than 1 at the element:");
                     console.error(mrElement);
-                    mrInvalidElement("mr-width-fb");
+                    mrInvalidElement("mr-imgwidth-fb");
                 }
             }
         }
@@ -1838,15 +1838,15 @@ function mrValidateElement(mrElement)
 
 
     //VALIDATE THE IMAGE HEIGHT OF FILE INPUT
-    mrHeight(mrElement);
-    function mrHeight(mrElement)
+    mrImgHeight(mrElement);
+    function mrImgHeight(mrElement)
     {
-        if((mrHasAttribute(mrElement, "height") || mrHasAttribute(mrElement, "data-height")) && mrHasInputType(mrElement, "file"))
+        if((mrHasAttribute(mrElement, "imgheight") || mrHasAttribute(mrElement, "data-imgheight")) && mrHasInputType(mrElement, "file"))
         {
-            var acceptedHeight = mrElement.getAttribute("data-height");
+            var acceptedHeight = mrElement.getAttribute("data-imgheight");
             if(acceptedHeight == null)
             {
-                acceptedHeight = mrElement.getAttribute("height");
+                acceptedHeight = mrElement.getAttribute("imgheight");
             }
 
             if(acceptedHeight != "")
@@ -1855,7 +1855,7 @@ function mrValidateElement(mrElement)
                 {
                     var fileList = mrElement.files;
                     var isValidImagesMediaTypes = true;
-                    mrValidElement("mr-height-fb");
+                    mrValidElement("mr-imgheight-fb");
         
                     for(var i = 0; i < fileList.length; i++)
                     {  
@@ -1881,12 +1881,12 @@ function mrValidateElement(mrElement)
     
                             if(height == 0)
                             {
-                                return mrHeight(mrElement);
+                                return mrImgHeight(mrElement);
                             }
         
                             if(height != acceptedHeight)
                             {
-                                mrInvalidElement("mr-height-fb");
+                                mrInvalidElement("mr-imgheight-fb");
                                 mrForm.onsubmit = function (event)
                                 {
                                     if(mrElement.classList.contains("mr-invalid"))
@@ -1900,13 +1900,13 @@ function mrValidateElement(mrElement)
         
                     if(!isValidImagesMediaTypes)
                     {
-                        mrInvalidElement("mr-height-fb");
+                        mrInvalidElement("mr-imgheight-fb");
                     }
                 }   else
                 {
-                    console.error("MY RULES ERROR:\n" + "- The value of attribute height is not a valid integer number or is less than 1 at the element:");
+                    console.error("MY RULES ERROR:\n" + "- The value of attribute imgheight is not a valid integer number or is less than 1 at the element:");
                     console.error(mrElement);
-                    mrInvalidElement("mr-height-fb");
+                    mrInvalidElement("mr-imgheight-fb");
                 }
             }
         }
