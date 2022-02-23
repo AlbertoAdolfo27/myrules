@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="imgwidth and imgheight. myrules Documentation - The javascript form validation">
+        <meta name="keywords" content="myrules, myrules Validation, imgwidth, data-imgwidth, imgheight, data-imgheight, Validation Attribute imgwidth, Validation Attribute data-imgheight, Validation Attribute imgwidth, Validation Attribute data-imgheight, data-imgwidth and data-imgheight, imgwidth and imgheight, Validation Attributes imgwidth and imgheight, Validation Attributes data-imgwidth and data-imgheight, mr-imgwidth-fb, mr-imgheight-fb, myrules Documentation, Documentation, myrules.js">
+        <meta name="author" content="Alberto Jordane Adolfo">
+        <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="assets/vendor/w3/w3.css">
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/docs-style.css">
+        <link rel="stylesheet" href="assets/css/codepanel.css">
+
+        <title>imgwidth and imgheight</title>
+    </head>
+    <body  data-spy="scroll" data-target=".aside" data-offset="80">
+
+    <div id="nav"></div>
+    <!--INCLUDE HEADER-->
+    <div id="include-header" navactive="nav-documentation"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--INCLUDE SIDEBAR-->
+            <div id="include-sidebar" data-navactive="validate-imgwidth-and-imgheight-sidebar"></div>
+
+            <main role="main" class="col-sm-9 ml-sm-auto mr-xl-auto col-md-9 col-xl-8 pb-30" id="main">
+                <div class="container-fluid" id="main-container">
+                    <section>
+                        <article>
+                            <h1  id="validate-imgwidth-and-imgheight-heading">imgwidth and imgheight</h1>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Validation Attribute</th>
+                                            <th>Description</th>
+                                            <th>Feedback Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="attr">imgwidth</code> or <code class="attr">data-imgwidth</code></td>
+                                            <td>Specifies the allowed width of an inputed image file, in pixels.</td>
+                                            <td><code class="class">.mr-imgwidth-fb</code></td>    
+                                        </tr>
+                                        <tr>
+                                            <td><code class="attr">imgheight</code> or <code class="attr">data-imgheight</code></td>
+                                            <td>Specifies the allowed height of an inputed image file, in pixels.</td>
+                                            <td><code class="class">.mr-imgheight-fb</code></td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="panel-info">
+                                <p>The <code class="attr">imgwidth</code> (or <code class="attr">data-imgwidth</code>) and <code class="attr">imgheight</code> (or <code class="attr">data-imgheight</code>) attributes can only be used in inputed image files.</p>
+                            </div>
+                            <div class="panel-info">
+                                <p>To specify more than one value, separate the values with a comma, e.g: <code class="code">data-imgwidth="300, 500"</code></p>
+                            </div>
+                        </article>
+                        
+                        <article>
+                            <h2 id="applying-input-type-file-heading">Applying in Input Type File</h2>
+                            <div>
+                                <h3 class="h5 mt-0">Input Type File Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>The inputed file must be an image (Lean how to specify <a href="accept.html">accepted files</a>).</li>
+                                            <li>The inputed image must have width of 540 pixels and height of 600 pixels.</li>
+                                            <li>Try to submit invalid an image.</li>
+                                        </ul>
+                                    </div>
+                                    <form>
+                                        <!--Validate File with data-imgwitdh and data-imgheight attributes-->
+                                        <input type="file" class="mr" accept="image/*" data-imgwidth="450" data-imgheight="600" placeholder="Image"> <br>
+                                        <!--Validation feedbacks-->
+                                        <div class="mr-feedback">
+                                            <p class="mr-accept-fb">Please input an image file!</p>
+                                            <p class="mr-imgwidth-fb">The image must have width of 540 pixels!</p>
+                                            <p class="mr-imgheight-fb">The image must have height of 600 pixels!</p>
+                                        </div>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                    
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Validate File with data-imgwitdh and data-imgheight attributes--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">accept</i><i class="value">="image/*"</i> <i class="attr">data-imgwidth</i><i class="value">="450"</i> <i class="attr">data-imgheight</i><i class="value">="600"</i> <i class="attr">placeholder</i><i class="value">="Image"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-accept-fb"</i><i class="tag">&gt;</i>Please input an image file!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-imgwidth-fb"</i><i class="tag">&gt;</i>The image must have width of 540 pixels!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-imgheight-fb"</i><i class="tag">&gt;</i>The image must have height of 600 pixels!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="h5 mt-0">Input Type File with multiple attribute Example</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>You can enter more than one file.</li>
+                                            <li>The minimum allowed file size of each file is 1 megabyte.</li>
+                                            <li>The maximum allowed file size of each file is 5 megabytes.</li>
+                                            <li>Try to submit an file with invalid allowed file size.</li>
+                                        </ul>
+                                    </div>
+                                    <form>
+                                        <!--Validate File with data-minsize and data-maxsize attributes-->
+                                        <input type="file" class="mr" multiple minsize="1mb" maxsize="5mb" placeholder="File"> <br>
+                                        <!--Validation feedbacks-->
+                                        <div class="mr-feedback">
+                                            <p class="mr-minsize-fb">The minimum allowed size of each file is 1 megabyte!</p>
+                                            <p class="mr-maxsize-fb">The maximum allowed size of each file is 5 megabytes!</p>
+                                        </div>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Validate File with data-minsize and data-maxsize attributes--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">multiple</i> <i class="attr">minsize</i><i class="value">="1mb"</i> <i class="attr">maxsize</i><i class="value">="5mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minsize-fb"</i><i class="tag">&gt;</i>The minimum allowed file size of each file is 1 megabyte!<i class="tag">&lt;/p&gt;</i>
+        <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-maxsize-fb"</i><i class="tag">&gt;</i>The maximum allowed file size of each file is 5 megabytes!<i class="tag">&lt;/p&gt;</i>
+    <i class="tag">&lt;/div&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article>
+                            <h2 id="sum-size-heading">Sum the size of all entered files</h2>
+                            
+                            <div>
+                                <p>If you want to determine the maximum allowed size of the sum of all entered files just add the <code class="class">.mr-sum-sizes</code> class into the input element class.</p>
+
+                                <h3 class="h5 mt-0">Input Type File with multiple attribute exemple 2</h3>
+                                <div class="mr-test">
+                                    <div class="panel-info">
+                                        <ul>
+                                            <li>You can enter more than one file.</li>
+                                            <li>The maximum allowed size of the sum of all file is 7 megabytes.</li>
+                                            <li>Try to submit an file with invalid allowed file size.</li>
+                                        </ul>
+                                    </div>
+                                    <form>
+                                        <!--Validate File with data-maxsize attribute and .mr-sum-sizes class-->
+                                        <input type="file" class="mr mr-sum-sizes" multiple maxsize="7mb" placeholder="File"> <br>
+                                        <!--Validation feedbacks-->
+                                        <p class="mr-feedback mr-maxsize-fb">The maximum allowed size of the sum of all file is 7 megabytes!</p>
+                                    
+                                        <input type="submit" value="submit">
+                                        <input type="reset" value="reset">
+                                    </form>
+                                    
+                                </div>
+                                
+                                <div class="code-panel">
+                                    <div class="clearfix">
+                                        <button class="btn btn-outline-info btn-sm float-right btn-copy-clipboard"data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">Copy</button>
+                                    </div>
+                                        <code class="lang-html">
+<pre>
+<i class="tag">&lt;form</i><i class="tag">&gt;</i>
+    <i class="comment">&lt;!--Validate File with data-maxsize attribute and .mr-sum-sizes class--&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr mr-sum-sizes"</i> <i class="attr">multiple</i> <i class="attr">maxsize</i><i class="value">="7mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
+    <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-maxsize-fb"</i><i class="tag">&gt;</i>The maximum allowed size of the sum of all file is 7 megabytes!<i class="tag">&lt;/p&gt;</i>
+
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="submit"</i> <i class="attr">value</i><i class="value">="submit"</i><i class="tag">&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="reset"</i> <i class="attr">value</i><i class="value">="reset"</i><i class="tag">&gt;</i>
+<i class="tag">&lt;/form&gt;</i>
+</pre>
+                                    </code>
+                                </div>
+                            </div>
+                        </article>
+                    </section>                           
+                </div>
+            </main>
+
+            <aside class="navbar aside col-xl-2 d-none d-xl-block" id="aside">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#validate-imgwidth-and-imgheight-heading">Minsize and Maxsize</a>
+                        <ul class="navbar-nav sub-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#attribute-values-heading">Attribute values</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#applying-input-type-file-heading">Applying in Input Type File</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#sum-size-heading">Sum the size of all entered files</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>            
+        </div>
+    </div>
+
+    <!--INCLUDE FOOTER-->
+    <div id="include-footer"></div>
+
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../dist/myrules.js"></script>
+
+    <!--JS SCRIPTS TO INCLUDE HEADER, ASIDE AND FOOTER-->
+    <script src="assets/js/docs-includes.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+    </body>
+</html>
