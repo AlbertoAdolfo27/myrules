@@ -6,7 +6,7 @@
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="description" content="Minsize and Maxsize. myrules Documentation - The javascript form validation">
-        <meta name="keywords" content="myrules, myrules Validation, minsize, data-minsize, maxsize, data-maxsize, Validation Attribute maxsize, Validation Attribute data-maxsize, Validation Attribute minsize, Validation Attribute data-minsize, data-maxsize and data-minsize, min='today', maxsize and minsize, Validation Attributes minsize and maxsize, Validation Attributes data-minsize and data-maxsize, mr-maxsize-fb, mr-minsize-fb, myrules Documentation, Documentation, myrules.js">
+        <meta name="keywords" content="myrules, myrules Validation, minsize, data-minsize, maxsize, data-maxsize, Validation Attribute maxsize, Validation Attribute data-maxsize, Validation Attribute minsize, Validation Attribute data-minsize, data-maxsize and data-minsize, maxsize and minsize, Validation Attributes minsize and maxsize, Validation Attributes data-minsize and data-maxsize, mr-maxsize-fb, mr-minsize-fb, myrules Documentation, Documentation, myrules.js">
         <meta name="author" content="Alberto Jordane Adolfo">
         <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
 
@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="assets/css/docs-style.css">
         <link rel="stylesheet" href="assets/css/codepanel.css">
 
-        <title>Minsize and Mansize</title>
+        <title>minsize and maxsize</title>
     </head>
     <body  data-spy="scroll" data-target=".aside" data-offset="80">
 
@@ -34,7 +34,7 @@
                 <div class="container-fluid" id="main-container">
                     <section>
                         <article>
-                            <h1  id="validate-minsize-and-maxsize-heading">Minsize and Maxsize</h1>
+                            <h1  id="validate-minsize-and-maxsize-heading">minsize and maxsize</h1>
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
@@ -107,12 +107,12 @@
                                         <ul>
                                             <li>The minimum allowed file size  is 300 kilobytes.</li>
                                             <li>The maximum allowed file size is 5 megabytes.</li>
-                                            <li>Try to submit an file with invalid allowed file size.</li>
+                                            <li>Try to submit a file with invalid allowed file size.</li>
                                         </ul>
                                     </div>
                                     <form>
                                         <!--Validate File with data-minsize and data-maxsize attributes-->
-                                        <input type="file" class="mr" minsize="300kb" maxsize="5mb" placeholder="File"> <br>
+                                        <input type="file" class="mr" data-minsize="300kb" data-maxsize="5mb" placeholder="File"> <br>
                                         <!--Validation feedbacks-->
                                         <div class="mr-feedback">
                                             <p class="mr-minsize-fb">The minimum allowed file size is 300 kilobites!</p>
@@ -122,7 +122,7 @@
                                         <input type="submit" value="submit">
                                         <input type="reset" value="reset">
                                     </form>
-
+                                    
                                 </div>
                                     
                                 <div class="code-panel">
@@ -133,7 +133,7 @@
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Validate File with data-minsize and data-maxsize attributes--&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">minsize</i><i class="value">="300kb"</i> <i class="attr">maxsize</i><i class="value">="5mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">data-minsize</i><i class="value">="300kb"</i> <i class="attr">data-maxsize</i><i class="value">="5mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
     <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
         <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minsize-fb"</i><i class="tag">&gt;</i>The minimum allowed file size is 300 kilobites!<i class="tag">&lt;/p&gt;</i>
@@ -156,22 +156,22 @@
                                             <li>You can enter more than one file.</li>
                                             <li>The minimum allowed file size of each file is 1 megabyte.</li>
                                             <li>The maximum allowed file size of each file is 5 megabytes.</li>
-                                            <li>Try to submit an file with invalid allowed file size.</li>
+                                            <li>Try to submit a file with invalid allowed file size.</li>
                                         </ul>
                                     </div>
                                     <form>
                                         <!--Validate File with data-minsize and data-maxsize attributes-->
-                                        <input type="file" class="mr" multiple minsize="1mb" maxsize="5mb" placeholder="File"> <br>
+                                        <input type="file" class="mr" multiple data-minsize="1mb" data-maxsize="5mb" placeholder="File"> <br>
                                         <!--Validation feedbacks-->
                                         <div class="mr-feedback">
-                                            <p class="mr-minsize-fb">The minimum allowed size of each file is 1 megabyte!</p>
-                                            <p class="mr-maxsize-fb">The maximum allowed size of each file is 5 megabytes!</p>
+                                            <p class="mr-minsize-fb">The minimum allowed file size of each file is 1 megabyte!</p>
+                                            <p class="mr-maxsize-fb">The maximum allowed file size of each file is 5 megabytes!</p>
                                         </div>
                                     
                                         <input type="submit" value="submit">
                                         <input type="reset" value="reset">
                                     </form>
-                                    
+
                                 </div>
                                 
                                 <div class="code-panel">
@@ -182,7 +182,7 @@
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Validate File with data-minsize and data-maxsize attributes--&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">multiple</i> <i class="attr">minsize</i><i class="value">="1mb"</i> <i class="attr">maxsize</i><i class="value">="5mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr"</i> <i class="attr">multiple</i> <i class="attr">data-minsize</i><i class="value">="1mb"</i> <i class="attr">data-maxsize</i><i class="value">="5mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
     <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
         <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-minsize-fb"</i><i class="tag">&gt;</i>The minimum allowed file size of each file is 1 megabyte!<i class="tag">&lt;/p&gt;</i>
@@ -210,12 +210,12 @@
                                         <ul>
                                             <li>You can enter more than one file.</li>
                                             <li>The maximum allowed size of the sum of all file is 7 megabytes.</li>
-                                            <li>Try to submit an file with invalid allowed file size.</li>
+                                            <li>Try to submit a file with invalid allowed file size.</li>
                                         </ul>
                                     </div>
                                     <form>
                                         <!--Validate File with data-maxsize attribute and .mr-sum-sizes class-->
-                                        <input type="file" class="mr mr-sum-sizes" multiple maxsize="7mb" placeholder="File"> <br>
+                                        <input type="file" class="mr mr-sum-sizes" multiple data-maxsize="7mb" placeholder="File"> <br>
                                         <!--Validation feedbacks-->
                                         <p class="mr-feedback mr-maxsize-fb">The maximum allowed size of the sum of all file is 7 megabytes!</p>
                                     
@@ -233,7 +233,7 @@
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
     <i class="comment">&lt;!--Validate File with data-maxsize attribute and .mr-sum-sizes class--&gt;</i>
-    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr mr-sum-sizes"</i> <i class="attr">multiple</i> <i class="attr">maxsize</i><i class="value">="7mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
+    <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="file"</i> <i class="attr">class</i><i class="value">="mr mr-sum-sizes"</i> <i class="attr">multiple</i> <i class="attr">data-maxsize</i><i class="value">="7mb"</i> <i class="attr">placeholder</i><i class="value">="File"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
     <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-maxsize-fb"</i><i class="tag">&gt;</i>The maximum allowed size of the sum of all file is 7 megabytes!<i class="tag">&lt;/p&gt;</i>
 
