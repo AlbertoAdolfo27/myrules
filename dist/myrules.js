@@ -1758,8 +1758,8 @@ function mrValidateElement(mrElement)
     }
 
     //VALIDATE DIMENTIONS OF INPUTED IMAGE FILE
-    mrImageDimensions(mrElement);
-    function mrImageDimensions(mrElement, mrAttempt = 1){
+    mrImageResolution(mrElement);
+    function mrImageResolution(mrElement, mrAttempt = 1){
         let hasImgWidth = mrHasAttribute(mrElement,"imgwidth") || mrHasAttribute(mrElement,"data-imgwidth");
         let hasImgHeight = mrHasAttribute(mrElement,"imgheight") || mrHasAttribute(mrElement,"data-imgheight");
         let hasMinWidth = mrHasAttribute(mrElement,"minwidth") || mrHasAttribute(mrElement,"data-minwidth");
@@ -1869,7 +1869,7 @@ function mrValidateElement(mrElement)
                     
                     if((width == 0 || height == 0) && mrAttempt < 4)
                     {
-                        return mrImageDimensions(mrElement, mrAttempt + 1);
+                        return mrImageResolution(mrElement, mrAttempt + 1);
                     }
                     let isInvalidElement = false;
 
