@@ -260,18 +260,15 @@ function mrValidateForm(mrForm)
 {
     var mrIsValidForm = true;
     var mrElements = mrForm.querySelectorAll(".mr");
-    
     for(var i = 0; i < mrElements.length; i++)
     {
         var mrElement = mrElements[i];
 
-        if(!mrValidateElement(mrElement) || mrElement.classList.contains("mr-invalid"))
+        if(mrElement.classList.contains("mr-invalid") || !mrValidateElement(mrElement) )
         {
             mrIsValidForm = false;
         }
-    }
-    
-                         
+    }                    
     return mrIsValidForm;
 }
 
@@ -1759,704 +1756,938 @@ function mrValidateElement(mrElement)
             }
         }
     }
-    
 
-    //VALIDATE THE WIDTH OF IMAGE INPUTED IN FILE INPUT
-    mrImgWidth(mrElement);
-    function mrImgWidth(mrElement)
-    {
-        if((mrHasAttribute(mrElement, "imgwidth") || mrHasAttribute(mrElement, "data-imgwidth")) && mrHasInputType(mrElement, "file"))
-        {
-            var acceptedWidth = mrElement.getAttribute("data-imgwidth");
-            if(acceptedWidth == null)
-            {
-                acceptedWidth = mrElement.getAttribute("imgwidth");
+    //VALIDATE DIMENTIONS OF INPUTED IMAGE FILE
+    mrImageDimensions(mrElement);
+    function mrImageDimensions(mrElement, mrAttempt = 1){
+        let hasImgWidth = mrHasAttribute(mrElement,"imgwidth") || mrHasAttribute(mrElement,"data-imgwidth");
+        let hasImgHeight = mrHasAttribute(mrElement,"imgheight") || mrHasAttribute(mrElement,"data-imgheight");
+        let hasMinWidth = mrHasAttribute(mrElement,"minwidth") || mrHasAttribute(mrElement,"data-minwidth");
+        let hasMaxWidth = mrHasAttribute(mrElement,"maxwidth") || mrHasAttribute(mrElement,"data-maxwidth");
+        let hasMinHeight = mrHasAttribute(mrElement,"minheight") || mrHasAttribute(mrElement,"data-minheight");
+        let hasMaxHeight = mrHasAttribute(mrElement,"maxheight") || mrHasAttribute(mrElement,"data-maxheight");
+        let hasResolution = mrHasAttribute(mrElement,"resolution") || mrHasAttribute(mrElement,"data-resolution");
+        let hasRatio = mrHasAttribute(mrElement,"ratio") || mrHasAttribute(mrElement,"data-ratio")
+        
+        function mrDebutInvalidAttribute(element, attribute, feedbackClass){
+            console.error("MY RULES ERROR:\n" + "- The value of attribute "+ attribute +" is not a valid integer number or is less than 1 at the element:");
+            console.error(element);
+            mrInvalidElement(feedbackClass);
+        }
+
+        function setInvalidElements(){
+            mrValidElement("mr-imgwidth-fb");
+            mrValidElement("mr-imgheight-fb");
+            mrValidElement("mr-minwidth-fb");
+            mrValidElement("mr-maxwidth-fb");
+            mrValidElement("mr-minheight-fb");
+            mrValidElement("mr-maxheight-fb");
+            mrValidElement("mr-resolution-fb");
+            mrValidElement("mr-ratio-fb");
+        }
+
+        if(mrHasInputType(mrElement, "file") && !mrIsEmptyElementValue(mrElement) &&
+        (hasImgWidth || hasImgHeight || hasMinWidth || hasMaxWidth || hasMinHeight || hasMaxHeight || hasResolution || hasRatio)){
+
+            let mrAcceptedImgWidth = getGlobalAttribute(mrElement, "imgwidth");
+            let mrAcceptedImgHeight = getGlobalAttribute(mrElement, "imgheight");
+            let mrAcceptedMinWidth = getGlobalAttribute(mrElement, "minwidth");
+            let mrAcceptedMaxWidth = getGlobalAttribute(mrElement, "maxwidth");
+            let mrAcceptedMinHeight = getGlobalAttribute(mrElement, "minheight");
+            let mrAcceptedMaxHeight = getGlobalAttribute(mrElement, "maxheight");
+            let mrAcceptedResolution = getGlobalAttribute(mrElement, "resolution");
+            let mrAcceptedRatio = getGlobalAttribute(mrElement, "ratio");
+            setInvalidElements();
+
+            let mrIsValidAttribute = {
+                imgWidth: true,
+                imgHeight: true,
+                minWidth: true,
+                maxWidth: true,
+                minHeight: true,
+                maxHeight: true,
+                resolution: true,
+                ratio: true
             }
 
-            if(acceptedWidth != "")
-            {
-                if(mrIsInteger(acceptedWidth) && acceptedWidth > 0)
+            if(hasRatio && mrAcceptedRatio != ""){
+                let patternValidRatios = /(^([\s]*([0-9]*)(\.){0,1}[0-9]+):(([0-9]*)(\.){0,1}[0-9]+[\s]*)$)/;
+                
+                if(!patternValidRatios.test(mrAcceptedRatio))
                 {
-                    var fileList = mrElement.files;
-                    var isValidImagesMediaTypes = true;
-                    mrValidElement("mr-imgwidth-fb");
-        
-                    for(var i = 0; i < fileList.length; i++)
-                    {  
-                        var file = fileList[i];    
-                        fileMediaType = file.type;
-                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
-        
-                        if(!patternImageMediaType.test(fileMediaType))
-                        {
-                            isValidImagesMediaTypes = false;
-                            break;
-                        }
-        
-                        var fileReader = new FileReader;
-                        fileReader.readAsDataURL(file);
-        
-                        fileReader.onload = function(e)
-                        {
-                            var result = e.target.result;
-                            imageElementTest = newImageElementTest(result);
-                            
-                            var width = imageElementTest.naturalWidth;
+                    mrIsValidAttribute.ratio = false;
+                }   else
+                {
+                    mrAcceptedRatio = mrAcceptedRatio.replace(/[ ]/g, "");
+                    mrAcceptedRatio = mrAcceptedRatio.split(",");
     
-                            if(width == 0)
-                            {
-                                return mrImgWidth(mrElement);
-                            }
-        
-                            if(width != acceptedWidth)
-                            {
+                    let mrAcceptedRatiosNormalized = [];
+                    for(let i = 0; i < mrAcceptedRatio.length; i++)
+                    {
+                        let mrDivisionRatioSplitted = mrAcceptedRatio[i].split(":");
+                        mrAcceptedRatio[i] = mrDivisionRatioSplitted[0]/mrDivisionRatioSplitted[1];
+    
+                        mrAcceptedRatio[i] = Number(mrAcceptedRatio[i]);
+                        mrAcceptedRatio[i] = mrAcceptedRatio[i].toFixed(3);
+    
+                        if(mrAcceptedRatiosNormalized.indexOf(mrAcceptedRatio[i]) < 0)
+                        {
+                            mrAcceptedRatiosNormalized.push(mrAcceptedRatio[i]);
+                        }
+                    }
+                    mrAcceptedRatio = mrAcceptedRatiosNormalized;
+                    mrAcceptedRatio = mrAcceptedRatio.toString();
+                    mrAcceptedRatiosNormalized = undefined;
+                }
+            }
+
+            let fileList = mrElement.files;
+            let isValidImagesMediaTypes = true;
+
+            let patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+            for(let i = 0; i < fileList.length; i++)
+            {  
+                let file = fileList[i];    
+                fileMediaType = file.type;
+
+                if(!patternImageMediaType.test(fileMediaType))
+                {
+                    isValidImagesMediaTypes = false;
+                    break;
+                }
+
+                let fileReader = new FileReader;
+                fileReader.readAsDataURL(file);
+
+                fileReader.onload = function(e)
+                {
+                    let result = e.target.result;
+                    imageElementTest = newImageElementTest(result);
+                    
+                    let width = imageElementTest.naturalWidth;
+                    let height = imageElementTest.naturalHeight;
+                    
+                    if((width == 0 || height == 0) && mrAttempt < 4)
+                    {
+                        return mrImageDimensions(mrElement, mrAttempt + 1);
+                    }
+                    let isInvalidElement = false;
+
+                    // VALIDATE IMAGE WIDTH
+                    if(hasImgWidth && mrIsValidAttribute.imgWidth && mrAcceptedImgWidth != "") {
+                        if(mrIsInteger(mrAcceptedImgWidth) && mrAcceptedImgWidth > 0){
+                            if((width != mrAcceptedImgWidth)){
                                 mrInvalidElement("mr-imgwidth-fb");
-                                mrForm.onsubmit = function (event)
-                                {
-                                    if(mrElement.classList.contains("mr-invalid"))
-                                    {
-                                        event.preventDefault();
-                                    }
-                                }
+                                isInvalidElement = true;
                             }
+                        } else{
+                            mrIsValidAttribute.imgWidth = false;
+                            mrDebutInvalidAttribute(mrElement, "imgwidth", "mr-imgwidth-fb");
                         }
+                        
                     }
-        
-                    if(!isValidImagesMediaTypes)
-                    {
-                        mrInvalidElement("mr-imgwidth-fb");
-                    }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- The value of attribute imgwidth is not a valid integer number or is less than 1 at the element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-imgwidth-fb");
-                }
-            }
-        }
-    }
 
-
-    //VALIDATE THE IMAGE HEIGHT OF FILE INPUT
-    mrImgHeight(mrElement);
-    function mrImgHeight(mrElement)
-    {
-        if((mrHasAttribute(mrElement, "imgheight") || mrHasAttribute(mrElement, "data-imgheight")) && mrHasInputType(mrElement, "file"))
-        {
-            var acceptedHeight = mrElement.getAttribute("data-imgheight");
-            if(acceptedHeight == null)
-            {
-                acceptedHeight = mrElement.getAttribute("imgheight");
-            }
-
-            if(acceptedHeight != "")
-            {
-                if(mrIsInteger(acceptedHeight) && acceptedHeight > 0)
-                {
-                    var fileList = mrElement.files;
-                    var isValidImagesMediaTypes = true;
-                    mrValidElement("mr-imgheight-fb");
-        
-                    for(var i = 0; i < fileList.length; i++)
-                    {  
-                        var file = fileList[i];    
-                        fileMediaType = file.type;
-                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
-        
-                        if(!patternImageMediaType.test(fileMediaType))
-                        {
-                            isValidImagesMediaTypes = false;
-                            break;
-                        }
-        
-                        var fileReader = new FileReader;
-                        fileReader.readAsDataURL(file);
-        
-                        fileReader.onload = function(e)
-                        {
-                            var result = e.target.result;
-                            imageElementTest = newImageElementTest(result);
-                            
-                            var height = imageElementTest.naturalHeight;
-    
-                            if(height == 0)
-                            {
-                                return mrImgHeight(mrElement);
-                            }
-        
-                            if(height != acceptedHeight)
-                            {
+                    // VALIDATE IMAGE HEIGHT
+                    if(hasImgHeight && mrIsValidAttribute.imgHeight && mrAcceptedImgHeight != "") {
+                        if(mrIsInteger(mrAcceptedImgWidth) && mrAcceptedImgWidth > 0){
+                            if((height != mrAcceptedImgHeight)){
                                 mrInvalidElement("mr-imgheight-fb");
-                                mrForm.onsubmit = function (event)
-                                {
-                                    if(mrElement.classList.contains("mr-invalid"))
-                                    {
-                                        event.preventDefault();
-                                    }
-                                }
+                                isInvalidElement = true;
                             }
+                        } else{
+                            mrIsValidAttribute.imgHeight = false;
+                            mrDebutInvalidAttribute(mrElement, "imgheight", "mr-imgheight-fb");
                         }
+                        
                     }
-        
-                    if(!isValidImagesMediaTypes)
-                    {
-                        mrInvalidElement("mr-imgheight-fb");
-                    }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- The value of attribute imgheight is not a valid integer number or is less than 1 at the element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-imgheight-fb");
-                }
-            }
-        }
-    }
 
-
-    //VALIDATE THE MINIMUM WIDTH OF IMAGE INPUTED IN FILE INPUT
-    mrMinwidth(mrElement);
-    function mrMinwidth(mrElement)
-    {
-        if((mrHasAttribute(mrElement, "minwidth") || mrHasAttribute(mrElement, "data-minwidth")) && mrHasInputType(mrElement, "file"))
-        {
-            var acceptedMinWidth = mrElement.getAttribute("data-minwidth");
-            if(acceptedMinWidth == null)
-            {
-                acceptedMinWidth = mrElement.getAttribute("minwidth");
-            }
-
-            if(acceptedMinWidth != "")
-            {
-                if(mrIsInteger(acceptedMinWidth) && acceptedMinWidth > 0)
-                {
-                    var fileList = mrElement.files;
-                    var isValidImagesMediaTypes = true;
-                    mrValidElement("mr-minwidth-fb");
-        
-                    for(var i = 0; i < fileList.length; i++)
-                    {  
-                        var file = fileList[i];    
-                        fileMediaType = file.type;
-                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
-        
-                        if(!patternImageMediaType.test(fileMediaType))
-                        {
-                            isValidImagesMediaTypes = false;
-                            break;
-                        }
-        
-                        var fileReader = new FileReader;
-                        fileReader.readAsDataURL(file);
-        
-                        fileReader.onload = function(e)
-                        {
-                            var result = e.target.result;
-                            imageElementTest = newImageElementTest(result);
-                            
-                            var width = imageElementTest.naturalWidth;
-    
-                            if(width == 0)
-                            {
-                                return mrMinwidth(mrElement);
-                            }
-    
-                            if(width < acceptedMinWidth)
-                            {
+                    // VALIDATE MINIMUM IMAGE WIDTH
+                    if(hasMinWidth && mrIsValidAttribute.minWidth && mrAcceptedMinWidth != "") {
+                        if(mrIsInteger(mrAcceptedMinWidth) && mrAcceptedMinWidth > 0){
+                            if((width < mrAcceptedMinWidth)){
                                 mrInvalidElement("mr-minwidth-fb");
-                                mrForm.onsubmit = function (event)
-                                {
-                                    if(mrElement.classList.contains("mr-invalid"))
-                                    {
-                                        event.preventDefault();
-                                    }
-                                }
+                                isInvalidElement = true;
                             }
+                        } else{
+                            mrIsValidAttribute.minWidth = false;
+                            mrDebutInvalidAttribute(mrElement, "minwidth", "mr-minwidth-fb");
                         }
+                        
                     }
-        
-                    if(!isValidImagesMediaTypes)
-                    {
-                        mrInvalidElement("mr-minwidth-fb");
-                    }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- The value of attribute minwidth is not a valid integer number or is less than 1 at the element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-minwidth-fb");
-                }
-            }
-        }
-    }
 
-
-    //VALIDATE THE MAXIMUM WIDTH OF IMAGE INPUTED IN FILE INPUT 
-    mrMaxwidth(mrElement);
-    function mrMaxwidth(mrElement)
-    {
-        if((mrHasAttribute(mrElement, "maxwidth") || mrHasAttribute(mrElement, "data-maxwidth")) && mrHasInputType(mrElement, "file"))
-        {
-            var acceptedMaxWidth = mrElement.getAttribute("data-maxwidth");
-            if(acceptedMaxWidth == null)
-            {
-                acceptedMaxWidth = mrElement.getAttribute("maxwidth");
-            }
-
-            if(acceptedMaxWidth != "")
-            {
-                if(mrIsInteger(acceptedMaxWidth) && acceptedMaxWidth > 0)
-                {
-                    var fileList = mrElement.files;
-                    var isValidImagesMediaTypes = true;
-                    mrValidElement("mr-maxwidth-fb");
-        
-                    for(var i = 0; i < fileList.length; i++)
-                    { 
-                        var file = fileList[i];     
-                        fileMediaType = file.type;
-                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
-        
-                        if(!patternImageMediaType.test(fileMediaType))
-                        {
-                            isValidImagesMediaTypes = false;
-                            break;
-                        }
-        
-                        var fileReader = new FileReader;
-                        fileReader.readAsDataURL(file);
-        
-                        fileReader.onload = function(e)
-                        {
-                            var result = e.target.result;
-                            imageElementTest = newImageElementTest(result);
-                            
-                            var width = imageElementTest.naturalWidth;
-    
-                            if(width == 0)
-                            {
-                                return mrMaxwidth(mrElement);
-                            }
-    
-        
-                            if(width > acceptedMaxWidth)
-                            {
+                    // VALIDATE MAXIMUM  IMAGE WIDTH
+                    if(hasMaxWidth && mrIsValidAttribute.maxWidth && mrAcceptedMaxWidth != "") {
+                        if(mrIsInteger(mrAcceptedMaxWidth) && mrAcceptedMaxWidth > 0){
+                            if((width > mrAcceptedMaxWidth)){
                                 mrInvalidElement("mr-maxwidth-fb");
-                                mrForm.onsubmit = function (event)
-                                {
-                                    if(mrElement.classList.contains("mr-invalid"))
-                                    {
-                                        event.preventDefault();
-                                    }
-                                }
+                                isInvalidElement = true;
                             }
+                        } else{
+                            mrIsValidAttribute.maxWidth = false;
+                            mrDebutInvalidAttribute(mrElement, "maxwidth", "mr-maxwidth-fb");
                         }
+                        
                     }
-        
-                    if(!isValidImagesMediaTypes)
-                    {
-                        mrInvalidElement("mr-maxwidth-fb");
-                    }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- The value of attribute maxwidth is not a valid integer number or is less than 1 at the element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-maxwidth-fb");
-                }
-            }
-        }
-    }
 
-
-    //VALIDATE THE IMAGE MiNIMUM HEIGHT OF FILE INPUT
-    mrMinheight(mrElement);
-    function mrMinheight(mrElement)
-    {
-        if((mrHasAttribute(mrElement, "minheight") || mrHasAttribute(mrElement, "data-minheight")) && mrHasInputType(mrElement, "file"))
-        {
-            var acceptedMinHeight = mrElement.getAttribute("data-minheight");
-            if(acceptedMinHeight == null)
-            {
-                acceptedMinHeight = mrElement.getAttribute("minheight");
-            }
-
-            if(acceptedMinHeight != "")
-            {
-                if(mrIsInteger(acceptedMinHeight) && acceptedMinHeight > 0)
-                {
-                    var fileList = mrElement.files;
-                    var isValidImagesMediaTypes = true;
-                    mrValidElement("mr-minheight-fb");
-        
-                    for(var i = 0; i < fileList.length; i++)
-                    {    
-                        var file = fileList[i];  
-                        fileMediaType = file.type;
-                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
-        
-                        if(!patternImageMediaType.test(fileMediaType))
-                        {
-                            isValidImagesMediaTypes = false;
-                            break;
-                        }
-        
-                        var fileReader = new FileReader;
-                        fileReader.readAsDataURL(file);
-        
-                        fileReader.onload = function(e)
-                        {
-                            var result = e.target.result;
-                            imageElementTest = newImageElementTest(result);
-                            
-                            var height = imageElementTest.naturalHeight;
-    
-                            if(height == 0)
-                            {
-                                return mrMinheight(mrElement);
-                            }
-    
-                            if(height < acceptedMinHeight)
-                            {
+                    // VALIDATE MINIMUM IMAGE HEIGHT
+                    if(hasMinHeight && mrIsValidAttribute.minHeight && mrAcceptedMinHeight != "") {
+                        if(mrIsInteger(mrAcceptedMinHeight) && mrAcceptedMinHeight > 0){
+                            if((height < mrAcceptedMinHeight)){
                                 mrInvalidElement("mr-minheight-fb");
-                                mrForm.onsubmit = function (event)
-                                {
-                                    if(mrElement.classList.contains("mr-invalid"))
-                                    {
-                                        event.preventDefault();
-                                    }
-                                }
+                                isInvalidElement = true;
                             }
+                        } else{
+                            mrIsValidAttribute.minHeight = false;
+                            mrDebutInvalidAttribute(mrElement, "minheight", "mr-minheight-fb");
                         }
+                        
                     }
-        
-                    if(!isValidImagesMediaTypes)
-                    {
-                        mrInvalidElement("mr-minheight-fb");
-                    }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- The value of attribute minheight is not a valid integer number or is less than 1 at the element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-minheight-fb");
-                }
-            }
-        }
-    }
 
-
-    //VALIDATE THE IMAGE MAXIMUM HEIGHT OF FILE INPUT
-    mrMaxheight(mrElement);
-    function mrMaxheight(mrElement)
-    {
-        if((mrHasAttribute(mrElement, "maxheight") || mrHasAttribute(mrElement, "data-maxheight")) && mrHasInputType(mrElement, "file"))
-        {
-            var acceptedMaxHeight = mrElement.getAttribute("data-maxheight");
-            if(acceptedMaxHeight == null)
-            {
-                acceptedMaxHeight = mrElement.getAttribute("maxheight");
-            }
-
-            if(acceptedMaxHeight != "")
-            {
-                if(mrIsInteger(acceptedMaxHeight) && acceptedMaxHeight > 0)
-                {
-                    var fileList = mrElement.files;
-                    var isValidImagesMediaTypes = true;
-                    mrValidElement("mr-maxheight-fb");
-        
-                    for(var i = 0; i < fileList.length; i++)
-                    {   
-                        var file = fileList[i];   
-                        fileMediaType = file.type;
-                        patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
-        
-                        if(!patternImageMediaType.test(fileMediaType))
-                        {
-                            isValidImagesMediaTypes = false;
-                            break;
-                        }
-        
-                        var fileReader = new FileReader;
-                        fileReader.readAsDataURL(file);
-        
-                        fileReader.onload = function(e)
-                        {
-                            var result = e.target.result;
-                            imageElementTest =  newImageElementTest(result);
-                            
-                            var height = imageElementTest.naturalHeight;
-    
-                            if(height == 0)
-                            {
-                                return mrMaxheight(mrElement);
-                            }
-    
-                            if(height > acceptedMaxHeight)
-                            {
+                    // VALIDATE MAXIMUM IMAGE HEIGHT
+                    if(hasMaxHeight && mrIsValidAttribute.maxHeight && mrAcceptedMaxHeight != "") {
+                        if(mrIsInteger(mrAcceptedMaxHeight) && mrAcceptedMaxHeight > 0){
+                            if((height > mrAcceptedMaxHeight)){
                                 mrInvalidElement("mr-maxheight-fb");
-                                mrForm.onsubmit = function (event)
-                                {
-                                    if(mrElement.classList.contains("mr-invalid"))
-                                    {
-                                        event.preventDefault();
-                                    }
-                                }
+                                isInvalidElement = true;
                             }
+                        } else{
+                            mrIsValidAttribute.maxHeight = false;
+                            mrDebutInvalidAttribute(mrElement, "maxheight", "mr-maxheight-fb");
                         }
-                    }
-        
-                    if(!isValidImagesMediaTypes)
-                    {
-                        mrInvalidElement("mr-maxheight-fb");
-                    }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- The value of attribute maxheight is not a valid integer number or is less than 1 at the element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-maxheight-fb");
-                }
-            }
-        }
-    }
-    
-
-    //VALIDATE THE IMAGE RESOLUTION OF FILE INPUT
-    mrResolution(mrElement);
-    function mrResolution(mrElement)
-    {
-        if((mrHasAttribute(mrElement, "resolution") || mrHasAttribute(mrElement, "data-resolution")) && mrHasInputType(mrElement, "file"))
-        {
-            var acceptedResolutions = mrElement.getAttribute("data-resolution");
-            if(acceptedResolutions == null)
-            {
-                acceptedResolutions = mrElement.getAttribute("resolution");
-            }
-
-            if(acceptedResolutions != "")
-            {
-                var patternValidResolutions = /(^([\s]*[0-9]+)x([0-9]+[\s]*)$)|^([\s]*[0-9]+)x([0-9]+[\s]*)(,([\s]*[0-9]+)x([0-9]+)+[\s]*)*$/i;
-                var isValidAcceptedResolutions = true;
-        
-                if(!patternValidResolutions.test(acceptedResolutions))
-                {
-                    isValidAcceptedResolutions = false;
-                }   else
-                {
-                    acceptedResolutions = acceptedResolutions.replace(/[ ]/g, "");
-                    acceptedResolutions = acceptedResolutions.replace(/[X]/g, "x");
-                    acceptedResolutionsSplitted = acceptedResolutions.split(",");
-        
-                    for(var i = 0; i < acceptedResolutionsSplitted.length; i++)
-                    {
-                        var acceptedResolution = acceptedResolutionsSplitted[i];
-                        acceptedResolution = acceptedResolution.split(/x/i);
-                        if(!mrIsInteger(acceptedResolution[0]) && acceptedResolution[0] < 0)
-                        {
-                            isValidAcceptedResolutions = false;
-                        }
-                        if(!mrIsInteger(acceptedResolution[1]) && acceptedResolution[1] < 0)
-                        {
-                            isValidAcceptedResolutions = false;
-                        }
-                    }
-                }
-        
-                if(isValidAcceptedResolutions)
-                {
-                    var fileList = mrElement.files;
-                    if(fileList.length > 0)
-                    {
-                        var isValidImagesMediaTypes = true;
-                        mrValidElement("mr-resolution-fb");
                         
-                        for(var i = 0; i <= fileList.length; i++)
-                        { 
+                    }
+
+                    // VALIDATE IMAGE RATIO
+                    if(hasRatio && mrAcceptedRatio != "") {
+                        if(mrIsValidAttribute.ratio){
+                            let ratio = width/height;
+                            ratio = ratio.toFixed(3);
     
-                            var file = fileList[i];
-                            if(i == fileList.length)
+                            let mrPatternRatio = new RegExp(ratio);
+                            if(!mrPatternRatio.test(mrAcceptedRatio))
                             {
-                                file = fileList[fileList.length-1];
+                                mrInvalidElement("mr-ratio-fb");
+                                isInvalidElement = true;
                             }
-            
-                            fileMediaType = file.type;
-                            patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
-            
-                            if(!patternImageMediaType.test(fileMediaType))
-                            {
-                                isValidImagesMediaTypes = false;
-                                break;
-                            }
-            
-                            var fileReader = new FileReader;
-                            fileReader.readAsDataURL(file);
-    
-                            
-                            fileReader.onload = function(e)
-                            {
-                                var result = e.target.result;
-                                imageElementTest = newImageElementTest(result);
-                            
-                                var width = imageElementTest.naturalWidth;
-                                var height = imageElementTest.naturalHeight;
-                                var resolution = width + "x" + height;
-    
-                                if(width == 0 || height == 0)
-                                {
-                                    return mrResolution(mrElement);
-                                }
-            
-                                var patternResolution = new RegExp(resolution)                            
-                                if(!patternResolution.test(acceptedResolutions))
-                                {
-                                    mrInvalidElement("mr-resolution-fb");
-                                    mrForm.onsubmit = function (event)
-                                    {
-                                        if(mrElement.classList.contains("mr-invalid"))
-                                        {
-                                            event.preventDefault();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-            
-                        if(!isValidImagesMediaTypes)
-                        {
-                            mrInvalidElement("mr-resolution-fb");
+                        } else{
+                            mrDebutInvalidAttribute(mrElement, "ratio", "mr-ratio-fb");
                         }
                     }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- Is not a valid resolution valu at the element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-resolution-fb");
+
+                    if(isInvalidElement){
+                        mrForm.onsubmit = function (event)
+                        {
+                            if(mrElement.classList.contains("mr-invalid"))
+                            {
+                                event.preventDefault();
+                            }
+                        }
+                    }
                 }
+            }
+            if(!isValidImagesMediaTypes)
+            {
+                setInvalidElements();
             }
         }
     }
+
+    // //VALIDATE THE WIDTH OF IMAGE INPUTED IN FILE INPUT
+    // mrImgWidth(mrElement);
+    // function mrImgWidth(mrElement)
+    // {
+    //     if((mrHasAttribute(mrElement, "imgwidth") || mrHasAttribute(mrElement, "data-imgwidth")) && mrHasInputType(mrElement, "file"))
+    //     {
+    //         var acceptedWidth = mrElement.getAttribute("data-imgwidth");
+    //         if(acceptedWidth == null)
+    //         {
+    //             acceptedWidth = mrElement.getAttribute("imgwidth");
+    //         }
+
+    //         if(acceptedWidth != "")
+    //         {
+    //             if(mrIsInteger(acceptedWidth) && acceptedWidth > 0)
+    //             {
+    //                 var fileList = mrElement.files;
+    //                 var isValidImagesMediaTypes = true;
+    //                 mrValidElement("mr-imgwidth-fb");
+        
+    //                 for(var i = 0; i < fileList.length; i++)
+    //                 {  
+    //                     var file = fileList[i];    
+    //                     fileMediaType = file.type;
+    //                     patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+    //                     if(!patternImageMediaType.test(fileMediaType))
+    //                     {
+    //                         isValidImagesMediaTypes = false;
+    //                         break;
+    //                     }
+        
+    //                     var fileReader = new FileReader;
+    //                     fileReader.readAsDataURL(file);
+        
+    //                     fileReader.onload = function(e)
+    //                     {
+    //                         var result = e.target.result;
+    //                         imageElementTest = newImageElementTest(result);
+                            
+    //                         var width = imageElementTest.naturalWidth;
+                            
+    //                         if(width == 0)
+    //                         {
+    //                             return mrImgWidth(mrElement);
+    //                         }
+        
+    //                         if(width != acceptedWidth)
+    //                         {
+    //                             mrInvalidElement("mr-imgwidth-fb");
+    //                             mrForm.onsubmit = function (event)
+    //                             {
+    //                                 if(mrElement.classList.contains("mr-invalid"))
+    //                                 {
+    //                                     event.preventDefault();
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+        
+    //                 if(!isValidImagesMediaTypes)
+    //                 {
+    //                     mrInvalidElement("mr-imgwidth-fb");
+    //                 }
+    //             }   else
+    //             {
+    //                 console.error("MY RULES ERROR:\n" + "- The value of attribute imgwidth is not a valid integer number or is less than 1 at the element:");
+    //                 console.error(mrElement);
+    //                 mrInvalidElement("mr-imgwidth-fb");
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    // //VALIDATE THE IMAGE HEIGHT OF FILE INPUT
+    // mrImgHeight(mrElement);
+    // function mrImgHeight(mrElement)
+    // {
+    //     if((mrHasAttribute(mrElement, "imgheight") || mrHasAttribute(mrElement, "data-imgheight")) && mrHasInputType(mrElement, "file"))
+    //     {
+    //         var acceptedHeight = mrElement.getAttribute("data-imgheight");
+    //         if(acceptedHeight == null)
+    //         {
+    //             acceptedHeight = mrElement.getAttribute("imgheight");
+    //         }
+
+    //         if(acceptedHeight != "")
+    //         {
+    //             if(mrIsInteger(acceptedHeight) && acceptedHeight > 0)
+    //             {
+    //                 var fileList = mrElement.files;
+    //                 var isValidImagesMediaTypes = true;
+    //                 mrValidElement("mr-imgheight-fb");
+        
+    //                 for(var i = 0; i < fileList.length; i++)
+    //                 {  
+    //                     var file = fileList[i];    
+    //                     fileMediaType = file.type;
+    //                     patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+    //                     if(!patternImageMediaType.test(fileMediaType))
+    //                     {
+    //                         isValidImagesMediaTypes = false;
+    //                         break;
+    //                     }
+        
+    //                     var fileReader = new FileReader;
+    //                     fileReader.readAsDataURL(file);
+        
+    //                     fileReader.onload = function(e)
+    //                     {
+    //                         var result = e.target.result;
+    //                         imageElementTest = newImageElementTest(result);
+                            
+    //                         var height = imageElementTest.naturalHeight;
+    
+    //                         if(height == 0)
+    //                         {
+    //                             return mrImgHeight(mrElement);
+    //                         }
+        
+    //                         if(height != acceptedHeight)
+    //                         {
+    //                             mrInvalidElement("mr-imgheight-fb");
+    //                             mrForm.onsubmit = function (event)
+    //                             {
+    //                                 if(mrElement.classList.contains("mr-invalid"))
+    //                                 {
+    //                                     event.preventDefault();
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+        
+    //                 if(!isValidImagesMediaTypes)
+    //                 {
+    //                     mrInvalidElement("mr-imgheight-fb");
+    //                 }
+    //             }   else
+    //             {
+    //                 console.error("MY RULES ERROR:\n" + "- The value of attribute imgheight is not a valid integer number or is less than 1 at the element:");
+    //                 console.error(mrElement);
+    //                 mrInvalidElement("mr-imgheight-fb");
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    // //VALIDATE THE MINIMUM WIDTH OF IMAGE INPUTED IN FILE INPUT
+    // mrMinwidth(mrElement);
+    // function mrMinwidth(mrElement)
+    // {
+    //     if((mrHasAttribute(mrElement, "minwidth") || mrHasAttribute(mrElement, "data-minwidth")) && mrHasInputType(mrElement, "file"))
+    //     {
+    //         var acceptedMinWidth = mrElement.getAttribute("data-minwidth");
+    //         if(acceptedMinWidth == null)
+    //         {
+    //             acceptedMinWidth = mrElement.getAttribute("minwidth");
+    //         }
+
+    //         if(acceptedMinWidth != "")
+    //         {
+    //             if(mrIsInteger(acceptedMinWidth) && acceptedMinWidth > 0)
+    //             {
+    //                 var fileList = mrElement.files;
+    //                 var isValidImagesMediaTypes = true;
+    //                 mrValidElement("mr-minwidth-fb");
+        
+    //                 for(var i = 0; i < fileList.length; i++)
+    //                 {  
+    //                     var file = fileList[i];    
+    //                     fileMediaType = file.type;
+    //                     patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+    //                     if(!patternImageMediaType.test(fileMediaType))
+    //                     {
+    //                         isValidImagesMediaTypes = false;
+    //                         break;
+    //                     }
+        
+    //                     var fileReader = new FileReader;
+    //                     fileReader.readAsDataURL(file);
+        
+    //                     fileReader.onload = function(e)
+    //                     {
+    //                         var result = e.target.result;
+    //                         imageElementTest = newImageElementTest(result);
+                            
+    //                         var width = imageElementTest.naturalWidth;
+    
+    //                         if(width == 0)
+    //                         {
+    //                             return mrMinwidth(mrElement);
+    //                         }
+    
+    //                         if(width < acceptedMinWidth)
+    //                         {
+    //                             mrInvalidElement("mr-minwidth-fb");
+    //                             mrForm.onsubmit = function (event)
+    //                             {
+    //                                 if(mrElement.classList.contains("mr-invalid"))
+    //                                 {
+    //                                     event.preventDefault();
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+        
+    //                 if(!isValidImagesMediaTypes)
+    //                 {
+    //                     mrInvalidElement("mr-minwidth-fb");
+    //                 }
+    //             }   else
+    //             {
+    //                 console.error("MY RULES ERROR:\n" + "- The value of attribute minwidth is not a valid integer number or is less than 1 at the element:");
+    //                 console.error(mrElement);
+    //                 mrInvalidElement("mr-minwidth-fb");
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    // //VALIDATE THE MAXIMUM WIDTH OF IMAGE INPUTED IN FILE INPUT 
+    // mrMaxwidth(mrElement);
+    // function mrMaxwidth(mrElement)
+    // {
+    //     if((mrHasAttribute(mrElement, "maxwidth") || mrHasAttribute(mrElement, "data-maxwidth")) && mrHasInputType(mrElement, "file"))
+    //     {
+    //         var acceptedMaxWidth = mrElement.getAttribute("data-maxwidth");
+    //         if(acceptedMaxWidth == null)
+    //         {
+    //             acceptedMaxWidth = mrElement.getAttribute("maxwidth");
+    //         }
+
+    //         if(acceptedMaxWidth != "")
+    //         {
+    //             if(mrIsInteger(acceptedMaxWidth) && acceptedMaxWidth > 0)
+    //             {
+    //                 var fileList = mrElement.files;
+    //                 var isValidImagesMediaTypes = true;
+    //                 mrValidElement("mr-maxwidth-fb");
+        
+    //                 for(var i = 0; i < fileList.length; i++)
+    //                 { 
+    //                     var file = fileList[i];     
+    //                     fileMediaType = file.type;
+    //                     patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+    //                     if(!patternImageMediaType.test(fileMediaType))
+    //                     {
+    //                         isValidImagesMediaTypes = false;
+    //                         break;
+    //                     }
+        
+    //                     var fileReader = new FileReader;
+    //                     fileReader.readAsDataURL(file);
+        
+    //                     fileReader.onload = function(e)
+    //                     {
+    //                         var result = e.target.result;
+    //                         imageElementTest = newImageElementTest(result);
+                            
+    //                         var width = imageElementTest.naturalWidth;
+    
+    //                         if(width == 0)
+    //                         {
+    //                             return mrMaxwidth(mrElement);
+    //                         }
+    
+        
+    //                         if(width > acceptedMaxWidth)
+    //                         {
+    //                             mrInvalidElement("mr-maxwidth-fb");
+    //                             mrForm.onsubmit = function (event)
+    //                             {
+    //                                 if(mrElement.classList.contains("mr-invalid"))
+    //                                 {
+    //                                     event.preventDefault();
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+        
+    //                 if(!isValidImagesMediaTypes)
+    //                 {
+    //                     mrInvalidElement("mr-maxwidth-fb");
+    //                 }
+    //             }   else
+    //             {
+    //                 console.error("MY RULES ERROR:\n" + "- The value of attribute maxwidth is not a valid integer number or is less than 1 at the element:");
+    //                 console.error(mrElement);
+    //                 mrInvalidElement("mr-maxwidth-fb");
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    // //VALIDATE THE IMAGE MiNIMUM HEIGHT OF FILE INPUT
+    // mrMinheight(mrElement);
+    // function mrMinheight(mrElement)
+    // {
+    //     if((mrHasAttribute(mrElement, "minheight") || mrHasAttribute(mrElement, "data-minheight")) && mrHasInputType(mrElement, "file"))
+    //     {
+    //         var acceptedMinHeight = mrElement.getAttribute("data-minheight");
+    //         if(acceptedMinHeight == null)
+    //         {
+    //             acceptedMinHeight = mrElement.getAttribute("minheight");
+    //         }
+
+    //         if(acceptedMinHeight != "")
+    //         {
+    //             if(mrIsInteger(acceptedMinHeight) && acceptedMinHeight > 0)
+    //             {
+    //                 var fileList = mrElement.files;
+    //                 var isValidImagesMediaTypes = true;
+    //                 mrValidElement("mr-minheight-fb");
+        
+    //                 for(var i = 0; i < fileList.length; i++)
+    //                 {    
+    //                     var file = fileList[i];  
+    //                     fileMediaType = file.type;
+    //                     patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+    //                     if(!patternImageMediaType.test(fileMediaType))
+    //                     {
+    //                         isValidImagesMediaTypes = false;
+    //                         break;
+    //                     }
+        
+    //                     var fileReader = new FileReader;
+    //                     fileReader.readAsDataURL(file);
+        
+    //                     fileReader.onload = function(e)
+    //                     {
+    //                         var result = e.target.result;
+    //                         imageElementTest = newImageElementTest(result);
+                            
+    //                         var height = imageElementTest.naturalHeight;
+    
+    //                         if(height == 0)
+    //                         {
+    //                             return mrMinheight(mrElement);
+    //                         }
+    
+    //                         if(height < acceptedMinHeight)
+    //                         {
+    //                             mrInvalidElement("mr-minheight-fb");
+    //                             mrForm.onsubmit = function (event)
+    //                             {
+    //                                 if(mrElement.classList.contains("mr-invalid"))
+    //                                 {
+    //                                     event.preventDefault();
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+        
+    //                 if(!isValidImagesMediaTypes)
+    //                 {
+    //                     mrInvalidElement("mr-minheight-fb");
+    //                 }
+    //             }   else
+    //             {
+    //                 console.error("MY RULES ERROR:\n" + "- The value of attribute minheight is not a valid integer number or is less than 1 at the element:");
+    //                 console.error(mrElement);
+    //                 mrInvalidElement("mr-minheight-fb");
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    // //VALIDATE THE IMAGE MAXIMUM HEIGHT OF FILE INPUT
+    // mrMaxheight(mrElement);
+    // function mrMaxheight(mrElement)
+    // {
+    //     if((mrHasAttribute(mrElement, "maxheight") || mrHasAttribute(mrElement, "data-maxheight")) && mrHasInputType(mrElement, "file"))
+    //     {
+    //         var acceptedMaxHeight = mrElement.getAttribute("data-maxheight");
+    //         if(acceptedMaxHeight == null)
+    //         {
+    //             acceptedMaxHeight = mrElement.getAttribute("maxheight");
+    //         }
+
+    //         if(acceptedMaxHeight != "")
+    //         {
+    //             if(mrIsInteger(acceptedMaxHeight) && acceptedMaxHeight > 0)
+    //             {
+    //                 var fileList = mrElement.files;
+    //                 var isValidImagesMediaTypes = true;
+    //                 mrValidElement("mr-maxheight-fb");
+        
+    //                 for(var i = 0; i < fileList.length; i++)
+    //                 {   
+    //                     var file = fileList[i];   
+    //                     fileMediaType = file.type;
+    //                     patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+        
+    //                     if(!patternImageMediaType.test(fileMediaType))
+    //                     {
+    //                         isValidImagesMediaTypes = false;
+    //                         break;
+    //                     }
+        
+    //                     var fileReader = new FileReader;
+    //                     fileReader.readAsDataURL(file);
+        
+    //                     fileReader.onload = function(e)
+    //                     {
+    //                         var result = e.target.result;
+    //                         imageElementTest =  newImageElementTest(result);
+                            
+    //                         var height = imageElementTest.naturalHeight;
+    
+    //                         if(height == 0)
+    //                         {
+    //                             return mrMaxheight(mrElement);
+    //                         }
+    
+    //                         if(height > acceptedMaxHeight)
+    //                         {
+    //                             mrInvalidElement("mr-maxheight-fb");
+    //                             mrForm.onsubmit = function (event)
+    //                             {
+    //                                 if(mrElement.classList.contains("mr-invalid"))
+    //                                 {
+    //                                     event.preventDefault();
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+        
+    //                 if(!isValidImagesMediaTypes)
+    //                 {
+    //                     mrInvalidElement("mr-maxheight-fb");
+    //                 }
+    //             }   else
+    //             {
+    //                 console.error("MY RULES ERROR:\n" + "- The value of attribute maxheight is not a valid integer number or is less than 1 at the element:");
+    //                 console.error(mrElement);
+    //                 mrInvalidElement("mr-maxheight-fb");
+    //             }
+    //         }
+    //     }
+    // }
     
 
-    //VALIDATE THE IMAGE ASPECT RATIO OF FILE INPUT
-    mrRatio(mrElement);
-    function mrRatio(mrElement)
-    {
-        if((mrHasAttribute(mrElement, "ratio") || mrHasAttribute(mrElement, "data-ratio")) && mrHasInputType(mrElement, "file"))
-        {
-            var acceptedRatios = mrElement.getAttribute("data-ratio");
-            if(acceptedRatios == null)
-            {
-                acceptedRatios = mrElement.getAttribute("ratio");
-            }
-            
-            if(acceptedRatios != "")
-            {
-                var patternValidRatios = /((^([\s]*[0-9]+)\.([0-9]+[\s]*)$)|(^([\s]*[0-9]+):([0-9]+[\s]*)$)|(^([\s]*(1)[\s]*)$))|((^([\s]*[0-9]+)\.([0-9]+[\s]*))|(^([\s]*[0-9]+):([0-9]+[\s]*))|(^([\s]*(1)[\s]*)))(,((([\s]*[0-9]+)\.([0-9]+[\s]*))|(([\s]*[0-9]+):([0-9]+[\s]*))|(([\s]*(1)[\s]*))))*$/;
-                var isValidAcceptedRatios = true;
+    // //VALIDATE THE IMAGE RESOLUTION OF FILE INPUT
+    // mrResolution(mrElement);
+    // function mrResolution(mrElement)
+    // {
+    //     if((mrHasAttribute(mrElement, "resolution") || mrHasAttribute(mrElement, "data-resolution")) && mrHasInputType(mrElement, "file"))
+    //     {
+    //         var acceptedResolutions = mrElement.getAttribute("data-resolution");
+    //         if(acceptedResolutions == null)
+    //         {
+    //             acceptedResolutions = mrElement.getAttribute("resolution");
+    //         }
+
+    //         if(acceptedResolutions != "")
+    //         {
+    //             var patternValidResolutions = /(^([\s]*[0-9]+)x([0-9]+[\s]*)$)|^([\s]*[0-9]+)x([0-9]+[\s]*)(,([\s]*[0-9]+)x([0-9]+)+[\s]*)*$/i;
+    //             var isValidAcceptedResolutions = true;
         
-                if(!patternValidRatios.test(acceptedRatios))
-                {
-                    isValidAcceptedRatios = false;
-                }   else
-                {
-                    acceptedRatios = acceptedRatios.replace(/[ ]/g, "");
-                    acceptedRatios = acceptedRatios.split(",");
-                    var patternDivisionRatio = /^([\s]*[0-9]+):([0-9]+[\s]*)$/;
-    
-                    var acceptedRatiosNormalized = [];
-                    for(var i = 0; i < acceptedRatios.length; i++)
-                    {
+    //             if(!patternValidResolutions.test(acceptedResolutions))
+    //             {
+    //                 isValidAcceptedResolutions = false;
+    //             }   else
+    //             {
+    //                 acceptedResolutions = acceptedResolutions.replace(/[ ]/g, "");
+    //                 acceptedResolutions = acceptedResolutions.replace(/[X]/g, "x");
+    //                 acceptedResolutionsSplitted = acceptedResolutions.split(",");
+        
+    //                 for(var i = 0; i < acceptedResolutionsSplitted.length; i++)
+    //                 {
+    //                     var acceptedResolution = acceptedResolutionsSplitted[i];
+    //                     acceptedResolution = acceptedResolution.split(/x/i);
+    //                     if(!mrIsInteger(acceptedResolution[0]) && acceptedResolution[0] < 0)
+    //                     {
+    //                         isValidAcceptedResolutions = false;
+    //                     }
+    //                     if(!mrIsInteger(acceptedResolution[1]) && acceptedResolution[1] < 0)
+    //                     {
+    //                         isValidAcceptedResolutions = false;
+    //                     }
+    //                 }
+    //             }
+        
+    //             if(isValidAcceptedResolutions)
+    //             {
+    //                 var fileList = mrElement.files;
+    //                 if(fileList.length > 0)
+    //                 {
+    //                     var isValidImagesMediaTypes = true;
+    //                     mrValidElement("mr-resolution-fb");
                         
-                        if(patternDivisionRatio.test(acceptedRatios[i]))
-                        {
-                            var divisionRatioSplitted = acceptedRatios[i].split(":");
-                            acceptedRatios[i] = divisionRatioSplitted[0]/divisionRatioSplitted[1];
-                        }
+    //                     for(var i = 0; i <= fileList.length; i++)
+    //                     { 
     
-                        acceptedRatios[i] = Number(acceptedRatios[i]);
-                        acceptedRatios[i] = acceptedRatios[i].toFixed(3);
-    
-                        if(acceptedRatiosNormalized.indexOf(acceptedRatios[i]) < 0)
-                        {
-                            acceptedRatiosNormalized.push(acceptedRatios[i]);
-                        }
-                    }
-    
-                    acceptedRatios = acceptedRatiosNormalized;
-                    acceptedRatios = acceptedRatios.toString();
-                    acceptedRatiosNormalized = undefined;
-                }
-    
-                if(isValidAcceptedRatios)
-                {
-                    var fileList = mrElement.files;
-                    if(fileList.length > 0)
-                    {
-                        var isValidImagesMediaTypes = true;
-                        mrValidElement("mr-ratio-fb");
-    
-                        for(var i = 0; i <= fileList.length; i++)
-                        {  
-                            var file = fileList[i];
-                            if(i == fileList.length)
-                            {
-                                file = fileList[fileList.length-1];
-                            }
+    //                         var file = fileList[i];
+    //                         if(i == fileList.length)
+    //                         {
+    //                             file = fileList[fileList.length-1];
+    //                         }
             
-                            fileMediaType = file.type;
-                            patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+    //                         fileMediaType = file.type;
+    //                         patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
             
-                            if(!patternImageMediaType.test(fileMediaType))
-                            {
-                                isValidImagesMediaTypes = false;
-                                break;
-                            }
+    //                         if(!patternImageMediaType.test(fileMediaType))
+    //                         {
+    //                             isValidImagesMediaTypes = false;
+    //                             break;
+    //                         }
             
-                            var fileReader = new FileReader;
-                            fileReader.readAsDataURL(file);
+    //                         var fileReader = new FileReader;
+    //                         fileReader.readAsDataURL(file);
+    
                             
-                            fileReader.onload = function(e)
-                            {
-                                var result = e.target.result;
-                                imageElementTest = newImageElementTest(result);
+    //                         fileReader.onload = function(e)
+    //                         {
+    //                             var result = e.target.result;
+    //                             imageElementTest = newImageElementTest(result);
                             
-                                var width = imageElementTest.naturalWidth;
-                                var height = imageElementTest.naturalHeight;
-                                var ratio = width/height;
-                                ratio = ratio.toFixed(3);
+    //                             var width = imageElementTest.naturalWidth;
+    //                             var height = imageElementTest.naturalHeight;
+    //                             var resolution = width + "x" + height;
     
-                                if(width == 0 || height == 0)
-                                {
-                                    return mrRatio(mrElement);
-                                }
+    //                             if(width == 0 || height == 0)
+    //                             {
+    //                                 return mrResolution(mrElement);
+    //                             }
             
-                                var patternRatio = new RegExp(ratio);
+    //                             var patternResolution = new RegExp(resolution)                            
+    //                             if(!patternResolution.test(acceptedResolutions))
+    //                             {
+    //                                 mrInvalidElement("mr-resolution-fb");
+    //                                 mrForm.onsubmit = function (event)
+    //                                 {
+    //                                     if(mrElement.classList.contains("mr-invalid"))
+    //                                     {
+    //                                         event.preventDefault();
+    //                                     }
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+            
+    //                     if(!isValidImagesMediaTypes)
+    //                     {
+    //                         mrInvalidElement("mr-resolution-fb");
+    //                     }
+    //                 }
+    //             }   else
+    //             {
+    //                 console.error("MY RULES ERROR:\n" + "- Is not a valid resolution valu at the element:");
+    //                 console.error(mrElement);
+    //                 mrInvalidElement("mr-resolution-fb");
+    //             }
+    //         }
+    //     }
+    // }
     
-                                if(!patternRatio.test(acceptedRatios))
-                                {
-                                    mrInvalidElement("mr-ratio-fb");
-                                    mrForm.onsubmit = function (event)
-                                    {
-                                        if(mrElement.classList.contains("mr-invalid"))
-                                        {
-                                            event.preventDefault();
-                                        }
-                                    }
-                                }
-                            }
-                        }
+
+    // //VALIDATE THE IMAGE ASPECT RATIO OF FILE INPUT
+    // mrRatio(mrElement);
+    // function mrRatio(mrElement)
+    // {
+    //     if((mrHasAttribute(mrElement, "ratio") || mrHasAttribute(mrElement, "data-ratio")) && mrHasInputType(mrElement, "file"))
+    //     {
+    //         var acceptedRatios = mrElement.getAttribute("data-ratio");
+    //         if(acceptedRatios == null)
+    //         {
+    //             acceptedRatios = mrElement.getAttribute("ratio");
+    //         }
             
-                        if(!isValidImagesMediaTypes)
-                        {
-                            mrInvalidElement("mr-ratio-fb");
-                        }
-                    }
-                }   else
-                {
-                    console.error("MY RULES ERROR:\n" + "- Is not a valid ratio valu at the element:");
-                    console.error(mrElement);
-                    mrInvalidElement("mr-ratio-fb");
-                }
-            }
-        }
-    }
+    //         if(acceptedRatios != "")
+    //         {
+    //             var patternValidRatios = /((^([\s]*[0-9]+)\.([0-9]+[\s]*)$)|(^([\s]*[0-9]+):([0-9]+[\s]*)$)|(^([\s]*(1)[\s]*)$))|((^([\s]*[0-9]+)\.([0-9]+[\s]*))|(^([\s]*[0-9]+):([0-9]+[\s]*))|(^([\s]*(1)[\s]*)))(,((([\s]*[0-9]+)\.([0-9]+[\s]*))|(([\s]*[0-9]+):([0-9]+[\s]*))|(([\s]*(1)[\s]*))))*$/;
+    //             var isValidAcceptedRatios = true;
+        
+    //             if(!patternValidRatios.test(acceptedRatios))
+    //             {
+    //                 isValidAcceptedRatios = false;
+    //             }   else
+    //             {
+    //                 acceptedRatios = acceptedRatios.replace(/[ ]/g, "");
+    //                 acceptedRatios = acceptedRatios.split(",");
+    //                 var patternDivisionRatio = /^([\s]*[0-9]+):([0-9]+[\s]*)$/;
+    
+    //                 var acceptedRatiosNormalized = [];
+    //                 for(var i = 0; i < acceptedRatios.length; i++)
+    //                 {
+                        
+    //                     if(patternDivisionRatio.test(acceptedRatios[i]))
+    //                     {
+    //                         var divisionRatioSplitted = acceptedRatios[i].split(":");
+    //                         acceptedRatios[i] = divisionRatioSplitted[0]/divisionRatioSplitted[1];
+    //                     }
+    
+    //                     acceptedRatios[i] = Number(acceptedRatios[i]);
+    //                     acceptedRatios[i] = acceptedRatios[i].toFixed(3);
+    
+    //                     if(acceptedRatiosNormalized.indexOf(acceptedRatios[i]) < 0)
+    //                     {
+    //                         acceptedRatiosNormalized.push(acceptedRatios[i]);
+    //                     }
+    //                 }
+    
+    //                 acceptedRatios = acceptedRatiosNormalized;
+    //                 acceptedRatios = acceptedRatios.toString();
+    //                 acceptedRatiosNormalized = undefined;
+    //             }
+    
+    //             if(isValidAcceptedRatios)
+    //             {
+    //                 var fileList = mrElement.files;
+    //                 if(fileList.length > 0)
+    //                 {
+    //                     var isValidImagesMediaTypes = true;
+    //                     mrValidElement("mr-ratio-fb");
+    
+    //                     for(var i = 0; i <= fileList.length; i++)
+    //                     {  
+    //                         var file = fileList[i];
+    //                         if(i == fileList.length)
+    //                         {
+    //                             file = fileList[fileList.length-1];
+    //                         }
+            
+    //                         fileMediaType = file.type;
+    //                         patternImageMediaType = /image\/[a-z0-9.-]+[a-z0-9]/;
+            
+    //                         if(!patternImageMediaType.test(fileMediaType))
+    //                         {
+    //                             isValidImagesMediaTypes = false;
+    //                             break;
+    //                         }
+            
+    //                         var fileReader = new FileReader;
+    //                         fileReader.readAsDataURL(file);
+                            
+    //                         fileReader.onload = function(e)
+    //                         {
+    //                             var result = e.target.result;
+    //                             imageElementTest = newImageElementTest(result);
+                            
+    //                             var width = imageElementTest.naturalWidth;
+    //                             var height = imageElementTest.naturalHeight;
+    //                             var ratio = width/height;
+    //                             ratio = ratio.toFixed(3);
+    
+    //                             if(width == 0 || height == 0)
+    //                             {
+    //                                 return mrRatio(mrElement);
+    //                             }
+            
+    //                             var patternRatio = new RegExp(ratio);
+    
+    //                             if(!patternRatio.test(acceptedRatios))
+    //                             {
+    //                                 mrInvalidElement("mr-ratio-fb");
+    //                                 mrForm.onsubmit = function (event)
+    //                                 {
+    //                                     if(mrElement.classList.contains("mr-invalid"))
+    //                                     {
+    //                                         event.preventDefault();
+    //                                     }
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+            
+    //                     if(!isValidImagesMediaTypes)
+    //                     {
+    //                         mrInvalidElement("mr-ratio-fb");
+    //                     }
+    //                 }
+    //             }   else
+    //             {
+    //                 console.error("MY RULES ERROR:\n" + "- Is not a valid ratio valu at the element:");
+    //                 console.error(mrElement);
+    //                 mrInvalidElement("mr-ratio-fb");
+    //             }
+    //         }
+    //     }
+    // }
     
 
     //END OF ELEMENT VALIDATION
@@ -3173,6 +3404,12 @@ function mrValidateElement(mrElement)
             document.body.appendChild(newImageElementTest);
         }
 
+        let elementTest =  document.getElementById(id);;
+        let elementTestDimentions = {naturalWidth: elementTest.naturalWidth, naturalHeight: elementTest.naturalHeight};
+
+        document.body.removeChild(elementTest);
+        
+        return elementTestDimentions;
         return document.querySelector("#"+id);
     }
 
@@ -3279,5 +3516,15 @@ function mrValidateElement(mrElement)
         {
             element.classList.remove(className);
         }
+    }
+
+    //FUNCTION TO GET HTML5 GLOBAL ATTRIBUTE
+    function getGlobalAttribute(element, attribute){
+        let globalAttribute = element.getAttribute("data-" + attribute);
+        if(globalAttribute == null)
+        {
+            globalAttribute = element.getAttribute(attribute);
+        }
+        return globalAttribute;
     }
 }
