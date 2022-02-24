@@ -127,7 +127,6 @@ function mrWindowLoad()
             ".mr-maxwidth-fb",
             ".mr-minheight-fb",
             ".mr-maxheight-fb",
-            ".mr-resolution-fb",
             ".mr-ratio-fb",
             ".mr-valid-fb",
             ".mr-invalid-fb"
@@ -154,7 +153,6 @@ function mrWindowLoad()
                     || mrElement.getAttribute("data-maxwidth") != null
                     || mrElement.getAttribute("data-minheight") != null
                     || mrElement.getAttribute("data-maxheight") != null
-                    || mrElement.getAttribute("data-resolution") != null
                     || mrElement.getAttribute("data-ratio") != null
                     || mrElement.getAttribute("imgwidth") != null
                     || mrElement.getAttribute("imgheight") != null
@@ -162,7 +160,6 @@ function mrWindowLoad()
                     || mrElement.getAttribute("maxwidth") != null
                     || mrElement.getAttribute("minheight") != null
                     || mrElement.getAttribute("maxheight") != null
-                    || mrElement.getAttribute("resolution") != null
                     || mrElement.getAttribute("ratio") != null
                 )
                 {
@@ -1766,7 +1763,6 @@ function mrValidateElement(mrElement)
         let hasMaxWidth = mrHasAttribute(mrElement,"maxwidth") || mrHasAttribute(mrElement,"data-maxwidth");
         let hasMinHeight = mrHasAttribute(mrElement,"minheight") || mrHasAttribute(mrElement,"data-minheight");
         let hasMaxHeight = mrHasAttribute(mrElement,"maxheight") || mrHasAttribute(mrElement,"data-maxheight");
-        let hasResolution = mrHasAttribute(mrElement,"resolution") || mrHasAttribute(mrElement,"data-resolution");
         let hasRatio = mrHasAttribute(mrElement,"ratio") || mrHasAttribute(mrElement,"data-ratio")
         
         function mrDebutInvalidAttribute(element, attribute, feedbackClass){
@@ -1782,7 +1778,6 @@ function mrValidateElement(mrElement)
             mrValidElement("mr-maxwidth-fb");
             mrValidElement("mr-minheight-fb");
             mrValidElement("mr-maxheight-fb");
-            mrValidElement("mr-resolution-fb");
             mrValidElement("mr-ratio-fb");
         }
 
@@ -1795,7 +1790,6 @@ function mrValidateElement(mrElement)
             let mrAcceptedMaxWidth = getGlobalAttribute(mrElement, "maxwidth");
             let mrAcceptedMinHeight = getGlobalAttribute(mrElement, "minheight");
             let mrAcceptedMaxHeight = getGlobalAttribute(mrElement, "maxheight");
-            let mrAcceptedResolution = getGlobalAttribute(mrElement, "resolution");
             let mrAcceptedRatio = getGlobalAttribute(mrElement, "ratio");
             setInvalidElements();
 
@@ -1806,7 +1800,6 @@ function mrValidateElement(mrElement)
                 maxWidth: true,
                 minHeight: true,
                 maxHeight: true,
-                resolution: true,
                 ratio: true
             }
 
