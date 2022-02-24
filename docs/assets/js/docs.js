@@ -19,11 +19,10 @@ window.addEventListener("load", function() {
 		+"</div>";
 	$("#main-container").append(innerHTMLModal);
 
-	forms = document.forms;
+	let forms = document.forms;
 	for(var i = 0; i < forms.length; i++){
-
 		let form = forms[i];
-		form.addEventListener("submit", function (){
+		form.addEventListener("submit", function (event){
 			if(mrValidateForm(this))
 			{
 				$("#div-modal").modal({show: true});
