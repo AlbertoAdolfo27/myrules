@@ -1,13 +1,14 @@
 /*
- * Created by Alberto on JULLY/2018 as validacao.js.
- * Created by Alberto on AUGUST/2018 as MY RULES VALIDATION.
- * Updated on JULY/2019 as MY RULES VALIDATION V2 and named My Rules
+ * Created by Alberto Adolfo on JULLY/2018 as validacao.js.
+ * Renamed on AUGUST/2018 to MY RULES VALIDATION.
+ * Updated and Renamed on JULY/2019  to My Rules.
+ * First Realeased and Renamed to myrules in 2022.
  */
 /*
  ATENÇÃO: Informação dos diretos autorais!!
- * My Rules Validation é propriedade de Alberto Jordane Adolfo.
+ * myrules foi criado por Alberto Jordane Adolfo sob licença MIT.
  * Qualquer parte deste código pode ser usado, copiado, redistribuido ou produzido.
- * Para contribuir no projecto, em breve o código-fonte estará no repositório GIT HUB (https://github.com/albertoadolfo27).
+ * Para contribuir no projecto, em breve o código-fonte estará no repositório GITHUB (https://github.com/albertoadolfo27).
  * 15/JULY/2019
  */
 
