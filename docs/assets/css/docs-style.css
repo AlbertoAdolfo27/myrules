@@ -49,6 +49,10 @@ h3.h5{
 .nav-tabs .nav-link {
     border-radius: 0 !important;
 }
+.nav-tabs {
+    border-bottom: 0;
+    padding-bottom: 5px;
+}
 
 #sidebar .nav-item.active, #sidebar .nav-item.active:focus, #sidebar .nav-item.active:hover
 {
