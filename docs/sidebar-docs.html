@@ -103,6 +103,7 @@
     activedLink.scrollIntoView(true);
 
     window.addEventListener("resize", normalizeSidebar);
+    normalizeSidebar();
     function normalizeSidebar(){
         let sidebar = document.getElementById("sidebar");
         let tablist = document.getElementById("tablist");
@@ -112,10 +113,23 @@
             let header = document.getElementById("header");
             sidebar.style.paddingTop = "117px";
             sidebar.style.paddingBottom = "0";
+
+            btnCollapse.addEventListener("click", function(){
+                if(sidebar.classList.contains("show")){
+                    sidebar.classList.add("fade");
+                }   else{
+                    if(sidebar.classList.contains("fade")){
+                        sidebar.classList.remove("fade");
+                    }
+                }
+            });
         }   else{
             sidebar.style.paddingTop = "20px";
             sidebar.style.paddingBottom = "20px";
             tablist.style.paddingBottom = "30px";
+            if(sidebar.classList.contains("fade")){
+                sidebar.classList.remove("fade");
+            }
         }
     }
 </script>
