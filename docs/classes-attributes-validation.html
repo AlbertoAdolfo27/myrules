@@ -37,10 +37,10 @@
 
                 <section id="mr-types-and-attributes-section">
                     <h1 id="class-attribute-validation-heading">Classes and Attributes of Validation</h1>
-                    <p>myrules validate a form element by two ways: by <strong>Validation Classes</strong> and <strong>Validation Attributes</strong>.</p>
+                    <p>myrules validate a form element by two ways: using <strong>Validation Classes</strong> or using <strong>Validation Attributes</strong>.</p>
                     
                     <h2 id="validation-classes-heading">Validation Classes</h2>
-                    <p>myrules provide many classes that allow you to validate diferents form elements. For instance: <code class="class">.mr-required</code>, <code class="class">.mr-email</code>, <code class="class">.mr-number-int</code>, <code class="class">.mr-password-good</code>, <code class="class">.mr-username</code>, etc.</p>
+                    <p>myrules provide classes that allow you to validate diferents form elements, e.g: <code class="class">.mr-required</code>, <code class="class">.mr-email</code>, <code class="class">.mr-number-int</code>, <code class="class">.mr-password-good</code>, <code class="class">.mr-username</code>, etc.</p>
                     <p>In the example below, the <code class="class">.mr-number-int</code> class was used to indicate that the input value must be an integer number.</p> 
                     <div class="code-panel">
                         <div class="clearfix">
@@ -55,7 +55,7 @@
                     </div>
 
                     <h2 id="validation-atrributes-heading">Validation Attributes</h2>
-                    <P>Other way to validate a form elements is using <strong>Validation Attributes</strong>. They are two types of Validation Attributes:</P>
+                    <P><strong>Validation Attributes</strong> are atrributes used by myrules to validate form elements. They are two types of Validation Attributes:</P>
                     <ul class="list-type-disc">
                         <li><strong>HTML input attributes</strong> (example: <code class="attr">required</code>, <code class="attr">max</code>, <code class="attr">min</code>, <code class="attr">maxlength</code>, <code class="attr">type</code>); and</li>
                         <li><strong>Custom Attributes</strong> (example: <code class="attr">minlength</code> or  <code class="attr">data-minlength</code>, <code class="attr">resolution</code> or <code class="attr">data-resolution</code>, <code class="attr">maxcheck</code> or <code class="attr">data-maxcheck</code>)</li>
@@ -75,11 +75,12 @@
 </pre>
                         </code>
                     </div>
-                    <p>Some types of validations uses both (class and attribute) to make validation. For exemple, to specifies that the element value is required you can use validation atrribute <code class="attr">required</code> or validation class <code class="class">.mr-required</code>.</p>
+                    <p>Some types of validations uses both (class and attribute) to make validation. For exemple, to specifies that the element value is required you can use <code class="attr">required</code> atrribute or <code class="class">.mr-required</code> class.</p>
                     
                     <h2 id="feedback-classes-heading">Feedback classes</h2>
                     <p>All Classes and Attributes of Validations has their <strong>Feedback Class</strong>. The Feedback Classes are classes used to display the feedback of validation.</p>
-                    <p>To display the feedback of an element validation, add the <code class="class">.mr-feedback</code> class into the element where the feedback will placed and add the <strong>Feedback Class</strong> of the Class or Attribute of Validation.</p>                    
+                    <p>To display the feedback of validation of an element, add the <code class="class">.mr-feedback</code> class into the element where the feedback will placed and add the <strong>Feedback Class</strong>.</p>
+                    <p>E.g: The feedback class of <code class="attr">requerid</code> atrribute is <code class="class">.mr-requerid-fb</code>, the feedback class of <code class="class">.mr-url</code> class is <code class="class">.mr-url-fb</code>.</p>                   
                     
                     <div class="code-panel">
                         <div class="clearfix">
@@ -96,10 +97,10 @@
                     </div>
 
                     <div class="panel-warning">
-                        <p>The number of <code class="class">.mr</code> classes (elements to validate) must be iqual of the number of <code class="class">.mr-feedback</code> classes (feedbacks to display) in the form element.</p>
+                        <p>The number of <code class="class">.mr</code> classes (elements to validate) must be iqual to the number of <code class="class">.mr-feedback</code> classes (feedbacks to display) in the form element.</p>
                     </div>
 
-                    <p>The <code class="class">.mr-valid-fb</code> and <code class="class">.mr-invalid-fb</code> Feedback Classes are <strong>Global Feedback Classes</strong>, it means that their can be used to feedback all Classes and Attributes of Validation.</p>
+                    <p>The <code class="class">.mr-valid-fb</code> and <code class="class">.mr-invalid-fb</code> are the only Feedback Classes that can be used to display feedback for all Classes and Attributes of Validation.</p>
                                        
                     <div class="code-panel">
                         <div class="clearfix">
@@ -116,7 +117,7 @@
                         </code>
                     </div>
                    
-                    <p>All Feedback Classes are displayed when the element has invalid, except the <code class="class">.mr-valid-fb</code> class that is displayed when the element has valid.</p>
+                    <p>Usually, Feedback Classes are displayed when the element has invalid, except the <code class="class">.mr-valid-fb</code> class that is displayed when the element has valid.</p>
                 
                     <h2 id="using-class-validation-heading"> Using Validation Classes</h2>
                                         
@@ -209,7 +210,7 @@
                     </div>
 
                     <h3 class="h5">Example 2: validate the minimum allowed length of an input field using Validation Attribute</h3>
-                    <p>The validation attribute of the minimum allowed length of an input field is the <code class="attr">minlength</code> Custom Attribute and their feedback class is <code class="class">.mr-minlength-fb</code>.</p>
+                    <p>The validation attribute to specify the minimum allowed length of an input field is the <code class="attr">minlength</code> and their feedback class is <code class="class">.mr-minlength-fb</code>.</p>
                     
                     <div class="mr-test">
                         <div class="panel-info">
