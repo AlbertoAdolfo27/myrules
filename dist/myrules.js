@@ -1356,7 +1356,7 @@ function mrValidateElement(mrElement){
         
                         for(var i = 0; i < mrCheckboxs.length; i++){
                             var mrCheckbox = mrCheckboxs[i];
-                            if(mrCheckbox.checked && !mrIsEmptyElementValue(mrCheckbox)){
+                            if(mrCheckbox.checked){
                                 mrChecked++;
                             }
                         }
@@ -1397,7 +1397,7 @@ function mrValidateElement(mrElement){
         
                         for(var i = 0; i < mrCheckboxs.length; i++){
                             var mrCheckbox = mrCheckboxs[i];
-                            if(mrCheckbox.checked && !mrIsEmptyElementValue(mrCheckbox)){
+                            if(mrCheckbox.checked){
                                 mrChecked++;
                             }
                         }
