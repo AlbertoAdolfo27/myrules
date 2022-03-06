@@ -1246,36 +1246,34 @@ function mrValidateElement(mrElement){
     function mrMinselect(mrElement){
         if(mrHasAttribute(mrElement, "minselect") || mrHasAttribute(mrElement, "data-minselect")){
             if(mrElement.tagName == "SELECT" || mrHasInputType(mrElement, "file")){
-                if(!mrIsEmptyElementValue(mrElement)){
-                    var minselect = mrElement.getAttribute("data-minselect");
-                    if(minselect == null){
-                        minselect = mrElement.getAttribute("minselect")
-                    }
+                var minselect = mrElement.getAttribute("data-minselect");
+                if(minselect == null){
+                    minselect = mrElement.getAttribute("minselect")
+                }
 
-                    if(minselect != ""){
-                        if(mrIsInteger(minselect)){
-                            if(mrElement.tagName == "SELECT"){
-                                if(mrElement.selectedOptions.length < minselect)
-                                {
-                                    mrInvalidElement("mr-minselect-fb");
-                                } else
-                                {
-                                    mrValidElement("mr-minselect-fb");
-                                }
-                            } else if(mrHasInputType(mrElement, "file")){
-                                if(mrElement.files.length < minselect)
-                                {
-                                    mrInvalidElement("mr-minselect-fb");
-                                } else
-                                {
-                                    mrValidElement("mr-minselect-fb");
-                                }
+                if(minselect != ""){
+                    if(mrIsInteger(minselect)){
+                        if(mrElement.tagName == "SELECT"){
+                            if(mrElement.selectedOptions.length < minselect)
+                            {
+                                mrInvalidElement("mr-minselect-fb");
+                            } else
+                            {
+                                mrValidElement("mr-minselect-fb");
                             }
-                        } else{
-                            console.error("MY RULES ERROR:\n" + "- The attribute value of minselect is not a valid integer in element:");
-                            console.error(mrElement);
-                            mrInvalidElement("mr-minselect-fb");
+                        } else if(mrHasInputType(mrElement, "file")){
+                            if(mrElement.files.length < minselect)
+                            {
+                                mrInvalidElement("mr-minselect-fb");
+                            } else
+                            {
+                                mrValidElement("mr-minselect-fb");
+                            }
                         }
+                    } else{
+                        console.error("MY RULES ERROR:\n" + "- The attribute value of minselect is not a valid integer in element:");
+                        console.error(mrElement);
+                        mrInvalidElement("mr-minselect-fb");
                     }
                 }
               else{
@@ -1295,38 +1293,36 @@ function mrValidateElement(mrElement){
     function mrMaxselect(mrElement){
         if(mrHasAttribute(mrElement, "maxselect") || mrHasAttribute(mrElement, "data-maxselect")){
             if(mrElement.tagName == "SELECT" || mrHasInputType(mrElement, "file")){
-                if(!mrIsEmptyElementValue(mrElement)){
-                    var maxselect = mrElement.getAttribute("data-maxselect");
-                    if(maxselect == null){
-                        maxselect = mrElement.getAttribute("maxselect");
-                    }
+                var maxselect = mrElement.getAttribute("data-maxselect");
+                if(maxselect == null){
+                    maxselect = mrElement.getAttribute("maxselect");
+                }
 
-                    if(maxselect != ""){
-                        if(mrIsInteger(maxselect)){
-                            if(mrElement.tagName == "SELECT"){
-                                if(mrElement.selectedOptions.length > maxselect)
-                                {
-                                    mrInvalidElement("mr-maxselect-fb");
-                                } else
-                                {
-                                    mrValidElement("mr-maxselect-fb");
-                                }
-                            } else if(mrHasInputType(mrElement, "file")){
-                                if(mrElement.files.length > maxselect)
-                                {
-                                    mrInvalidElement("mr-maxselect-fb");
-                                } else
-                                {
-                                    mrValidElement("mr-maxselect-fb");
-                                }
+                if(maxselect != ""){
+                    if(mrIsInteger(maxselect)){
+                        if(mrElement.tagName == "SELECT"){
+                            if(mrElement.selectedOptions.length > maxselect)
+                            {
+                                mrInvalidElement("mr-maxselect-fb");
+                            } else
+                            {
+                                mrValidElement("mr-maxselect-fb");
                             }
-                        } else{
-                            console.error("MY RULES ERROR:\n" + "- The value of attribute maxselect is not a valid integer in element:");
-                            console.error(mrElement);
-                            mrInvalidElement("mr-maxselect-fb");
+                        } else if(mrHasInputType(mrElement, "file")){
+                            if(mrElement.files.length > maxselect)
+                            {
+                                mrInvalidElement("mr-maxselect-fb");
+                            } else
+                            {
+                                mrValidElement("mr-maxselect-fb");
+                            }
                         }
+                    } else{
+                        console.error("MY RULES ERROR:\n" + "- The value of attribute maxselect is not a valid integer in element:");
+                        console.error(mrElement);
+                        mrInvalidElement("mr-maxselect-fb");
                     }
-                }   
+                }  
               else{
                     mrValidElement("mr-maxselect-fb");
                 }
