@@ -48,7 +48,7 @@
                                         <tr>
                                             <td><code class="attr">mincheck</code> or <code class="attr">data-mincheck</code></td>
                                             <td>Specifies the minimum number of checkboxs allowed to select in a group of inputs type checkbox</td>
-                                            <td><code class="class">.mr-mincheck-fb</code></td>    
+                                            <td><code class="class">.mr-mincheck-fb</code></td>     
                                         </tr>
                                         <tr>
                                             <td><code class="attr">maxcheck</code> or <code class="attr">data-maxcheck</code></td>
@@ -60,18 +60,15 @@
                             </div>
                             
                             <div class="panel-info">
-                                <p>The Validation Class <code class="attr">mincheck</code> don´t specifies that the element requires a value. If your want to specifies that the element must be selected use the Validation Attribute <a href="validate-required.html"><code class="attr">required</code></a>.</p>
-                            </div>
-
-                            <div class="panel-warning">
-                                <p>Elements with none value are ignored.</p>
+                                <p>The <code class="attr">mincheck</code> class don't specifies that the element requires a value. If your want to specifies that the element must be selected use the Validation Attribute <a href="validate-required.html"><code class="attr">required</code></a>.</p>
                             </div>
                         </article>
                         
                         <article id="applying-input-type-checkbox">
-                            <h2>Applying in a group of &lt;input type="checkbox"&gt;</h2>
+                            <h2>Applying in Input Type Checkbox</h2>
+                            <p>To specify the minimum or maximum number of checkboxs allowed to select in a group of checkboxes, add a <code class="tag">&lt;DIV&gt;</code> element with classes <code class="class">.mr</code> and <code class="class">.mr-checkbox</code> and  add Attribute of Validation (<code class="attr">data-minlenght</code> or <code class="attr">data-maxlenght</code>) and append the input checkbox elements.</p>
                             
-                            <h3 class="h5 mt-0">Group of input type="checkbox" Example</h3>
+                            <h3 class="h5 mt-0">Example: Input Type Checkbox</h3>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <ul>
@@ -89,7 +86,6 @@
                                         <input type="checkbox" name="sport2" value="basketball"> Basketball <br>  
                                         <input type="checkbox" name="sport4" value="golf"> Golf <br>
                                         <input type="checkbox" name="sport5" value="baseball"> Baseball <br>
-                                        <input type="checkbox" name="sport6" value=""> None value <br>
                                     </div>
                                     <!--Validation feedbacks-->
                                     <div class="mr-feedback">
@@ -99,7 +95,7 @@
                                     
                                     <input type="submit" value="submit">
                                     <input type="reset" value="reset">
-                                </form>        
+                                </form>                                  
                             </div>
                                 
                             <div class="code-panel">
@@ -116,7 +112,6 @@
         <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"checkbox"</i> <i class="attr">name=</i><i class="value">"sport2"</i> <i class="attr">value=</i><i class="value">"basketball"</i><i class="tag">&gt;</i> Basketball <i class="tag">&lt;br&gt;</i>  
         <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"checkbox"</i> <i class="attr">name=</i><i class="value">"sport4"</i> <i class="attr">value=</i><i class="value">"golf"</i><i class="tag">&gt;</i> Golf <i class="tag">&lt;br&gt;</i>
         <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"checkbox"</i> <i class="attr">name=</i><i class="value">"sport5"</i> <i class="attr">value=</i><i class="value">"baseball"</i><i class="tag">&gt;</i> Baseball <i class="tag">&lt;br&gt;</i>
-        <i class="tag">&lt;input</i> <i class="attr">type=</i><i class="value">"checkbox"</i> <i class="attr">name=</i><i class="value">"sport6"</i> <i class="attr">value=</i><i class="value">""</i><i class="tag">&gt;</i> None value <i class="tag">&lt;br&gt;</i>
     <i class="tag">&lt;/div&gt;</i>
     <i class="comment">&lt;!--Validation feedbacks--&gt;</i>
     <i class="tag">&lt;div</i> <i class="attr">class</i><i class="value">="mr-feedback"</i><i class="tag">&gt;</i>
@@ -141,7 +136,7 @@
                         <a class="nav-link active" href="#validate-mincheck-and-maxcheck">Mincheck and Maxcheck</a>
                         <ul class="navbar-nav sub-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#applying-input-type-checkbox">Applying in a group of input type="checkbox"</a>
+                                <a class="nav-link" href="#applying-input-type-checkbox">Applying in Input Type Checkbox</a>
                             </li>
                         </ul>
                     </li>
