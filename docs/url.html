@@ -56,27 +56,27 @@
                                 </table>
                             </div>
 
-                            <h2 id="url-syntax-heading">myrules URL syntax</h2>
+                            <h2 id="url-syntax-heading">myrules's URL syntax</h2>
                             <p class="mb-1">The commun url format is:</p>
                             <ul class="list-type-disc">
                                 <li><strong>scheme</strong><span class="text-muted">://<strong>hostname</strong>:<strong>port</strong>/<strong>path</strong>/<strong>filename</strong>?<strong>query</strong>#<strong>fragment</strong></span></li>
                             </ul>
                             
                             <h3 class="h5">Scheme</h3>
-                            <p>The <strong>scheme</strong> is the protocol, it defines the type of Internet service. Examples of popular schemes include <code>http</code>, <code>https</code>, <code>ftp</code>, <code>mailto</code>, <code>file</code>, <code>data</code> and <code>irc</code>.</p>
+                            <p>The <strong>scheme</strong> is the protocol, it defines the type of Internet service. Examples of popular schemes include <code class="code">http</code>, <code class="code">https</code>, <code class="code">ftp</code>, <code class="code">mailto</code>, <code class="code">file</code>, <code class="code">data</code> and <code class="code">irc</code>.</p>
                             
                             <p class="mb-1">The scheme rules:</p>
                             <ul class="list-type-disc">
-                                <li>A scheme consisting of sequence of characters beginning with a letter and followed by any combination of letters, digits, plus (<code>+</code>), period (<code>.</code>), or hyphen (<code>-</code>).</li>
-                                <li>Scheme component are followed by a colon (<code>:</code>)./li>
+                                <li>A scheme consisting of sequence of characters beginning with a letter and followed by any combination of letters, digits, plus (<code class="code">+</code>), period (<code class="code">.</code>), or hyphen (<code class="code">-</code>).</li>
+                                <li>Scheme component are followed by a colon (<code class="code">:</code>)./li>
                             </ul>
                             
 
                         </article>
                         
                         <article>
-                            <h2 id="applying-input">Applying in &lt;input&gt;</h2>
-                            <h3 class="h5 mt-0">Example 1: Input type="url"</h3>
+                            <h2 id="applying-input">Applying in Input</h2>
+                            <h3 class="h5 mt-0">Example 1: Input type="url" attribute</h3>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid URL.</p>
@@ -111,7 +111,7 @@
                                 </code>
                             </div>
 
-                            <h3 class="h5 mt-0">Example 1: Input type="text" with .mr-url class</h3>
+                            <h3 class="h5 mt-0">Example 2: Using type="text" attribute with .mr-url class</h3>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid URL.</p>
@@ -151,11 +151,11 @@
 
                             <p>You can define the accepted schemes of the URL.</p>
                             <p>To define the accepted schemes set the scheme in the <code class="attr">data-url-scheme</code> or <code class="attr">url-scheme</code> attribute value.</p>
-                            <p>For example, if you want to set <code>hppt</code> as the unique accepted scheme, set the value of attribute <code class="attr">data-url-scheme</code> or <code class="attr">url-scheme</code> "http". (<code class="attr">data-url-scheme="http"</code>)</p>
+                            <p>For example, if you want to set <code class="code">hppt</code> as the unique accepted scheme, set the value of attribute <code class="attr">data-url-scheme</code> or <code class="attr">url-scheme</code> "http". (<code class="attr">data-url-scheme="http"</code>)</p>
                             <p>If you have more than one scheme them separete with comma, for example, <code class="attr">data-url-scheme="http, https, file, ftp"</code>.</p>
                         
                             <div class="panel-warning">
-                                <p>Remember, a scheme consisting of sequence of characters beginning with a letter and followed by any combination of letters, digits, plus (<code>+</code>), period (<code>.</code>), or hyphen (<code>-</code>).</p>
+                                <p>Remember, a scheme consisting of sequence of characters beginning with a letter and followed by any combination of letters, digits, plus (<code class="code">+</code>), period (<code class="code">.</code>), or hyphen (<code class="code">-</code>).</p>
                             </div>
                             
                             <h3 class="h5 mt-0">Defining accepted URL schemes example</h3>
@@ -214,10 +214,10 @@
                         <a class="nav-link active" href="#validate-url"> Url</a>
                         <ul class="navbar-nav sub-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#url-syntax-heading">myrules URL syntax</a>
+                                <a class="nav-link" href="#url-syntax-heading">myrules's URL syntax</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#applying-input">Applying in &lt;input&gt;</a>
+                                <a class="nav-link" href="#applying-input">Applying in Input</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#defining-acepted-schemes">Defining accepted URL schemes</a>
