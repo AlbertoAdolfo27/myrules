@@ -56,8 +56,7 @@
                                 </table>
                             </div>
                             <p>When validating an email, myrules uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/typeMismatch">ValidityState.typeMismatch</a> property of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation">Constraint validation API</a>, combined with a set of rules to define the valid syntax of an email address.</p>
-                            <p>the <strong>typeMismatch</strong> property is used to check if the input value does not conform to the constraints set by the type='email' attribute of the element. In addition to checking the typeMismatch it is also checked if the input value matches the email address syntax defined by myrules.</p>
-
+                            
                             <h2 id="email-syntax-heading">myrules email address syntax</h2>
                             <p>The format of an email address is <strong>local-part</strong>@<strong>domain</strong></p>
 
@@ -88,8 +87,8 @@
                         </article>
                         
                         <article>
-                            <h2  id="applying-input-heading">Applying in &lt;input&gt;</h2>
-                            <h3 class="h5 mt-0">Example using type="email" attribute</h3>
+                            <h2  id="applying-input-heading">Applying in Input</h2>
+                            <h3 class="h5 mt-0">Example 1: Using type="email" attribute</h3>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid email.</p>
@@ -124,7 +123,7 @@
                                 </code>
                             </div>
 
-                            <h3 class="h5 mt-0">Example using .mr-email class on input type="text"</h3>
+                            <h3 class="h5 mt-0">Example 2: Using .mr-email class on Input Type Email</h3>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid email.</p>
@@ -161,7 +160,7 @@
                         </article>
 
                         <article>
-                            <h2 id="changing-printable-chars-heading">Changing printable characters for the local-part of the email</h2>
+                            <h2 id="changing-printable-chars-heading">Changing printable characters of the local-part of the email</h2>
                             <p>We've already seen the printable characters supported in the local-part of the email address, which are: <code class="code">!#$%&'*+-/=?^_`{|}~</code>, you can change them by selecting some of them for the local-part of the email address.</p>
                             <p>For example, Gmail and outlook.com only allows creation of email addresses using alphanumerics, dot (<code class="code">.</code>), underscore (<code class="code">_</code>) and hyphen (<code class="code">-</code>)</p>
                             <p>You can set the printable characters of your choice in the <code class="attr">data-printablechars</code> or <code class="attr">printablechars</code> attribute value</p>
@@ -174,7 +173,7 @@
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <ul>
-                                        <li>The valid email address only allows alphanumerics, dot (.), underscore (_) and hyphen (-)</li>
+                                        <li>The local-part of email address only accept these characters: alphanumerics(A-Za-z0-9), dot (.), underscore (_) and hyphen (-)</li>
                                         <li>Try to submit an invalid email</li>
                                     </ul>
                                 </div>
@@ -212,8 +211,8 @@
                         <article>
                             <h2 id="ingnore-email-syntax-heading">Ingnoring myrules email address syntax</h2>
                             <h3 class="h5 mt-0">Example: ingnoring myrules email syntax</h3>
-                            <p>If you ignore myrules email syntax, my rules will only use the <code class="code">ValidityState.typeMismatch</code> property to validate the input value. In this type of case, an email like "john.due@example" or "john.due@example1111.." might be valid, which by the default validation would be invalid.</p>
-                            <p>The <code class="class">.mr-email-browser</code> class will cause the myrules email address syntax to be ignored and only Constraint validation API's <code>ValidityState.typeMismatch</code> property to be considered</p>
+                            <p>If you ignore myrules email syntax, my rules will only use the <strong>ValidityState.typeMismatch</strong> property to validate the input value. In this type of case, an email like "john.due@example" or "john.due@example1111.." might be valid, which by the default validation would be invalid.</p>
+                            <p>The <code class="class">.mr-email-browser</code> class will cause the myrules email address syntax to be ignored and only Constraint validation API's <code class="code">ValidityState.typeMismatch</code> property to be considered</p>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid email.</p>
@@ -262,7 +261,7 @@
                                 <a class="nav-link" href="#email-syntax-heading">myrules email address syntax</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#applying-input-heading">Applying in &lt;input&gt;</a>
+                                <a class="nav-link" href="#applying-input-heading">Applying in Input</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#changing-printable-chars-heading">Changing printable characters</a>
