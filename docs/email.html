@@ -57,7 +57,7 @@
                             </div>
                             <p>When validating an email, myrules uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/typeMismatch">ValidityState.typeMismatch</a> property of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation">Constraint validation API</a>, combined with a set of rules to define the valid syntax of an email address.</p>
                             
-                            <h2 id="email-syntax-heading">myrules email address syntax</h2>
+                            <h2 id="email-syntax-heading">myrules's email address syntax</h2>
                             <p>The format of an email address is <strong>local-part</strong>@<strong>domain</strong></p>
 
                             <h3 class="h5 mt-3">Local-part</h3>
@@ -209,16 +209,16 @@
                         </article>
 
                         <article>
-                            <h2 id="ingnore-email-syntax-heading">Ingnoring myrules email address syntax</h2>
-                            <h3 class="h5 mt-0">Example: ingnoring myrules email syntax</h3>
-                            <p>If you ignore myrules email syntax, my rules will only use the <strong>ValidityState.typeMismatch</strong> property to validate the input value. In this type of case, an email like "john.due@example" or "john.due@example1111.." might be valid, which by the default validation would be invalid.</p>
-                            <p>The <code class="class">.mr-email-browser</code> class will cause the myrules email address syntax to be ignored and only Constraint validation API's <code class="code">ValidityState.typeMismatch</code> property to be considered</p>
+                            <h2 id="ingnore-email-syntax-heading">Ingnoring myrules's email address syntax</h2>
+                            <h3 class="h5 mt-0">Example: ingnoring myrules's email syntax</h3>
+                            <p>If you ignore myrules's email syntax, my rules will only use the <strong>ValidityState.typeMismatch</strong> property to validate the input value. In this type of case, an email like "john.due@example" or "john.due@example1111.." might be valid, which by the default validation would be invalid.</p>
+                            <p>The <code class="class">.mr-email-browser</code> class will cause the myrules's email address syntax to be ignored and only Constraint validation API's <code class="code">ValidityState.typeMismatch</code> property to be considered</p>
                             <div class="mr-test">
                                 <div class="panel-info">
                                     <p>Try to submit an invalid email.</p>
                                 </div>
                                 <form>
-                                    <!--Ingnoring myrules email address syntax using .mr-email-browser class"-->
+                                    <!--Ingnoring myrules's email address syntax using .mr-email-browser class"-->
                                     <input type="email" class="mr mr-email-browser" placeholder="Email"> <br>
                                     <!--Validation feedback-->
                                     <p class="mr-feedback mr-email-fb">Invalid email!</p>
@@ -235,7 +235,7 @@
                                 <code class="lang-html">
 <pre>
 <i class="tag">&lt;form</i><i class="tag">&gt;</i>
-    <i class="comment">&lt;!--Ingnoring myrules email address syntax using .mr-email-browser class"--&gt;</i>
+    <i class="comment">&lt;!--Ingnoring myrules's email address syntax using .mr-email-browser class"--&gt;</i>
     <i class="tag">&lt;input</i> <i class="attr">type</i><i class="value">="email"</i> <i class="attr">class</i><i class="value">="mr mr-email-browser"</i> <i class="attr">placeholder</i><i class="value">="Email"</i><i class="tag">&gt;</i> <i class="tag">&lt;br&gt;</i>
     <i class="comment">&lt;!--Validation feedback--&gt;</i>
     <i class="tag">&lt;p</i> <i class="attr">class</i><i class="value">="mr-feedback mr-email-fb"</i><i class="tag">&gt;</i>Invalid email!<i class="tag">&lt;/p&gt;</i>
@@ -258,7 +258,7 @@
                         <a class="nav-link active" href="#validate-email-heading">Email</a>
                         <ul class="navbar-nav sub-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#email-syntax-heading">myrules email address syntax</a>
+                                <a class="nav-link" href="#email-syntax-heading">myrules's email address syntax</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#applying-input-heading">Applying in Input</a>
@@ -267,7 +267,7 @@
                                 <a class="nav-link" href="#changing-printable-chars-heading">Changing printable characters</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#ingnore-email-syntax-heading">Ingnoring myrules email address syntax</a>
+                                <a class="nav-link" href="#ingnore-email-syntax-heading">Ingnoring myrules's email address syntax</a>
                             </li>
                         </ul>
                     </li>
