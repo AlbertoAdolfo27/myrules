@@ -525,7 +525,8 @@ function mrValidateElement(mrElement){
     //VALIDATE IF THE ELEMENT'S VALUE IS NOT A VALID EMAIL
     mrEmail(mrElement);
     function mrEmail(mrElement){
-        if(mrHasClass(mrElement,"mr-email") || mrHasInputType(mrElement,"email")){
+        if((mrHasClass(mrElement,"mr-email") || mrHasInputType(mrElement,"email")) && (mrHasClass(mrElement,"no-validate") == false)){
+            console.log(!mrHasClass(mrElement,"no-validate"));
             if(!mrHasInputType(mrElement,"email")){
                 mrElement.setAttribute("type","email");
             }
